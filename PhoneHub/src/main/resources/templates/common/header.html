@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<!-- header -->
+<div th:fragment="header" class="header">
+    <div class="wrap">
+        <!-- header -->
+        <div class="header">
+            <a href="#" class="logo" title="phonehub">
+                <img src="asset/logo.png">
+            </a>
+            <ul class="h_list modify">
+                <li><a href="#">뉴스</a></li>
+                <li><a href="#">휴대폰</a></li>
+                <li><a href="#">랭킹</a></li>
+                <li><a href="#">게시판</a></li>
+            </ul>
+            <div class="h_search">
+                <i class="fas fa-search fa-2x search_icon"></i>
+                <input type="text" name="search_bar" class="search_bar" placeholder="모델명을 입력해주세요.">
+            </div>
+            <div class="login_cont">
+                <a href="#" class="sign_in">로그인</a>
+                <a href="#" class="sign_up">회원가입</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+</html>

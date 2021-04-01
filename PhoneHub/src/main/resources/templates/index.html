@@ -1,18 +1,15 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
 xmlns:th="http://www.thymeleaf.org"
-xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
-<head>
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorator="~{layout/layout_default}">
     <title>PhoneHub</title>
-</head>
 
 <th:block layout:fragment="css">
-	<link rel="stylesheet" th:href="@{js/swiper/swiper.min.css}">
 </th:block>
 
 <th:block layout:fragment="script">
-	<script defer th:src="@{js/index.js}"></script>
-    <script th:src ="@{js/swiper/swiper.min.js}"></script>
-    <script defer th:src="@{js/script.js}"></script>
+</th:block>
+<th:block layout:fragment="content">
 </th:block>
 </html>

@@ -1,0 +1,25 @@
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<th:block th:fragment="configFragment">
+
+	<!-- js -->
+	<!-- css -->
+	<link rel="stylesheet" type="text/css" th:href="@{css/main.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{css/header.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{css/footer.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{css/main_header.css}">
+	<link rel="stylesheet"
+		th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css}" />
+	<link rel="stylesheet"
+		href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
+		integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc"
+		crossorigin="anonymous">
+	<!-- Content Page의 CSS fragment 삽입 -->
+	<th:block layout:fragment="css"></th:block>
+
+	<!-- Content Page의 script fragment 삽입 -->
+	<th:block layout:fragment="script"></th:block>
+
+</th:block>
+</html>
