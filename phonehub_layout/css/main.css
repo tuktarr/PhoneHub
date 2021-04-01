@@ -1,0 +1,45 @@
+@charset 'utf-8';
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline-style: none;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+a {
+    color: #333;
+    text-decoration: none;
+}
+
+img {
+    vertical-align: middle;
+}
+
+html {
+    user-select: none;
+    overflow-x: hidden;
+}
+
+body {}
+
+.wrap {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100vh;
+}
+
+.pagew {
+    position: relative;
+    width: 1300px;
+    height: 100%;
+    margin: 0 auto;
+}
