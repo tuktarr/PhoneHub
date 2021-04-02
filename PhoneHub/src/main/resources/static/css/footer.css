@@ -1,0 +1,48 @@
+@charset 'utf-8';
+
+.footer {
+	position: relative;
+	display: block;
+	height: 200px;
+	padding: 20px 0;
+	background: #89ABE3;
+}
+
+.f_logo {
+	position: relative;
+	display: block;
+	width: 25%;
+	height: 100%;
+	float: left;
+	border-right: 1px solid #fcf6f5;
+}
+
+.f_logo img {
+	height: 100%;
+	width: 100%;
+}
+
+.f_info {
+	position: relative;
+	display: block;
+	width: 75%;
+	height: 100%;
+	float: left;
+	padding: 10px 15px 0;
+}
+
+.f_info p {
+	display: block;
+	color: #fcf6f5;
+	font-size: 16px;
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+.f_icon {
+	width: 100%;
+	margin-top: 20px;
+}
+
+.git_icon {
+	color: #fcf6f5;
+}
