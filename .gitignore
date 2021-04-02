@@ -1,3 +1,19 @@
+.metadata
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.settings/
+.loadpath
+.recommenders
+
+
+
+출처: https://swalloow.tistory.com/65 [MyCloud]
+
 # Created by https://www.toptal.com/developers/gitignore/api/java,maven
 # Edit at https://www.toptal.com/developers/gitignore?templates=java,maven
 
