@@ -280,9 +280,8 @@ CREATE TABLE p_board (
 	userPk INT(10) UNSIGNED NOT NULL,
 	regDt DATETIME DEFAULT NOW(),
 	modDt DATETIME DEFAULT NOW(), 
-	isDel INT(1) DEFAULT 00,
+	isDel INT(1) DEFAULT 0,
 	PRIMARY KEY (boardPk),
-	CONSTRAINT fk_board_userPk FOREIGN KEY (userPk) REFERENCES pgr.pgruser (userPk)
 );
 
 // phub 게시판에 관한 댓글에 대한 쿼리문
