@@ -1,0 +1,131 @@
+.login_wrap {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    width: 100%;
+}
+
+.login_form {
+    position: relative;
+    display: block;
+    width: 500px;
+    height: 500px;
+    padding: 0 20px;
+    background: #fff;
+    border: 1px solid #333;
+    border-radius: 5px;
+}
+
+.login_form>span {
+    display: block;
+    text-align: center;
+    padding: 20px 0;
+/*    background: linear-gradient(to bottom, #f8ffe8 0%, #e3f5ab 33%, #b7df2d 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;*/
+    border-bottom: 1px solid #333;
+    text-transform: uppercase;
+    font-size: 45px;
+    font-weight: 700;
+}
+
+#loginFrm {
+    position: relative;
+    display: block;
+    padding: 10px 40px;
+}
+
+.txt_field {
+    position: relative;
+    display: block;
+    border-bottom: 2px solid #333;
+    margin: 25px 0;
+}
+
+.txt_field label {
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    color: #A9A9A9;
+    display: block;
+    transform: translateY(-50%);
+    font-size: 17px;
+    pointer-events: none;
+    transition: all 0.5s;
+}
+
+.txt_field input {
+    position: relative;
+    display: block;
+    width: 100%;
+    padding: 0 5px;
+    height: 40px;
+    border: none;
+    background: none;
+    font-size: 15px;
+}
+
+.txt_field input:focus~label,
+.txt_field input:valid~label {
+    top: -5px;
+    color: #333;
+}
+
+.fg_pw {
+    position: relative;
+    display: block;
+    cursor: pointer;
+    margin: 15px 0 20px 0;
+}
+
+.fg_pw>a {
+    color: #A9A9A9;
+    font-size: 15px;
+}
+
+.fg_pw>a:hover {
+    color: #333;
+    text-decoration: underline;
+}
+
+#loginFrm>input[name=signIn] {
+    display: block;
+    height: 50px;
+    width: 100%;
+    color: #fcf6f5;
+    font-size: 20px;
+    font-family: 'Noto Sans KR', sans-serif;
+    text-transform: capitalize;
+    letter-spacing: 2px;
+    background: #89ABE3;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+#loginFrm>input[name=signIn]:hover {
+	background: #89abff;
+	box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.2), 0 4px 10px 0 rgba(0, 0, 0, 0.19);
+}
+
+.signup_link {
+    position: relative;
+    display: block;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.signup_link a {
+    position: relative;
+    display: inline-block;
+    color: #6495ED;
+    margin: 0 5px;
+}
+
+.signup_link a:hover {
+    text-decoration: underline;
+}
