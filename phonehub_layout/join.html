@@ -1,9 +1,133 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title></title>
-</head>
-<body>
 
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>join</title>
+    <!-- css -->
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <!-- 메인헤더에 있는 css를 재활용합니다 -->
+    <link rel="stylesheet" type="text/css" href="css/main_header.css">
+    <link rel="stylesheet" type="text/css" href="css/header.css">
+    <link rel="stylesheet" type="text/css" href="css/footer.css">
+    <link rel="stylesheet" type="text/css" href="css/sign.css">
+    <!-- fontawesome (아이콘을 사용하기 위해 꼭 필요합니다) -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+    <!-- js -->
+</head>
+
+<body>
+    <div class="wrap">
+        <!-- header -->
+        <div class="header">
+            <a href="#" class="logo" title="phonehub">
+                <img src="asset/logo.png">
+            </a>
+            <ul class="h_list modify">
+                <li><a href="#">뉴스</a></li>
+                <li><a href="#">휴대폰</a></li>
+                <li><a href="#">랭킹</a></li>
+                <li><a href="#">게시판</a></li>
+            </ul>
+            <div class="h_search">
+                <i class="fas fa-search fa-2x search_icon"></i>
+                <input type="text" name="search_bar" class="search_bar" placeholder="모델명을 입력해주세요.">
+            </div>
+            <div class="login_cont">
+                <a href="#" class="sign_in">로그인</a>
+                <a href="#" class="sign_up">회원가입</a>
+            </div>
+        </div>
+        <!-- join -->
+        <div class="sign_wrap">
+            <div class="join_form">
+                <form id="joinFrm">
+                    <div class="row">
+                        <span>계정정보입력</span>
+                        <div class="input_group">
+                            <input type="text" name="nickname" placeholder="닉네임" spellcheck="false">
+                            <div class="input_icon">
+                                <i class="fas fa-user"></i>
+                            </div>
+                        </div>
+                        <div class="input_group">
+                            <input type="text" name="email" placeholder="이메일" spellcheck="false">
+                            <div class="input_icon">
+                                <i class="far fa-envelope"></i>
+                            </div>
+                            <div class="input_button">
+                            	<input type="button" name="emailSend" value="인증번호">
+                            </div>
+                        </div>
+                        <div class="input_group">
+                            <input type="text" name="password" placeholder="비밀번호" spellcheck="false">
+                            <div class="input_icon">
+                                <i class="fas fa-key"></i>
+                            </div>
+                        </div>
+                        <div class="input_group">
+                            <input type="text" name="repassword" placeholder="비밀번호 재확인" spellcheck="false">
+                            <div class="input_icon">
+                                <i class="fas fa-check"></i>
+                            </div>
+                        </div>
+                        <div class="input_group">
+                        	<input type="text" name="call" placeholder="전화번호" spellcheck="false">
+                        	<div class="input_icon">
+                        		<i class="fas fa-phone"></i>
+                        	</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="half">
+                            <span>생년월일</span>
+                            <div class="input_group">
+                                <div class="col_three">
+                                    <input type="text" name="yyyy" placeholder="년" spellcheck="false">
+                                </div>
+                                <div class="col_three">
+                                    <input type="text" name="mm" placeholder="월" spellcheck="false">
+                                </div>
+                                <div class="col_three">
+                                    <input type="text" name="dd" placeholder="일" spellcheck="false">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="half">
+                            <span>성별</span>
+                            <div class="input_group">
+                            	<input type="radio" name="gender" value="male" id="male">
+                            	<label for="male">남자</label>
+                            	<input type="radio" name="gender" value="female" id="female">
+                            	<label for="female">여자</label>
+                            </div>
+                        </div>
+                    </div>
+                    <input type="submit" name="signUp" value="회원가입">
+                </form>
+            </div>
+        </div>
+        <!-- footer -->
+        <div class="footer">
+            <div class="pagew">
+                <div class="f_logo">
+                    <img src="asset/logo.png">
+                </div>
+                <div class="f_info">
+                    <p>대표자 : 홍길동</p>
+                    <p>이메일 : aaa@gmail.com</p>
+                    <p>주소 : 대구 중구 중앙대로 366 반월센트럴타워</p>
+                    <p>대표번호 : 010-1234-5678</p>
+                    <div class="f_icon">
+                        <a href="https://github.com/tuktarr">
+                            <i class="fab fa-github fa-2x git_icon"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
+
 </html>
