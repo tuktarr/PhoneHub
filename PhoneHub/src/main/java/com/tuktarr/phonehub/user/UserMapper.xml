@@ -3,5 +3,10 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.tuktarr.phonehub.user.UserMapper">
-	
+	<insert id="insUser">
+		INSERT INTO user
+		( userEmail, userPw, nickname, birthday, gender, phone )
+		VALUES
+		( #{userEmail}, #{userPw}, #{nickname}, #{birthday}, gender, phone )
+	</insert>
 </mapper>
