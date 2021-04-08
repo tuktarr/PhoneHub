@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="~{layout/layout_default}">
+
+<th:block layout:fragment="css">
+	<link rel="stylesheet" type="text/css" th:href="@{css/sign.css}">
+</th:block>
+
+<th:block layout:fragment="content">
+	<div class="sign_wrap">
+		<div class="join_form">
+			<form id="joinFrm">
+				<div class="row">
+					<span>계정정보입력</span>
+					<div class="input_group">
+						<input type="text" name="nickname" placeholder="닉네임"
+							spellcheck="false">
+						<div class="input_icon">
+							<i class="fas fa-user"></i>
+						</div>
+					</div>
+					<div class="input_group">
+						<input type="text" name="email" placeholder="이메일"
+							spellcheck="false">
+						<div class="input_icon">
+							<i class="far fa-envelope"></i>
+						</div>
+						<div class="input_button">
+							<input type="button" name="emailSend" value="인증번호">
+						</div>
+					</div>
+					<div class="input_group">
+						<input type="text" name="password" placeholder="비밀번호"
+							spellcheck="false">
+						<div class="input_icon">
+							<i class="fas fa-key"></i>
+						</div>
+					</div>
+					<div class="input_group">
+						<input type="text" name="repassword" placeholder="비밀번호 재확인"
+							spellcheck="false">
+						<div class="input_icon">
+							<i class="fas fa-check"></i>
+						</div>
+					</div>
+					<div class="input_group">
+						<input type="text" name="call" placeholder="전화번호"
+							spellcheck="false">
+						<div class="input_icon">
+							<i class="fas fa-phone"></i>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="half">
+						<span>생년월일</span>
+						<div class="input_group">
+							<div class="col_three">
+								<input type="text" name="yyyy" placeholder="년"
+									spellcheck="false">
+							</div>
+							<div class="col_three">
+								<input type="text" name="mm" placeholder="월" spellcheck="false">
+							</div>
+							<div class="col_three">
+								<input type="text" name="dd" placeholder="일" spellcheck="false">
+							</div>
+						</div>
+					</div>
+					<div class="half">
+						<span>성별</span>
+						<div class="input_group">
+							<input type="radio" name="gender" value="male" id="male">
+							<label for="male">남자</label> <input type="radio" name="gender"
+								value="female" id="female"> <label for="female">여자</label>
+						</div>
+					</div>
+				</div>
+				<input type="submit" name="signUp" value="회원가입">
+			</form>
+		</div>
+	</div>
+</th:block>
+
+</html>
