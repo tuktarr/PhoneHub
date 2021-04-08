@@ -47,6 +47,10 @@
 }
 
 .search_bar::placeholder {
+    color: #fcf6f5;
+}
+
+.search_bar:focus::placeholder {
     color: #333;
 }
 
