@@ -1,10 +1,45 @@
+/*modal*/
+.email_modal {
+    display: none;
+}
+
+.open {
+    position: fixed;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 99999999;
+}
+
+.email_box {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%, -40%);
+    padding: 30px;
+    height: 300px;
+    width: 600px;
+    background: #fff;
+    border: 2px solid #c0c0c0;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+/*sign wrap*/
 .sign_wrap {
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 90vh;
-    min-height: 1000px;
+    min-height: 900px;
     width: 100%;
 }
 
@@ -94,7 +129,8 @@
 
 input[name=signIn],
 input[name=signUp],
-input[name=emailSend] {
+input[name=emailSend],
+.email_close {
     display: block;
     height: 50px;
     width: 100%;
@@ -140,7 +176,7 @@ input[name=signUp]:hover {
     position: relative;
     display: block;
     width: 650px;
-    height: 750px;
+    height: 680px;
     padding: 15px 40px;
     background: #fff;
     box-shadow: 0px 3px 10px -2px rgba(0, 0, 0, 0.2);
@@ -148,7 +184,7 @@ input[name=signUp]:hover {
 }
 
 #joinFrm {
-	position: relative;
+    position: relative;
 }
 
 .row>span {
@@ -163,7 +199,8 @@ input[name=signUp]:hover {
 }
 
 .input_group input[type="text"],
-.input_group input[type="radio"]+label {
+.input_group input[type="radio"]+label,
+.input_group input[type="password"] {
     position: relative;
     display: block;
     width: 100%;
@@ -176,17 +213,17 @@ input[name=signUp]:hover {
 }
 
 .input_group input[name="email"] {
-	width: 70%;
+    width: 70%;
 }
 
 .input_button input[name="emailSend"] {
-	position: absolute;
-	right: 0;
-	top: 0;
-	width: 25%;
-	border-radius: 3px;
-	height: 47px;
-	font-size: 16px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 25%;
+    border-radius: 3px;
+    height: 47px;
+    font-size: 16px;
 }
 
 .input_group input:focus {
@@ -232,11 +269,11 @@ input[name=signUp]:hover {
     padding-right: 10px;
     width: 50%;
     float: left;
-    margin-bottom:50px;
+    margin-bottom: 50px;
 }
 
 .half:last-child {
-	padding-right: 0;
+    padding-right: 0;
 }
 
 .half>span {
@@ -267,11 +304,11 @@ input[name=signUp]:hover {
     text-align: center;
     float: left;
     border-radius: 0;
-    padding: 10.5px;
+    padding: 15.5px;
 }
 
-.input_group input[type="radio"] + label[for="male"] {
-	border-right-width: 0px;
+.input_group input[type="radio"]+label[for="male"] {
+    border-right-width: 0px;
 }
 
 .input_group input[type="radio"]:checked+label[for="male"] {
