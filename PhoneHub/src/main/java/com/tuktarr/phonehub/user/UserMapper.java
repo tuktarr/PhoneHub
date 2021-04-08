@@ -6,5 +6,7 @@ import com.tuktarr.phonehub.model.UserEntity;
 
 @Mapper
 public interface UserMapper {
-	//public int insUser(UserEntity p);
+	int insUser(UserEntity p);
+	UserEntity selUser(UserEntity p);
+	
 }
