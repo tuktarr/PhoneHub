@@ -5,8 +5,13 @@
 <mapper namespace="com.tuktarr.phonehub.user.UserMapper">
 	<insert id="insUser">
 		INSERT INTO user
-		( userEmail, userPw, nickname, birthday, gender, phone )
+		(userEmail, userPw, nickname, birthday, gender, phone)
 		VALUES
-		( #{userEmail}, #{userPw}, #{nickname}, #{birthday}, gender, phone )
+		(#{userEmail}, #{userPw}, #{nickname}, #{birthday}, #{gender}, #{phone})
 	</insert>
+	
+	<select id="selUser">
+		SELECT * FROM user
+		WHERE userEmail = #{userEmail}
+	</select>
 </mapper>
