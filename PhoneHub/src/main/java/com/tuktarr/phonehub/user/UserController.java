@@ -1,11 +1,23 @@
 package com.tuktarr.phonehub.user;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.tuktarr.phonehub.model.UserEntity;
 
 @Controller
 public class UserController {
 
+	@Autowired
+	UserService service;
+	
 	@GetMapping("/login")
 	public String login() {
 		return "sign/login";
@@ -14,6 +26,16 @@ public class UserController {
 	@GetMapping("/join")
 	public String join() {
 		return "sign/join";
+	} //회원가입 화면 맵핑
+	
+	//join ajax처리
+	@ResponseBody
+	@PostMapping("/join")
+	public Map<String, Object> join(@RequestBody UserEntity p) throws Exception {
+		Map<String, Object> map = new HashMap<>();
+		map.put("result",service.join(p));
+		
+		return map;
 	}
 	
 }
