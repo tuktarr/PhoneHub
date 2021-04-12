@@ -38,7 +38,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 90vh;
+    height: auto;
     min-height: 900px;
     width: 100%;
 }
@@ -305,6 +305,7 @@ input[name=signUp]:hover {
     float: left;
     border-radius: 0;
     padding: 15.5px;
+    cursor: pointer;
 }
 
 .input_group input[type="radio"]+label[for="male"] {
