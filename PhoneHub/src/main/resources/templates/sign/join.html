@@ -8,46 +8,60 @@
 	<link rel="stylesheet" type="text/css" th:href="@{css/sign.css}">
 </th:block>
 
+<th:block layout:fragment="script">
+	<script defer type="text/javascript" th:src="@{js/sign.js}"></script>
+</th:block>
+
 <th:block layout:fragment="content">
+    <!-- email -->
+    <div class="email_modal">
+        <div class="email_box">
+            <span>이메일 인증</span>
+            <div class="txt_field cert">
+                <input type="text" id="emailchk" placeholder="인증번호를 입력해주세요." required>
+            </div>
+            <input type="button" value="인증" id="emailchkbtn" class="email_close">
+        </div>
+    </div>
 	<div class="sign_wrap">
 		<div class="join_form">
-			<form id="joinFrm">
+			<form id="joinFrm" method="post">
 				<div class="row">
 					<span>계정정보입력</span>
+					<div class="input_group emailbar">
+						<input type="text" name="email" placeholder="이메일"
+							spellcheck="false" required>
+						<div class="input_icon">
+							<i class="far fa-envelope"></i>
+						</div>
+						<div class="input_button">
+							<input id="emailSend" type="button" name="emailSend" value="인증번호">
+						</div>
+					</div>
 					<div class="input_group">
-						<input type="text" name="nickname" placeholder="닉네임"
+						<input type="text" name="nickname" placeholder="닉네임 (최대 12자)"
 							spellcheck="false">
 						<div class="input_icon">
 							<i class="fas fa-user"></i>
 						</div>
 					</div>
 					<div class="input_group">
-						<input type="text" name="email" placeholder="이메일"
-							spellcheck="false">
-						<div class="input_icon">
-							<i class="far fa-envelope"></i>
-						</div>
-						<div class="input_button">
-							<input type="button" name="emailSend" value="인증번호">
-						</div>
-					</div>
-					<div class="input_group">
 						<input type="text" name="password" placeholder="비밀번호"
-							spellcheck="false">
+							spellcheck="false" required>
 						<div class="input_icon">
 							<i class="fas fa-key"></i>
 						</div>
 					</div>
 					<div class="input_group">
 						<input type="text" name="repassword" placeholder="비밀번호 재확인"
-							spellcheck="false">
+							spellcheck="false" required>
 						<div class="input_icon">
 							<i class="fas fa-check"></i>
 						</div>
 					</div>
 					<div class="input_group">
 						<input type="text" name="call" placeholder="전화번호"
-							spellcheck="false">
+							spellcheck="false" maxlength='13' required>
 						<div class="input_icon">
 							<i class="fas fa-phone"></i>
 						</div>
@@ -59,26 +73,26 @@
 						<div class="input_group">
 							<div class="col_three">
 								<input type="text" name="yyyy" placeholder="년"
-									spellcheck="false">
+									spellcheck="false" maxlength='4' required>
 							</div>
 							<div class="col_three">
-								<input type="text" name="mm" placeholder="월" spellcheck="false">
+								<input type="text" name="mm" placeholder="월" spellcheck="false" maxlength='2' required>
 							</div>
 							<div class="col_three">
-								<input type="text" name="dd" placeholder="일" spellcheck="false">
+								<input type="text" name="dd" placeholder="일" spellcheck="false" maxlength='2' required>
 							</div>
 						</div>
 					</div>
 					<div class="half">
 						<span>성별</span>
 						<div class="input_group">
-							<input type="radio" name="gender" value="male" id="male">
+							<input type="radio" name="gender" value="male" id="male" checked>
 							<label for="male">남자</label> <input type="radio" name="gender"
 								value="female" id="female"> <label for="female">여자</label>
 						</div>
 					</div>
 				</div>
-				<input type="submit" name="signUp" value="회원가입">
+				<input id="joinBtn" type="submit" name="signUp" value="회원가입">
 			</form>
 		</div>
 	</div>
