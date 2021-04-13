@@ -326,8 +326,3 @@ input[name=signUp]:hover {
     border-bottom-right-radius: 3px;
     color: #fcf6f5;
 }
-
-.errorEmail {
-	height: 5px;
-	width: 5px;
-}

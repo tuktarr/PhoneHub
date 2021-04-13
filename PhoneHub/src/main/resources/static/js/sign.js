@@ -1,5 +1,10 @@
 const modalDiv = document.querySelector('.email_modal')
 const joinElem = document.querySelector('#joinFrm')
+const emailchkbtnElem = document.querySelector('#emailchkbtn')
+const emailchkElem = document.querySelector('#emailchk')
+const emailbarElem = document.querySelector('.emailbar')
+const input_buttonElem = document.querySelector('.input_button')
+
 
 //이메일 인증이 완료되기 전까지는 밑에 칸들을 입력할 수 없도록 막음
 const password = joinElem.password
@@ -40,14 +45,13 @@ setModal()
 const joinBtnElem = document.querySelector('#joinBtn')
 if(joinBtnElem) {
 	
-	join
 	if(input_buttonElem.value == "인증됨") {
 		
 	}
 }
 // 이메일 인증 버튼을 눌렀을 떄 이벤트 발생
 const emailsendButton = document.querySelector('#emailSend')
-const email = formElem.email
+const email = joinElem.email
 	
 	if(emailsendButton) {
 		function ajax() {
@@ -65,13 +69,9 @@ const email = formElem.email
 	}
 
 emailsendButton.addEventListener('click', ajax)
-
-const emailchkbtnElem = document.querySelector('#emailchkbtn')
-const emailbarElem = document.querySelector('.emailbar')
-const input_buttonElem = document.querySelector('.input_button')
+var error = document.createElement('span')
 
 if(emailchkbtnElem) {
-	const emailchkElem = document.querySelector('#emailchk')
 	function ajax() {
 		const param = emailchkElem.value
 		
@@ -86,22 +86,25 @@ if(emailchkbtnElem) {
 		}).then(function(myJson) {
 			proc(myJson)
 		})
-	}
 	
+	}
+
 	function proc(myJson) {
 		switch (myJson) {
 			case 0:
 				alert('인증번호를 확인해주세요.')
-				var error = document.createElement('span')
-				error.className = 'errorEmail'
-				error.innerText = '인증번호가 일치하지 않습니다.'
-				emailbarElem.append(error)
+					error.className = 'errorEmail'
+					error.innerText = '인증번호가 일치하지 않습니다.'
+					emailbarElem.append(error)			
 				return
 			case 1:
 				//인증번호가 일치했을 때 모달창을 없애면서 진행
 				alert('인증번호가 일치합니다.')
 				changeEmail()
-				error.remove()
+				console.log(error)
+				if(error !== undefined){
+					error.remove()					
+				}
 				return
 		}
 	}
@@ -115,6 +118,8 @@ if(emailchkbtnElem) {
 		call.disabled = false
 	}
 }
+
+emailchkbtnElem.addEventListener('click', ajax)
 
 function joinChk() {
 	const joinBtn = document.querySelector('#joinBtn')
