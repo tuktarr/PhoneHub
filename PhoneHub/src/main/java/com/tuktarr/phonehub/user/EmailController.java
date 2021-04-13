@@ -34,7 +34,7 @@ public class EmailController {
 	@PostMapping("/verifyCode")
 	@ResponseBody
 	public int verifyCode(@RequestBody String code, Model model) {
-		
+		System.out.println(code);
 		Logger.info("Post verifyCode");
 		
 		int result = 0;
