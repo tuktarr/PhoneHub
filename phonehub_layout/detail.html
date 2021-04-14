@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>detail</title>
+    <!-- css -->
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <!-- 메인헤더에 있는 css를 재활용합니다 -->
+    <link rel="stylesheet" type="text/css" href="css/main_header.css">
+    <link rel="stylesheet" type="text/css" href="css/header.css">
+    <link rel="stylesheet" type="text/css" href="css/footer.css">
+    <link rel="stylesheet" type="text/css" href="css/detail.css">
+    <!-- fontawesome (아이콘을 사용하기 위해 꼭 필요합니다) -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- js -->
+   <script type="text/javascript" src="js/detail.js"></script>
+</head>
+
+<body>
+    <!-- header -->
+    <div class="header">
+        <a href="index.html" class="logo" title="phonehub">
+            <img src="asset/logo.png">
+        </a>
+        <ul class="h_list modify">
+            <li><a href="#">뉴스</a></li>
+            <li><a href="#">휴대폰</a></li>
+            <li><a href="#">랭킹</a></li>
+            <li><a href="board.html">게시판</a></li>
+        </ul>
+        <div class="h_search">
+            <i class="fas fa-search fa-2x search_icon"></i>
+            <input type="text" name="search_bar" class="search_bar" placeholder="모델명을 입력해주세요.">
+        </div>
+        <div class="login_cont">
+            <a href="login.html" class="sign_in">로그인</a>
+            <a href="join.html" class="sign_up">회원가입</a>
+        </div>
+    </div>
+    <div class="detail_wrap">
+        <div class="pagew">
+            <!-- detail head -->
+            <div class="detail_h">
+                <div class="detail_tit">
+                    <span>제목</span>
+                </div>
+                <!-- detail title left -->
+                <div class="detail_tl">
+                    <div class="detail_user">
+                        <span class="user">문수찬</span>
+                    </div>
+                    <div class="detail_date">
+                        <i class="far fa-clock"></i>
+                        <span>2021-04-13 13:34</span>
+                    </div>
+                </div>
+                <!-- detail title right -->
+                <div class="detail_tr">
+                    <span>글번호 1</span>
+                    <span>조회수 1</span>
+                    <span>추천수 12</span>
+                </div>
+            </div>
+            <!-- detail board -->
+            <div class="detail_board">
+                <div class="detail_content">
+                    asdasd
+                </div>
+                <div class="hits_area">
+                    <button class="hits_btn best">
+                        <span id="up">10</span>
+                    </button>
+                    <button class="hits_btn worst">
+                        <span id="down">10</span>
+                    </button>
+                </div>
+            </div>
+            <!-- detail comment -->
+            <div id="comments">
+            	<div id="comment_head">
+            		전체댓글 <span id="commentCount">0</span> 개
+            	</div>
+            	<div class="comment_submit">
+            		<textarea id="newComment" name="new_comment" rows="5" placeholder="댓글을 입력해주세요."></textarea>
+            		<button type="submit" onclick="submitComment()" class="comment_btn">등록</button>
+            	</div>
+            </div>
+        </div>
+    </div>
+    <!-- footer -->
+    <div class="footer">
+        <div class="pagew">
+            <div class="f_logo">
+                <img src="asset/logo.png">
+            </div>
+            <div class="f_info">
+                <p>대표자 : 홍길동</p>
+                <p>이메일 : aaa@gmail.com</p>
+                <p>주소 : 대구 중구 중앙대로 366 반월센트럴타워</p>
+                <p>대표번호 : 010-1234-5678</p>
+                <div class="f_icon">
+                    <a href="https://github.com/tuktarr">
+                        <i class="fab fa-github fa-2x git_icon"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

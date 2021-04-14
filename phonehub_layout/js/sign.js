@@ -98,4 +98,4 @@
 
 	function closeModal() {
 	    modalDiv.classList.remove('open')
-	}
+	}	
