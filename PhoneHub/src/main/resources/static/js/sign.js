@@ -54,9 +54,8 @@ const joinBtnElem = document.querySelector('#joinBtn')
 				userPwRe: repassword.value,
 				nickname: nickname.value,
 				phone: call.value,
-				birthday: birthday.value
+				birthday: birthday
 			}
-			console.log(param.userPwRe)
 			fetch('/join', {
 				method: 'post',
 				headers: {
