@@ -31,10 +31,11 @@ public class UserController {
 	//join ajax처리
 	@ResponseBody
 	@PostMapping("/join")
-	public Map<String, Object> join(@RequestBody UserEntity p) throws Exception {
+	public Map<String, Object> join(@RequestBody UserEntity p) {
 		Map<String, Object> map = new HashMap<>();
 		map.put("result",service.join(p));
-		
+		System.out.println("비번 : " + p.getUserPw());
+		System.out.println("비번확인 : " + p.getUserPwRe());
 		return map;
 	}
 	

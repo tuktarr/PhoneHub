@@ -43,6 +43,8 @@ public class UserService {
 		}
 
 		if(!p.getUserPw().equals(p.getUserPwRe())) { // 비밀번호와 비밀번호 확인 칸의 값이 다르면 5를 리턴
+			System.out.println("비번 : " + p.getUserPw());
+			System.out.println("비번확인 : " + p.getUserPwRe());
 			return 5;
 		}
 		

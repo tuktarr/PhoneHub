@@ -11,9 +11,9 @@ const password = joinElem.password
 const repassword = joinElem.repassword
 const nickname = joinElem.nickname
 const call = joinElem.call
-const year = joinElem.yyyy.value
-const month = joinElem.mm.value
-const day = joinElem.dd.value
+const year = joinElem.yyyy
+const month = joinElem.mm
+const day = joinElem.dd
 
 
 closeElement()
@@ -43,75 +43,136 @@ function setModal() {
 setModal()
 // 회원가입 버튼을 눌렀을 때 이벤트 발생
 const joinBtnElem = document.querySelector('#joinBtn')
-if(joinBtnElem) {
-	
-	if(input_buttonElem.value == "인증됨") {
+
+	if(joinBtnElem){
 		
-	}
-}
-// 이메일 인증 버튼을 눌렀을 떄 이벤트 발생
-const emailsendButton = document.querySelector('#emailSend')
-const email = joinElem.email
-	
-	if(emailsendButton) {
 		function ajax() {
-			
-			const param = email.value
-		
-			fetch('/email', {
+			const birthday = year.value + month.value + day.value
+			const param = {
+				userEmail: email.value,
+				userPw: password.value,
+				userPwRe: repassword.value,
+				nickname: nickname.value,
+				phone: call.value,
+				birthday: birthday.value
+			}
+			console.log(param.userPwRe)
+			fetch('/join', {
 				method: 'post',
 				headers: {
 					'Content-type': 'application/json',
 				},
 				body: JSON.stringify(param)
+			}).then(function(res) {
+				return res.json()
+			}).then(function(myJson) {
+				console.log(myJson)
+				console.log(repassword.value)
+				console.log(myJson.result)
+				proc(myJson)
 			})
+
+			function proc(myJson) {
+				console.log(myJson.result)
+				switch (myJson.result) {
+					case 0:
+						alert('아이디(이메일)을 확인해 주세요')
+						return
+					case 1:
+						alert('이미 있는 아이디입니다.')
+						return
+					case 2:
+						alert('비밀번호를 확인해주세요.')
+						return
+					case 3:
+						alert('비밀번호 확인칸을 확인해주세요.')
+						return
+					case 4:
+						alert('닉네임을 확인해주세요.')
+						return
+					case 5:
+						alert('비밀번호와 비밀번호 확인이 일치하지 않습니다.')
+						return
+					case 6:
+						alert('생일을 작성해주세요')
+						return
+					case 7:
+						alert('전화번호를 작성해주세요')
+						return
+					case 8:
+						alert('회원가입을 축하합니다!')
+						history.go(-1)
+						return
+				}
+			}
 		}
+		
+		joinBtnElem.addEventListener('click', ajax)
+}
+
+// 이메일 인증 버튼을 눌렀을 떄 이벤트 발생
+const emailsendButton = document.querySelector('#emailSend')
+const email = joinElem.email
+
+if (emailsendButton) {
+	function ajax() {
+
+		const param = email.value
+
+		fetch('/email', {
+			method: 'post',
+			headers: {
+				'Content-type': 'application/json',
+			},
+			body: JSON.stringify(param)
+		})
 	}
+}
 
 emailsendButton.addEventListener('click', ajax)
 var error = document.createElement('span')
 
-if(emailchkbtnElem) {
+if (emailchkbtnElem) {
 	function ajax() {
 		const param = emailchkElem.value
-		
+
 		fetch('/verifyCode', {
-			method: 'post' ,
+			method: 'post',
 			headers: {
-				'Content-type' : 'application/json',
+				'Content-type': 'application/json',
 			},
 			body: param
-		}).then(function(res){
+		}).then(function(res) {
 			return res.json()
 		}).then(function(myJson) {
 			proc(myJson)
 		})
-	
+
 	}
 
 	function proc(myJson) {
 		switch (myJson) {
 			case 0:
 				alert('인증번호를 확인해주세요.')
-					error.className = 'errorEmail'
-					error.innerText = '인증번호가 일치하지 않습니다.'
-					emailbarElem.append(error)			
+				error.className = 'errorEmail'
+				error.innerText = '인증번호가 일치하지 않습니다.'
+				emailbarElem.append(error)
 				return
 			case 1:
 				//인증번호가 일치했을 때 모달창을 없애면서 진행
 				alert('인증번호가 일치합니다.')
 				changeEmail()
 				console.log(error)
-				if(error !== undefined){
-					error.remove()					
+				if (error !== undefined) {
+					error.remove()
 				}
 				return
 		}
 	}
-	
+
 	function changeEmail() {
 		input_buttonElem.innerHTML = `<input id="emailSend" type="button" name="emailSend" value="인증됨" disabled>`
-		
+
 		password.disabled = false
 		repassword.disabled = false
 		nickname.disabled = false
@@ -121,7 +182,7 @@ if(emailchkbtnElem) {
 
 emailchkbtnElem.addEventListener('click', ajax)
 
-function joinChk() {
+/*function joinChk() {
 	const joinBtn = document.querySelector('#joinBtn')
 
 	joinBtn.addEventListener('click', function() {
@@ -131,7 +192,7 @@ function joinChk() {
 		}
 	})
 }
-joinChk()
+joinChk()*/
 
 function chkEmail() {
 	const emailVal = joinFrm.email.value
