@@ -3,5 +3,7 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.tuktarr.phonehub.phone.PhoneMapper">
-	
+	<select id="selPhoneInfo" resultType="com.tuktarr.phonehub.model.PhoneInfoEntity">
+		select * from phoneInfo
+	</select>
 </mapper>
