@@ -41,6 +41,7 @@ public class EmailController {
 		if (EmailService.ePw.equals(code)) { //입력한 값과 인증키로 보낸 값이 일치하면 result = 1
 			result = 1;
 		}
+		System.out.println(result);
 		
 		return result;
 	}
