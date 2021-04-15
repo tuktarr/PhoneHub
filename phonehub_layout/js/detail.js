@@ -35,14 +35,9 @@ function submitComment() {
         document.getElementById('comments').appendChild(commentEL)
         newcommentEL.value = "";
 
-        const countEL = document.getElementById('commentCount')
-        const count = countEL.innerText;
-        countEL.innerText = parseInt(count) + 1;
-
-        dateEL.addEventListener('click', function(event) {
-            commentEL.remove()
-            countEL.innerText = parseInt(count);
-        })
+        // dateEL.addEventListener('click', function() {
+        //     commentEL.remove()
+        // })
 
     } else {
         warnEmpty()
