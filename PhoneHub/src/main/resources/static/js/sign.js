@@ -6,9 +6,16 @@ const password = joinElem.password
 const repassword = joinElem.repassword
 const nickname = joinElem.nickname
 const call = joinElem.call
+<<<<<<< Updated upstream
 const year = joinElem.yyyy.value
 const month = joinElem.mm.value
 const day = joinElem.dd.value
+=======
+const year = joinElem.yyyy
+const month = joinElem.mm
+const day = joinElem.dd
+const gender = joinElem.gender
+>>>>>>> Stashed changes
 
 
 closeElement()
@@ -36,8 +43,37 @@ function setModal() {
 	})
 }
 setModal()
+
+function chkfocus() {
+	if (!document.getElementById("myNickName").focus()) {
+		chkSign()
+		return false
+	} else if (!document.getElementById("myPassword").focus()) {
+		chkSign()
+		return false
+	} else if (!document.getElementById("myRepassword").focus()) {
+		chkSign()
+		return false
+	} else if (!document.getElementById("myPhone").focus()) {
+		chkSign()
+		return false
+	} else if (!document.getElementById("year").focus()) {
+		chkSign()
+		return false
+	} else if (!document.getElementById("month").focus()) {
+		chkSign()
+		return false
+	} else if (!document.getElementById("day").focus()) {
+		chkSign()
+		return false
+	}
+	return true
+}
+
+chkfocus()
 // 회원가입 버튼을 눌렀을 때 이벤트 발생
 const joinBtnElem = document.querySelector('#joinBtn')
+<<<<<<< Updated upstream
 if(joinBtnElem) {
 	
 	join
@@ -62,6 +98,91 @@ const email = formElem.email
 				body: JSON.stringify(param)
 			})
 		}
+=======
+
+if (joinBtnElem) {
+
+	function ajax() {
+		const birthday = year.value + month.value + day.value
+		const param = {
+			userEmail: email.value,
+			userPw: password.value,
+			userPwRe: repassword.value,
+			nickname: nickname.value,
+			phone: call.value,
+			birthday: birthday,
+			gender: gender.value
+		}
+		fetch('/join', {
+			method: 'post',
+			headers: {
+				'Content-type': 'application/json',
+			},
+			body: JSON.stringify(param)
+		}).then(function(res) {
+			return res.json()
+		}).then(function(myJson) {
+			console.log(myJson)
+			console.log(repassword.value)
+			console.log(myJson.result)
+			proc(myJson)
+		})
+
+		function proc(myJson) {
+			console.log(myJson.result)
+			switch (myJson.result) {
+				case 0:
+					alert('아이디(이메일)을 확인해 주세요')
+					return
+				case 1:
+					alert('이미 있는 아이디입니다.')
+					return
+				case 2:
+					alert('비밀번호를 확인해주세요.')
+					return
+				case 3:
+					alert('비밀번호 확인칸을 확인해주세요.')
+					return
+				case 4:
+					alert('닉네임을 확인해주세요.')
+					return
+				case 5:
+					alert('비밀번호와 비밀번호 확인이 일치하지 않습니다.')
+					return
+				case 6:
+					alert('생일을 작성해주세요')
+					return
+				case 7:
+					alert('전화번호를 작성해주세요')
+					return
+				case 8:
+					alert('회원가입을 축하합니다!')
+					history.go(-1)
+					return
+			}
+		}
+	}
+
+	joinBtnElem.addEventListener('click', ajax)
+}
+
+// 이메일 인증 버튼을 눌렀을 떄 이벤트 발생
+const emailsendButton = document.querySelector('#emailSend')
+const email = joinElem.email
+
+if (emailsendButton) {
+	function ajax() {
+
+		const param = email.value
+
+		fetch('/email', {
+			method: 'post',
+			headers: {
+				'Content-type': 'application/json',
+			},
+			body: JSON.stringify(param)
+		})
+>>>>>>> Stashed changes
 	}
 
 emailsendButton.addEventListener('click', ajax)
@@ -101,7 +222,13 @@ if(emailchkbtnElem) {
 				//인증번호가 일치했을 때 모달창을 없애면서 진행
 				alert('인증번호가 일치합니다.')
 				changeEmail()
+<<<<<<< Updated upstream
 				error.remove()
+=======
+				if (error !== undefined) {
+					error.remove()
+				}
+>>>>>>> Stashed changes
 				return
 		}
 	}
@@ -134,9 +261,11 @@ function chkEmail() {
 
 	if (emailVal === '') {
 		alert('이메일을 입력 해 주세요.')
+		document.getElementById("myEmail").focus();
 		return false
 	} else if (!emailChk.test(emailVal)) {
 		alert('잘못된 이메일 형식 입니다.')
+		document.getElementById("myEmail").focus();
 		return false
 	}
 
@@ -152,28 +281,37 @@ function chkSign() {
 	const yearChk = /^(19|20)\d{2}&/g
 	const monthChk = /^(0[1-9]|1[012])$/g
 	const dayChk = /^(0[1-9]|[12][0-9]|3[0-1])$/g
+	if (document.querySelector('#myEmail')) {
 
-	if (!nickChk.test(nickname)) {
-		alert('올바른 닉네임을 써주세요.')
-		return false
-	} else if (!passChk.test(password)) {
-		alert('잘못된 비밀번호 형식 입니다.')
-		return false
-	} else if (password !== repassword) {
-		alert('비밀번호를 확인 해 주세요.')
-		return false
-	} else if (!callChk.test(call)) {
-		alert('올바른 전화번호를 써주세요.')
-		return false
-	} else if (!yearChk.test(year)) {
-		alert('올바른 연도를 써주세요.')
-		return false
-	} else if (!monthChk.test(month)) {
-		alert('올바른 달을 써주세요.')
-		return false
-	} else if (!dayChk.test(day)) {
-		alert('올바른 날짜를 써주세요.')
-		return false
+		if (!nickChk.test(nickname)) {
+			alert('올바른 닉네임을 써주세요.')
+			document.getElementById("myNickName").focus();
+			return false
+		} else if (!passChk.test(password)) {
+			alert('잘못된 비밀번호 형식 입니다.')
+			document.getElementById("myPassword").focus();
+			return false
+		} else if (password !== repassword) {
+			alert('비밀번호를 확인 해 주세요.')
+			document.getElementById("myRepassword").focus();
+			return false
+		} else if (!callChk.test(call)) {
+			alert('올바른 전화번호를 써주세요.')
+			document.getElementById("myPhone").focus();
+			return false
+		} else if (!yearChk.test(year)) {
+			alert('올바른 연도를 써주세요.')
+			document.getElementById("year").focus();
+			return false
+		} else if (!monthChk.test(month)) {
+			alert('올바른 달을 써주세요.')
+			document.getElementById("month").focus();
+			return false
+		} else if (!dayChk.test(day)) {
+			alert('올바른 날짜를 써주세요.')
+			document.getElementById("day").focus();
+			return false
+		}
 	}
 	return true
 }

@@ -24,7 +24,6 @@ public class EmailController {
 	public void emailConfirm(@RequestBody String m, Model model) throws Exception {
 		
 		Logger.info("post emailConfirm");
-		
 		// 인증키 생성
 		EmailService.ePw = EmailService.createKey();
 		
@@ -38,6 +37,7 @@ public class EmailController {
 		Logger.info("Post verifyCode");
 		
 		int result = 0;
+
 		if (EmailService.ePw.equals(code)) { //입력한 값과 인증키로 보낸 값이 일치하면 result = 1
 			result = 1;
 		}

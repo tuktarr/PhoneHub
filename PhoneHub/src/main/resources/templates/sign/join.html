@@ -29,7 +29,7 @@
 				<div class="row">
 					<span>계정정보입력</span>
 					<div class="input_group emailbar">
-						<input type="text" name="email" placeholder="이메일"
+						<input id="myEmail" type="text" name="email" placeholder="이메일"
 							spellcheck="false" required>
 						<div class="input_icon">
 							<i class="far fa-envelope"></i>
@@ -39,28 +39,37 @@
 						</div>
 					</div>
 					<div class="input_group">
-						<input type="text" name="nickname" placeholder="닉네임 (최대 12자)"
-							spellcheck="false">
-						<div class="input_icon">
-							<i class="fas fa-user"></i>
-						</div>
-					</div>
-					<div class="input_group">
-						<input type="text" name="password" placeholder="비밀번호"
+						<input id="myPassword" type="password" name="password" placeholder="비밀번호"
 							spellcheck="false" required>
 						<div class="input_icon">
 							<i class="fas fa-key"></i>
 						</div>
 					</div>
 					<div class="input_group">
-						<input type="text" name="repassword" placeholder="비밀번호 재확인"
+<<<<<<< Updated upstream
+						<input type="text" name="password" placeholder="비밀번호"
+=======
+						<input id="myRepassword" type="password" name="repassword" placeholder="비밀번호 재확인"
+>>>>>>> Stashed changes
 							spellcheck="false" required>
 						<div class="input_icon">
 							<i class="fas fa-check"></i>
 						</div>
 					</div>
 					<div class="input_group">
-						<input type="text" name="call" placeholder="전화번호"
+<<<<<<< Updated upstream
+						<input type="text" name="repassword" placeholder="비밀번호 재확인"
+							spellcheck="false" required>
+=======
+						<input id="myNickName" type="text" name="nickname" placeholder="닉네임 (최대 12자)"
+							spellcheck="false">
+>>>>>>> Stashed changes
+						<div class="input_icon">
+							<i class="fas fa-user"></i>
+						</div>
+					</div>
+					<div class="input_group">
+						<input id="myPhone"type="text" name="call" placeholder="전화번호"
 							spellcheck="false" maxlength='13' required>
 						<div class="input_icon">
 							<i class="fas fa-phone"></i>
@@ -72,23 +81,23 @@
 						<span>생년월일</span>
 						<div class="input_group">
 							<div class="col_three">
-								<input type="text" name="yyyy" placeholder="년"
+								<input id="year" type="text" name="yyyy" placeholder="년"
 									spellcheck="false" maxlength='4' required>
 							</div>
 							<div class="col_three">
-								<input type="text" name="mm" placeholder="월" spellcheck="false" maxlength='2' required>
+								<input id="month" type="text" name="mm" placeholder="월" spellcheck="false" maxlength='2' required>
 							</div>
 							<div class="col_three">
-								<input type="text" name="dd" placeholder="일" spellcheck="false" maxlength='2' required>
+								<input id="day" type="text" name="dd" placeholder="일" spellcheck="false" maxlength='2' required>
 							</div>
 						</div>
 					</div>
 					<div class="half">
 						<span>성별</span>
 						<div class="input_group">
-							<input type="radio" name="gender" value="male" id="male" checked>
+							<input type="radio" name="gender" value="M" id="male" checked>
 							<label for="male">남자</label> <input type="radio" name="gender"
-								value="female" id="female"> <label for="female">여자</label>
+								value="F" id="female"> <label for="female">여자</label>
 						</div>
 					</div>
 				</div>
