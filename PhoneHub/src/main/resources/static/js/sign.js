@@ -3,6 +3,12 @@ const joinElem = document.querySelector('#joinFrm')
 const emailchkbtnElem = document.querySelector('#emailchkbtn')
 const emailchkElem = document.querySelector('#emailchk')
 const emailbarElem = document.querySelector('.emailbar')
+const nicknamebarElem = document.querySelector('.nicknamebar')
+const passwordbarElem = document.querySelector('.passwordbar')
+const repasswordbarElem = document.querySelector('.repasswordbar')
+const callbarElem = document.querySelector('.callbar')
+const birthdaybarElem = document.querySelector('.birthdaybar')
+var error = document.createElement('span')
 const input_buttonElem = document.querySelector('.input_button')
 
 
@@ -14,6 +20,7 @@ const call = joinElem.call
 const year = joinElem.yyyy
 const month = joinElem.mm
 const day = joinElem.dd
+const gender = joinElem.gender
 
 
 closeElement()
@@ -41,6 +48,31 @@ function setModal() {
 	})
 }
 setModal()
+
+// 각 칸마다 포커스아웃이 발생했을 시에 이벤트 발생
+function blurJoinElem() {
+	
+	error.className = 'errorNickname'
+	error.innerText = '닉네임 형식이 일치하지 않습니다.'
+	nicknamebarElem.append(error)
+	
+	error.className = 'errorPassword'
+	error.innerText = '비밀번호 형식이 일치하지 않습니다.'
+	passwordbarElem.append(error)
+	
+	error.className = 'errorRepassword'
+	error.innerText = '비밀번호와 일치하지 않습니다.'
+	repasswordbarElem.append(error)
+	
+	error.className = 'errorCallbar'
+	error.innerText = '전화번호 형식이 일치하지 않습니다.'
+	callbarElem.append(error)
+	
+	error.className = 'errorBirthdaybar'
+	error.innerText = '생일 형식이 일치하지 않습니다.'
+	birthdaybarElem.append(error)
+}
+
 // 회원가입 버튼을 눌렀을 때 이벤트 발생
 const joinBtnElem = document.querySelector('#joinBtn')
 
@@ -54,7 +86,8 @@ const joinBtnElem = document.querySelector('#joinBtn')
 				userPwRe: repassword.value,
 				nickname: nickname.value,
 				phone: call.value,
-				birthday: birthday
+				birthday: birthday,
+				gender: gender.value
 			}
 			fetch('/join', {
 				method: 'post',
@@ -65,9 +98,6 @@ const joinBtnElem = document.querySelector('#joinBtn')
 			}).then(function(res) {
 				return res.json()
 			}).then(function(myJson) {
-				console.log(myJson)
-				console.log(repassword.value)
-				console.log(myJson.result)
 				proc(myJson)
 			})
 
@@ -129,7 +159,6 @@ if (emailsendButton) {
 }
 
 emailsendButton.addEventListener('click', ajax)
-var error = document.createElement('span')
 
 if (emailchkbtnElem) {
 	function ajax() {
@@ -194,7 +223,7 @@ emailchkbtnElem.addEventListener('click', ajax)
 joinChk()*/
 
 function chkEmail() {
-	const emailVal = joinFrm.email.value
+	const emailVal = joinElem.email.value
 	const emailChk = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i
 
 	if (emailVal === '') {
