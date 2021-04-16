@@ -49,30 +49,6 @@ function setModal() {
 }
 setModal()
 
-// 각 칸마다 포커스아웃이 발생했을 시에 이벤트 발생
-function blurJoinElem() {
-	
-	error.className = 'errorNickname'
-	error.innerText = '닉네임 형식이 일치하지 않습니다.'
-	nicknamebarElem.append(error)
-	
-	error.className = 'errorPassword'
-	error.innerText = '비밀번호 형식이 일치하지 않습니다.'
-	passwordbarElem.append(error)
-	
-	error.className = 'errorRepassword'
-	error.innerText = '비밀번호와 일치하지 않습니다.'
-	repasswordbarElem.append(error)
-	
-	error.className = 'errorCallbar'
-	error.innerText = '전화번호 형식이 일치하지 않습니다.'
-	callbarElem.append(error)
-	
-	error.className = 'errorBirthdaybar'
-	error.innerText = '생일 형식이 일치하지 않습니다.'
-	birthdaybarElem.append(error)
-}
-
 // 회원가입 버튼을 눌렀을 때 이벤트 발생
 const joinBtnElem = document.querySelector('#joinBtn')
 
@@ -210,26 +186,14 @@ if (emailchkbtnElem) {
 
 emailchkbtnElem.addEventListener('click', ajax)
 
-/*function joinChk() {
-	const joinBtn = document.querySelector('#joinBtn')
-
-	joinBtn.addEventListener('click', function() {
-		if (chkSign()) {
-			alert('회원가입을 축하합니다.')
-			location.href = 'login.html';
-		}
-	})
-}
-joinChk()*/
-
 function chkEmail() {
-	const emailVal = joinElem.email.value
+	const emailVal = joinElem.email
 	const emailChk = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i
 
 	if (emailVal === '') {
 		alert('이메일을 입력 해 주세요.')
 		return false
-	} else if (!emailChk.test(emailVal)) {
+	} else if (!emailChk.test(emailVal.value)) {
 		alert('잘못된 이메일 형식 입니다.')
 		return false
 	}
@@ -237,8 +201,9 @@ function chkEmail() {
 	return true
 }
 
-// 인증번호 입력을 했을 경우에만 정보가 저장되도록 설정해야함
 // 잘못된 형식으로 정보를 입력했을경우 잘못된 input으로 focus 시켜야함
+// 각 칸마다 포커스아웃이 발생했을 시에 이벤트 발생
+
 function chkSign() {
 	const nickChk = /^([a-zA-Z0-9|가-힣]){1,12}$/g
 	const passChk = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@!%*#?&])[A-Za-z\d$@!%*#?&]{8,}$/g
@@ -247,7 +212,7 @@ function chkSign() {
 	const monthChk = /^(0[1-9]|1[012])$/g
 	const dayChk = /^(0[1-9]|[12][0-9]|3[0-1])$/g
 
-	if (!nickChk.test(nickname)) {
+/*	if (!nickChk.test(nickname)) {
 		alert('올바른 닉네임을 써주세요.')
 		return false
 	} else if (!passChk.test(password)) {
@@ -269,8 +234,73 @@ function chkSign() {
 		alert('올바른 날짜를 써주세요.')
 		return false
 	}
+	*/
+	nickname.addEventListener("blur", e => {
+		console.log(nickname.value)
+    if(!nickChk.test(nickname.value)) {
+		error.className = 'errorNickname'
+		error.innerText = '닉네임 형식이 일치하지 않습니다.'
+		nicknamebarElem.append(error)
+		return false
+ 	}
+})
+
+	password.addEventListener("blur", e => {
+		console.log(password.value)
+    if(!passChk.test(password.value)) {
+        error.className = 'errorPassword'
+		error.innerText = '비밀번호 형식이 일치하지 않습니다.'
+		passwordbarElem.append(error)
+		return false
+		}
+})
+
+	repassword.addEventListener("blur", e => {
+    if(password.value !== repassword.value ) {
+		error.className = 'errorRepassword'
+		error.innerText = '비밀번호와 일치하지 않습니다.'
+		repasswordbarElem.append(error)
+		return false
+    }
+})
+
+	call.addEventListener("blur", e => {
+    if(!callChk.test(call.value)) {
+		error.className = 'errorCallbar'
+		error.innerText = '전화번호 형식이 일치하지 않습니다.'
+		callbarElem.append(error)
+		return false
+    }
+})
+	year.addEventListener("blur", e => {
+    if(!yearChk.test(year.value)) {
+		error.className = 'errorYear'
+		error.innerText = '년도형식이 일치하지 않습니다.'
+		callbarElem.append(error)
+		return false
+    }
+})
+	month.addEventListener("blur", e => {
+    if(!monthChk.test(month.value)) {
+		error.className = 'errorYear'
+		error.innerText = '월형식이 일치하지 않습니다.'
+		callbarElem.append(error)
+		return false
+    }
+})
+	day.addEventListener("blur", e => {
+    if(!dayChk.test(day.value)) {
+		error.className = 'errorYear'
+		error.innerText = '일형식이 일치하지 않습니다.'
+		callbarElem.append(error)
+		return false
+    }
+})
+
 	return true
 }
+
+chkSign()
 
 function openModal() {
 	modalDiv.classList.add('open')
