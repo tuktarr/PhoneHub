@@ -68,11 +68,31 @@ body {
 
 /*slide*/
 .slide {
-    position: relative;
-    display: block;
-    width: 100%;
+    overflow: hidden;
+}
+
+.slide_box {
+    width: 400vw;
     height: 400px;
-    background: rgba(0, 0, 0, 0.3);
+}
+
+.slide_content {
+    float: left;
+    width: 100vw;
+    height: 100%;
+}
+
+.slide1 {
+    background: rgba(0,0,0,0.2);
+}
+.slide2 {
+    background: rgba(0,0,0,0.4);
+}
+.slide3 {
+    background: rgba(0,0,0,0.6);
+}
+.slide4 {
+    background: rgba(0,0,0,0.8);
 }
 
 /*content*/
