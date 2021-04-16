@@ -3,95 +3,95 @@ package com.tuktarr.phonehub.model;
 public class PhoneInfoEntity {
 	
 	private int pk;
-	private String ID;
-	private String Brand;
-	private String Phone;
-	private String Notes;
-	private String PictureURLSmall;
-	private String PictureURLBig;
-	private String Fans;
-	private String Hits;
-	private String HitsPercent;
-	private String NetworkTechology;
-	private String Network2Gbands;
-	private String Network3Gbands;
-	private String Network4Gbands;
-	private String Network5Gbands;
-	private String NetworkSpeed;
-	private String NetworkGPRS;
-	private String NetworkEDGE;
-	private String Announced;
-	private String Status;
-	private String BodyDimensions;
-	private String BodyWeight;
-	private String BodyBuilt;
-	private String BodyKeyboard;
-	private String BodySIM;
-	private String Bodyother;
-	private String DisplayType;
-	private String DisplaySize;
-	private String DisplayResolution;
-	private String DisplayMultitouch;
-	private String DisplayProtection;
-	private String DisplayOther;
-	private String PlatformOS;
-	private String PlatformChipset;
+	private String id;
+	private String brand;
+	private String phone;
+	private String notes;
+	private String pictureURLSmall;
+	private String pictureURLBig;
+	private String fans;
+	private String hits;
+	private String hitsPercent;
+	private String networkTechology;
+	private String network2Gbands;
+	private String network3Gbands;
+	private String network4Gbands;
+	private String network5Gbands;
+	private String networkSpeed;
+	private String networkGPRS;
+	private String networkEDGE;
+	private String announced;
+	private String status;
+	private String bodyDimensions;
+	private String bodyWeight;
+	private String bodyBuilt;
+	private String bodyKeyboard;
+	private String bodySIM;
+	private String bodyother;
+	private String displayType;
+	private String displaySize;
+	private String displayResolution;
+	private String displayMultitouch;
+	private String displayProtection;
+	private String displayOther;
+	private String platformOS;
+	private String platformChipset;
 	private String PlatformCPU;
-	private String PlatformGPU;
-	private String MemoryCardSlot;
-	private String MemoryPhonebook;
-	private String MemoryInternal;
-	private String MemoryCallRecords;
-	private String MainCameraSingle;
-	private String MainCameraDual;
-	private String MainCameraTriple;
-	private String MainCameraQuad;
-	private String MainCameraFive;
-	private String MainCameraSix;
-	private String MainCameraFeatures;
-	private String MainCameraVideo;
-	private String SelfieCameraSingle;
-	private String SelfieCameraDual;
-	private String SelfieCameraTriple;
-	private String SelfieCameraQuad;
-	private String SelfieCameraFeatures;
-	private String SelfieCameraVideo;
-	private String SoundAlertTypes;
-	private String SoundLoudspeaker;
-	private String SoundJack;
-	private String SoundOther;
-	private String CommsWLAN;
-	private String CommsBluetooth;
-	private String CommsGPS;
-	private String CommsNFC;
-	private String CommsRadio;
-	private String CommsUSB;
-	private String FeaturesSensors;
-	private String FeaturesMessaging;
-	private String FeaturesBrowser;
-	private String FeaturesClock;
-	private String FeaturesAlarm;
-	private String FeaturesGames;
-	private String FeaturesLanguages;
-	private String FeaturesJava;
-	private String FeaturesOther;
-	private String BatteryOther;
-	private String BatteryCharging;
-	private String BatteryStandBy;
-	private String BatteryTalkTime;
-	private String BatteryMusicPlay;
-	private String MiscColors;
-	private String MiscModels;
-	private String MiscSARUS;
-	private String MiscSAREU;
-	private String MiscPriceGroup;
-	private String TestsPerformance;
-	private String TestsDisplay;
-	private String TestsCamera;
-	private String TestsLoudspeaker;
-	private String TestsAudioQuality;
-	private String TestsBatteryLife;
-	private int APScore;
+	private String platformGPU;
+	private String memoryCardSlot;
+	private String memoryPhonebook;
+	private String memoryInternal;
+	private String memoryCallRecords;
+	private String mainCameraSingle;
+	private String mainCameraDual;
+	private String mainCameraTriple;
+	private String mainCameraQuad;
+	private String mainCameraFive;
+	private String mainCameraSix;
+	private String mainCameraFeatures;
+	private String mainCameraVideo;
+	private String selfieCameraSingle;
+	private String selfieCameraDual;
+	private String selfieCameraTriple;
+	private String selfieCameraQuad;
+	private String selfieCameraFeatures;
+	private String selfieCameraVideo;
+	private String soundAlertTypes;
+	private String soundLoudspeaker;
+	private String soundJack;
+	private String soundOther;
+	private String commsWLAN;
+	private String commsBluetooth;
+	private String commsGPS;
+	private String commsNFC;
+	private String commsRadio;
+	private String commsUSB;
+	private String featuresSensors;
+	private String featuresMessaging;
+	private String featuresBrowser;
+	private String featuresClock;
+	private String featuresAlarm;
+	private String featuresGames;
+	private String featuresLanguages;
+	private String featuresJava;
+	private String featuresOther;
+	private String batteryOther;
+	private String batteryCharging;
+	private String batteryStandBy;
+	private String batteryTalkTime;
+	private String batteryMusicPlay;
+	private String miscColors;
+	private String miscModels;
+	private String miscSARUS;
+	private String miscSAREU;
+	private String miscPriceGroup;
+	private String testsPerformance;
+	private String testsDisplay;
+	private String testsCamera;
+	private String testsLoudspeaker;
+	private String testsAudioQuality;
+	private String testsBatteryLife;
+	private int aPScore;
 	
 	public int getPk() {
 		return pk;
@@ -99,203 +99,203 @@ public class PhoneInfoEntity {
 	public void setPk(int pk) {
 		this.pk = pk;
 	}
-	public String getID() {
-		return ID;
+	public String getId() {
+		return id;
 	}
-	public void setID(String iD) {
-		ID = iD;
+	public void setId(String id) {
+		this.id = id;
 	}
 	public String getBrand() {
-		return Brand;
+		return brand;
 	}
 	public void setBrand(String brand) {
-		Brand = brand;
+		this.brand = brand;
 	}
 	public String getPhone() {
-		return Phone;
+		return phone;
 	}
 	public void setPhone(String phone) {
-		Phone = phone;
+		this.phone = phone;
 	}
 	public String getNotes() {
-		return Notes;
+		return notes;
 	}
 	public void setNotes(String notes) {
-		Notes = notes;
+		this.notes = notes;
 	}
 	public String getPictureURLSmall() {
-		return PictureURLSmall;
+		return pictureURLSmall;
 	}
 	public void setPictureURLSmall(String pictureURLSmall) {
-		PictureURLSmall = pictureURLSmall;
+		this.pictureURLSmall = pictureURLSmall;
 	}
 	public String getPictureURLBig() {
-		return PictureURLBig;
+		return pictureURLBig;
 	}
 	public void setPictureURLBig(String pictureURLBig) {
-		PictureURLBig = pictureURLBig;
+		this.pictureURLBig = pictureURLBig;
 	}
 	public String getFans() {
-		return Fans;
+		return fans;
 	}
 	public void setFans(String fans) {
-		Fans = fans;
+		this.fans = fans;
 	}
 	public String getHits() {
-		return Hits;
+		return hits;
 	}
 	public void setHits(String hits) {
-		Hits = hits;
+		this.hits = hits;
 	}
 	public String getHitsPercent() {
-		return HitsPercent;
+		return hitsPercent;
 	}
 	public void setHitsPercent(String hitsPercent) {
-		HitsPercent = hitsPercent;
+		this.hitsPercent = hitsPercent;
 	}
 	public String getNetworkTechology() {
-		return NetworkTechology;
+		return networkTechology;
 	}
 	public void setNetworkTechology(String networkTechology) {
-		NetworkTechology = networkTechology;
+		this.networkTechology = networkTechology;
 	}
 	public String getNetwork2Gbands() {
-		return Network2Gbands;
+		return network2Gbands;
 	}
 	public void setNetwork2Gbands(String network2Gbands) {
-		Network2Gbands = network2Gbands;
+		this.network2Gbands = network2Gbands;
 	}
 	public String getNetwork3Gbands() {
-		return Network3Gbands;
+		return network3Gbands;
 	}
 	public void setNetwork3Gbands(String network3Gbands) {
-		Network3Gbands = network3Gbands;
+		this.network3Gbands = network3Gbands;
 	}
 	public String getNetwork4Gbands() {
-		return Network4Gbands;
+		return network4Gbands;
 	}
 	public void setNetwork4Gbands(String network4Gbands) {
-		Network4Gbands = network4Gbands;
+		this.network4Gbands = network4Gbands;
 	}
 	public String getNetwork5Gbands() {
-		return Network5Gbands;
+		return network5Gbands;
 	}
 	public void setNetwork5Gbands(String network5Gbands) {
-		Network5Gbands = network5Gbands;
+		this.network5Gbands = network5Gbands;
 	}
 	public String getNetworkSpeed() {
-		return NetworkSpeed;
+		return networkSpeed;
 	}
 	public void setNetworkSpeed(String networkSpeed) {
-		NetworkSpeed = networkSpeed;
+		this.networkSpeed = networkSpeed;
 	}
 	public String getNetworkGPRS() {
-		return NetworkGPRS;
+		return networkGPRS;
 	}
 	public void setNetworkGPRS(String networkGPRS) {
-		NetworkGPRS = networkGPRS;
+		this.networkGPRS = networkGPRS;
 	}
 	public String getNetworkEDGE() {
-		return NetworkEDGE;
+		return networkEDGE;
 	}
 	public void setNetworkEDGE(String networkEDGE) {
-		NetworkEDGE = networkEDGE;
+		this.networkEDGE = networkEDGE;
 	}
 	public String getAnnounced() {
-		return Announced;
+		return announced;
 	}
 	public void setAnnounced(String announced) {
-		Announced = announced;
+		this.announced = announced;
 	}
 	public String getStatus() {
-		return Status;
+		return status;
 	}
 	public void setStatus(String status) {
-		Status = status;
+		this.status = status;
 	}
 	public String getBodyDimensions() {
-		return BodyDimensions;
+		return bodyDimensions;
 	}
 	public void setBodyDimensions(String bodyDimensions) {
-		BodyDimensions = bodyDimensions;
+		this.bodyDimensions = bodyDimensions;
 	}
 	public String getBodyWeight() {
-		return BodyWeight;
+		return bodyWeight;
 	}
 	public void setBodyWeight(String bodyWeight) {
-		BodyWeight = bodyWeight;
+		this.bodyWeight = bodyWeight;
 	}
 	public String getBodyBuilt() {
-		return BodyBuilt;
+		return bodyBuilt;
 	}
 	public void setBodyBuilt(String bodyBuilt) {
-		BodyBuilt = bodyBuilt;
+		this.bodyBuilt = bodyBuilt;
 	}
 	public String getBodyKeyboard() {
-		return BodyKeyboard;
+		return bodyKeyboard;
 	}
 	public void setBodyKeyboard(String bodyKeyboard) {
-		BodyKeyboard = bodyKeyboard;
+		this.bodyKeyboard = bodyKeyboard;
 	}
 	public String getBodySIM() {
-		return BodySIM;
+		return bodySIM;
 	}
 	public void setBodySIM(String bodySIM) {
-		BodySIM = bodySIM;
+		this.bodySIM = bodySIM;
 	}
 	public String getBodyother() {
-		return Bodyother;
+		return bodyother;
 	}
 	public void setBodyother(String bodyother) {
-		Bodyother = bodyother;
+		this.bodyother = bodyother;
 	}
 	public String getDisplayType() {
-		return DisplayType;
+		return displayType;
 	}
 	public void setDisplayType(String displayType) {
-		DisplayType = displayType;
+		this.displayType = displayType;
 	}
 	public String getDisplaySize() {
-		return DisplaySize;
+		return displaySize;
 	}
 	public void setDisplaySize(String displaySize) {
-		DisplaySize = displaySize;
+		this.displaySize = displaySize;
 	}
 	public String getDisplayResolution() {
-		return DisplayResolution;
+		return displayResolution;
 	}
 	public void setDisplayResolution(String displayResolution) {
-		DisplayResolution = displayResolution;
+		this.displayResolution = displayResolution;
 	}
 	public String getDisplayMultitouch() {
-		return DisplayMultitouch;
+		return displayMultitouch;
 	}
 	public void setDisplayMultitouch(String displayMultitouch) {
-		DisplayMultitouch = displayMultitouch;
+		this.displayMultitouch = displayMultitouch;
 	}
 	public String getDisplayProtection() {
-		return DisplayProtection;
+		return displayProtection;
 	}
 	public void setDisplayProtection(String displayProtection) {
-		DisplayProtection = displayProtection;
+		this.displayProtection = displayProtection;
 	}
 	public String getDisplayOther() {
-		return DisplayOther;
+		return displayOther;
 	}
 	public void setDisplayOther(String displayOther) {
-		DisplayOther = displayOther;
+		this.displayOther = displayOther;
 	}
 	public String getPlatformOS() {
-		return PlatformOS;
+		return platformOS;
 	}
 	public void setPlatformOS(String platformOS) {
-		PlatformOS = platformOS;
+		this.platformOS = platformOS;
 	}
 	public String getPlatformChipset() {
-		return PlatformChipset;
+		return platformChipset;
 	}
 	public void setPlatformChipset(String platformChipset) {
-		PlatformChipset = platformChipset;
+		this.platformChipset = platformChipset;
 	}
 	public String getPlatformCPU() {
 		return PlatformCPU;
@@ -304,334 +304,334 @@ public class PhoneInfoEntity {
 		PlatformCPU = platformCPU;
 	}
 	public String getPlatformGPU() {
-		return PlatformGPU;
+		return platformGPU;
 	}
 	public void setPlatformGPU(String platformGPU) {
-		PlatformGPU = platformGPU;
+		this.platformGPU = platformGPU;
 	}
 	public String getMemoryCardSlot() {
-		return MemoryCardSlot;
+		return memoryCardSlot;
 	}
 	public void setMemoryCardSlot(String memoryCardSlot) {
-		MemoryCardSlot = memoryCardSlot;
+		this.memoryCardSlot = memoryCardSlot;
 	}
 	public String getMemoryPhonebook() {
-		return MemoryPhonebook;
+		return memoryPhonebook;
 	}
 	public void setMemoryPhonebook(String memoryPhonebook) {
-		MemoryPhonebook = memoryPhonebook;
+		this.memoryPhonebook = memoryPhonebook;
 	}
 	public String getMemoryInternal() {
-		return MemoryInternal;
+		return memoryInternal;
 	}
 	public void setMemoryInternal(String memoryInternal) {
-		MemoryInternal = memoryInternal;
+		this.memoryInternal = memoryInternal;
 	}
 	public String getMemoryCallRecords() {
-		return MemoryCallRecords;
+		return memoryCallRecords;
 	}
 	public void setMemoryCallRecords(String memoryCallRecords) {
-		MemoryCallRecords = memoryCallRecords;
+		this.memoryCallRecords = memoryCallRecords;
 	}
 	public String getMainCameraSingle() {
-		return MainCameraSingle;
+		return mainCameraSingle;
 	}
 	public void setMainCameraSingle(String mainCameraSingle) {
-		MainCameraSingle = mainCameraSingle;
+		this.mainCameraSingle = mainCameraSingle;
 	}
 	public String getMainCameraDual() {
-		return MainCameraDual;
+		return mainCameraDual;
 	}
 	public void setMainCameraDual(String mainCameraDual) {
-		MainCameraDual = mainCameraDual;
+		this.mainCameraDual = mainCameraDual;
 	}
 	public String getMainCameraTriple() {
-		return MainCameraTriple;
+		return mainCameraTriple;
 	}
 	public void setMainCameraTriple(String mainCameraTriple) {
-		MainCameraTriple = mainCameraTriple;
+		this.mainCameraTriple = mainCameraTriple;
 	}
 	public String getMainCameraQuad() {
-		return MainCameraQuad;
+		return mainCameraQuad;
 	}
 	public void setMainCameraQuad(String mainCameraQuad) {
-		MainCameraQuad = mainCameraQuad;
+		this.mainCameraQuad = mainCameraQuad;
 	}
 	public String getMainCameraFive() {
-		return MainCameraFive;
+		return mainCameraFive;
 	}
 	public void setMainCameraFive(String mainCameraFive) {
-		MainCameraFive = mainCameraFive;
+		this.mainCameraFive = mainCameraFive;
 	}
 	public String getMainCameraSix() {
-		return MainCameraSix;
+		return mainCameraSix;
 	}
 	public void setMainCameraSix(String mainCameraSix) {
-		MainCameraSix = mainCameraSix;
+		this.mainCameraSix = mainCameraSix;
 	}
 	public String getMainCameraFeatures() {
-		return MainCameraFeatures;
+		return mainCameraFeatures;
 	}
 	public void setMainCameraFeatures(String mainCameraFeatures) {
-		MainCameraFeatures = mainCameraFeatures;
+		this.mainCameraFeatures = mainCameraFeatures;
 	}
 	public String getMainCameraVideo() {
-		return MainCameraVideo;
+		return mainCameraVideo;
 	}
 	public void setMainCameraVideo(String mainCameraVideo) {
-		MainCameraVideo = mainCameraVideo;
+		this.mainCameraVideo = mainCameraVideo;
 	}
 	public String getSelfieCameraSingle() {
-		return SelfieCameraSingle;
+		return selfieCameraSingle;
 	}
 	public void setSelfieCameraSingle(String selfieCameraSingle) {
-		SelfieCameraSingle = selfieCameraSingle;
+		this.selfieCameraSingle = selfieCameraSingle;
 	}
 	public String getSelfieCameraDual() {
-		return SelfieCameraDual;
+		return selfieCameraDual;
 	}
 	public void setSelfieCameraDual(String selfieCameraDual) {
-		SelfieCameraDual = selfieCameraDual;
+		this.selfieCameraDual = selfieCameraDual;
 	}
 	public String getSelfieCameraTriple() {
-		return SelfieCameraTriple;
+		return selfieCameraTriple;
 	}
 	public void setSelfieCameraTriple(String selfieCameraTriple) {
-		SelfieCameraTriple = selfieCameraTriple;
+		this.selfieCameraTriple = selfieCameraTriple;
 	}
 	public String getSelfieCameraQuad() {
-		return SelfieCameraQuad;
+		return selfieCameraQuad;
 	}
 	public void setSelfieCameraQuad(String selfieCameraQuad) {
-		SelfieCameraQuad = selfieCameraQuad;
+		this.selfieCameraQuad = selfieCameraQuad;
 	}
 	public String getSelfieCameraFeatures() {
-		return SelfieCameraFeatures;
+		return selfieCameraFeatures;
 	}
 	public void setSelfieCameraFeatures(String selfieCameraFeatures) {
-		SelfieCameraFeatures = selfieCameraFeatures;
+		this.selfieCameraFeatures = selfieCameraFeatures;
 	}
 	public String getSelfieCameraVideo() {
-		return SelfieCameraVideo;
+		return selfieCameraVideo;
 	}
 	public void setSelfieCameraVideo(String selfieCameraVideo) {
-		SelfieCameraVideo = selfieCameraVideo;
+		this.selfieCameraVideo = selfieCameraVideo;
 	}
 	public String getSoundAlertTypes() {
-		return SoundAlertTypes;
+		return soundAlertTypes;
 	}
 	public void setSoundAlertTypes(String soundAlertTypes) {
-		SoundAlertTypes = soundAlertTypes;
+		this.soundAlertTypes = soundAlertTypes;
 	}
 	public String getSoundLoudspeaker() {
-		return SoundLoudspeaker;
+		return soundLoudspeaker;
 	}
 	public void setSoundLoudspeaker(String soundLoudspeaker) {
-		SoundLoudspeaker = soundLoudspeaker;
+		this.soundLoudspeaker = soundLoudspeaker;
 	}
 	public String getSoundJack() {
-		return SoundJack;
+		return soundJack;
 	}
 	public void setSoundJack(String soundJack) {
-		SoundJack = soundJack;
+		this.soundJack = soundJack;
 	}
 	public String getSoundOther() {
-		return SoundOther;
+		return soundOther;
 	}
 	public void setSoundOther(String soundOther) {
-		SoundOther = soundOther;
+		this.soundOther = soundOther;
 	}
 	public String getCommsWLAN() {
-		return CommsWLAN;
+		return commsWLAN;
 	}
 	public void setCommsWLAN(String commsWLAN) {
-		CommsWLAN = commsWLAN;
+		this.commsWLAN = commsWLAN;
 	}
 	public String getCommsBluetooth() {
-		return CommsBluetooth;
+		return commsBluetooth;
 	}
 	public void setCommsBluetooth(String commsBluetooth) {
-		CommsBluetooth = commsBluetooth;
+		this.commsBluetooth = commsBluetooth;
 	}
 	public String getCommsGPS() {
-		return CommsGPS;
+		return commsGPS;
 	}
 	public void setCommsGPS(String commsGPS) {
-		CommsGPS = commsGPS;
+		this.commsGPS = commsGPS;
 	}
 	public String getCommsNFC() {
-		return CommsNFC;
+		return commsNFC;
 	}
 	public void setCommsNFC(String commsNFC) {
-		CommsNFC = commsNFC;
+		this.commsNFC = commsNFC;
 	}
 	public String getCommsRadio() {
-		return CommsRadio;
+		return commsRadio;
 	}
 	public void setCommsRadio(String commsRadio) {
-		CommsRadio = commsRadio;
+		this.commsRadio = commsRadio;
 	}
 	public String getCommsUSB() {
-		return CommsUSB;
+		return commsUSB;
 	}
 	public void setCommsUSB(String commsUSB) {
-		CommsUSB = commsUSB;
+		this.commsUSB = commsUSB;
 	}
 	public String getFeaturesSensors() {
-		return FeaturesSensors;
+		return featuresSensors;
 	}
 	public void setFeaturesSensors(String featuresSensors) {
-		FeaturesSensors = featuresSensors;
+		this.featuresSensors = featuresSensors;
 	}
 	public String getFeaturesMessaging() {
-		return FeaturesMessaging;
+		return featuresMessaging;
 	}
 	public void setFeaturesMessaging(String featuresMessaging) {
-		FeaturesMessaging = featuresMessaging;
+		this.featuresMessaging = featuresMessaging;
 	}
 	public String getFeaturesBrowser() {
-		return FeaturesBrowser;
+		return featuresBrowser;
 	}
 	public void setFeaturesBrowser(String featuresBrowser) {
-		FeaturesBrowser = featuresBrowser;
+		this.featuresBrowser = featuresBrowser;
 	}
 	public String getFeaturesClock() {
-		return FeaturesClock;
+		return featuresClock;
 	}
 	public void setFeaturesClock(String featuresClock) {
-		FeaturesClock = featuresClock;
+		this.featuresClock = featuresClock;
 	}
 	public String getFeaturesAlarm() {
-		return FeaturesAlarm;
+		return featuresAlarm;
 	}
 	public void setFeaturesAlarm(String featuresAlarm) {
-		FeaturesAlarm = featuresAlarm;
+		this.featuresAlarm = featuresAlarm;
 	}
 	public String getFeaturesGames() {
-		return FeaturesGames;
+		return featuresGames;
 	}
 	public void setFeaturesGames(String featuresGames) {
-		FeaturesGames = featuresGames;
+		this.featuresGames = featuresGames;
 	}
 	public String getFeaturesLanguages() {
-		return FeaturesLanguages;
+		return featuresLanguages;
 	}
 	public void setFeaturesLanguages(String featuresLanguages) {
-		FeaturesLanguages = featuresLanguages;
+		this.featuresLanguages = featuresLanguages;
 	}
 	public String getFeaturesJava() {
-		return FeaturesJava;
+		return featuresJava;
 	}
 	public void setFeaturesJava(String featuresJava) {
-		FeaturesJava = featuresJava;
+		this.featuresJava = featuresJava;
 	}
 	public String getFeaturesOther() {
-		return FeaturesOther;
+		return featuresOther;
 	}
 	public void setFeaturesOther(String featuresOther) {
-		FeaturesOther = featuresOther;
+		this.featuresOther = featuresOther;
 	}
 	public String getBatteryOther() {
-		return BatteryOther;
+		return batteryOther;
 	}
 	public void setBatteryOther(String batteryOther) {
-		BatteryOther = batteryOther;
+		this.batteryOther = batteryOther;
 	}
 	public String getBatteryCharging() {
-		return BatteryCharging;
+		return batteryCharging;
 	}
 	public void setBatteryCharging(String batteryCharging) {
-		BatteryCharging = batteryCharging;
+		this.batteryCharging = batteryCharging;
 	}
 	public String getBatteryStandBy() {
-		return BatteryStandBy;
+		return batteryStandBy;
 	}
 	public void setBatteryStandBy(String batteryStandBy) {
-		BatteryStandBy = batteryStandBy;
+		this.batteryStandBy = batteryStandBy;
 	}
 	public String getBatteryTalkTime() {
-		return BatteryTalkTime;
+		return batteryTalkTime;
 	}
 	public void setBatteryTalkTime(String batteryTalkTime) {
-		BatteryTalkTime = batteryTalkTime;
+		this.batteryTalkTime = batteryTalkTime;
 	}
 	public String getBatteryMusicPlay() {
-		return BatteryMusicPlay;
+		return batteryMusicPlay;
 	}
 	public void setBatteryMusicPlay(String batteryMusicPlay) {
-		BatteryMusicPlay = batteryMusicPlay;
+		this.batteryMusicPlay = batteryMusicPlay;
 	}
 	public String getMiscColors() {
-		return MiscColors;
+		return miscColors;
 	}
 	public void setMiscColors(String miscColors) {
-		MiscColors = miscColors;
+		this.miscColors = miscColors;
 	}
 	public String getMiscModels() {
-		return MiscModels;
+		return miscModels;
 	}
 	public void setMiscModels(String miscModels) {
-		MiscModels = miscModels;
+		this.miscModels = miscModels;
 	}
 	public String getMiscSARUS() {
-		return MiscSARUS;
+		return miscSARUS;
 	}
 	public void setMiscSARUS(String miscSARUS) {
-		MiscSARUS = miscSARUS;
+		this.miscSARUS = miscSARUS;
 	}
 	public String getMiscSAREU() {
-		return MiscSAREU;
+		return miscSAREU;
 	}
 	public void setMiscSAREU(String miscSAREU) {
-		MiscSAREU = miscSAREU;
+		this.miscSAREU = miscSAREU;
 	}
 	public String getMiscPriceGroup() {
-		return MiscPriceGroup;
+		return miscPriceGroup;
 	}
 	public void setMiscPriceGroup(String miscPriceGroup) {
-		MiscPriceGroup = miscPriceGroup;
+		this.miscPriceGroup = miscPriceGroup;
 	}
 	public String getTestsPerformance() {
-		return TestsPerformance;
+		return testsPerformance;
 	}
 	public void setTestsPerformance(String testsPerformance) {
-		TestsPerformance = testsPerformance;
+		this.testsPerformance = testsPerformance;
 	}
 	public String getTestsDisplay() {
-		return TestsDisplay;
+		return testsDisplay;
 	}
 	public void setTestsDisplay(String testsDisplay) {
-		TestsDisplay = testsDisplay;
+		this.testsDisplay = testsDisplay;
 	}
 	public String getTestsCamera() {
-		return TestsCamera;
+		return testsCamera;
 	}
 	public void setTestsCamera(String testsCamera) {
-		TestsCamera = testsCamera;
+		this.testsCamera = testsCamera;
 	}
 	public String getTestsLoudspeaker() {
-		return TestsLoudspeaker;
+		return testsLoudspeaker;
 	}
 	public void setTestsLoudspeaker(String testsLoudspeaker) {
-		TestsLoudspeaker = testsLoudspeaker;
+		this.testsLoudspeaker = testsLoudspeaker;
 	}
 	public String getTestsAudioQuality() {
-		return TestsAudioQuality;
+		return testsAudioQuality;
 	}
 	public void setTestsAudioQuality(String testsAudioQuality) {
-		TestsAudioQuality = testsAudioQuality;
+		this.testsAudioQuality = testsAudioQuality;
 	}
 	public String getTestsBatteryLife() {
-		return TestsBatteryLife;
+		return testsBatteryLife;
 	}
 	public void setTestsBatteryLife(String testsBatteryLife) {
-		TestsBatteryLife = testsBatteryLife;
+		this.testsBatteryLife = testsBatteryLife;
 	}
-	public int getAPScore() {
-		return APScore;
+	public int getaPScore() {
+		return aPScore;
 	}
-	public void setAPScore(int aPScore) {
-		APScore = aPScore;
+	public void setaPScore(int aPScore) {
+		this.aPScore = aPScore;
 	}
 	
 }
