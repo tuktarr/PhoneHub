@@ -326,3 +326,13 @@ input[name=signUp]:hover {
     border-bottom-right-radius: 3px;
     color: #fcf6f5;
 }
+
+.errorCallbar,
+.errorRepassword,
+.errorPassword,
+.errorNickname,
+.errorYear,
+.errorMonth,
+.errorDay {	
+	color: #ff1a1a;
+}
