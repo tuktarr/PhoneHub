@@ -61,5 +61,5 @@ public class UserService {
 
 		return 8; // 회원가입이 성공하면 8을 리턴
 	}
-	
+
 }
