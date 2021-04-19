@@ -52,67 +52,67 @@ setModal()
 // 회원가입 버튼을 눌렀을 때 이벤트 발생
 const joinBtnElem = document.querySelector('#joinBtn')
 
-	if(joinBtnElem){
-		
-		function ajax() {
-			const birthday = year.value + month.value + day.value
-			const param = {
-				userEmail: email.value,
-				userPw: password.value,
-				userPwRe: repassword.value,
-				nickname: nickname.value,
-				phone: call.value,
-				birthday: birthday,
-				gender: gender.value
-			}
-			fetch('/join', {
-				method: 'post',
-				headers: {
-					'Content-type': 'application/json',
-				},
-				body: JSON.stringify(param)
-			}).then(function(res) {
-				return res.json()
-			}).then(function(myJson) {
-				proc(myJson)
-			})
+if (joinBtnElem) {
 
-			function proc(myJson) {
-				console.log(myJson.result)
-				switch (myJson.result) {
-					case 0:
-						alert('아이디(이메일)을 확인해 주세요')
-						return
-					case 1:
-						alert('이미 있는 아이디입니다.')
-						return
-					case 2:
-						alert('비밀번호를 확인해주세요.')
-						return
-					case 3:
-						alert('비밀번호 확인칸을 확인해주세요.')
-						return
-					case 4:
-						alert('닉네임을 확인해주세요.')
-						return
-					case 5:
-						alert('비밀번호와 비밀번호 확인이 일치하지 않습니다.')
-						return
-					case 6:
-						alert('생일을 작성해주세요')
-						return
-					case 7:
-						alert('전화번호를 작성해주세요')
-						return
-					case 8:
-						alert('회원가입을 축하합니다!')
-						history.go(-1)
-						return
-				}
+	function ajax() {
+		const birthday = year.value + month.value + day.value
+		const param = {
+			userEmail: email.value,
+			userPw: password.value,
+			userPwRe: repassword.value,
+			nickname: nickname.value,
+			phone: call.value,
+			birthday: birthday,
+			gender: gender.value
+		}
+		fetch('/join', {
+			method: 'post',
+			headers: {
+				'Content-type': 'application/json',
+			},
+			body: JSON.stringify(param)
+		}).then(function(res) {
+			return res.json()
+		}).then(function(myJson) {
+			proc(myJson)
+		})
+
+		function proc(myJson) {
+			console.log(myJson.result)
+			switch (myJson.result) {
+				case 0:
+					alert('아이디(이메일)을 확인해 주세요')
+					return
+				case 1:
+					alert('이미 있는 아이디입니다.')
+					return
+				case 2:
+					alert('비밀번호를 확인해주세요.')
+					return
+				case 3:
+					alert('비밀번호 확인칸을 확인해주세요.')
+					return
+				case 4:
+					alert('닉네임을 확인해주세요.')
+					return
+				case 5:
+					alert('비밀번호와 비밀번호 확인이 일치하지 않습니다.')
+					return
+				case 6:
+					alert('생일을 작성해주세요')
+					return
+				case 7:
+					alert('전화번호를 작성해주세요')
+					return
+				case 8:
+					alert('회원가입을 축하합니다!')
+					history.go(-1)
+					return
 			}
 		}
-		
-		joinBtnElem.addEventListener('click', ajax)
+	}
+
+	joinBtnElem.addEventListener('click', ajax)
 }
 
 // 이메일 인증 버튼을 눌렀을 떄 이벤트 발생
@@ -136,6 +136,7 @@ if (emailsendButton) {
 
 emailsendButton.addEventListener('click', ajax)
 
+// 이메일 모달창에서 버튼을 눌렀을 때 이벤트 발생
 if (emailchkbtnElem) {
 	function ajax() {
 		const param = emailchkElem.value
@@ -208,94 +209,109 @@ function chkSign() {
 	const nickChk = /^([a-zA-Z0-9|가-힣]){1,12}$/g
 	const passChk = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@!%*#?&])[A-Za-z\d$@!%*#?&]{8,}$/g
 	const callChk = /^010-\d{4}-\d{4}$/g
-	const yearChk = /^(19|20)\d{2}&/g
+	const yearChk = /^(19|20)\d{2}/g
 	const monthChk = /^(0[1-9]|1[012])$/g
 	const dayChk = /^(0[1-9]|[12][0-9]|3[0-1])$/g
 
-/*	if (!nickChk.test(nickname)) {
-		alert('올바른 닉네임을 써주세요.')
-		return false
-	} else if (!passChk.test(password)) {
-		alert('잘못된 비밀번호 형식 입니다.')
-		return false
-	} else if (password !== repassword) {
-		alert('비밀번호를 확인 해 주세요.')
-		return false
-	} else if (!callChk.test(call)) {
-		alert('올바른 전화번호를 써주세요.')
-		return false
-	} else if (!yearChk.test(year)) {
-		alert('올바른 연도를 써주세요.')
-		return false
-	} else if (!monthChk.test(month)) {
-		alert('올바른 달을 써주세요.')
-		return false
-	} else if (!dayChk.test(day)) {
-		alert('올바른 날짜를 써주세요.')
-		return false
-	}
-	*/
+	/*	if (!nickChk.test(nickname)) {
+			alert('올바른 닉네임을 써주세요.')
+			return false
+		} else if (!passChk.test(password)) {
+			alert('잘못된 비밀번호 형식 입니다.')
+			return false
+		} else if (password !== repassword) {
+			alert('비밀번호를 확인 해 주세요.')
+			return false
+		} else if (!callChk.test(call)) {
+			alert('올바른 전화번호를 써주세요.')
+			return false
+		} else if (!yearChk.test(year)) {
+			alert('올바른 연도를 써주세요.')
+			return false
+		} else if (!monthChk.test(month)) {
+			alert('올바른 달을 써주세요.')
+			return false
+		} else if (!dayChk.test(day)) {
+			alert('올바른 날짜를 써주세요.')
+			return false
+		}
+		*/
 	nickname.addEventListener("blur", e => {
 		console.log(nickname.value)
-    if(!nickChk.test(nickname.value)) {
-		error.className = 'errorNickname'
-		error.innerText = '닉네임 형식이 일치하지 않습니다.'
-		nicknamebarElem.append(error)
-		return false
- 	}
-})
+		if (!nickChk.test(nickname.value)) {
+			error.className = 'errorNickname'
+			error.innerText = '닉네임 형식이 일치하지 않습니다.'
+			nicknamebarElem.append(error)
+			nickname.focus()
+		} else {
+			error.remove()
+		}
+	})
 
 	password.addEventListener("blur", e => {
 		console.log(password.value)
-    if(!passChk.test(password.value)) {
-        error.className = 'errorPassword'
-		error.innerText = '비밀번호 형식이 일치하지 않습니다.'
-		passwordbarElem.append(error)
-		return false
+		if (!passChk.test(password.value)) {
+			error.className = 'errorPassword'
+			error.innerText = '비밀번호 형식이 일치하지 않습니다.'
+			passwordbarElem.append(error)
+			password.focus()
+		} else {
+			error.remove()
 		}
-})
+
+	})
 
 	repassword.addEventListener("blur", e => {
-    if(password.value !== repassword.value ) {
-		error.className = 'errorRepassword'
-		error.innerText = '비밀번호와 일치하지 않습니다.'
-		repasswordbarElem.append(error)
-		return false
-    }
-})
+		if (password.value !== repassword.value) {
+			error.className = 'errorRepassword'
+			error.innerText = '비밀번호와 일치하지 않습니다.'
+			repasswordbarElem.append(error)
+			repassword.focus()
+		} else {
+			error.remove()
+		}
+	})
 
 	call.addEventListener("blur", e => {
-    if(!callChk.test(call.value)) {
-		error.className = 'errorCallbar'
-		error.innerText = '전화번호 형식이 일치하지 않습니다.'
-		callbarElem.append(error)
-		return false
-    }
-})
+		if (!callChk.test(call.value)) {
+			error.className = 'errorCallbar'
+			error.innerText = '전화번호 형식이 일치하지 않습니다.'
+			callbarElem.append(error)
+			call.focus()
+		} else {
+			error.remove()
+		}
+	})
 	year.addEventListener("blur", e => {
-    if(!yearChk.test(year.value)) {
-		error.className = 'errorYear'
-		error.innerText = '년도형식이 일치하지 않습니다.'
-		callbarElem.append(error)
-		return false
-    }
-})
+		if (!yearChk.test(year.value)) {
+			error.className = 'errorYear'
+			error.innerText = '년도형식이 일치하지 않습니다.'
+			birthdaybarElem.append(error)
+
+		} else {
+			error.remove()
+		}
+	})
 	month.addEventListener("blur", e => {
-    if(!monthChk.test(month.value)) {
-		error.className = 'errorYear'
-		error.innerText = '월형식이 일치하지 않습니다.'
-		callbarElem.append(error)
-		return false
-    }
-})
+		if (!monthChk.test(month.value)) {
+			error.className = 'errorMonth'
+			error.innerText = '월형식이 일치하지 않습니다.'
+			callbarElem.append(error)
+			birthdaybarElem.append(error)
+		} else {
+			error.remove()
+		}
+	})
 	day.addEventListener("blur", e => {
-    if(!dayChk.test(day.value)) {
-		error.className = 'errorYear'
-		error.innerText = '일형식이 일치하지 않습니다.'
-		callbarElem.append(error)
-		return false
-    }
-})
+		if (!dayChk.test(day.value)) {
+			error.className = 'errorDay'
+			error.innerText = '일형식이 일치하지 않습니다.'
+			callbarElem.append(error)
+			birthdaybarElem.append(error)
+		} else {
+			error.remove()
+		}
+	})
 
 	return true
 }

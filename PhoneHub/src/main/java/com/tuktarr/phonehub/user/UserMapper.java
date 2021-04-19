@@ -8,5 +8,4 @@ import com.tuktarr.phonehub.model.UserEntity;
 public interface UserMapper {
 	int insUser(UserEntity p);
 	UserEntity selUser(UserEntity p);
-	
 }

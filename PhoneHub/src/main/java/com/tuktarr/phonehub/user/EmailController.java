@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.tuktarr.phonehub.model.UserEntity;
+
 @Controller
 public class EmailController {
 	
@@ -21,7 +23,7 @@ public class EmailController {
 	//이메일 보내기 ajax 처리
 	@PostMapping("/email")
 	@ResponseBody
-	public void emailConfirm(@RequestBody String m, Model model) throws Exception {
+	public void emailConfirm(@RequestBody String m, UserEntity p) throws Exception {
 		
 		Logger.info("post emailConfirm");
 		
