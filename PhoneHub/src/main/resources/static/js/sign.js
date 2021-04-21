@@ -130,7 +130,23 @@ if (emailsendButton) {
 				'Content-type': 'application/json',
 			},
 			body: JSON.stringify(param)
+		}).then(function(res){
+			return res.json()
+		}).then(function(myJson){
+			proc(myJson)
 		})
+	}
+	
+	function proc(myJson) {
+		switch (myJson) {
+			case 0:
+				console.log(myJson)
+				return
+			case 1:
+				alert('이미 존재하는 이메일입니다.')
+				console.log(myJson)
+				return
+		}
 	}
 }
 
@@ -287,7 +303,6 @@ function chkSign() {
 			error.className = 'errorYear'
 			error.innerText = '년도형식이 일치하지 않습니다.'
 			birthdaybarElem.append(error)
-
 		} else {
 			error.remove()
 		}

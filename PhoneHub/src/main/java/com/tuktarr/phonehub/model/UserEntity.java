@@ -10,6 +10,14 @@ public class UserEntity {
 	private String gender;
 	private String birthday;
 	private String phone;
+	private int emailChk;
+	
+	public int getEmailChk() {
+		return emailChk;
+	}
+	public void setEmailChk(int emailChk) {
+		this.emailChk = emailChk;
+	}
 	public int getUserPk() {
 		return userPk;
 	}

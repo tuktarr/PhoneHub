@@ -11,11 +11,16 @@ import org.springframework.mail.MailException;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
+import com.tuktarr.phonehub.model.UserEntity;
+
 @Service
 public class EmailService {
 	
 	@Autowired
 	JavaMailSender emailSender;
+	
+	@Autowired
+	private UserMapper mapper;
 	
 	//static으로 메모리에 올려서 controller에서 사용
 	public static String ePw = createKey();
@@ -31,6 +36,16 @@ public class EmailService {
 		}
 		
 		return key.toString();
+	}
+//이메일 인증버튼 클릭 시 email 중복체크
+	public int chkEmail(UserEntity p) {
+		int check = mapper.chkEmail(p);
+		
+		if(check == 1) {
+			return 1;
+		}
+		
+		return 0;
 	}
 	
 	private MimeMessage createMessage(String to) throws Exception {
