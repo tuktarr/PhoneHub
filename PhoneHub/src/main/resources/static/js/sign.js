@@ -123,8 +123,16 @@ if (emailsendButton) {
 	function ajax() {
 
 		const param = email.value
-
+		console.log(param)
 		fetch('/email', {
+			method: 'post',
+			headers: {
+				'Content-type': 'application/json',
+			},
+			body: JSON.stringify(param)
+		})
+		
+		fetch('/chkemail', {
 			method: 'post',
 			headers: {
 				'Content-type': 'application/json',
@@ -135,18 +143,11 @@ if (emailsendButton) {
 		}).then(function(myJson){
 			proc(myJson)
 		})
-	}
-	
-	function proc(myJson) {
-		switch (myJson) {
-			case 0:
-				console.log(myJson)
-				return
-			case 1:
-				alert('이미 존재하는 이메일입니다.')
-				console.log(myJson)
-				return
+		
+		function proc(myJson) {
+			console.log(myJson.check)
 		}
+
 	}
 }
 
@@ -168,7 +169,7 @@ if (emailchkbtnElem) {
 		}).then(function(myJson) {
 			proc(myJson)
 		})
-
+		
 	}
 
 	function proc(myJson) {
