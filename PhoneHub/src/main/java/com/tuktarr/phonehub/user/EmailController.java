@@ -26,6 +26,8 @@ public class EmailController {
 	public void emailConfirm(@RequestBody String m, UserEntity p) throws Exception {
 		
 		Logger.info("post emailConfirm");
+		// 이메일 중복체크
+		service.chkEmail(p);
 		
 		// 인증키 생성
 		EmailService.ePw = EmailService.createKey();

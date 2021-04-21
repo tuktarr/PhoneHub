@@ -15,4 +15,9 @@
 		WHERE userEmail = #{userEmail}
 	</select>
 	
+	<select id="chkEmail" resultType="com.tuktarr.phonehub.model.UserEntity">
+		SELECT COUNT(*) AS emailChk FROM user
+		WHERE userEmail = #{userEmail}
+	</select>
+	
 </mapper>
