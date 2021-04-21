@@ -122,6 +122,9 @@ const email = joinElem.email
 if (emailsendButton) {
 	function ajax() {
 
+		const param1 = {
+			userEmail: email.value
+			}
 		const param = email.value
 		console.log(param)
 		fetch('/email', {
@@ -137,7 +140,7 @@ if (emailsendButton) {
 			headers: {
 				'Content-type': 'application/json',
 			},
-			body: JSON.stringify(param)
+			body: JSON.stringify(param1)
 		}).then(function(res){
 			return res.json()
 		}).then(function(myJson){
