@@ -91,7 +91,9 @@ public class PhoneInfoEntity {
 	private String testsLoudspeaker;
 	private String testsAudioQuality;
 	private String testsBatteryLife;
-	private int aPScore;
+	private String factoryPrice;
+	private int cost_Effectiveness;
+	private int apScore;
 	
 	public int getPk() {
 		return pk;
@@ -627,11 +629,23 @@ public class PhoneInfoEntity {
 	public void setTestsBatteryLife(String testsBatteryLife) {
 		this.testsBatteryLife = testsBatteryLife;
 	}
-	public int getaPScore() {
-		return aPScore;
+	public String getFactoryPrice() {
+		return factoryPrice;
 	}
-	public void setaPScore(int aPScore) {
-		this.aPScore = aPScore;
+	public void setFactoryPrice(String factoryPrice) {
+		this.factoryPrice = factoryPrice;
+	}
+	public int getCost_Effectiveness() {
+		return cost_Effectiveness;
+	}
+	public void setCost_Effectiveness(int cost_Effectiveness) {
+		this.cost_Effectiveness = cost_Effectiveness;
+	}
+	public int getApScore() {
+		return apScore;
+	}
+	public void setApScore(int apScore) {
+		this.apScore = apScore;
 	}
 	
 }

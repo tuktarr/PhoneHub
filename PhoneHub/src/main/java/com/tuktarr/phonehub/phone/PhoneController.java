@@ -21,6 +21,7 @@ public class PhoneController {
 		
 		Map<String, Object> phoneRankings = new HashMap<String, Object>();
 		phoneRankings.put("performanceRankings", pService.selPerformanceRanking());
+		phoneRankings.put("cost_Effectivenes", pService.selCost_Effectiveness());
 		
 		return phoneRankings;
 	}
