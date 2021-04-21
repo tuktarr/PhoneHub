@@ -38,7 +38,7 @@ public class EmailController {
 	
 	@PostMapping("/chkemail")
 	@ResponseBody
-	public Map<String, Object> emailChk(UserEntity p) {	
+	public Map<String, Object> emailChk(@RequestBody UserEntity p) {
 		Map<String, Object> map = new HashMap<>();	
 		map.put("check",service.chkEmail(p));
 		System.out.println("아이디확인2: " + p.getUserEmail());

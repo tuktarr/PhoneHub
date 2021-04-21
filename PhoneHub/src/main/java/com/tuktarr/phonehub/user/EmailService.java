@@ -39,8 +39,13 @@ public class EmailService {
 	}
 //이메일 인증버튼 클릭 시 email 중복체크
 	public int chkEmail(UserEntity p) {
-
-		return mapper.chkEmail(p);
+		System.out.println("userEmail:" + p.getUserEmail());
+		int check = mapper.chkEmail(p);
+		System.out.println("check:" + check);
+		if(check == 1) {
+			return 1;
+		}
+		return 0;
 	}
 	
 	private MimeMessage createMessage(String to) throws Exception {
