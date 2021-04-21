@@ -38,8 +38,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 90vh;
-    min-height: 900px;
+    height: auto;
+    min-height: 100vh;
     width: 100%;
 }
 
@@ -305,6 +305,7 @@ input[name=signUp]:hover {
     float: left;
     border-radius: 0;
     padding: 15.5px;
+    cursor: pointer;
 }
 
 .input_group input[type="radio"]+label[for="male"] {
@@ -325,14 +326,4 @@ input[name=signUp]:hover {
     border-top-right-radius: 3px;
     border-bottom-right-radius: 3px;
     color: #fcf6f5;
-}
-
-.errorCallbar,
-.errorRepassword,
-.errorPassword,
-.errorNickname,
-.errorYear,
-.errorMonth,
-.errorDay {	
-	color: #ff1a1a;
 }

@@ -1,139 +1,204 @@
 @charset 'utf-8';
-@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap");
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    outline-style: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline-style: none;
 }
 
 ul,
 ol {
-    list-style: none;
+  list-style: none;
 }
 
 a {
-    color: #333;
-    text-decoration: none;
+  color: #333;
+  text-decoration: none;
 }
 
 img {
-    vertical-align: middle;
+  vertical-align: middle;
 }
 
 html {
-    user-select: none;
-    overflow-x: hidden;
-    scroll-behavior: "smooth";
+  user-select: none;
+  overflow-x: hidden;
+  scroll-behavior: "smooth";
 }
 
 body {
-    font-family: 'Noto Sans KR', sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
 }
 
 /*공통사항*/
 .wrap {
-    position: relative;
-    display: block;
-    width: 100%;
-    height: 100vh;
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100vh;
 }
 
 .pagew {
-    position: relative;
-    width: 1300px;
-    height: 100%;
-    margin: 0 auto;
+  position: relative;
+  width: 1300px;
+  height: 100%;
+  margin: 0 auto;
 }
 
 .flex_wrap {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
 }
 
 /*위로가기*/
 .gotop {
-    position: fixed;
-    display: inline-block;
-    bottom: 50px;
-    right: 50px;
-    z-index: 99;
-    cursor: pointer;
+  position: fixed;
+  display: inline-block;
+  bottom: 40px;
+  right: 50px;
+  z-index: 99;
+  cursor: pointer;
 }
 
 /*slide*/
-.slide {
-    position: relative;
-    display: block;
-    width: 100%;
-    height: 400px;
-    background: rgba(0, 0, 0, 0.3);
+.main_slide {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 500px;
+}
+
+/*slide btn*/
+.sw_prev {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  z-index: 99;
+}
+
+.sw_next {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  z-index: 99;
+}
+
+.sw_prev,
+.sw_next {
+  color: #6495ed;
+}
+
+/*pagination*/
+.sw_pg {
+  position: absolute;
+  left: 50%;
+  bottom: 20px;
+  transform: translateX(-50%);
+  cursor: pointer;
+  z-index: 99;
+}
+
+.swiper-pagination-bullet {
+  margin: 0 10px;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #6495ed !important;
+}
+
+/*slide control*/
+.sw_main {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /*content*/
 .content {
-    position: relative;
-    display: block;
-    width: 100%;
-    height: auto;
-    overflow: hidden;
-    margin: 50px 0;
+  position: relative;
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  margin: 50px 0;
 }
 
 .sales,
 .perfo,
 .price {
-    position: relative;
-    display: block;
-    width: 100%;
-    height: 500px;
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 500px;
+  margin-bottom: 20px;
 }
 
 .sales p,
 .perfo p,
 .price p {
-    position: relative;
-    display: block;
-    margin-bottom: 10px;
+  position: relative;
+  display: block;
+  margin-bottom: 10px;
 }
 
 .sales p::before,
 .perfo p::before,
 .price p::before {
-    content: '';
-    position: absolute;
-    top: 55%;
-    left: 0;
-    height: 1px;
-    width: 100%;
-    background: #333;
+  content: "";
+  position: absolute;
+  top: 55%;
+  left: 0;
+  height: 1px;
+  width: 100%;
+  background: #333;
 }
 
 .sales p span,
 .perfo p span,
 .price p span {
-    position: relative;
-    background: #fff;
-    font-size: 25px;
-    font-weight: 700;
-    padding-right: 20px;
-    z-index: 999;
+  position: relative;
+  background: #fff;
+  font-size: 25px;
+  font-weight: 700;
+  padding-right: 20px;
+  z-index: 999;
 }
 
 .cont_img {
-    position: relative;
-    display: block;
-    width: 100%;
-    height: 450px;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 318px;
+  margin: 20px 0;
 }
 
-.cont_img > img {
-    position: absolute;
-    width: 100%;
-    height: 100%;
+/*테두리 크기 조절할수있는곳*/
+.cont_img > div {
+  position: relative;
+  display: block;
+  height: 100%;
+  width: 20%;
+  border: 1px #333;
+}
+
+.cont_img > div img {
+  height: 100%;
 }
