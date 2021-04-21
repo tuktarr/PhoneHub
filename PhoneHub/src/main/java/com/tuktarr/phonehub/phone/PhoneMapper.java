@@ -9,5 +9,6 @@ import com.tuktarr.phonehub.model.PhoneInfoEntity;
 @Mapper
 public interface PhoneMapper {
 	List<PhoneInfoEntity> selPerformanceRanking();
+	List<PhoneInfoEntity> selCost_Effectiveness();
 	PhoneInfoEntity selPhoneDetail();
 }

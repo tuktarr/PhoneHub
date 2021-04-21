@@ -18,8 +18,7 @@ public class PhoneService {
 	}
 	
 	public List<PhoneInfoEntity> selCost_Effectiveness() {
-		List<PhoneInfoEntity> selCost_Effectiveness = pMapper.selPerformanceRanking();
-		return null;
+		return pMapper.selCost_Effectiveness();
 	}
 	
 	public PhoneInfoEntity selPhoneInfo() {
