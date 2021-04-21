@@ -152,7 +152,7 @@ CREATE TABLE user(
 	regDt DATETIME DEFAULT NOW(),
 	birthday DATE NOT NULL,
 	gender VARCHAR(1) CHECK(gender IN('M','F')),
-	phone VARCHAR(11) NOT NULL,
+	phone VARCHAR(13) NOT NULL,
 	PRIMARY KEY (userPk)
 );
 

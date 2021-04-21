@@ -1,6 +1,10 @@
 package com.tuktarr.phonehub.user;
 
 import org.slf4j.LoggerFactory;
+
+import java.util.HashMap;
+import java.util.Map;
+
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,17 +27,24 @@ public class EmailController {
 	//이메일 보내기 ajax 처리
 	@PostMapping("/email")
 	@ResponseBody
-	public void emailConfirm(@RequestBody String m, UserEntity p) throws Exception {
+	public void emailConfirm(@RequestBody String m) throws Exception {
 		
 		Logger.info("post emailConfirm");
-		// 이메일 중복체크
-		service.chkEmail(p);
 		
 		// 인증키 생성
 		EmailService.ePw = EmailService.createKey();
-		
 		service.sendSimpleMessage(m);
 	}
+	
+	@PostMapping("/chkemail")
+	@ResponseBody
+	public Map<String, Object> emailChk(UserEntity p) {	
+		Map<String, Object> map = new HashMap<>();	
+		map.put("check",service.chkEmail(p));
+		System.out.println("아이디확인2: " + p.getUserEmail());
+		return map;
+	}
+	
 	//인증번호 입력 후 일치여부 ajax처리
 	@PostMapping("/verifyCode")
 	@ResponseBody
