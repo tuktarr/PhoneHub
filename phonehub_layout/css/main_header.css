@@ -95,7 +95,7 @@
 .sign_in::before {
     content: '';
     position: absolute;
-    right: -25%;
+    right: -22%;
     top: 50%;
     transform: translateY(-50%);
     display: block;
