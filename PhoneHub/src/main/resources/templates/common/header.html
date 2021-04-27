@@ -18,8 +18,16 @@
 				name="search_bar" class="search_bar" placeholder="모델명을 입력해주세요.">
 		</div>
 		<div class="login_cont">
-			<a href="/login" class="sign_in">로그인</a> <a href="/join"
-				class="sign_up">회원가입</a>
+				<div th:if="${session.loginUser == null}">
+					<div class="login_container">
+						<a href="/login" class="sign_in">로그인</a> <a href="/join" class="sign_up">회원가입</a>
+					</div>
+				</div>
+				<div th:if="${session.loginUser != null}">
+					<div class="login_container">
+						<a href="/logout" class="sign_in">로그아웃</a> <a href="/mypage" class="sign_up">마이페이지</a>
+					</div>
+				</div>
 		</div>
 	</div>
 </div>
