@@ -3,6 +3,8 @@ package com.tuktarr.phonehub.user;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -39,4 +41,13 @@ public class UserController {
 		return map;
 	}
 	
+	@ResponseBody
+	@PostMapping("/login")
+	public Map<String, Object> login(@RequestBody UserEntity p, HttpSession hs) throws Exception {
+
+		Map<String, Object> map = new HashMap<>();
+		map.put("result", service.login(p, hs));
+		System.out.println("아이디 :" + p.getUserEmail());
+		return map;
+	}
 }
