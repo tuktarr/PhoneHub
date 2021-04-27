@@ -30,9 +30,9 @@ function closeElement() {
 	nickname.disabled = true //nickname칸 비활성화
 	call.disabled = true //call칸 비활성화
 }
+
 function setModal() {
 	const modalClose = document.querySelector('.email_close')
-	const modalShow = document.querySelector('#emailSend')
 
 	// 닫기 버튼을 클릭시 모달창 닫기
 	modalClose.addEventListener('click', function(event) {
@@ -40,15 +40,8 @@ function setModal() {
 			closeModal()
 		}
 	})
-	// 모달 창 보기 버튼 클릭
-	modalShow.addEventListener('click', function() {
-		if (chkEmail()) {
-			openModal()
-		}
-	})
 }
 setModal()
-
 // 회원가입 버튼을 눌렀을 때 이벤트 발생
 const joinBtnElem = document.querySelector('#joinBtn')
 
@@ -124,7 +117,7 @@ if (emailsendButton) {
 
 		const param1 = {
 			userEmail: email.value
-			}
+		}
 		const param = email.value
 		console.log(param)
 		fetch('/email', {
@@ -134,21 +127,27 @@ if (emailsendButton) {
 			},
 			body: JSON.stringify(param)
 		})
-		
+
 		fetch('/chkemail', {
 			method: 'post',
 			headers: {
 				'Content-type': 'application/json',
 			},
 			body: JSON.stringify(param1)
-		}).then(function(res){
+		}).then(function(res) {
 			return res.json()
-		}).then(function(myJson){
+		}).then(function(myJson) {
 			proc(myJson)
 		})
-		
+
 		function proc(myJson) {
 			console.log(myJson.check)
+			if(myJson.check === 0){
+				openModal()			
+			} else {
+				alert('이미 있는 아이디입니다.')
+				email.focus()
+			}
 		}
 
 	}
@@ -172,7 +171,7 @@ if (emailchkbtnElem) {
 		}).then(function(myJson) {
 			proc(myJson)
 		})
-		
+
 	}
 
 	function proc(myJson) {
@@ -233,29 +232,6 @@ function chkSign() {
 	const monthChk = /^(0[1-9]|1[012])$/g
 	const dayChk = /^(0[1-9]|[12][0-9]|3[0-1])$/g
 
-	/*	if (!nickChk.test(nickname)) {
-			alert('올바른 닉네임을 써주세요.')
-			return false
-		} else if (!passChk.test(password)) {
-			alert('잘못된 비밀번호 형식 입니다.')
-			return false
-		} else if (password !== repassword) {
-			alert('비밀번호를 확인 해 주세요.')
-			return false
-		} else if (!callChk.test(call)) {
-			alert('올바른 전화번호를 써주세요.')
-			return false
-		} else if (!yearChk.test(year)) {
-			alert('올바른 연도를 써주세요.')
-			return false
-		} else if (!monthChk.test(month)) {
-			alert('올바른 달을 써주세요.')
-			return false
-		} else if (!dayChk.test(day)) {
-			alert('올바른 날짜를 써주세요.')
-			return false
-		}
-		*/
 	nickname.addEventListener("blur", e => {
 		console.log(nickname.value)
 		if (!nickChk.test(nickname.value)) {
