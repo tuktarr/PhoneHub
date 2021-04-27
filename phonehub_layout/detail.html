@@ -17,7 +17,8 @@
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- js -->
-   <script type="text/javascript" src="js/detail.js"></script>
+    <script defer type="text/javascript" src="js/wave.js"></script>
+    <script type="text/javascript" src="js/detail.js"></script>
 </head>
 
 <body>
@@ -81,15 +82,23 @@
             </div>
             <!-- detail comment -->
             <div id="comments">
-            	<div id="comment_head">
-            		전체댓글 <span id="commentCount">0</span> 개
-            	</div>
-            	<div class="comment_submit">
-            		<textarea id="newComment" name="new_comment" rows="5" placeholder="댓글을 입력해주세요."></textarea>
-            		<button type="submit" onclick="submitComment()" class="comment_btn">등록</button>
-            	</div>
+                <div id="comment_head">
+                    전체댓글 <span id="commentCount">0</span> 개
+                </div>
+                <div class="comment_submit">
+                    <textarea id="newComment" name="new_comment" rows="5" placeholder="댓글을 입력해주세요."></textarea>
+                    <button type="submit" onclick="submitComment()" class="comment_btn">등록</button>
+                    <button type="submit" class="back_list">글목록</button>
+                </div>
             </div>
         </div>
+    </div>
+    <!-- wave -->
+    <div class="wave_cont">
+        <div class="wave" id="wave1" style="--i:1;"></div>
+        <div class="wave" id="wave2" style="--i:2;"></div>
+        <div class="wave" id="wave3" style="--i:3;"></div>
+        <div class="wave" id="wave4" style="--i:4;"></div>
     </div>
     <!-- footer -->
     <div class="footer">
