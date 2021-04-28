@@ -60,39 +60,74 @@ body {
 .gotop {
     position: fixed;
     display: inline-block;
-    bottom: 50px;
+    bottom: 40px;
     right: 50px;
-    z-index: 99;
+    z-index: 99999;
     cursor: pointer;
 }
 
 /*slide*/
-.slide {
-    overflow: hidden;
+.main_slide {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 500px;
 }
 
-.slide_box {
-    width: 400vw;
-    height: 400px;
+/*slide btn*/
+.sw_prev {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    z-index: 99;
 }
 
-.slide_content {
-    float: left;
-    width: 100vw;
+.sw_next {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    z-index: 99;
+}
+
+.sw_prev,
+.sw_next {
+    color: #6495ED;
+}
+
+/*pagination*/
+.sw_pg {
+    position: absolute;
+    left: 50%;
+    bottom: 20px;
+    transform: translateX(-50%);
+    cursor: pointer;
+    z-index: 99;
+}
+
+.swiper-pagination-bullet {
+    margin: 0 10px;
+}
+
+.swiper-pagination-bullet-active {
+    background-color: #6495ED !important;
+}
+
+/*slide control*/
+.sw_main {
+    position: relative;
+    display: block;
+    width: 100%;
     height: 100%;
 }
 
-.slide1 {
-    background: rgba(0,0,0,0.2);
-}
-.slide2 {
-    background: rgba(0,0,0,0.4);
-}
-.slide3 {
-    background: rgba(0,0,0,0.6);
-}
-.slide4 {
-    background: rgba(0,0,0,0.8);
+.swiper-slide>img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 /*content*/
@@ -112,6 +147,7 @@ body {
     display: block;
     width: 100%;
     height: 500px;
+    margin-bottom: 20px;
 }
 
 .sales p,
@@ -147,13 +183,72 @@ body {
 
 .cont_img {
     position: relative;
-    display: block;
+    display: flex;
+    justify-content: space-between;
     width: 100%;
     height: 450px;
+    margin: 20px 0;
 }
 
-.cont_img > img {
+/*테두리 크기 조절할수있는곳*/
+.cont_img>div {
+    position: relative;
+    display: block;
+    height: 100%;
+    width: 20%;
+    border: 1px solid #333;
+}
+
+/*wave*/
+.wave_cont {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100px;
+}
+
+.wave {
     position: absolute;
+    bottom: 0;
+    left: 0;
     width: 100%;
     height: 100%;
+    background: url(../asset/wave.png);
+    background-size: 1360px 100px;
+    animation: animate 4s ease-in-out infinite;
+    animation-delay: calc(var(--i) * 0.25s);
+}
+
+.wave#wave1 {
+    z-index: 1000;
+    opacity: 1; 
+    background-position-x: 400px;
+}
+
+.wave#wave2 {
+    z-index: 999;
+    opacity: 0.5; 
+    background-position-x: 300px;
+}
+
+.wave#wave3 {
+    z-index: 998;
+    opacity: 0.3; 
+    background-position-x: 200px;
+}
+
+.wave#wave4 {
+    z-index: 999;
+    opacity: 0.7; 
+    background-position-x: 100px;
+}
+
+@keyframes animate {
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(10px);
+    }
 }

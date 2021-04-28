@@ -38,8 +38,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 90vh;
-    min-height: 900px;
+    height: auto;
+    min-height: 100vh;
     width: 100%;
 }
 
@@ -305,6 +305,7 @@ input[name=signUp]:hover {
     float: left;
     border-radius: 0;
     padding: 15.5px;
+    cursor: pointer;
 }
 
 .input_group input[type="radio"]+label[for="male"] {
@@ -333,10 +334,6 @@ input[name=signUp]:hover {
 .errorNickname,
 .errorYear,
 .errorMonth,
-<<<<<<< Updated upstream
-.errorDay {	
-	color: #ff1a1a;
-=======
 .errorDay {
     color: #ff1a1a;
 }
@@ -396,5 +393,7 @@ input[name=signUp]:hover {
 
 .back_login a:hover {
     text-decoration: underline;
->>>>>>> Stashed changes
+}
+.errorDay {
+    color: #ff1a1a;
 }
