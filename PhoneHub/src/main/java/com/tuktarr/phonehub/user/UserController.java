@@ -50,4 +50,16 @@ public class UserController {
 		System.out.println("아이디 :" + p.getUserEmail());
 		return map;
 	}
+	
+	@GetMapping("/logout")
+	public String logout(HttpSession hs) {
+		hs.invalidate();
+		return "redirect:/";
+	}
+	
+	@GetMapping("/findpw")
+	public String findpw() {
+		return "sign/findpw";
+	}
+	
 }

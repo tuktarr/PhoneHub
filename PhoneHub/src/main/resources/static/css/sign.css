@@ -333,6 +333,68 @@ input[name=signUp]:hover {
 .errorNickname,
 .errorYear,
 .errorMonth,
+<<<<<<< Updated upstream
 .errorDay {	
 	color: #ff1a1a;
+=======
+.errorDay {
+    color: #ff1a1a;
+}
+
+/*find pw*/
+.find_form {
+    position: relative;
+    display: block;
+    width: 500px;
+    height: 500px;
+    padding: 0 20px;
+    background: #fff;
+    box-shadow: 0px 3px 10px -2px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+}
+
+.warnning {
+	position: relative;
+	margin-top: 50px;
+	padding: 0 40px;
+}
+
+.warnning>span {
+	display: block;
+	margin: 10px 0;
+	font-size: 14px;
+	word-wrap: break-word;
+}
+
+.warnning>span>i {
+	margin-right: 10px;
+}
+
+#findFrm {
+    position: relative;
+    display: block;
+    margin-top: 50px;
+    padding: 10px 40px;
+}
+
+.back_login {
+    position: relative;
+    display: block;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 300;
+    margin-top: 20px;
+}
+
+.back_login a {
+    position: relative;
+    display: inline-block;
+    color: #6495ED;
+    letter-spacing: 1px;
+    margin: 0 5px;
+}
+
+.back_login a:hover {
+    text-decoration: underline;
+>>>>>>> Stashed changes
 }
