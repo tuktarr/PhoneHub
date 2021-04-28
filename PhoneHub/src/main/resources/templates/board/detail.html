@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorator="~{layout/layout_default}">
+
+<th:block layout:fragment="css">
+	<link rel="stylesheet" type="text/css" th:href="@{css/detail.css}">
+</th:block>
+
+<th:block layout:fragment="script">
+	<script defer type="text/javascript" th:src="@{js/detail.js}"></script>
+	<script defer type="text/javascript" th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js}"></script>
+</th:block>
+
+<th:block layout:fragment="content">
+    <div class="detail_wrap">
+        <div class="pagew">
+            <!-- detail head -->
+            <div class="detail_h">
+                <div class="detail_tit">
+                    <span>제목</span>
+                </div>
+                <!-- detail title left -->
+                <div class="detail_tl">
+                    <div class="detail_user">
+                        <span class="user">문수찬</span>
+                    </div>
+                    <div class="detail_date">
+                        <i class="far fa-clock"></i>
+                        <span>2021-04-13 13:34</span>
+                    </div>
+                </div>
+                <!-- detail title right -->
+                <div class="detail_tr">
+                    <span>글번호 1</span>
+                    <span>조회수 1</span>
+                    <span>추천수 12</span>
+                </div>
+            </div>
+            <!-- detail board -->
+            <div class="detail_board">
+                <div class="detail_content">
+                    asdasd
+                </div>
+                <div class="hits_area">
+                    <button class="hits_btn best">
+                        <span id="up">10</span>
+                    </button>
+                    <button class="hits_btn worst">
+                        <span id="down">10</span>
+                    </button>
+                </div>
+            </div>
+            <!-- detail comment -->
+            <div id="comments">
+                <div id="comment_head">
+                    전체댓글 <span id="commentCount">0</span> 개
+                </div>
+                <div class="comment_submit">
+                    <textarea id="newComment" name="new_comment" rows="5" placeholder="댓글을 입력해주세요."></textarea>
+                    <button type="submit" onclick="submitComment()" class="comment_btn">등록</button>
+                    <button type="submit" class="back_list">글목록</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</th:block>
+
+</html>
