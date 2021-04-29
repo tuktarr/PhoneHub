@@ -62,4 +62,12 @@ public class UserController {
 		return "sign/findpw";
 	}
 	
+	@ResponseBody
+	@PostMapping("/findpw")
+	public Map<String, Object> findPw(@RequestBody UserEntity p) throws Exception {
+		Map<String, Object> map = new HashMap<>();
+		map.put("result", service.findPw(p));
+		return map;
+	}
+	
 }

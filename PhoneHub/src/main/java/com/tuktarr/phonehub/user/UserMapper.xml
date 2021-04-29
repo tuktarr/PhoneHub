@@ -5,19 +5,29 @@
 <mapper namespace="com.tuktarr.phonehub.user.UserMapper">
 	<insert id="insUser">
 		INSERT INTO user
-		( userEmail, userPw, nickname, birthday, gender, phone )
+		( userEmail, userPw, nickname,
+		birthday, gender, phone )
 		VALUES
-		( #{userEmail}, #{userPw}, #{nickname}, #{birthday}, #{gender}, #{phone} )
+		( #{userEmail}, #{userPw}, #{nickname},
+		#{birthday}, #{gender}, #{phone} )
 	</insert>
-	
-	<select id="selUser" resultType="com.tuktarr.phonehub.model.UserEntity">
+
+	<select id="selUser"
+		resultType="com.tuktarr.phonehub.model.UserEntity">
 		SELECT * FROM user
 		WHERE userEmail = #{userEmail}
 	</select>
-	
+
 	<select id="chkEmail" resultType="Integer">
 		SELECT COUNT(*) FROM user
-		WHERE userEmail = #{userEmail}
+		WHERE
+		userEmail = #{userEmail}
 	</select>
-	
+
+	<update id="updateUserPassword">
+		UPDATE user
+		SET userPw = #{userPw}
+		WHERE userEmail = #{userEmail}
+	</update>
+
 </mapper>

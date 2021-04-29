@@ -73,6 +73,7 @@ public class EmailService {
 		System.out.println("인증번호 : " + ePw);
 		return message;
 	}
+	
 	public void sendSimpleMessage(String to) throws Exception {
 		MimeMessage message = createMessage(to);
 		try {

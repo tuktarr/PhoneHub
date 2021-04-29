@@ -9,4 +9,5 @@ public interface UserMapper {
 	int insUser(UserEntity p);
 	UserEntity selUser(UserEntity p);
 	int chkEmail(UserEntity p);
+	int updateUserPassword(UserEntity p);
 }

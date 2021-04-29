@@ -130,7 +130,8 @@
 input[name=signIn],
 input[name=signUp],
 input[name=emailSend],
-.email_close {
+.email_close,
+input[name=findbtn] {
     display: block;
     height: 50px;
     width: 100%;
