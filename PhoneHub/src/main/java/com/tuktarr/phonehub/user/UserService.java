@@ -1,9 +1,14 @@
 package com.tuktarr.phonehub.user;
 
+import javax.mail.Message.RecipientType;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpSession;
 
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.MailException;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 import com.tuktarr.phonehub.model.UserEntity;
@@ -17,6 +22,9 @@ public class UserService {
 
 	@Autowired
 	private SecurityUtils sUtils;
+	
+	@Autowired
+	private JavaMailSender emailSender;
 	
 	public int join(UserEntity p) {
 		UserEntity check = mapper.selUser(p);
@@ -85,4 +93,67 @@ public class UserService {
 		return 1;
 	}
 	
+	public MimeMessage createMessage(UserEntity p) throws Exception {
+
+		MimeMessage message = emailSender.createMimeMessage();
+
+		message.addRecipients(RecipientType.TO, p.getUserEmail());// 보내는 대상
+		message.setSubject("PhoneHub 임시 비밀번호가 도착했습니다.");// 제목
+
+		String msg = "";
+		msg += "임시 비밀번호 입니다.";
+		msg += "<div align='center' style='border:1px solid black; font-family:verdana'>";
+		msg += "<h3 style='color: blue;'>";
+		msg += "회원님의 임시 비밀번호 입니다. 비밀번호를 변경하여 사용하세요.</h3>";
+		msg += "<p>임시 비밀번호 : ";
+		msg += p.getUserPw() + "</p></div>";
+
+		message.setText(msg, "utf-8", "html");// 내용
+		message.setFrom(new InternetAddress("handcodingtest@gmail.com"));
+		return message;
+
+	}
+	
+	// findpw 로직
+	public int findPw(UserEntity p) throws Exception {
+		UserEntity check = mapper.selUser(p); // DB에 저장되어 있는 데이터 가져옴
+		// 이메일이 없으면
+		if (check == null) {
+			return 1;
+		} else {
+			
+			String pw = "";
+			for (int i = 0; i < 12; i++) {
+				pw += (char) ((Math.random() * 26) + 97);
+			}
+
+			// 비밀번호 변경
+			p.setUserPw(pw);
+			mapper.updateUserPassword(p);
+
+			// 비밀번호 변경 메일 발송
+			sendSimpleMessage(p);
+
+			// 비밀번호 암호화 DB저장
+			String salt = sUtils.getSalt();
+			String hashPw = sUtils.getHashPw(pw, salt);
+
+			p.setUserPw(hashPw);
+			mapper.updateUserPassword(p);
+
+			return 2;
+		}
+	}
+	
+	public void sendSimpleMessage(UserEntity p) throws Exception {
+		MimeMessage message = createMessage(p);
+		try {// 예외처리
+			emailSender.send(message);
+		} catch (MailException es) {
+			es.printStackTrace();
+			throw new IllegalArgumentException();
+		}
+
+	}
+
 }
