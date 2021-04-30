@@ -1,27 +1,26 @@
 <!DOCTYPE html>
 <html lang="ko">
-
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>login</title>
-    <!-- css -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>rank</title>
+	<!-- css -->
     <link rel="stylesheet" type="text/css" href="css/main.css">
-    <!-- 메인헤더에 있는 css를 재활용합니다 -->
     <link rel="stylesheet" type="text/css" href="css/main_header.css">
     <link rel="stylesheet" type="text/css" href="css/header.css">
     <link rel="stylesheet" type="text/css" href="css/footer.css">
-    <link rel="stylesheet" type="text/css" href="css/sign.css">
     <!-- fontawesome (아이콘을 사용하기 위해 꼭 필요합니다) -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- js -->
     <script defer type="text/javascript" src="js/wave.js"></script>
-    <script type="text/javascript" src="js/script.js"></script>
+    <!-- new css -->
+    <link rel="stylesheet" type="text/css" href="css/rank.css">
 </head>
-
 <body>
-    <div class="wrap">
-        <!-- header -->
+	<div class="wrap">
+		 <!-- header -->
         <div class="header">
             <a href="index.html" class="logo" title="phonehub">
                 <img src="asset/logo.png">
@@ -42,23 +41,28 @@
             </div>
         </div>
         <!-- content -->
-        <div class="sign_wrap">
-            <div class="login_form">
-                <span>login</span>
-                <form id="loginFrm" method="post">
-                    <div class="txt_field">
-                        <input type="text" name="id" required>
-                        <label>아이디 (e-mail)</label>
-                    </div>
-                    <div class="txt_field">
-                        <input type="password" name="pw" required>
-                        <label>비밀번호</label>
-                    </div>
-                    <input type="submit" name="signIn" value="로그인">
-                    <div class="fg_pw"><a href="findpw.html">비밀번호를 잊어버리셨나요?</a></div>
-                    <div class="join_link">회원이 아니신가요?<a href="join.html">회원가입</a></div>
-                </form>
-            </div>
+        <div class="rank_wrap">
+        	<div class="pagew">
+        		<div class="rank_content">
+        			<div class="top_rank">
+        				<div class="second">
+        					<div class="top_image_sec"></div>
+        					<div class="rank_bar"></div>
+        				</div>
+        				<div class="first">
+        					<div class="top_image_sec"></div>
+        					<div class="rank_bar"></div>
+        				</div>
+        				<div class="third">
+        					<div class="top_image_sec"></div>
+        					<div class="rank_bar"></div>
+        				</div>
+        			</div>
+        			<div class="other_rank">
+        				
+        			</div>
+        		</div>
+        	</div>
         </div>
         <!-- wave -->
         <div class="wave_cont">
@@ -86,7 +90,6 @@
                 </div>
             </div>
         </div>
-    </div>
+	</div>
 </body>
-
 </html>
