@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<title>rank</title>
-	<!-- css -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>rank</title>
+    <!-- css -->
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" type="text/css" href="css/main_header.css">
     <link rel="stylesheet" type="text/css" href="css/header.css">
@@ -13,14 +14,19 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- swiper -->
+    <link rel="stylesheet" href="js/swiper/swiper.min.css">
+    <script defer src="js/swiper/swiper.min.js"></script>
     <!-- js -->
+    <script defer type="text/javascript" src="js/slide.js"></script>
     <script defer type="text/javascript" src="js/wave.js"></script>
     <!-- new css -->
     <link rel="stylesheet" type="text/css" href="css/rank.css">
 </head>
+
 <body>
-	<div class="wrap">
-		 <!-- header -->
+    <div class="wrap">
+        <!-- header -->
         <div class="header">
             <a href="index.html" class="logo" title="phonehub">
                 <img src="asset/logo.png">
@@ -42,27 +48,105 @@
         </div>
         <!-- content -->
         <div class="rank_wrap">
-        	<div class="pagew">
-        		<div class="rank_content">
-        			<div class="top_rank">
-        				<div class="second">
-        					<div class="top_image_sec"></div>
-        					<div class="rank_bar"></div>
-        				</div>
-        				<div class="first">
-        					<div class="top_image_sec"></div>
-        					<div class="rank_bar"></div>
-        				</div>
-        				<div class="third">
-        					<div class="top_image_sec"></div>
-        					<div class="rank_bar"></div>
-        				</div>
-        			</div>
-        			<div class="other_rank">
-        				
-        			</div>
-        		</div>
-        	</div>
+            <div class="pagew">
+                <div class="rank_content">
+                    <div class="top_rank">
+                        <div class="link_info">
+                            <i class="fas fa-location-arrow"></i>
+                            <a href="#">자세히 알아보기</a>
+                        </div>
+                        <div class="second">
+                            <div class="top_image_sec">
+                                <img src="asset/phone_mokup.png">
+                            </div>
+                            <div class="rank_bar r_silver">
+                                <div class="overlay sv"></div>
+                                <span>2</span>
+                            </div>
+                        </div>
+                        <div class="first">
+                            <div class="top_image_sec">
+                                <img src="asset/phone_mokup.png">
+                            </div>
+                            <div class="rank_bar r_gold">
+                                <div class="overlay gd"></div>
+                                <span>1</span>
+                            </div>
+                        </div>
+                        <div class="third">
+                            <div class="top_image_sec">
+                                <img src="asset/phone_mokup.png">
+                            </div>
+                            <div class="rank_bar r_bronze">
+                                <div class="overlay bz"></div>
+                                <span>3</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="other_rank">
+                        <div class="link_info">
+                            <i class="fas fa-location-arrow"></i>
+                            <a href="#">자세히 알아보기</a>
+                        </div>
+                        <!-- slide -->
+                        <div class="or_slide">
+                            <div class="swiper-container sw_or">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                        <div class="or_box">
+                                            <img src="asset/phone_mokup.png">
+                                            <span>4</span>
+                                            <span class="or_phone_tit">samsung galaxy 11</span>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="or_box">
+                                            <img src="asset/phone_mokup.png">
+                                            <span>5</span>
+                                            <span class="or_phone_tit">samsung galaxy Z Filp</span>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="or_box">
+                                            <img src="asset/phone_mokup.png">
+                                            <span>6</span>
+                                            <span class="or_phone_tit">APPLE iPhone 11</span>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="or_box">
+                                            <img src="asset/phone_mokup.png">
+                                            <span>7</span>
+                                            <span class="or_phone_tit">APPLE iPhone 11 Pro</span>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="or_box">
+                                            <img src="asset/phone_mokup.png">
+                                            <span>8</span>
+                                            <span class="or_phone_tit">samsung galaxy Note 10</span>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="or_box">
+                                            <img src="asset/phone_mokup.png">
+                                            <span>9</span>
+                                            <span class="or_phone_tit">samsung galaxy A51</span>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="or_box">
+                                            <img src="asset/phone_mokup.png">
+                                            <span>10</span>
+                                            <span class="or_phone_tit">APPLE iPhone SE</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <!-- wave -->
         <div class="wave_cont">
@@ -90,6 +174,7 @@
                 </div>
             </div>
         </div>
-	</div>
+    </div>
 </body>
+
 </html>
