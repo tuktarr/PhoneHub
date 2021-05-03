@@ -133,7 +133,9 @@
     background: #ccc;
 }
 
-input[name=writebtn] {
+input[name=writebtn],
+input[name=writeEditBtn],
+input[name=cancelBtn] {
     display: block;
     height: 50px;
     width: 100px;
@@ -148,10 +150,21 @@ input[name=writebtn] {
     cursor: pointer;
     transition: all 0.5s;
     margin-top: 15px;
+    margin-left: 15px;
     float: right;
 }
 
-input[name=writebtn]:hover {
+input[name=cancelBtn] {
+	background: #FC766AFF;
+}
+
+input[name=cancelBtn]:hover {
+	background: #FC766Ae3;
+	box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.2), 0 4px 10px 0 rgba(0, 0, 0, 0.19);
+}
+
+input[name=writebtn]:hover,
+input[name=writeEditBtn]:hover {
     background: #89abff;
     box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.2), 0 4px 10px 0 rgba(0, 0, 0, 0.19);
 }
@@ -227,4 +240,63 @@ input[name=writebtn]:hover {
 	display: block;
 	width: 100%;
 	height: 100%;
+	margin: 50px 0;
+}
+
+.edit_title {
+	position: relative;
+	display: block;
+	width: 100%;
+	height: 50px;
+}
+
+.input_title {
+	display: block;
+	width: 100%;
+	height: 100%;
+	padding: 10px 10px;
+	border: 1px solid #333;
+	border-radius: 2px;
+	font-size: 15px;
+}
+
+.edit_content {
+	position: relative;
+	display: block;
+	width: 100%;
+	height: 500px;
+	max-height: 500px;
+	margin-top: 20px;
+}
+
+.input_content {
+	display: block;
+	width: 100%;
+	height: 100%;
+	resize: none;
+	padding: 20px;
+	font-size: 15px;
+	overflow-y: auto;
+}
+
+.input_content:hover {
+	border: 1px solid #333;
+}
+
+.input_content:focus {
+	border: 1px solid #333;
+}
+
+.edit_upload {
+	position: relative;
+	display: block;
+	width: 100%;
+	height: 70px;
+	border: 1px solid #3e3e3e;
+	margin-top: 20px;
+	padding: 20px;
+}
+
+input[name=upload] {
+	cursor: pointer;
 }
