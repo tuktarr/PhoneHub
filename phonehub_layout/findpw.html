@@ -17,6 +17,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- js -->
     <script defer type="text/javascript" src="js/wave.js"></script>
+    <script defer type="text/javascript" src="js/main_header.js"></script>
     <script type="text/javascript" src="js/script.js"></script>
 </head>
 
@@ -34,8 +35,14 @@
                 <li><a href="list.html">게시판</a></li>
             </ul>
             <div class="h_search">
-                <i class="fas fa-search fa-2x search_icon"></i>
-                <input type="text" name="search_bar" class="search_bar" placeholder="모델명을 입력해주세요.">
+                <div class="search_box">
+                    <div class="search_icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="search_bar">
+                        <input type="text" name="search" id="hSearch" placeholder="검색">
+                    </div>
+                </div>
             </div>
             <div class="login_cont">
                 <a href="login.html" class="sign_in">로그인</a>
