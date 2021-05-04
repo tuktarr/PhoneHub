@@ -243,11 +243,29 @@ input[name=writeEditBtn]:hover {
 	margin: 50px 0;
 }
 
+.select_cate {
+    position: relative;
+    display: block;
+    top: 20px;
+    width: 25%;
+    height: 50px;
+    padding-left: 20px;
+    float: right;
+}
+
+.select_cate select{
+    width: 100%;
+    height: 100%;
+    padding: 0 10px;
+    border-radius: 2px;
+}
+
 .edit_title {
 	position: relative;
-	display: block;
-	width: 100%;
+	display: inline-block;
+	width: 75%;
 	height: 50px;
+    margin-top: 20px;
 }
 
 .input_title {
