@@ -24,6 +24,13 @@
 						<input class="input_title" type="text" name="title" placeholder="제목을 입력해주세요."
 						 th:value="${data == null ? '' : data.title}" autocomplete="off">
 					</div>
+					<div class="select_cate">
+                      <select>
+                        <option>자유게시판</option>
+                        <option>중고장터</option>
+                        <option>공지사항</option>
+                      </select>
+                    </div>
 					<div class="edit_content">
 						<textarea class="input_content" name="content" placeholder="내용을 입력해주세요"
 							th:text="${data == null ? '' : data.ctnt}"></textarea>

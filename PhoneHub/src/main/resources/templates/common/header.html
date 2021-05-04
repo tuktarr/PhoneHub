@@ -14,20 +14,28 @@
 			<li><a href="/list">게시판</a></li>
 		</ul>
 		<div class="h_search">
-			<i class="fas fa-search fa-2x search_icon"></i> <input type="text"
-				name="search_bar" class="search_bar" placeholder="모델명을 입력해주세요.">
+			<div class="search_box">
+				<div class="search_icon">
+					<i class="fas fa-search"></i>
+				</div>
+				<div class="search_bar">
+					<input type="text" name="search" id="hSearch" placeholder="검색">
+				</div>
+			</div>
 		</div>
 		<div class="login_cont">
-				<div th:if="${session.loginUser == null}">
-					<div class="login_container">
-						<a href="/login" class="sign_in">로그인</a> <a href="/join" class="sign_up">회원가입</a>
-					</div>
+			<div th:if="${session.loginUser == null}">
+				<div class="login_container">
+					<a href="/login" class="sign_in">로그인</a> <a href="/join"
+						class="sign_up">회원가입</a>
 				</div>
-				<div th:if="${session.loginUser != null}">
-					<div class="login_container">
-						<a href="/logout" class="sign_in">로그아웃</a> <a href="/mypage" class="sign_up">마이페이지</a>
-					</div>
+			</div>
+			<div th:if="${session.loginUser != null}">
+				<div class="login_container">
+					<a href="/logout" class="sign_in">로그아웃</a> <a href="/mypage"
+						class="sign_up">마이페이지</a>
 				</div>
+			</div>
 		</div>
 	</div>
 </div>
