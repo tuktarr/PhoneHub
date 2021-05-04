@@ -193,3 +193,15 @@ CREATE TABLE cmt (
 	modDt DATETIME DEFAULT NOW(), 
 	PRIMARY KEY (cmtPk)
 );
+
+//news 페이지
+CREATE TABLE news (
+	pk INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(100),
+    content VARCHAR(1000),
+    writer VARCHAR(25),
+    img VARCHAR(200),
+    url VARCHAR(200),
+    hits INT UNSIGNED DEFAULT 0,
+    regDt DATETIME DEFAULT NOW()
+);
