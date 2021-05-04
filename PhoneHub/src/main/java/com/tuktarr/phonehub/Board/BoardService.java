@@ -1,10 +1,13 @@
 package com.tuktarr.phonehub.Board;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.tuktarr.phonehub.model.BoardDTO;
 import com.tuktarr.phonehub.model.BoardDomain;
 import com.tuktarr.phonehub.model.BoardEntity;
 import com.tuktarr.phonehub.utils.SecurityUtils;
@@ -43,6 +46,19 @@ public class BoardService {
 			}
 			
 			return mapper.selBoard(p);
+		}
+		
+		// 페이징
+		public List<BoardDomain> selBoardList(BoardDTO p) {
+			int sIdx = (p.getPage() - 1) * p.getRowCnt();
+			p.setsIdx(sIdx);
+
+			return mapper.selBoardList(p);
+		}
+		
+		// max값 구하기
+		public int selMaxPageNum(BoardDTO p) {
+			return mapper.selMaxPageNum(p);
 		}
 		
 		//select

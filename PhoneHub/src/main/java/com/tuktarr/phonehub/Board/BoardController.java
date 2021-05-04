@@ -1,6 +1,7 @@
 package com.tuktarr.phonehub.Board;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -14,6 +15,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.tuktarr.phonehub.model.BoardDTO;
+import com.tuktarr.phonehub.model.BoardDomain;
 import com.tuktarr.phonehub.model.BoardEntity;
 import com.tuktarr.phonehub.utils.SecurityUtils;
 
@@ -29,6 +32,20 @@ public class BoardController {
 	@GetMapping("/list")
 	public String list() {
 		return "board/list";
+	}
+	
+	// 페이징 ajax처리
+	@GetMapping("/listData")
+	@ResponseBody
+	public List<BoardDomain> listData(BoardDTO p) {
+		return bService.selBoardList(p);
+	}
+	
+	// 페이징 max값 구하는 처리
+	@GetMapping("/getMaxPageNum")
+	@ResponseBody
+	public int selMaxPageNum(BoardDTO p) {
+		return bService.selMaxPageNum(p);
 	}
 	
 	@GetMapping("/write")
