@@ -3,5 +3,63 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.tuktarr.phonehub.Board.BoardMapper">
+	<insert id="insBoard">
+		INSERT INTO board
+		(seq, category, title, ctnt, userPk, img)
+		SELECT IFNULL(MAX(seq), 0) + 1, #{category}, #{title}, #{ctnt}, #{userPk}, #{img}
+		FROM board Where category = #{category}
+	</insert>
 	
+	<select id="selMaxPageNum" resultType="_int">
+		SELECT CEIL(COUNT(boardPk) / #{rowCnt}) 
+		FROM board Where category = #{category}
+	</select>
+	
+	<select id="selBoardList" resultType="com.tuktarr.phonehub.model.BoardDomain">
+		SELECT A.boardPk, A.seq,
+		A.title, A.hits, DATE_FORMAT(A.regDt, '%Y-%m-%d') AS regDt, A.isDel,
+		A.userPk, B.nickname AS writerNm
+		FROM board A
+		INNER JOIN user B
+		ON A.userPk = B.userPk
+		WHERE A.isDel = 0
+		ORDER BY A.boardPk DESC
+		LIMIT #{sIdx}, #{rowCnt};
+	</select>
+	
+	<select id="selBoard" resultType="com.tuktarr.phonehub.model.BoardDomain">
+		SELECT A.boardPk, A.seq, A.title, A.ctnt, A.hits, A.userPk, A.regDt, B.nickname AS writerNm 
+		FROM board A
+		INNER JOIN user B
+		ON A.userPk = B.userPk
+		WHERE A.boardPk = #{boardPk}
+	</select>
+	
+	<update id="upBoard">
+		UPDATE board
+		<set>
+		<choose>
+			<when test="hits == 1">
+				hits = hits + 1
+			</when>
+			<otherwise>
+				<if test="title != null and title !=''">
+						title = #{title},
+				</if>
+				<if test="ctnt != null and ctnt !=''">
+						ctnt = #{ctnt},
+				</if>
+				<if test="isDel != 0">
+					isDel = 1,
+				</if>
+				
+				modDt = now()
+				</otherwise>
+			</choose>
+		</set>
+		WHERE boardPk = #{boardPk}
+		<if test="userPk != 0">
+			AND userPk = #{userPk}
+		</if>
+	</update>
 </mapper>

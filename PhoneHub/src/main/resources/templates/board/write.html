@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="~{layout/layout_default}">
+
+<th:block layout:fragment="css">
+	<link rel="stylesheet" type="text/css" th:href="@{css/board.css}">
+</th:block>
+
+<th:block layout:fragment="script">
+	<script defer type="text/javascript" th:src="@{js/write.js}"></script>
+</th:block>
+<th:block layout:fragment="content"  th:if="${session.loginUser != null}">
+	<div class="write_wrap">
+		<div class="pagew">
+			<div class="write_form">
+				<form id="writeFrm" method="post" enctype="multipart/form-data">
+					<input type="hidden" name="userPk"
+						th:value="${session.loginUser.userPk}">
+					<input type="hidden" name="boardPk"
+						th:value="${data == null ? 0 : data.boardPk}">
+					<div class="edit_title">
+						<input class="input_title" type="text" name="title" placeholder="제목을 입력해주세요."
+						 th:value="${data == null ? '' : data.title}" autocomplete="off">
+					</div>
+					<div class="edit_content">
+						<textarea class="input_content" name="content" placeholder="내용을 입력해주세요"
+							th:text="${data == null ? '' : data.ctnt}"></textarea>
+					</div>
+					<div class="edit_upload">
+						<input type="file" name="upload" accept=".gif, .jpg, .png, .jpeg">
+					</div>
+					<a href="list"> <input type="button" name="cancelBtn"
+						value="취소">
+					</a>
+					<input id="writeEditBtn" type="button" name="writeEditBtn" value="등록">
+				</form>
+			</div>
+		</div>
+	</div>
+</th:block>
+
+</html>

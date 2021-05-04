@@ -37,7 +37,7 @@ if (loginBtnElem) {
 		switch (myJson.result) {
 			case 1:
 				alert('환영합니다!')
-				location.href = '/index'
+				location.href = '/'
 				return
 			case 2:
 				alert('아이디를 확인해 주세요')
