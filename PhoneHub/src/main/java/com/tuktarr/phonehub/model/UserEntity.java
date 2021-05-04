@@ -10,7 +10,14 @@ public class UserEntity {
 	private String gender;
 	private String birthday;
 	private String phone;
+	private int role;
 
+	public int getRole() {
+		return role;
+	}
+	public void setRole(int role) {
+		this.role = role;
+	}
 	public int getUserPk() {
 		return userPk;
 	}

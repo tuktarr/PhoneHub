@@ -6,10 +6,10 @@
 	<insert id="insUser">
 		INSERT INTO user
 		( userEmail, userPw, nickname,
-		birthday, gender, phone )
+		birthday, gender, phone, role )
 		VALUES
 		( #{userEmail}, #{userPw}, #{nickname},
-		#{birthday}, #{gender}, #{phone} )
+		#{birthday}, #{gender}, #{phone} , 2 )
 	</insert>
 
 	<select id="selUser"
