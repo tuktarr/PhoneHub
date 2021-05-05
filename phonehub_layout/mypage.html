@@ -4,22 +4,20 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>detail</title>
+    <title>my page</title>
     <!-- css -->
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <!-- 메인헤더에 있는 css를 재활용합니다 -->
     <link rel="stylesheet" type="text/css" href="css/main_header.css">
     <link rel="stylesheet" type="text/css" href="css/header.css">
     <link rel="stylesheet" type="text/css" href="css/footer.css">
-    <link rel="stylesheet" type="text/css" href="css/detail.css">
     <!-- fontawesome (아이콘을 사용하기 위해 꼭 필요합니다) -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
-    <!-- jQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- js -->
     <script defer type="text/javascript" src="js/wave.js"></script>
     <script defer type="text/javascript" src="js/main_header.js"></script>
-    <script type="text/javascript" src="js/detail.js"></script>
+    <!-- new css -->
+    <link rel="stylesheet" type="text/css" href="css/mypage.css">
 </head>
 
 <body>
@@ -51,53 +49,19 @@
             </div>
         </div>
         <!-- content -->
-        <div class="detail_wrap">
+        <div class="my_wrap">
             <div class="pagew">
-                <!-- detail head -->
-                <div class="detail_h">
-                    <div class="detail_tit">
-                        <span>제목</span>
-                    </div>
-                    <!-- detail title left -->
-                    <div class="detail_tl">
-                        <div class="detail_user">
-                            <span class="user">문수찬</span>
-                        </div>
-                        <div class="detail_date">
-                            <i class="far fa-clock"></i>
-                            <span>2021-04-13 13:34</span>
+                <div class="profile_cont">
+                    <div class="profile_img_cont">
+                        <img src="asset/user.png">
+                        <div class="profile_img_control">
+                            <input type="file" name="pro_up_btn" id="proUpBtn">
+                            <label for="proUpBtn">업로드</label>
+                            <input type="button" name="pro_del_btn" id="proDelBtn">
+                            <label for="proDelBtn">삭제</label>
                         </div>
                     </div>
-                    <!-- detail title right -->
-                    <div class="detail_tr">
-                        <span>글번호 1</span>
-                        <span>조회수 1</span>
-                        <span>추천수 12</span>
-                    </div>
-                </div>
-                <!-- detail board -->
-                <div class="detail_board">
-                    <div class="detail_content">
-                        asdasd
-                    </div>
-                    <div class="hits_area">
-                        <button class="hits_btn best">
-                            <span id="up">10</span>
-                        </button>
-                        <button class="hits_btn worst">
-                            <span id="down">10</span>
-                        </button>
-                    </div>
-                </div>
-                <!-- detail comment -->
-                <div id="comments">
-                    <div id="comment_head">
-                        전체댓글 <span id="commentCount">0</span> 개
-                    </div>
-                    <div class="comment_submit">
-                        <textarea id="newComment" name="new_comment" rows="5" placeholder="댓글을 입력해주세요."></textarea>
-                        <button type="submit" onclick="submitComment()" class="comment_btn">등록</button>
-                        <button type="submit" class="back_list">글목록</button>
+                    <div class="profile_info_cont">
                     </div>
                 </div>
             </div>
