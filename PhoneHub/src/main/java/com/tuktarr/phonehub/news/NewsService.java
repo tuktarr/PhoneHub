@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.tuktarr.phonehub.model.NewsDTO;
 import com.tuktarr.phonehub.model.NewsEntity;
 import com.tuktarr.phonehub.utils.NaverNewsCrawling;
 
@@ -45,6 +46,20 @@ public class NewsService {
 		}
 		
 		return result;
+	}
+	
+	public int selMaxPageNum(NewsDTO param) {
+		return nMapper.selMaxPageNum(param);
+	}
+	
+	public List<NewsEntity> selNewsList(NewsDTO param) {
+		int sIdx = (param.getPage() - 1) * param.getRowContent();
+		param.setsIdx(sIdx);		
+		return nMapper.selNewsList(param);
+	}
+	
+	public int updNewsHits(NewsDTO param) {
+		return nMapper.updNewsHits(param);
 	}
 	
 }

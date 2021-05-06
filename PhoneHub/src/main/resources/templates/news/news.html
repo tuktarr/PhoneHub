@@ -1,268 +1,231 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorator="~{layout/layout_default}">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="~{layout/layout_default}">
 
 <th:block layout:fragment="css">
-	<link rel="stylesheet" type="text/css" th:href="@{css/news.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{css/news.css}">
 </th:block>
 
 <th:block layout:fragment="script">
     <!-- jQuery -->
-    <script defer type="text/javascript" th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js}"></script>
+    <script defer type="text/javascript"
+        th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js}"></script>
     <!-- js -->
     <script defer type="text/javascript" th:src="@{js/wave.js}"></script>
     <script defer type="text/javascript" th:src="@{js/script.js}"></script>
+    <script defer type="text/javascript" th:src="@{js/news/news.js}"></script>
 </th:block>
 
 <th:block layout:fragment="content">
-    <div class="wrap">
-        <!-- content -->
-        <div class="news_wrap">
-            <div class="pagew">
-                <div class="news_content">
-                    <div class="news_top">
-                        <!-- 최근인기뉴스 -->
-                        <div class="news_top_left">
-                            <p class="linear">
-                                <span>최근 인기 뉴스</span>
-                            </p>
-                            <div class="news_box">
-                                <div class="big">
-                                    <div class="thumb">
-                                        <a href="#">
-                                            <img src="asset/thumb.jpg">
-                                            <div class="txt_area big_txt">
-                                                <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                                                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                                                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="small">
-                                    <div class="thumb">
-                                        <a href="#">
-                                            <img src="asset/thumb.jpg">
-                                            <div class="txt_area small_txt">
-                                                <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                                                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="thumb">
-                                        <a href="#">
-                                            <img src="asset/thumb.jpg">
-                                            <div class="txt_area small_txt">
-                                                <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                                                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="thumb">
-                                        <a href="#">
-                                            <img src="asset/thumb.jpg">
-                                            <div class="txt_area small_txt">
-                                                <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                                                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
-                                            </div>
-                                        </a>
-                                    </div>
+    <div class="news_wrap">
+        <div class="pagew">
+            <div class="news_content">
+                <div class="news_top">
+                    <!-- 최근인기뉴스 -->
+                    <div class="news_top_left">
+                        <p class="linear">
+                            <span>최근 인기 뉴스</span>
+                        </p>
+                        <div class="news_box">
+                            <div class="big">
+                                <div class="thumb">
+                                    <a href="#">
+                                        <img src="asset/thumb.jpg">
+                                        <div class="txt_area big_txt">
+                                            <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+                                                eiusmod
+                                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+                                                veniam,
+                                                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                                                commodo
+                                                consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+                                                esse
+                                                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                                                cupidatat non
+                                                proident, sunt in culpa qui officia deserunt mollit anim id est
+                                                laborum.Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                                                sed do eiusmod
+                                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+                                                veniam,
+                                                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                                                commodo
+                                                consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+                                                esse
+                                                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                                                cupidatat non
+                                                proident, sunt in culpa qui officia deserunt mollit anim id est
+                                                laborum.</span>
+                                        </div>
+                                    </a>
                                 </div>
                             </div>
-                        </div>
-                        <!-- 가장많이본뉴스 -->
-                        <div class="news_top_right">
-                            <p class="linear">
-                                <span>가장 많이 본 뉴스</span>
-                            </p>
-                            <div class="news_box col">
-                                <div class="top_view_thumb">
+                            <div class="small">
+                                <div class="thumb">
                                     <a href="#">
                                         <img src="asset/thumb.jpg">
-                                        <div class="txt_area view_txt">
-                                            <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                                                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
+                                        <div class="txt_area small_txt">
+                                            <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+                                                eiusmod
+                                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+                                                veniam,
+                                                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                                                commodo
+                                                consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+                                                esse
+                                                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                                                cupidatat non
+                                                proident, sunt in culpa qui officia deserunt mollit anim id est
+                                                laborum.</span>
                                         </div>
                                     </a>
                                 </div>
-                                <div class="top_view_thumb">
+                                <div class="thumb">
                                     <a href="#">
                                         <img src="asset/thumb.jpg">
-                                        <div class="txt_area view_txt">
-                                            <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                                                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
+                                        <div class="txt_area small_txt">
+                                            <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+                                                eiusmod
+                                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+                                                veniam,
+                                                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                                                commodo
+                                                consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+                                                esse
+                                                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                                                cupidatat non
+                                                proident, sunt in culpa qui officia deserunt mollit anim id est
+                                                laborum.</span>
                                         </div>
                                     </a>
                                 </div>
-                                <div class="top_view_thumb">
+                                <div class="thumb">
                                     <a href="#">
                                         <img src="asset/thumb.jpg">
-                                        <div class="txt_area view_txt">
-                                            <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                                                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
+                                        <div class="txt_area small_txt">
+                                            <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+                                                eiusmod
+                                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+                                                veniam,
+                                                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                                                commodo
+                                                consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+                                                esse
+                                                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                                                cupidatat non
+                                                proident, sunt in culpa qui officia deserunt mollit anim id est
+                                                laborum.</span>
                                         </div>
-                                    </a>
-                                </div>
-                                <div class="top_view_link">
-                                    <a href="#" class="one_line_link">
-                                        <p>#</p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                                        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                    </a>
-                                    <a href="#" class="one_line_link">
-                                        <p>#</p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                                        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                    </a>
-                                    <a href="#" class="one_line_link">
-                                        <p>#</p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                                        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                                     </a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- 최근뉴스 -->
-                    <div class="news_bottom">
+                    <!-- 가장많이본뉴스 -->
+                    <div class="news_top_right">
                         <p class="linear">
-                            <span>최근 뉴스</span>
+                            <span>가장 많이 본 뉴스</span>
                         </p>
-                        <div class="news_box col news_bottom_pad">
-                            <div class="bottom_thumb">
+                        <div class="news_box col">
+                            <div class="top_view_thumb">
                                 <a href="#">
                                     <img src="asset/thumb.jpg">
-                                    <div class="txt_area news_bottom_txt">
-                                        <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                    <div class="txt_area view_txt">
+                                        <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+                                            eiusmod
+                                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+                                            veniam,
                                             quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                                            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
-                                        <div class="writer_info">
-                                            <span class="write_date">2021.04.29 AM 10:46</span>
-                                            <span class="writer">권혁진</span>
-                                        </div>
+                                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+                                            esse
+                                            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                                            cupidatat non
+                                            proident, sunt in culpa qui officia deserunt mollit anim id est
+                                            laborum.</span>
                                     </div>
                                 </a>
                             </div>
-                            <!-- test -->
-                            <div class="bottom_thumb">
+                            <div class="top_view_thumb">
                                 <a href="#">
                                     <img src="asset/thumb.jpg">
-                                    <div class="txt_area news_bottom_txt">
-                                        <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                    <div class="txt_area view_txt">
+                                        <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+                                            eiusmod
+                                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+                                            veniam,
                                             quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                                            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
-                                        <div class="writer_info">
-                                            <span class="write_date">2021.04.29 AM 10:46</span>
-                                            <span class="writer">권혁진</span>
-                                        </div>
+                                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+                                            esse
+                                            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                                            cupidatat non
+                                            proident, sunt in culpa qui officia deserunt mollit anim id est
+                                            laborum.</span>
                                     </div>
                                 </a>
                             </div>
-                            <div class="bottom_thumb">
+                            <div class="top_view_thumb">
                                 <a href="#">
                                     <img src="asset/thumb.jpg">
-                                    <div class="txt_area news_bottom_txt">
-                                        <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                    <div class="txt_area view_txt">
+                                        <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+                                            eiusmod
+                                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+                                            veniam,
                                             quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                                            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
-                                        <div class="writer_info">
-                                            <span class="write_date">2021.04.29 AM 10:46</span>
-                                            <span class="writer">권혁진</span>
-                                        </div>
+                                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+                                            esse
+                                            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                                            cupidatat non
+                                            proident, sunt in culpa qui officia deserunt mollit anim id est
+                                            laborum.</span>
                                     </div>
                                 </a>
                             </div>
-                            <div class="bottom_thumb">
-                                <a href="#">
-                                    <img src="asset/thumb.jpg">
-                                    <div class="txt_area news_bottom_txt">
-                                        <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                                            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
-                                        <div class="writer_info">
-                                            <span class="write_date">2021.04.29 AM 10:46</span>
-                                            <span class="writer">권혁진</span>
-                                        </div>
-                                    </div>
+                            <div class="top_view_link">
+                                <a href="#" class="one_line_link">
+                                    <p>#</p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                                 </a>
-                            </div>
-                            <div class="bottom_thumb">
-                                <a href="#">
-                                    <img src="asset/thumb.jpg">
-                                    <div class="txt_area news_bottom_txt">
-                                        <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                                            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
-                                        <div class="writer_info">
-                                            <span class="write_date">2021.04.29 AM 10:46</span>
-                                            <span class="writer">권혁진</span>
-                                        </div>
-                                    </div>
+                                <a href="#" class="one_line_link">
+                                    <p>#</p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                </a>
+                                <a href="#" class="one_line_link">
+                                    <p>#</p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                                 </a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <!-- 최근뉴스 -->
+            <div class="news_bottom">
+                <p class="linear">
+                    <span>최근 뉴스</span>
+                </p>
+                <div id="bottom_news" class="news_box col news_bottom_pad">
+                </div>
+                <!-- paging -->
+                <div id="pagingContent">
+                    <div id="newsPaging" class="paging_control">
+
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </th:block>
+
 </html>

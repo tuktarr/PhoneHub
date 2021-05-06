@@ -192,8 +192,22 @@
 	margin-right: 15px;
 }
 
+.news_bottom_txt {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.news_title {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
 .news_bottom_txt span {
-	max-height: 140px;
+	max-height: 100px;
+	overflow: hidden;
 }
 
 .writer_info {
