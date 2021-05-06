@@ -1,211 +1,283 @@
 .news_wrap {
-    position: relative;
-    display: block;
-    width: 100%;
-    height: 100%;
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 .news_content {
-    position: relative;
-    display: block;
-    width: 100%;
-    height: 100%;
-    padding: 40px 0;
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 40px 0;
 }
 
 .news_top {
-    position: relative;
-    display: flex;
-    min-height: 500px;
+  position: relative;
+  display: flex;
+  min-height: 500px;
 }
 
 .news_top_left {
-    flex: 2;
-    padding-right: 30px;
+  flex: 2;
+  padding-right: 30px;
 }
 
 .news_top_right {
-    flex: 1;
+  flex: 1;
 }
 
 /*공통사항*/
 .linear {
-    position: relative;
-    margin-bottom: 10px;
+  position: relative;
+  margin-bottom: 10px;
 }
 
 .linear::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 50%;
-    height: 1px;
-    width: 100%;
-    background: #333;
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  height: 1px;
+  width: 100%;
+  background: #333;
 }
 
 .linear span {
-    position: relative;
-    padding-right: 10px;
-    background: #fff;
-    font-size: 23px;
-    z-index: 999;
+  position: relative;
+  padding-right: 10px;
+  background: #fff;
+  font-size: 23px;
+  z-index: 999;
 }
 
 .news_box {
-    position: relative;
-    display: flex;
+  position: relative;
+  display: flex;
 }
 
 .col {
-	flex-direction: column;
+  flex-direction: column;
 }
 
 .thumb {
-    position: relative;
+  position: relative;
 }
 
 .txt_area {
-    overflow: hidden;
+  overflow: hidden;
 }
 /*---------------------*/
 
 /*최근인기뉴스*/
 .big {
-    position: relative;
-    display: block;
-    flex: 2;
+  position: relative;
+  display: block;
+  flex: 2;
 }
 
 .big .thumb a img {
-    height: 300px;
-    width: 100%;
-    margin-bottom: 20px;
+  height: 300px;
+  width: 100%;
+  margin-bottom: 20px;
 }
 
 .big_txt {
-    position: relative;
-    display: block;
-    height: 200px;
-    width: 100%;
-    padding-top: 5px;
+  position: relative;
+  display: block;
+  height: 200px;
+  width: 100%;
+  padding-top: 5px;
 }
 
 .small {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    flex: 1.5;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex: 1.5;
 }
 
 .small .thumb {
-    margin: 0 0 20px 20px;
+  margin: 0 0 20px 20px;
 }
 
 .small .thumb a {
-    position: relative;
-    display: flex;
+  position: relative;
+  display: flex;
 }
 
 .small .thumb a img {
-    height: 150px;
-    width: 200px;
+  height: 150px;
+  width: 200px;
 }
 
 .small_txt {
-	display: block;
-	max-height: 150px;
-    margin-left: 10px;
+  display: block;
+  max-height: 150px;
+  margin-left: 10px;
 }
 /*----------------------*/
 
 /*가장많이본뉴스*/
 .top_view_thumb {
-	margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
-.top_view_thumb a{
-	display: flex;
+.top_view_thumb a {
+  display: flex;
 }
 
 .top_view_thumb a img {
-	display: block;
-    height: 120px;
-    width: 200px;
+  display: block;
+  height: 120px;
+  width: 200px;
 }
 
 .view_txt {
-	display: block;
-	max-height: 120px;
-    margin-left: 10px;
+  display: block;
+  max-height: 120px;
+  margin-left: 10px;
 }
 
 .top_view_link {
-	position: relative;
-	margin-top: 25px;
+  position: relative;
+  margin-top: 25px;
 }
 
 .one_line_link {
-	position: relative;
-	display: block;
-	width: 410px;
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	margin-bottom: 10px;
+  position: relative;
+  display: block;
+  width: 410px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 10px;
 }
 
 .one_line_link:hover {
-	text-decoration: underline;
+  text-decoration: underline;
 }
 
 .one_line_link p {
-	display: inline-block;
-	margin-right: 5px;
+  display: inline-block;
+  margin-right: 5px;
 }
 /*-----------------------------*/
 
 /*최신뉴스*/
 .news_bottom {
-    position: relative;
-    display: block;
-    margin: 50px 0;
+  position: relative;
+  display: block;
+  margin: 50px 0;
 }
 
 .news_bottom_pad {
-    padding: 0 10vw;
+  padding: 0 10vw;
 }
 
 .bottom_thumb {
-	position: relative;
-	margin-top: 20px;
+  position: relative;
+  margin-top: 20px;
 }
 
 .bottom_thumb a {
-	display: flex;
+  display: flex;
 }
 
 .bottom_thumb a img {
-	display: block;
-	width: 300px;
-	height: 200px;
-	margin-right: 15px;
+  display: block;
+  width: 300px;
+  height: 200px;
+  image-rendering: pixelated;
+  margin-right: 15px;
+}
+
+.news_bottom_txt {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.news_title {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .news_bottom_txt span {
-	max-height: 140px;
+  max-height: 100px;
+  overflow: hidden;
 }
 
 .writer_info {
-	height: 50px;
-	line-height: 50px;
+  height: 50px;
+  line-height: 50px;
 }
 
 .write_date {
-	position: relative;
+  position: relative;
 }
 
 .write_date::after {
-	content: '/';
-	margin: 0 3px 0 10px;
+  content: "/";
+  margin: 0 3px 0 10px;
+}
+
+/*paging*/
+#pagingContent {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100px;
+}
+
+.paging_control {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.blue_bar {
+  position: relative;
+}
+
+.blue_bar li {
+  display: inline;
+  text-align: center;
+}
+
+.blue_bar li:first-child a {
+  border-radius: 6px 0 0 6px;
+}
+
+.blue_bar li:last-child a {
+  border-radius: 0 6px 6px 0;
+}
+
+.blue_bar a {
+  float: left;
+  display: block;
+  font-size: 15px;
+  padding: 7px 15px;
+  color: #fff;
+  margin-left: -1px;
+  line-height: 1.5;
+  color: #6495ed;
+  background: #fff;
+  border: 1px solid #6495ed;
+}
+
+.blue_bar a:hover {
+  background: #eee;
+}
+
+.blue_bar a.active,
+.blue_bar a:active {
+  cursor: default;
+  border-color: #6495ed;
+  background: #6495ed;
+  color: #fff;
 }

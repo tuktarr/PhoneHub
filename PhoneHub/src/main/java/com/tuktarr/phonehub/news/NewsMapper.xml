@@ -5,29 +5,33 @@
 <mapper namespace="com.tuktarr.phonehub.news.NewsMapper">
 	<insert id="insNews">
 		INSERT INTO news
-		(title, content, writer, img, 
+		(title, content, writer, img,
 		url, regDt)
 		VALUES
 		(#{title}, #{content}, #{writer},
-		#{img}, #{url}, #{regDt})
+		#{img}, #{url},
+		#{regDt})
 	</insert>
-	
+
 	<select id="selLastTitle" resultType="String">
-		SELECT title FROM news ORDER BY pk DESC LIMIT 1;
+		SELECT title FROM news
+		ORDER BY pk DESC LIMIT 1;
 	</select>
-	
+
 	<select id="selMaxPageNum" resultType="_int">
-		SELECT CEIL(COUNT(pk) / #{rowCnt})
+		SELECT CEIL(COUNT(pk) /
+		#{rowContent})
 		FROM news;
 	</select>
-	
-	<select id="selNews" resultType="com.tuktarr.phonehub.model.NewsEntity">
-		SELECT title, content, writer, img, 
-		url, regDt
-		FROM news 
-		ORDER BY pk DESC
+
+	<select id="selNewsList"
+		resultType="com.tuktarr.phonehub.model.NewsEntity">
+		SELECT pk, title, content, writer, img,
+		url, DATE_FORMAT(regDt,'%Y-%m-%d') AS regDt
+		FROM news ORDER BY pk DESC
+		LIMIT #{sIdx}, #{rowContent}
 	</select>
-	
+
 	<update id="updNewsHits">
 		UPDATE news
 		SET hits = hits + 1

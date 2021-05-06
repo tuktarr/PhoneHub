@@ -4,11 +4,10 @@
 <div th:fragment="header">
 	<!-- header -->
 	<div class="header">
-		<a href="/" class="logo" title="phonehub"> <img
-			src="asset/logo.png">
+		<a href="/" class="logo" title="phonehub"> <img src="asset/logo.png">
 		</a>
 		<ul class="h_list modify">
-			<li><a href="#">뉴스</a></li>
+			<li><a href="/news">뉴스</a></li>
 			<li><a href="#">휴대폰</a></li>
 			<li><a href="#">랭킹</a></li>
 			<li><a href="/list">게시판</a></li>
@@ -26,14 +25,12 @@
 		<div class="login_cont">
 			<div th:if="${session.loginUser == null}">
 				<div class="login_container">
-					<a href="/login" class="sign_in">로그인</a> <a href="/join"
-						class="sign_up">회원가입</a>
+					<a href="/login" class="sign_in">로그인</a> <a href="/join" class="sign_up">회원가입</a>
 				</div>
 			</div>
 			<div th:if="${session.loginUser != null}">
 				<div class="login_container">
-					<a href="/logout" class="sign_in">로그아웃</a> <a href="/mypage"
-						class="sign_up">마이페이지</a>
+					<a href="/logout" class="sign_in">로그아웃</a> <a href="/mypage" class="sign_up">마이페이지</a>
 				</div>
 			</div>
 		</div>
