@@ -15,13 +15,26 @@ public class PhoneController {
 	@Autowired
 	private PhoneService pService;
 	
+	@GetMapping("rank")
+	public String rank() {
+		return "rank/rank";
+	}
+	
 	@ResponseBody
 	@GetMapping("/phoneRankings")
 	public Map<String, Object> selPhoneRanking() {
-		
 		Map<String, Object> phoneRankings = new HashMap<String, Object>();
 		phoneRankings.put("performanceRankings", pService.selPerformanceRanking());
 		phoneRankings.put("cost_Effectivenes", pService.selCost_Effectiveness());
+		
+		return phoneRankings;
+	}
+	
+	@ResponseBody
+	@GetMapping("/performanceRankings")
+	public Map<String, Object> selPerformanceRanking() {
+		Map<String, Object> phoneRankings = new HashMap<String, Object>();
+		phoneRankings.put("performanceRankings", pService.selPerformanceRanking());
 		
 		return phoneRankings;
 	}
