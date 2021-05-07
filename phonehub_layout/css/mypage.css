@@ -1,67 +1,150 @@
 .my_wrap {
-	position: relative;
-	display: block;
-	width: 100%;
-	height: 100%;
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
 }
 
-.profile_cont {
-	position: relative;
-	display: flex;
-	justify-content: space-between;
-	width: 100%;
-	height: auto;
-	background: #fff;
-	border-radius: 10px;
-	box-shadow: 3px 5px 8px 2px rgba(0,0,0,0.4);
-	margin: 70px 0 20px 0;
-	padding: 50px;
+.profile_cont,
+.passup_cont {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: auto;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 3px 5px 8px 2px rgba(0, 0, 0, 0.4);
+    margin: 70px 0;
+    padding: 50px;
 }
 
 /*프로필사진 부분*/
 .profile_img_cont {
-	position: relative;
-	display: block;
+    position: relative;
+    display: block;
 }
 
 .profile_img_cont img {
-	width: 300px;
-	height: 300px;
+    width: 300px;
+    height: 300px;
 }
 
 .profile_img_control {
-	position: relative;
-	display: flex;
-	justify-content: space-around;
-	width: 100%;
-	margin-top: 20px;
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-top: 20px;
 }
 
 #proUpBtn {
-	display: none;
+    display: none;
 }
 
 #proDelBtn {
-	display: none;
+    display: none;
 }
 
 .profile_img_control label {
-	display: inline-block;
-	width: 45%;
-	height: 35px;
-	line-height: 35px; 
-	text-align: center;
-	cursor: pointer;
-	border: none;
-	border-radius: 5px;
-	background: #89ABE3;
-	color: #fefefe;
+    display: inline-block;
+    width: 45%;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background: #89ABE3;
+    color: #fefefe;
 }
 
 /*유저정보 부분*/
 .profile_info_cont {
+    position: relative;
+    display: block;
+    flex: 1;
+    padding: 0 10px;
+    margin-left: 20px;
+}
+
+.profile_info_cont input,
+.passchk_cont input {
+    display: inline-block;
+    height: 50px;
+    width: 300px;
+    margin: 10px 0;
+    padding: 0 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 15px;
+    transition: all 0.5s;
+}
+
+input[name=passUpBtn],
+input[name=newPassBtn] {
+    display: block;
+    height: 50px;
+    width: 100%;
+    color: #fcf6f5;
+    font-size: 15px;
+    font-family: 'Noto Sans KR', sans-serif;
+    text-transform: capitalize;
+    letter-spacing: 2px;
+    background: #89ABE3;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.5s;
+    margin-top: 15px;
+    margin-left: 15px;
+}
+
+input[name=passUpBtn]:hover,
+input[name=newPassBtn]:hover {
+    background: #89abff;
+    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.2), 0 4px 10px 0 rgba(0, 0, 0, 0.19);
+}
+
+.up_info {
+    cursor: pointer;
+    color: #333;
+    font-size: 17px;
+    margin: 0 10px;
+}
+
+.up_info:hover {
+    text-decoration: underline;
+}
+
+.up_info::after {
+    content: '\f245';
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+   	padding-left: 5px;
+}
+
+/*pass update content*/
+.passup_cont {
+	display: none;
+}
+
+.passchk_cont {
 	position: relative;
+	width: 100%;
+	height: 80px;
+}
+
+.passchk_cont input {
+	margin: 0 15px;
+}
+
+input[name=newPassBtn] {
+	display: inline-block;
+	width: 100px;
+}
+
+.pop {
 	display: block;
-	flex: 1;
-	padding: 0 10px;
+	margin-bottom: 70px;
 }
