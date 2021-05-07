@@ -1,181 +1,192 @@
 .rank_wrap {
-    position: relative;
-    display: block;
-    width: 100%;
+  position: relative;
+  display: block;
+  width: 100%;
 }
 
 .rank_content {
-    position: relative;
-    display: block;
-    width: 100%;
-    height: 100%;
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 /*공통사항*/
 .link_info {
-    position: absolute;
-    right: 10px;
-    top: 10px;
-    z-index: 999;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  z-index: 999;
 }
 
 .link_info a {
-    margin-left: 5px;
+  margin-left: 5px;
 }
 
 .link_info:hover a {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 /*top rank*/
 .top_rank {
-    position: relative;
-    display: flex;
-    width: 100%;
-    height: 500px;
-    margin: 70px 0 20px 0;
-    padding: 0 20px;
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 500px;
+  margin: 70px 0 20px 0;
+  padding: 0 20px;
 }
 
 .first,
 .second,
 .third {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex: 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
 }
 
 .top_image_sec {
-    position: relative;
-    display: block;
-    width: 100%;
-    flex: 0.5;
+  position: relative;
+  display: block;
+  width: 100%;
+  flex: 0.5;
 }
 
 .top_image_sec img {
-    position: absolute;
-    left: 50%;
-    bottom: 5%;
-    transform: translateX(-50%);
-    width: 150px;
-    height: 150px;
+  position: absolute;
+  left: 50%;
+  bottom: 5%;
+  transform: translateX(-50%);
+  width: 150px;
+  height: 150px;
 }
 
 .rank_bar {
-    position: relative;
-    display: block;
-    width: 35%;
-    text-align: center;
-    transition: ease-in-out 0.5s all;
-    background: #3e3e3e;
-    border-bottom: none;
-    border-radius: 7px 7px 0 0;
+  position: relative;
+  display: block;
+  width: 50%;
+  text-align: center;
+  transition: ease-in-out 0.5s all;
+  background: #3e3e3e;
+  border-bottom: none;
+  border-radius: 7px 7px 0 0;
 }
 
 .r_silver {
-    flex: 0.7;
+  flex: 0.7;
 }
 
 .r_gold {
-    flex: 1;
+  flex: 1;
 }
 
 .r_bronze {
-    flex: 0.5;
+  flex: 0.5;
 }
 
 .overlay {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    display: block;
-    width: 100%;
-    height: 0;
-    border-radius: 5px 5px 0 0;
-    transition: ease-out 0.7s;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  display: block;
+  width: 100%;
+  height: 0;
+  border-radius: 5px 5px 0 0;
+  transition: ease-out 0.7s;
 }
 
 .sv {
-    background: #d1d7da;
+  background: #d1d7da;
 }
 
 .gd {
-    background: #f9ad0e;
+  background: #f9ad0e;
 }
 
 .bz {
-    background: #df7e08;
+  background: #df7e08;
 }
 
 .rank_bar:hover .overlay {
-    height: 100%;
+  height: 100%;
 }
 
 .rank_bar span {
-    position: relative;
-    display: inline-block;
-    font-size: 25px;
-    font-weight: 700;
-    margin: 20px 0;
-    z-index: 99999;
-    color: #fff;
-    transition: ease-out 1.4s;
+  position: relative;
+  display: inline-block;
+  font-size: 25px;
+  font-weight: 700;
+  margin: 20px 0;
+  z-index: 99999;
+  color: #fff;
+  transition: ease-out 1.4s;
 }
 
 .rank_bar:hover span {
-    color: #000;
+  color: #000;
+}
+
+/*phone name*/
+.rank_bar .phone_name {
+  position: absolute;
+  display: block;
+  transform: translateX(-50%);
+  left: 50%;
+  bottom: 10px;
+  font-size: 22px;
 }
 
 /*other rank*/
 .other_rank {
-    position: relative;
-    display: block;
-    width: 100%;
-    height: 500px;
-    margin-top: 50px;
-    margin-bottom: 100px;
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 500px;
+  margin-top: 50px;
+  margin-bottom: 100px;
 }
 
 /*slide*/
 .or_slide {
-    position: relative;
-    width: 100%;
-    height: 100%;
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 
 .sw_or {
-    position: relative;
-    height: 100%;
-    width: 100%;
-    padding: 70px 0 50px 0;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  padding: 70px 0 50px 0;
 }
 
 .swiper-slide {
-    position: relative;
-    width: 300px;
-    height: 300px;
-    background: #333;
-    -webkit-box-reflect: below 0px linear-gradient(transparent,transparent,#0006);
+  position: relative;
+  width: 300px;
+  height: 300px;
+  background: #333;
+  -webkit-box-reflect: below 0px
+    linear-gradient(transparent, transparent, #0006);
 }
 
 .or_box {
-	position: relative;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	width: 100%;
-	height: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
 }
 
 .or_box img {
-	flex: 0.5;
-	width: 50%;
-	height: 25px;
+  flex: 0.5;
+  width: 50%;
+  height: 25px;
 }
 
 .or_box span {
-	flex: 0.1;
-	color: #fefefe;
+  flex: 0.1;
+  color: #fefefe;
 }
