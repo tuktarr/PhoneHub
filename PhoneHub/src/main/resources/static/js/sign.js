@@ -35,7 +35,7 @@ function setModal() {
 	const modalClose = document.querySelector('.email_close')
 
 	// 닫기 버튼을 클릭시 모달창 닫기
-	modalClose.addEventListener('click', function(event) {
+	modalClose.addEventListener('click', function (event) {
 		if (event.target === modalClose) {
 			closeModal()
 		}
@@ -64,9 +64,9 @@ if (joinBtnElem) {
 				'Content-type': 'application/json',
 			},
 			body: JSON.stringify(param)
-		}).then(function(res) {
+		}).then(function (res) {
 			return res.json()
-		}).then(function(myJson) {
+		}).then(function (myJson) {
 			proc(myJson)
 		})
 
@@ -134,16 +134,16 @@ if (emailsendButton) {
 				'Content-type': 'application/json',
 			},
 			body: JSON.stringify(param1)
-		}).then(function(res) {
+		}).then(function (res) {
 			return res.json()
-		}).then(function(myJson) {
+		}).then(function (myJson) {
 			proc(myJson)
 		})
 
 		function proc(myJson) {
 			console.log(myJson.check)
-			if(myJson.check === 0){
-				openModal()			
+			if (myJson.check === 0) {
+				openModal()
 			} else {
 				alert('이미 있는 아이디입니다.')
 				email.focus()
@@ -166,9 +166,9 @@ if (emailchkbtnElem) {
 				'Content-type': 'application/json',
 			},
 			body: param
-		}).then(function(res) {
+		}).then(function (res) {
 			return res.json()
-		}).then(function(myJson) {
+		}).then(function (myJson) {
 			proc(myJson)
 		})
 

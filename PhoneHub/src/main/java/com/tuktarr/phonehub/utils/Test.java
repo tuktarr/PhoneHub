@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 import com.tuktarr.phonehub.model.NewsEntity;
 
 @Component
-public class NaverNewsCrawling {
+public class Test {
 
 	public List<NewsEntity> naverNewsCrawling(String title) throws IOException {
 
@@ -31,11 +31,8 @@ public class NaverNewsCrawling {
 			String date = sdf.format(cal.getTime());
 			days.add(date);
 		}
-		
+
 		for (String day : days) {
-			for(int i = 1; i <= 3; i++) {
-				
-			}
 			String url = "https://news.naver.com/main/list.nhn?mode=LS2D&mid=shm&sid2=731&sid1=105&date=" + day;
 			Document doc = Jsoup.connect(url).header("Content-Type", "application/json;charset=UTF-8").get();
 			Elements newsBoxs = doc.select(".newsflash_body > ul > li > dl");
