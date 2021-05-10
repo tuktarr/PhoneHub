@@ -17,116 +17,13 @@ layout:decorator="~{layout/layout_default}">
             <!-- tab-menu -->
             <div class="tab_container">
                 <div class="pagew">
-                    <ul class="tab_menus">
-                        <li class="active"><a href="#tab1">자유게시판</a></li>
-                        <li><a href="#tab2">중고장터</a></li>
-                        <li><a href="#tab3">공지사항</a></li>
+                    <ul id="tab_menus" class="tab_menus">
+                        <li class="board1 active"><a href="">자유게시판</a></li>
+                        <li class="board2"><a href="">중고장터</a></li>
+                        <li class="board3"><a href="">공지사항</a></li>
                     </ul>
                     <!-- tab_content -->
-                    <div class="tab_content active" id="tab1">
-                        <table class="tab_table">
-                            <colgroup>
-                                <col class="num">
-                                <col class="title">
-                                <col class="writer">
-                                <col class="hits">
-                                <col class="date">
-                            </colgroup>
-                            <!-- th -->
-                            <tr>
-                                <th>번호</th>
-                                <th>제목</th>
-                                <th>글쓴이</th>
-                                <th>조회수</th>
-                                <th>날짜</th>
-                            </tr>
-                            <!-- tr -->
-                            <tr class="gall_tr">
-                                <td class="gall_num">1</td>
-                                <td class="gall_title">
-                                    <a href="detail.html">
-                                        제목1번
-                                    </a>
-                                </td>
-                                <td class="gall_nick">문수찬</td>
-                                <td class="gall_hits">0</td>
-                                <td class="gall_date">2021-04-12</td>
-                            </tr>
-                            <!-- test -->
-                            <tr class="gall_tr">
-                                <td class="gall_num">1</td>
-                                <td class="gall_title">
-                                    <a href="#">
-                                        제목1번
-                                    </a>
-                                </td>
-                                <td class="gall_nick">문수찬</td>
-                                <td class="gall_hits">0</td>
-                                <td class="gall_date">2021-04-12</td>
-                            </tr>
-                        </table>
-                    </div>
-                    <div class="tab_content" id="tab2">
-                        <table class="tab_table">
-                            <colgroup>
-                                <col class="num">
-                                <col class="title">
-                                <col class="writer">
-                                <col class="hits">
-                                <col class="date">
-                            </colgroup>
-                            <!-- th -->
-                            <tr>
-                                <th>번호</th>
-                                <th>제목</th>
-                                <th>글쓴이</th>
-                                <th>조회수</th>
-                                <th>날짜</th>
-                            </tr>
-                            <!-- tr -->
-                            <tr class="gall_tr">
-                                <td class="gall_num">1</td>
-                                <td class="gall_title">
-                                    <a href="#">
-                                        제목2번
-                                    </a>
-                                </td>
-                                <td class="gall_nick">오승우</td>
-                                <td class="gall_hits">0</td>
-                                <td class="gall_date">2021-04-12</td>
-                            </tr>
-                        </table>
-                    </div>
-                    <div class="tab_content" id="tab3">
-                        <table class="tab_table">
-                            <colgroup>
-                                <col class="num">
-                                <col class="title">
-                                <col class="writer">
-                                <col class="hits">
-                                <col class="date">
-                            </colgroup>
-                            <!-- th -->
-                            <tr>
-                                <th>번호</th>
-                                <th>제목</th>
-                                <th>글쓴이</th>
-                                <th>조회수</th>
-                                <th>날짜</th>
-                            </tr>
-                            <!-- tr -->
-                            <tr class="gall_tr">
-                                <td class="gall_num">1</td>
-                                <td class="gall_title">
-                                    <a href="#">
-                                        제목3번
-                                    </a>
-                                </td>
-                                <td class="gall_nick">권혁진</td>
-                                <td class="gall_hits">0</td>
-                                <td class="gall_date">2021-04-12</td>
-                            </tr>
-                        </table>
+                    <div class="tab_content active" id="tab">
                     </div>
                     <a href="/write" th:if="${session.loginUser != null}">
                         <input type="button" name="writebtn" value="글쓰기">
@@ -135,21 +32,6 @@ layout:decorator="~{layout/layout_default}">
             </div>
             <!-- paging -->
             <div id="pagingContent">
-                <div class="paging_control">
-                    <ul class="blue_bar">
-                        <li><a href="#" class="prev">&laquo;</a></li>
-                        <li><a href="#" class="active">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li><a href="#">6</a></li>
-                        <li><a href="#">7</a></li>
-                        <li><a href="#">8</a></li>
-                        <li><a href="#">9</a></li>
-                        <li><a href="#" class="next">&raquo;</a></li>
-                    </ul>
-                </div>
             </div>
         </div>
 </th:block>

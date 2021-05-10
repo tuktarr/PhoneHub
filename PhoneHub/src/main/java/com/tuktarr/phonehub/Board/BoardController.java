@@ -35,14 +35,14 @@ public class BoardController {
 	}
 	
 	// 페이징 ajax처리
-	@GetMapping("/listData")
+	@GetMapping("/boardListData")
 	@ResponseBody
 	public List<BoardDomain> listData(BoardDTO p) {
 		return bService.selBoardList(p);
 	}
 	
 	// 페이징 max값 구하는 처리
-	@GetMapping("/getMaxPageNum")
+	@GetMapping("/boardGetMaxPageNum")
 	@ResponseBody
 	public int selMaxPageNum(BoardDTO p) {
 		return bService.selMaxPageNum(p);

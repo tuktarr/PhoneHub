@@ -5,6 +5,7 @@ public class BoardDTO {
 	private int page;
 	private int sIdx;
 	private int rowCnt;
+	private int category;
 	
 	public int getBoardPk() {
 		return boardPk;
@@ -29,6 +30,12 @@ public class BoardDTO {
 	}
 	public void setRowCnt(int rowCnt) {
 		this.rowCnt = rowCnt;
+	}
+	public int getCategory() {
+		return category;
+	}
+	public void setCategory(int category) {
+		this.category = category;
 	}
 	
 	
