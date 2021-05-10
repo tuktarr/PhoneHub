@@ -130,5 +130,3 @@ function pageHighlight(ele) {
     //나의 span에 selected 클래스 추가한다.
     ele.classList.add('active')
 }
-
-pageHighlight(1)
