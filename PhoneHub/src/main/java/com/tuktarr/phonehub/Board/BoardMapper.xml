@@ -10,7 +10,7 @@
 		FROM board Where category = #{category}
 	</insert>
 	
-	<select id="selMaxPageNum" resultType="_int">
+	<select id="selMaxPageNum" resultType="int">
 		SELECT CEIL(COUNT(boardPk) / #{rowCnt}) 
 		FROM board Where category = #{category}
 	</select>
@@ -18,17 +18,17 @@
 	<select id="selBoardList" resultType="com.tuktarr.phonehub.model.BoardDomain">
 		SELECT A.boardPk, A.seq,
 		A.title, A.hits, DATE_FORMAT(A.regDt, '%Y-%m-%d') AS regDt, A.isDel,
-		A.userPk, B.nickname AS writerNm
+		A.userPk, A.category, B.nickname AS writerNm
 		FROM board A
 		INNER JOIN user B
 		ON A.userPk = B.userPk
-		WHERE A.isDel = 0
+		WHERE A.isDel = 0 and A.category = #{category}
 		ORDER BY A.boardPk DESC
 		LIMIT #{sIdx}, #{rowCnt};
 	</select>
 	
 	<select id="selBoard" resultType="com.tuktarr.phonehub.model.BoardDomain">
-		SELECT A.boardPk, A.seq, A.title, A.ctnt, A.hits, A.userPk, A.regDt, B.nickname AS writerNm 
+		SELECT A.boardPk, A.seq, A.title, A.ctnt, A.hits, A.userPk, A.category, A.regDt, B.nickname AS writerNm 
 		FROM board A
 		INNER JOIN user B
 		ON A.userPk = B.userPk

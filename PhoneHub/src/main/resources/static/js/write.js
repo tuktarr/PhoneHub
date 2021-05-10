@@ -1,7 +1,8 @@
 const formElem = document.querySelector('#writeFrm')
-
+const selectCate = document.querySelector('.select_Box')
 const writeEditBtn = document.querySelector('#writeEditBtn')
 
+console.log(selectCate.value)
 if (writeEditBtn) {
 	function ajax() {
 		const titleElem = formElem.title
@@ -16,7 +17,8 @@ if (writeEditBtn) {
 			ctnt: contentElem.value,
 			userPk: userPkElem.value,
 			boardPk: boardPkElem.value,
-			img: imgElem.value
+			img: imgElem.value,
+			category: selectCate.value
 		}
 
 		fetch(boardPkElem.value == 0 ? 'write' : 'edit', {
@@ -26,11 +28,25 @@ if (writeEditBtn) {
 			},
 			body: JSON.stringify(param)
 		}).then(res => res.json())
-			.then(function(myJson) {
-				console.log(myJson.result)
+			.then(myJson => {
+				proc(myJson)
 			})
-
+	}
+	
+	function proc(myJson) {
+		switch (myJson.result) {
+			case 0:
+				alert('제목을 입력해 주십시오')
+				return
+			case 1:
+				alert('내용을 입력해 주십시오')
+				return
+			case 2:
+				location.href = "/list"
+				return
+		}
 	}
 
 	writeEditBtn.addEventListener('click', ajax)
 }
+
