@@ -13,7 +13,7 @@ const main = new Swiper('.sw_main', {
         type: 'bullets',
         clickable: true,
     },
-});
+})
 
 const other = new Swiper('.sw_or', {
     effect: 'coverflow',
