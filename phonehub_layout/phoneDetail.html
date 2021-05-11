@@ -1,23 +1,23 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html>
 
-<head>
+<head lang="ko">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>login</title>
+    <title>phone detail</title>
     <!-- css -->
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <!-- 메인헤더에 있는 css를 재활용합니다 -->
     <link rel="stylesheet" type="text/css" href="css/main_header.css">
     <link rel="stylesheet" type="text/css" href="css/header.css">
     <link rel="stylesheet" type="text/css" href="css/footer.css">
-    <link rel="stylesheet" type="text/css" href="css/sign.css">
     <!-- fontawesome (아이콘을 사용하기 위해 꼭 필요합니다) -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
     <!-- js -->
     <script defer type="text/javascript" src="js/wave.js"></script>
     <script defer type="text/javascript" src="js/main_header.js"></script>
-    <script type="text/javascript" src="js/script.js"></script>
+    <!-- new css -->
+    <link rel="stylesheet" type="text/css" href="css/phone_detail.css">
 </head>
 
 <body>
@@ -49,22 +49,45 @@
             </div>
         </div>
         <!-- content -->
-        <div class="sign_wrap">
-            <div class="login_form">
-                <span>login</span>
-                <form id="loginFrm" method="post">
-                    <div class="txt_field">
-                        <input type="text" name="id" required spellcheck="false" autocomplete="off">
-                        <label>아이디 (e-mail)</label>
+        <div class="p_detail_wrap">
+            <div class="pagew">
+                <div class="item_info">
+                    <div class="item_info_img">
+                        <img src="asset/samsung.png">
+                        <a href="#">
+                            <span>비교하기</span>
+                        </a>
                     </div>
-                    <div class="txt_field">
-                        <input type="password" name="pw"  spellcheck="false" autocomplete="off" required>
-                        <label>비밀번호</label>
+                    <div class="item_info_detail">
+                        <div class="item_name">
+                            <h1>갤럭시 S21 Ultra 5G 자급제</h1>
+                        </div>
+                        <div class="item_script">
+                            <h2 class="item_script_tit">상세내용</h2>
+                            <span>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            </span>
+                        </div>
+                        <div class="item_score">
+                            <div class="score_box">
+                                100
+                            </div>
+                            <div class="percent">
+                            </div>
+                        </div>
                     </div>
-                    <input type="submit" name="signIn" value="로그인">
-                    <div class="fg_pw"><a href="findpw.html">비밀번호를 잊어버리셨나요?</a></div>
-                    <div class="join_link">회원이 아니신가요?<a href="join.html">회원가입</a></div>
-                </form>
+                </div>
             </div>
         </div>
         <!-- wave -->
