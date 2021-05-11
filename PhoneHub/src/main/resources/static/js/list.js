@@ -4,10 +4,6 @@ const rowCnt = 15;
 const pagingContentElem = document.querySelector('#pagingContent')
 
 const categoryElem = document.getElementById("tab_menus")
-var x = categoryElem.getElementsByTagName("li")[0].getAttribute("class"); 
-var y = categoryElem.getElementsByTagName("li")[1].getAttribute("class"); 
-var z = categoryElem.getElementsByTagName("li")[2].getAttribute("class"); 
-	
 
 const myTabs = document.querySelectorAll(".tab_menus > li");
 function myTabClicks(tabClickEvent) {
@@ -18,23 +14,34 @@ function myTabClicks(tabClickEvent) {
 	const clickedTab = tabClickEvent.currentTarget;
 	clickedTab.classList.add("active");
 	tabClickEvent.preventDefault();
+	var x = categoryElem.getElementsByTagName("li")[0].getAttribute("class");
+	var y = categoryElem.getElementsByTagName("li")[1].getAttribute("class");
+	var z = categoryElem.getElementsByTagName("li")[2].getAttribute("class");
 	const tabContent = document.querySelectorAll(".tab_content");
+	category(x, y, z)
+	getBoardList(1)
+	getMaxPageNum()
 	for (i = 0; i < tabContent.length; i++) {
 		tabContent[i].classList.remove("active");
 	}
+
 	/*const anchorReference = tabClickEvent.target;
 	const activePaneId = anchorReference.getAttribute("href");
 	const activePane = document.querySelector(activePaneId);
 	activePane.classList.add("active");*/
 
-	console.log(x)
-	console.log(y)
-	console.log(z)
-	
 }
-for (var i = 0; i < myTabs.length; i++) {
-	myTabs[i].addEventListener("click", myTabClicks)
+
+function category(x, y, z) {
+	if (x === "board1 active") {
+		return 1
+	} else if(y === "board2 active") {
+		return 2
+	} else if(z === "board3 active") {
+		return 3
+	}
 }
+
 
 function goToDetail(boardPk) {
 	location.href = `/detail?boardPk=${boardPk}`
@@ -42,40 +49,45 @@ function goToDetail(boardPk) {
 
 getBoardList()
 function getBoardList(page) {
+	var x = categoryElem.getElementsByTagName("li")[0].getAttribute("class");
+	var y = categoryElem.getElementsByTagName("li")[1].getAttribute("class");
+	var z = categoryElem.getElementsByTagName("li")[2].getAttribute("class");
 
 	if (!page) {
 		page = 1
+		console.log(category(x,y,z) + 'getBoardList')
 	}
-	if(x === "board1 active") {
-	console.log("board1")
+	if (category(x, y, z) === 1) {
+		console.log("board1")
 		fetch(`/boardListData?page=${page}&rowCnt=${rowCnt}&category=${1}`)
-		.then(res => res.json())
-		.then(myJson => {
-			boardProc(myJson)
-			console.log(myJson)
-		})
-	} else if(y === "board2 active") {
-	console.log("board2")
+			.then(res => res.json())
+			.then(myJson => {
+				boardProc(myJson)
+				console.log(myJson)
+			})
+	} else if (category(x, y, z) === 2) {
+		console.log("board2")
 		fetch(`/boardListData?page=${page}&rowCnt=${rowCnt}&category=${2}`)
-		.then(res => res.json())
-		.then(myJson => {
-			boardProc(myJson)
-			console.log(myJson)
-		})
-	} else if(z === "board3 active") {
-	console.log("board3")
+			.then(res => res.json())
+			.then(myJson => {
+				boardProc(myJson)
+				console.log(myJson)
+			})
+	} else if (category(x, y, z) === 3) {
+		console.log("board3")
 		fetch(`/boardListData?page=${page}&rowCnt=${rowCnt}&category=${3}`)
-		.then(res => res.json())
-		.then(myJson => {
-			boardProc(myJson)
-			console.log(myJson)
-		})
+			.then(res => res.json())
+			.then(myJson => {
+				boardProc(myJson)
+				console.log(myJson)
+			})
 	}
 }
 
 function boardProc(myJson) {
+	console.log('myJson.length =' + myJson.length)
 	if (myJson.length === 0) {
-		listContentElem.innerHTML = '<div>글이 없습니다.<div>'
+		listContentElem.innerHTML = '<div class="empty">글이 없습니다.<div>'
 		return
 	}
 
@@ -153,14 +165,31 @@ function boardProc(myJson) {
 	listContentElem.innerHTML = '';
 	listContentElem.append(table);
 }
-
 getMaxPageNum()
 function getMaxPageNum() {
-	fetch(`/boardGetMaxPageNum?rowCnt=${rowCnt}`)
-		.then(res => res.json())
-		.then(myJson => {
-			pageProc(myJson)
-		})
+	var x = categoryElem.getElementsByTagName("li")[0].getAttribute("class");
+	var y = categoryElem.getElementsByTagName("li")[1].getAttribute("class");
+	var z = categoryElem.getElementsByTagName("li")[2].getAttribute("class");
+	console.log(category(x,y,z))
+	if (category(x, y, z) === 1) {
+		fetch(`/boardGetMaxPageNum?rowCnt=${rowCnt}&category=${1}`)
+			.then(res => res.json())
+			.then(myJson => {
+				pageProc(myJson)
+			})
+	}else if (category(x, y, z) === 2) {
+		fetch(`/boardGetMaxPageNum?rowCnt=${rowCnt}&category=${2}`)
+			.then(res => res.json())
+			.then(myJson => {
+				pageProc(myJson)
+			})
+	}else if (category(x, y, z) === 3) {
+		fetch(`/boardGetMaxPageNum?rowCnt=${rowCnt}&category=${3}`)
+			.then(res => res.json())
+			.then(myJson => {
+				pageProc(myJson)
+			})
+	}
 }
 
 function pageProc(myJson) {
@@ -175,24 +204,45 @@ function pageProc(myJson) {
 	const raquo = document.createElement('li')
 	laquo.classList.add('prev')
 	raquo.classList.add('next')
-	laquo.innerText = '<';
-	raquo.innerText = '>';
+	const a1 = document.createElement('a')
+	const a2 = document.createElement('a')
+	a1.innerText = '<';
+	a2.innerText = '>';
 	console.log(myJson)
+	laquo.append(a1)
+	raquo.append(a2)
+	bluebar.append(laquo)
 	for (let i = 1; i <= myJson; i++) {
 		const li = document.createElement('li')
-		li.classList.add('active')
-		li.innerText = i
-		li.addEventListener('click', function() {
+		const a = document.createElement('a')		
+		a.innerText = i
+		li.append(a)
+		bluebar.append(li)
+		if(i === 1) {
+			a.classList.add('active')
+		}
+		a.addEventListener('click', function() {
+			removeAct()
+			a.classList.add('active')
 			getBoardList(i)
 		})
 	}
-		bluebar.append(laquo)
-		bluebar.append(li)
-		bluebar.append(raquo)
-		console.log(paging)
-		console.log(bluebar)
-		paging.append(bluebar)
-		pagingContentElem.append(paging)
 
+	bluebar.append(raquo)
+	paging.append(bluebar)
+	pagingContentElem.innerHTML = '';
+	pagingContentElem.append(paging)
+}
+
+function removeAct() {
+	const activeElem = pagingContentElem.querySelector('.active')
+	if(activeElem) {
+		activeElem.classList.remove('active')
+	}
+}
+
+
+for (var i = 0; i < myTabs.length; i++) {
+	myTabs[i].addEventListener("click", myTabClicks)
 }
 
