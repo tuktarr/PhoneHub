@@ -1,5 +1,117 @@
-const listContentElem = document.querySelector('#bottom_news')
+const leftNewsElem = document.querySelector('#news_top_left')
+if (leftNewsElem) {
+    const now = new Date();
+    const today = now.getFullYear().toString() + ("0" + (now.getMonth() + 1)) + now.getDate().toString()
 
+    fetch(`/selPopularNews?regDt=${today}`)
+        .then(res => res.json())
+        .then(myJson => {
+            leftNewsBox(myJson)
+        })
+    function leftNewsBox(myJson) {
+        const bigDiv = document.createElement('div')
+        bigDiv.classList.add('big')
+        const smallDiv = document.createElement('div')
+        smallDiv.classList.add('small')
+
+        for (let i = 0; i < myJson.length; i++) {
+            const thumbDiv = document.createElement('div')
+            thumbDiv.classList.add('thumb')
+
+            const a = document.createElement('a')
+            a.setAttribute("href", myJson[i].url)
+            a.addEventListener('click', function () {
+                fetch(`/updNewsHits${myJson[i].pk}`)
+            })
+
+            thumbDiv.append(a)
+
+            const img = document.createElement('img')
+            img.setAttribute("src", myJson[i].img)
+            a.append(img)
+
+            const div = document.createElement('div')
+            div.classList.add('txt_area')
+            div.classList.add('small_txt')
+            a.append(div)
+
+            const span = document.createElement('span')
+            span.innerText = myJson[i].content
+            div.append(span)
+
+            if (i === 0) {
+                div.classList.remove('small_txt')
+                div.classList.add('big_txt')
+                bigDiv.append(thumbDiv)
+                continue;
+            }
+
+            smallDiv.append(thumbDiv)
+        }
+
+        leftNewsElem.append(bigDiv)
+        leftNewsElem.append(smallDiv)
+
+    }
+}
+
+const rightNewsElem = document.querySelector("#news_top_right")
+if (rightNewsElem) {
+    fetch('/selPopularNews')
+        .then(res => res.json())
+        .then(myJson => {
+            rightNewsBox(myJson)
+        })
+
+    function rightNewsBox(myJson) {
+        const middleDiv = document.createElement('div')
+        middleDiv.classList.add('top_view_link')
+
+        for (let i = 0; i < myJson.length; i++) {
+            if (i < 3) {
+                const topDiv = document.createElement('div')
+                topDiv.classList.add('top_view_thumb')
+
+                const a = document.createElement('a')
+                a.setAttribute("href", myJson[i].url)
+                a.addEventListener('click', function () {
+                    fetch(`/updNewsHits${myJson[i].pk}`)
+                })
+
+                const img = document.createElement('img')
+                img.setAttribute("src", myJson[i].img)
+                a.append(img)
+
+                const div = document.createElement('div')
+                div.classList.add('txt_area')
+                div.classList.add('view_txt')
+                a.append(div)
+
+                const span = document.createElement('span')
+                span.innerText = myJson[i].title
+                div.append(span)
+
+                topDiv.append(a)
+                rightNewsElem.append(topDiv)
+            } else {
+                const a = document.createElement('a')
+                a.setAttribute('href', myJson[i].url)
+                a.classList.add('one_line_link')
+                a.innerHTML = `<p>#</p>${myJson[i].title}`
+                a.addEventListener('click', function () {
+                    fetch(`/updNewsHits${myJson[i].pk}`)
+                })
+
+                middleDiv.append(a)
+                rightNewsElem.append(middleDiv)
+            }
+        }
+    }
+}
+
+
+
+const listContentElem = document.querySelector('#bottom_news')
 function getNewsList(page) {
 
     if (!page) {
@@ -21,7 +133,7 @@ function getNewsList(page) {
         })
 }
 
-getNewsList(1)
+getNewsList()
 
 function newsProc(myJson) {
     if (myJson.length === 0) {
@@ -91,7 +203,12 @@ function getMaxPageNum() {
 getMaxPageNum()
 
 const pagingContentElem = document.querySelector('#newsPaging')
-function pageProc(myJson) {
+function pageProc(myJson, page) {
+
+    if (!page) {
+        page = 1
+    }
+
     pagingContentElem.innerHTML = null
     const blue_barUl = document.createElement('ul')
     blue_barUl.classList.add('blue_bar')
@@ -103,30 +220,65 @@ function pageProc(myJson) {
     pLi.append(prevA)
     blue_barUl.append(pLi)
 
-    for (let i = 1; i <= 10; i++) {
+    if (page > 1) {
+        pLi.addEventListener('click', function () {
+            getNewsList(page - 1)
+            pageProc(myJson, page - 1)
+        })
+    }
+
+    param = paging(page, myJson)
+
+    for (let i = param.startPage; i <= param.lastPage; i++) {
         const li = document.createElement('li')
         const a = document.createElement('a')
         a.innerText = i
 
+        if (i === page) {
+            a.classList.add("active")
+        }
         li.append(a)
         blue_barUl.append(li)
 
-        //span에 click이벤트를 건다. 클릭하면 getBoardList 함수 호출
         a.addEventListener('click', function () {
             getNewsList(i)
-            pageHighlight(this)
+            pageProc(myJson, i)
         })
     }
+
+    const nLi = document.createElement('li')
+    const nextA = document.createElement('a')
+    nextA.classList.add('prev')
+    nextA.innerHTML = '&raquo'
+    nLi.append(nextA)
+    blue_barUl.append(nLi)
+
+    if (page < myJson) {
+        nLi.addEventListener('click', function () {
+            getNewsList(page + 1)
+            pageProc(myJson, page + 1)
+        })
+    }
+
     pagingContentElem.append(blue_barUl)
 }
 
-function pageHighlight(ele) {
-    //모든 span의 selected 클래스를 빼준다.
-    var selectedSpan = pagingContentElem.querySelector('.active')
-    if (selectedSpan) {
-        selectedSpan.classList.remove('active')
+function paging(page, maxPage) {
+    let startPage = 1;
+    let lastPage = 9;
+
+    if (page - 4 > 1) {
+        startPage = page - 4
+        lastPage = page + 4
+        if (lastPage > maxPage) {
+            lastPage = maxPage
+        }
     }
 
-    //나의 span에 selected 클래스 추가한다.
-    ele.classList.add('active')
+    param = {
+        startPage,
+        lastPage
+    }
+
+    return param
 }

@@ -8,7 +8,6 @@ import java.util.List;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.stereotype.Component;
 
@@ -17,11 +16,14 @@ import com.tuktarr.phonehub.model.NewsEntity;
 @Component
 public class NaverNewsCrawling {
 
-	public List<NewsEntity> naverNewsCrawling(String title) throws IOException {
+	public static List<NewsEntity> naverNewsCrawling(String title) throws IOException {
 
 		List<NewsEntity> data = new ArrayList<NewsEntity>();
 		List<String> days = new ArrayList<String>();
+		String firstTitle = "";
 		boolean stop = true;
+		boolean pageStop = true;
+		int page = 1;
 
 		for (int i = 0; i < 14; i++) {
 			Calendar cal = Calendar.getInstance();
@@ -31,38 +33,50 @@ public class NaverNewsCrawling {
 			String date = sdf.format(cal.getTime());
 			days.add(date);
 		}
-		
+
 		for (String day : days) {
-			for(int i = 1; i <= 3; i++) {
-				
-			}
-			String url = "https://news.naver.com/main/list.nhn?mode=LS2D&mid=shm&sid2=731&sid1=105&date=" + day;
-			Document doc = Jsoup.connect(url).header("Content-Type", "application/json;charset=UTF-8").get();
-			Elements newsBoxs = doc.select(".newsflash_body > ul > li > dl");
+			pageStop = true;
+			System.out.println(day);
+			while (pageStop) {
+				System.out.println(page);
+				String url = "https://news.naver.com/main/list.nhn?mode=LS2D&mid=shm&sid2=731&sid1=105&date=" + day
+						+ "&page=" + (page++);
+				Document doc = Jsoup.connect(url).header("Content-Type", "application/json;charset=UTF-8").get();
+				Elements newsBoxs = doc.select(".newsflash_body > ul > li > dl");
 
-			for (Element content : newsBoxs) {
-				NewsEntity newsEntity = new NewsEntity();
-				
-				String nTitle = content.select("dt > a").text();
-				System.out.println(nTitle);
-				System.out.println(title);
-				newsEntity.setTitle(nTitle);
-				if (title.equals(nTitle)) {
-					stop = false;
-					break;
+				for (int i = 0; i < newsBoxs.size(); i++) {
+					NewsEntity newsEntity = new NewsEntity();
+
+					String nTitle = newsBoxs.get(i).select("dt > a").text();
+					if (nTitle.equals(firstTitle)) {
+						page = 1;
+						pageStop = false;
+						break;
+					}
+					
+					firstTitle = newsBoxs.get(0).select("dt > a").text();
+					newsEntity.setTitle(nTitle);
+
+					if (title.equals(nTitle)) {
+						stop = false;
+						pageStop = false;
+						break;
+					}
+					
+					newsEntity.setContent(newsBoxs.get(i).select(".lede").text());
+					newsEntity.setWriter(newsBoxs.get(i).select(".writing").text());
+					newsEntity.setImg(newsBoxs.get(i).select("dt > a > img").attr("src"));
+					newsEntity.setUrl(newsBoxs.get(i).select("dt > a").attr("href"));
+					newsEntity.setRegDt(day);
+
+					data.add(newsEntity);
 				}
-				newsEntity.setContent(content.select(".lede").text());
-				newsEntity.setWriter(content.select(".writing").text());
-				newsEntity.setImg(content.select("dt > a > img").attr("src"));
-				newsEntity.setUrl(content.select("dt > a").attr("href"));
-				newsEntity.setRegDt(day);
-
-				data.add(newsEntity);
 			}
-			if(stop == false) {
+			if (stop == false) {
 				break;
 			}
 		}
 		return data;
 	}
+
 }
