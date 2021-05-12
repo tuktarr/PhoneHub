@@ -31,8 +31,14 @@ public class NewsController {
 	
 	@ResponseBody
 	@GetMapping("/newsListData")
-	public List<NewsEntity> listData(NewsDTO param) {
+	public List<NewsEntity> sellistData(NewsDTO param) {
 		return nService.selNewsList(param);
+	}
+	
+	@ResponseBody
+	@GetMapping("/selPopularNews")
+	public List<NewsEntity> selPopularNews(NewsDTO param) {
+		return nService.selPopularNews(param);
 	}
 	
 	@ResponseBody

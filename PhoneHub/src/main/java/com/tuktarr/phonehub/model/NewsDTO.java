@@ -6,6 +6,7 @@ public class NewsDTO {
 	private int sIdx;
 	private int page;
 	private int rowContent;
+	private String regDt;
 	
 	public int getPk() {
 		return pk;
@@ -30,6 +31,12 @@ public class NewsDTO {
 	}
 	public void setRowContent(int rowContent) {
 		this.rowContent = rowContent;
+	}
+	public String getRegDt() {
+		return regDt;
+	}
+	public void setRegDt(String regDt) {
+		this.regDt = regDt;
 	}
 	
 }

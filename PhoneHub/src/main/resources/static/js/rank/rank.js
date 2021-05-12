@@ -1,5 +1,4 @@
 const top_rank = document.querySelector('#top_rank')
-document.querySelectorAll
 if (top_rank) {
     fetch('/performanceRankings')
         .then(res => res.json())

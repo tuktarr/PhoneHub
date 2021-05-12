@@ -58,6 +58,10 @@ public class NewsService {
 		return nMapper.selNewsList(param);
 	}
 	
+	public List<NewsEntity> selPopularNews(NewsDTO param) {
+		return nMapper.selPopularNews(param);
+	}
+	
 	public int updNewsHits(NewsDTO param) {
 		return nMapper.updNewsHits(param);
 	}

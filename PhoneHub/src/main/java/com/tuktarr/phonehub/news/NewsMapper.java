@@ -13,5 +13,6 @@ public interface NewsMapper {
 	public String selLastTitle();
 	public int selMaxPageNum(NewsDTO param);
 	public List<NewsEntity> selNewsList(NewsDTO param);
+	public List<NewsEntity> selPopularNews(NewsDTO param);
 	public int updNewsHits(NewsDTO param);
 }

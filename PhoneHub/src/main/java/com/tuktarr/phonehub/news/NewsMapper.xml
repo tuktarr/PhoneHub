@@ -31,6 +31,24 @@
 		FROM news ORDER BY pk DESC
 		LIMIT #{sIdx}, #{rowContent}
 	</select>
+	
+	<select id="selPopularNews" resultType="com.tuktarr.phonehub.model.NewsEntity">
+		SELECT pk, title, content, writer, img,
+		url, DATE_FORMAT(regDt,'%Y-%m-%d') AS regDt
+		FROM news 
+		<if test="regDt != null and regDt !='' ">
+			 WHERE regDt = #{regDt}
+		</if>
+		ORDER BY hits desc
+		<choose>
+			<when test="regDt != null and regDt !=''">
+				LIMIT 4
+			</when>
+			<otherwise>
+				LIMIT 6
+			</otherwise>
+		</choose>
+	</select>
 
 	<update id="updNewsHits">
 		UPDATE news
