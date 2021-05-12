@@ -10,7 +10,6 @@ layout:decorator="~{layout/layout_default}">
 
 <th:block layout:fragment="script">
 	<script defer type="text/javascript" th:src="@{js/detail.js}"></script>
-	<script defer type="text/javascript" th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js}"></script>
 </th:block>
 
 <th:block layout:fragment="content">
@@ -19,36 +18,35 @@ layout:decorator="~{layout/layout_default}">
             <!-- detail head -->
             <div class="detail_h">
                 <div class="detail_tit">
-                    <span>제목</span>
+                    <span th:text=${data.title}></span>
                 </div>
                 <!-- detail title left -->
                 <div class="detail_tl">
                     <div class="detail_user">
-                        <span class="user">문수찬</span>
+                        <span class="user" th:text=${data.writerNm}></span>
                     </div>
                     <div class="detail_date">
                         <i class="far fa-clock"></i>
-                        <span>2021-04-13 13:34</span>
+                        <span th:text=${data.regDt}></span>
                     </div>
                 </div>
                 <!-- detail title right -->
                 <div class="detail_tr">
-                    <span>글번호 1</span>
-                    <span>조회수 1</span>
-                    <span>추천수 12</span>
+                    <span th:text="|글번호: ${data.seq}|"></span>
+                    <span th:text="|조회수: ${data.hits}|"></span>
+                    <span th:text="|추천수: ${data.voted_count}|"></span>
                 </div>
             </div>
             <!-- detail board -->
             <div class="detail_board">
-                <div class="detail_content">
-                    asdasd
+                <div class="detail_content" th:text=${data.ctnt}>       
                 </div>
                 <div class="hits_area">
                     <button class="hits_btn best">
-                        <span id="up">10</span>
+                        <span id="up" th:text=${data.voted_count}></span>
                     </button>
                     <button class="hits_btn worst">
-                        <span id="down">10</span>
+                        <span id="down" th:text=${data.blamed_count}></span>
                     </button>
                 </div>
             </div>
