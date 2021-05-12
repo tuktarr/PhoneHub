@@ -39,4 +39,9 @@ public class PhoneController {
 		return phoneRankings;
 	}
 	
+	@GetMapping("/phoneDetail")
+	public String phoneDetail() {
+		return "phone/phoneDetail";
+	}
+	
 }
