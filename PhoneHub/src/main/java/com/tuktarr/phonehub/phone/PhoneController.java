@@ -21,7 +21,7 @@ public class PhoneController {
 	}
 	
 	@ResponseBody
-	@GetMapping("/phoneRankings")
+	@GetMapping("/phonerankings")
 	public Map<String, Object> selPhoneRanking() {
 		Map<String, Object> phoneRankings = new HashMap<String, Object>();
 		phoneRankings.put("performanceRankings", pService.selPerformanceRanking());
@@ -31,7 +31,7 @@ public class PhoneController {
 	}
 	
 	@ResponseBody
-	@GetMapping("/performanceRankings")
+	@GetMapping("/performancerankings")
 	public Map<String, Object> selPerformanceRanking() {
 		Map<String, Object> phoneRankings = new HashMap<String, Object>();
 		phoneRankings.put("performanceRankings", pService.selPerformanceRanking());
@@ -39,9 +39,9 @@ public class PhoneController {
 		return phoneRankings;
 	}
 	
-	@GetMapping("/phoneDetail")
+	@GetMapping("/phonedetail")
 	public String phoneDetail() {
-		return "phone/phoneDetail";
+		return "phone/phonedetail";
 	}
 	
 }

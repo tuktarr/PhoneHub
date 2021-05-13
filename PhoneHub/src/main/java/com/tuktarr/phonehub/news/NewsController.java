@@ -24,25 +24,25 @@ public class NewsController {
 	}
 	
 	@ResponseBody
-	@GetMapping("/getMaxNewsPageNum")
+	@GetMapping("/getmaxnewspagenum")
 	public int selMaxPageNum(NewsDTO param) {
 		return nService.selMaxPageNum(param);
 	}
 	
 	@ResponseBody
-	@GetMapping("/newsListData")
+	@GetMapping("/newslistdata")
 	public List<NewsEntity> sellistData(NewsDTO param) {
 		return nService.selNewsList(param);
 	}
 	
 	@ResponseBody
-	@GetMapping("/selPopularNews")
+	@GetMapping("/selpopularnews")
 	public List<NewsEntity> selPopularNews(NewsDTO param) {
 		return nService.selPopularNews(param);
 	}
 	
 	@ResponseBody
-	@GetMapping("/updNewsHits{pk}")
+	@GetMapping("/updnewshits{pk}")
 	public int updNewsHits(NewsDTO param) {
 		return nService.updNewsHits(param);
 	}

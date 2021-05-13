@@ -1,11 +1,16 @@
 const top_rank = document.querySelector('#top_rank')
 if (top_rank) {
-    fetch('/performanceRankings')
+    fetch('/performancerankings')
         .then(res => res.json())
         .then(myJson => {
             rankBoxPrint(myJson)
         })
     function rankBoxPrint(myJson) {
+        if (myJson.length === 0) {
+            listContentElem.innerHTML = '<div>글이 없습니다.</div>'
+            return
+        }
+
         const secondDiv = document.createElement('div')
         secondDiv.classList.add('second')
         const firstDiv = document.createElement('div')
@@ -74,12 +79,17 @@ if (top_rank) {
 
 const upperMiddleRank = document.querySelector('#upperMiddleRank')
 if (upperMiddleRank) {
-    fetch('/performanceRankings')
+    fetch('/performancerankings')
         .then(res => res.json())
         .then(myJson => {
             rankBoxPrint(myJson)
         })
     function rankBoxPrint(myJson) {
+        if (myJson.length === 0) {
+            listContentElem.innerHTML = '<div>글이 없습니다.</div>'
+            return
+        }
+
         const wrapperDiv = document.createElement('div')
         wrapperDiv.classList.add('swiper-wrapper')
 
