@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="ko">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>phone</title>
+    <!-- css -->
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <!-- 메인헤더에 있는 css를 재활용합니다 -->
+    <link rel="stylesheet" type="text/css" href="css/main_header.css">
+    <link rel="stylesheet" type="text/css" href="css/header.css">
+    <link rel="stylesheet" type="text/css" href="css/footer.css">
+    <!-- fontawesome (아이콘을 사용하기 위해 꼭 필요합니다) -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+    <!-- js -->
+    <script defer type="text/javascript" src="js/wave.js"></script>
+    <script defer type="text/javascript" src="js/main_header.js"></script>
+    <!-- new css -->
+    <link rel="stylesheet" type="text/css" href="css/phone.css">
+</head>
+
+<body>
+    <!-- header -->
+    <div class="header">
+        <a href="index.html" class="logo" title="phonehub">
+            <img src="asset/logo.png">
+        </a>
+        <ul class="h_list modify">
+            <li><a href="news.html">뉴스</a></li>
+            <li><a href="#">휴대폰</a></li>
+            <li><a href="rank.html">랭킹</a></li>
+            <li><a href="list.html">게시판</a></li>
+        </ul>
+        <div class="h_search">
+            <div class="search_box">
+                <div class="search_icon">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div class="search_bar">
+                    <input type="text" name="search" id="hSearch" placeholder="검색">
+                </div>
+            </div>
+        </div>
+        <div class="login_cont">
+            <a href="login.html" class="sign_in">로그인</a>
+            <a href="join.html" class="sign_up">회원가입</a>
+        </div>
+    </div>
+    <!-- content -->
+    <div class="phone_wrap">
+        <div class="phone_container">
+        	<!-- 검색 카테고리 -->
+            <div class="phone_cate">
+            	<!-- 카테고리박스 / 복붙-->
+            	<div class="cate_box">
+            		<span class="cate_name">일반 정보</span>
+            		<!-- 카테고리 셀렉트 박스 / 복붙-->
+            		<select class="cate_selc">
+            			<option selected>제조회사</option>
+            		</select>
+            		<select class="cate_selc">
+            			<option selected>이동통신사</option>
+            		</select>
+            	</div>
+            </div>
+            <!-- items -->
+            <div class="items">
+            	<!-- item_box / 복붙 -->
+                <div class="item_box">
+                    <img src="asset/samsung4.png">
+                    <div class="item_box_detail">
+                    	<span class="item_name">갤럭시 S21 Ultra 5G 자급제</span>
+                    	<span class="item_num">SM-G998NZKEKOO</span>
+                    </div>
+                </div>
+                <div class="item_box">
+                    <img src="asset/samsung2.png">
+                     <div class="item_box_detail">
+                    	<span class="item_name">갤럭시 Z 플립 5G 자급제</span>
+                    	<span class="item_num">SM-F707NZNAKOO</span>
+                    </div>
+                </div>
+                <div class="item_box">
+                    <img src="asset/samsung3.png">
+                     <div class="item_box_detail">
+                    	<span class="item_name">갤럭시 S21 5G 자급제</span>
+                    	<span class="item_num">SM-G991NZIEKOO</span>
+                    </div>
+                </div>
+                <div class="item_box">
+                    <img src="asset/samsung.png">
+                     <div class="item_box_detail">
+                    	<span class="item_name">갤럭시 Z 폴드2 5G 자급제</span>
+                    	<span class="item_num">SM-F916NZKAKOO</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- wave -->
+    <div class="wave_cont">
+        <div class="wave" id="wave1" style="--i:1;"></div>
+        <div class="wave" id="wave2" style="--i:2;"></div>
+        <div class="wave" id="wave3" style="--i:3;"></div>
+        <div class="wave" id="wave4" style="--i:4;"></div>
+    </div>
+    <!-- footer -->
+    <div class="footer">
+        <div class="pagew">
+            <div class="f_logo">
+                <img src="asset/logo.png">
+            </div>
+            <div class="f_info">
+                <p>대표자 : 홍길동</p>
+                <p>이메일 : aaa@gmail.com</p>
+                <p>주소 : 대구 중구 중앙대로 366 반월센트럴타워</p>
+                <p>대표번호 : 010-1234-5678</p>
+                <div class="f_icon">
+                    <a href="https://github.com/tuktarr">
+                        <i class="fab fa-github fa-2x git_icon"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
