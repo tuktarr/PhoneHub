@@ -5,11 +5,11 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 layout:decorator="~{layout/layout_default}">
 
 <th:block layout:fragment="css">
-	<link rel="stylesheet" type="text/css" th:href="@{css/detail.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{css/board/detail.css}">
 </th:block>
 
 <th:block layout:fragment="script">
-	<script defer type="text/javascript" th:src="@{js/detail.js}"></script>
+	<script defer type="text/javascript" th:src="@{js/board/detail.js}"></script>
 </th:block>
 
 <th:block layout:fragment="content">
@@ -42,10 +42,16 @@ layout:decorator="~{layout/layout_default}">
                 <div class="detail_content" th:text=${data.ctnt}>       
                 </div>
                 <div class="hits_area">
-                    <button class="hits_btn best">
+                    <button th:if="${session.loginUser != null}" th:value="${data.boardPk}" class="hits_btn best">
                         <span id="up" th:text=${data.voted_count}></span>
                     </button>
-                    <button class="hits_btn worst">
+                    <button th:if="${session.loginUser != null}" th:value="${data.boardPk}" class="hits_btn worst">
+                        <span id="down" th:text=${data.blamed_count}></span>
+                    </button>
+                    <button th:if="${session.loginUser == null}" th:value="${data.boardPk}" class="hits_btn best" disabled>
+                        <span id="up" th:text=${data.voted_count}></span>
+                    </button>
+                    <button th:if="${session.loginUser == null}" th:value="${data.boardPk}" class="hits_btn worst" disabled>
                         <span id="down" th:text=${data.blamed_count}></span>
                     </button>
                 </div>

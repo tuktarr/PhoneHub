@@ -210,8 +210,9 @@
     padding: 0 10px;
 }
 
-.comment_btn {
-    display: block;
+.comment_btn,
+.back_list {
+    display: inline-block;
     height: 50px;
     width: 100px;
     color: #fcf6f5;
@@ -226,10 +227,16 @@
     transition: all 0.2s;
 }
 
-.comment_btn:hover {
+.comment_btn:hover,
+.back_list:hover {
 	background: #89abff;
     box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.2), 0 4px 10px 0 rgba(0, 0, 0, 0.19);
 }
+
+.back_list {
+	float: right;
+}
+
 
 .comment_row {
     position: relative;

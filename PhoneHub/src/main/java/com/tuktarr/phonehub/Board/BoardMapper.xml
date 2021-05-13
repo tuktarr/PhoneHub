@@ -62,4 +62,16 @@
 			AND userPk = #{userPk}
 		</if>
 	</update>
+	
+	<update id="upVoteCount">
+	UPDATE board
+	SET voted_count = voted_count+1 WHERE boardPk = #{boardPk}
+	</update>
+	
+	<update id="upBlameCount">
+	UPDATE board
+	SET blamed_count = blamed_count+1 WHERE boardPk = #{boardPk}
+	</update>
+	
+	
 </mapper>

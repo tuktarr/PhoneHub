@@ -1,6 +1,6 @@
 
 const listContentElem = document.querySelector('.tab_content')
-const rowCnt = 15;
+const rowCnt = 10;
 const pagingContentElem = document.querySelector('#pagingContent')
 
 const categoryElem = document.getElementById("tab_menus")
@@ -87,7 +87,7 @@ function getBoardList(page) {
 function boardProc(myJson) {
 	console.log('myJson.length =' + myJson.length)
 	if (myJson.length === 0) {
-		listContentElem.innerHTML = '<div class="empty">글이 없습니다.<div>'
+		listContentElem.innerHTML = '<div class="empty">글이 없습니다.</div>'
 		return
 	}
 
@@ -194,7 +194,8 @@ function getMaxPageNum() {
 
 function pageProc(myJson) {
 
-	// rowCnt(15) 만큼 리스트
+	// rowCnt(10) 만큼 리스트
+	if(myJson >= 1){
 	const pagingContentElem = document.querySelector('#pagingContent')
 	const paging = document.createElement('div')
 	const bluebar = document.createElement('ul')
@@ -232,6 +233,10 @@ function pageProc(myJson) {
 	paging.append(bluebar)
 	pagingContentElem.innerHTML = '';
 	pagingContentElem.append(paging)
+	} else{
+		//myjson이 없을시에 처리
+	}
+
 }
 
 function removeAct() {
@@ -240,7 +245,6 @@ function removeAct() {
 		activeElem.classList.remove('active')
 	}
 }
-
 
 for (var i = 0; i < myTabs.length; i++) {
 	myTabs[i].addEventListener("click", myTabClicks)

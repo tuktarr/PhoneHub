@@ -2,7 +2,6 @@ const formElem = document.querySelector('#writeFrm')
 const selectCate = document.querySelector('.select_Box')
 const writeEditBtn = document.querySelector('#writeEditBtn')
 
-console.log(selectCate.value)
 if (writeEditBtn) {
 	function ajax() {
 		const titleElem = formElem.title
