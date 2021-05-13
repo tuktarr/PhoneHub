@@ -15,4 +15,6 @@ public interface BoardMapper {
 	BoardDomain selBoard(BoardEntity p);
 	int upBoard(BoardEntity p);
 	int selMaxPageNum(BoardDTO p);
+	int upVoteCount(BoardEntity p);
+	int upBlameCount(BoardEntity p);
 }

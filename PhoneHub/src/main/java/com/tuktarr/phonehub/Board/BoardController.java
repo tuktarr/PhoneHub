@@ -94,4 +94,18 @@ public class BoardController {
 		return map;
 		
 	}
+	
+	@GetMapping("/boardGetPopular")
+	@ResponseBody
+	public int boardPopular(BoardEntity p){
+		System.out.println(p.getBoardPk());
+		return bService.upVoteCount(p);
+	}
+	
+	@GetMapping("/boardGetWorst")
+	@ResponseBody
+	public int boardWorst(BoardEntity p){
+		System.out.println(p.getBoardPk());
+		return bService.upBlameCount(p);
+	}
 }

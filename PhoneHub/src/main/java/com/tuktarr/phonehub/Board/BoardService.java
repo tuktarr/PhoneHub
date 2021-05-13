@@ -85,4 +85,12 @@ public class BoardService {
 			p.setIsDel(1); //삭제되면 isDel 1
 			return mapper.upBoard(p);
 		}
+		
+		public int upVoteCount(BoardEntity p) {
+			return mapper.upVoteCount(p);
+		}
+		
+		public int upBlameCount(BoardEntity p) {
+			return mapper.upBlameCount(p);
+		}
 }
