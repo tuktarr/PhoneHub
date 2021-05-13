@@ -1,7 +1,7 @@
 // 휴대폰 성능 순위
 const perfo = document.querySelector('.perfo')
 if (perfo) {
-    fetch('/phoneRankings')
+    fetch('/phonerankings')
         .then(res => res.json())
         .then(myJson => {
             rankBoxPrint(myJson)
@@ -25,7 +25,7 @@ if (perfo) {
 // 휴대폰 가성비 순위
 const price = document.querySelector('.price')
 if (price) {
-    fetch('/phoneRankings')
+    fetch('/phonerankings')
         .then(res => res.json())
         .then(myJson => {
             rankBoxPrint(myJson)

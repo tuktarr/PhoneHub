@@ -3,7 +3,7 @@ if (leftNewsElem) {
     const now = new Date();
     const today = now.getFullYear().toString() + ("0" + (now.getMonth() + 1)) + now.getDate().toString()
 
-    fetch(`/selPopularNews?regDt=${today}`)
+    fetch(`/selpopularnews?regDt=${today}`)
         .then(res => res.json())
         .then(myJson => {
             leftNewsBox(myJson)
@@ -21,7 +21,7 @@ if (leftNewsElem) {
             const a = document.createElement('a')
             a.setAttribute("href", myJson[i].url)
             a.addEventListener('click', function () {
-                fetch(`/updNewsHits${myJson[i].pk}`)
+                fetch(`/updnewshits${myJson[i].pk}`)
             })
 
             thumbDiv.append(a)
@@ -57,7 +57,7 @@ if (leftNewsElem) {
 
 const rightNewsElem = document.querySelector("#news_top_right")
 if (rightNewsElem) {
-    fetch('/selPopularNews')
+    fetch('/selpopularnews')
         .then(res => res.json())
         .then(myJson => {
             rightNewsBox(myJson)
@@ -75,7 +75,7 @@ if (rightNewsElem) {
                 const a = document.createElement('a')
                 a.setAttribute("href", myJson[i].url)
                 a.addEventListener('click', function () {
-                    fetch(`/updNewsHits${myJson[i].pk}`)
+                    fetch(`/updnewshits${myJson[i].pk}`)
                 })
 
                 const img = document.createElement('img')
@@ -126,7 +126,7 @@ function getNewsList(page) {
     }
     sessionStorage.setItem('pageInfo', JSON.stringify(info))
 
-    fetch(`/newsListData?page=${page}&rowContent=${rowContent}`)
+    fetch(`/newslistdata?page=${page}&rowContent=${rowContent}`)
         .then(res => res.json())
         .then(myJson => {
             newsProc(myJson)
@@ -150,7 +150,7 @@ function newsProc(myJson) {
         const a = document.createElement('a')
         a.setAttribute("href", item.url)
         a.addEventListener('click', function () {
-            fetch(`/updNewsHits${item.pk}`)
+            fetch(`/updnewshits${item.pk}`)
         })
 
         const img = document.createElement('img')
@@ -194,7 +194,7 @@ function newsProc(myJson) {
 function getMaxPageNum() {
     const rowContent = 7
 
-    fetch(`/getMaxNewsPageNum?rowContent=${rowContent}`)
+    fetch(`/getmaxnewspagenum?rowContent=${rowContent}`)
         .then(res => res.json())
         .then(myJson => {
             pageProc(myJson)
