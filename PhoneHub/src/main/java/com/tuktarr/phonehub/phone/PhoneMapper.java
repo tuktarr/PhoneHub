@@ -10,5 +10,5 @@ import com.tuktarr.phonehub.model.PhoneInfoEntity;
 public interface PhoneMapper {
 	List<PhoneInfoEntity> selPerformanceRanking();
 	List<PhoneInfoEntity> selCost_Effectiveness();
-	PhoneInfoEntity selPhoneDetail();
+	PhoneInfoEntity selPhoneDetail(PhoneInfoEntity param);
 }
