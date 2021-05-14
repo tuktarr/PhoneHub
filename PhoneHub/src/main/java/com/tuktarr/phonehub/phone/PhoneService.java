@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.tuktarr.phonehub.model.PhoneInfoDTO;
 import com.tuktarr.phonehub.model.PhoneInfoEntity;
 
 @Service
@@ -21,8 +22,12 @@ public class PhoneService {
 		return pMapper.selCost_Effectiveness();
 	}
 	
-	public PhoneInfoEntity selPhoneInfo() {
-		return pMapper.selPhoneDetail();
+	public PhoneInfoEntity selPhoneDetail(PhoneInfoDTO param) {
+		
+		PhoneInfoEntity pData = new PhoneInfoEntity();
+		pData.setPk(param.getPk());
+		
+		return pMapper.selPhoneDetail(pData);
 	}
 	
 }

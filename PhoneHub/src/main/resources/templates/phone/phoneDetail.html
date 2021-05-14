@@ -13,7 +13,7 @@
             <div class="item_info">
                 <!-- 휴대폰 사진 -->
                 <div class="item_info_img">
-                    <img src="asset/samsung.png">
+                    <img th:src="${data.pictureURLSmall}" src="asset/samsung.png">
                     <a href="#">
                         <span>비교하기</span>
                     </a>
@@ -22,41 +22,66 @@
                 <div class="item_info_detail">
                     <!-- 기기이름 및 모델명 -->
                     <div class="item_name">
-                        <h1>갤럭시 S21 Ultra 5G 자급제</h1>
+                        <h1 th:text=${data.phone}>갤럭시 S21 Ultra 5G 자급제</h1>
                     </div>
-                    <div class="item_name_sub">
+                    <div th:text=${data.miscModels} class="item_name_sub">
                         SM-G998NZKEKOO
                     </div>
                     <!-- 기기설명 -->
                     <div class="item_script">
                         <h2 class="item_script_tit">상세내용</h2>
-                        <span>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        <span th:text=${data.platformOS}>
+                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat, commodi amet consectetur distinctio maiores sequi natus, quasi ipsa facilis nemo quis, et exercitationem molestiae officia optio earum maxime doloremque tempora.
                         </span>
-                    </div>
-                    <!-- 유저 팁 -->
-                    <div class="user_tip">
-                        <i class="fas fa-lightbulb fa-2x"></i>
-                        <span>안녕하세요</span>
+                        <span th:text=${data.displayType}>
+                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat, commodi amet consectetur distinctio maiores sequi natus, quasi ipsa facilis nemo quis, et exercitationem molestiae officia optio earum maxime doloremque tempora.
+                        </span>
+                        <span th:text=${data.displayOther}>
+                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat, commodi amet consectetur distinctio maiores sequi natus, quasi ipsa facilis nemo quis, et exercitationem molestiae officia optio earum maxime doloremque tempora.
+                        </span>
+                        <span th:text=${data.displaySize}>
+                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat, commodi amet consectetur distinctio maiores sequi natus, quasi ipsa facilis nemo quis, et exercitationem molestiae officia optio earum maxime doloremque tempora.
+                        </span>
+                        <span th:text=${data.displayResolution}>
+                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat, commodi amet consectetur distinctio maiores sequi natus, quasi ipsa facilis nemo quis, et exercitationem molestiae officia optio earum maxime doloremque tempora.
+                        </span>
+                        <span th:text=${data.bodyDimensions}>
+                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat, commodi amet consectetur distinctio maiores sequi natus, quasi ipsa facilis nemo quis, et exercitationem molestiae officia optio earum maxime doloremque tempora.
+                        </span>
+                        <span th:text=${data.bodyWeight}>
+                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat, commodi amet consectetur distinctio maiores sequi natus, quasi ipsa facilis nemo quis, et exercitationem molestiae officia optio earum maxime doloremque tempora.
+                        </span>
+                        <span th:text=${data.bodyOther}>
+                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat, commodi amet consectetur distinctio maiores sequi natus, quasi ipsa facilis nemo quis, et exercitationem molestiae officia optio earum maxime doloremque tempora.
+                        </span>
+                        <span th:text=${data.featuresOther}>
+                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat, commodi amet consectetur distinctio maiores sequi natus, quasi ipsa facilis nemo quis, et exercitationem molestiae officia optio earum maxime doloremque tempora.
+                        </span>
+                        <span th:text=${data.announced}>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, quas architecto autem eligendi error dolor optio maiores reprehenderit non. Numquam rem, labore assumenda voluptas dignissimos dolorum ipsum eaque? Nulla, soluta?
+                        </span>
+                        <span th:text=${data.status}>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, quas architecto autem eligendi error dolor optio maiores reprehenderit non. Numquam rem, labore assumenda voluptas dignissimos dolorum ipsum eaque? Nulla, soluta?
+                        </span>
                     </div>
                     <!-- 점수 -->
                     <div class="item_score">
-                        <div class="score_box very_good">
+                        <div th:text=${data.APScore}/100 class="score_box very_good">
                             100
                         </div>
                         <div class="percent">
                             <span class="percent_tit">phonehub score</span>
                             <div class="percent_bar">
                                 <!-- width값조정 -->
-                                <div class="progress very_good">
+                                <div th:style="'width: ' + ${data.APScore}/100 + '%'" class="progress very_good">
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <!-- 유저 팁 -->
+                    <div class="user_tip">
+                        <i class="fas fa-lightbulb fa-2x"></i>
+                        <span>안녕하세요</span>
                     </div>
                 </div>
             </div>
@@ -68,10 +93,13 @@
                     </div>
                     <div class="simple_info">
                         <span class="simple_tit">디스플레이</span>
-                        <span class="simple_paragraph">
-                            6.8 inches
+                        <span th:inline="text" class="simple_paragraph">
+                        	[[${#strings.substringBefore(data.displaySize, ",")}]]
                             <br>
-                            3200 x 1440 pixels
+                        	[[${#strings.substringBefore(data.displayResolution, ",")}]]
+                            <!-- 6.8 inches
+                            <br>
+                            3200 x 1440 pixels -->
                         </span>
                     </div>
                 </div>
@@ -81,10 +109,17 @@
                     </div>
                     <div class="simple_info">
                         <span class="simple_tit">카메라</span>
-                        <span class="simple_paragraph">
-                            50 MP (Triple camera)
+                        <span th:inline="text" class="simple_paragraph">
+                        	[[${#strings.substringBefore(data.mainCameraSingle, ";")}]]
+                        	[[${#strings.substringBefore(data.mainCameraDual, ";")}]]
+                        	[[${#strings.substringBefore(data.mainCameraTriple, ";")}]]
+                        	[[${#strings.substringBefore(data.mainCameraQuad, ";")}]]
+                        	[[${#strings.substringBefore(data.mainCameraFive, ";")}]]
+                        	[[${#strings.substringBefore(data.mainCameraSix, ";")}]]
+                        	<br>
+                            <!-- 50 MP (Triple camera)
                             <br>
-                            20 MP front
+                            20 MP front -->
                         </span>
                     </div>
                 </div>
@@ -92,38 +127,43 @@
                     <div class="simple_icon">
                         <i class="fas fa-hdd fa-3x"></i>
                     </div>
-                    <div class="simple_info">
+                    <div th:inline="text" class="simple_info">
                         <span class="simple_tit">하드웨어</span>
                         <span class="simple_paragraph">
-                            Qualcomm
+                        	[[${#strings.substringBefore(data.platformChipset, ";")}]]
+                        	<br>
+                        	[[${#strings.substringBefore(data.memoryInternal, ";")}]]
+                            <!-- Qualcomm
                             <br>
                             Snapdragon 888
                             <br>
-                            8GB RAM
+                            8GB RAM -->
                         </span>
                     </div>
                 </div>
-                <div class="simple_spec_box" id="storage">
-                    <div class="simple_icon">
-                        <i class="fas fa-archive fa-3x"></i>
-                    </div>
-                    <div class="simple_info">
-                        <span class="simple_tit">저장소</span>
-                        <span class="simple_paragraph">
-                            256GB, not
-                            <br>
-                            expandable
-                        </span>
-                    </div>
-                </div>
-                <div class="simple_spec_box" id="bettery">
+                <div th:inline="text" class="simple_spec_box" id="bettery">
                     <div class="simple_icon">
                         <i class="fas fa-battery-full fa-3x fa-rotate-270"></i>
                     </div>
                     <div class="simple_info">
                         <span class="simple_tit">베터리</span>
                         <span class="simple_paragraph">
-                            5000 mAh
+                        [[${#strings.substringBefore(data.batteryOther, ";")}]]
+                            <!-- 5000 mAh  -->
+                        </span>
+                    </div>
+                </div>
+                <div th:inline="text" class="simple_spec_box" id="storage">
+                    <div class="simple_icon">
+                        <i class="fas fa-palette fa-3x"></i>
+                    </div>
+                    <div class="simple_info">
+                        <span class="simple_tit">색상</span>
+                        <span class="simple_paragraph">
+                        	[[${#strings.substringBefore(data.miscColors, ";")}]]
+                            <!-- 256GB, not
+                            <br>
+                            expandable -->
                         </span>
                     </div>
                 </div>

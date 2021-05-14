@@ -27,7 +27,7 @@ public class PhoneInfoEntity {
 	private String bodyBuilt;
 	private String bodyKeyboard;
 	private String bodySIM;
-	private String bodyother;
+	private String bodyOther;
 	private String displayType;
 	private String displaySize;
 	private String displayResolution;
@@ -93,7 +93,7 @@ public class PhoneInfoEntity {
 	private String testsBatteryLife;
 	private String factoryPrice;
 	private int cost_Effectiveness;
-	private int apScore;
+	private int APScore;
 	
 	public int getPk() {
 		return pk;
@@ -245,11 +245,11 @@ public class PhoneInfoEntity {
 	public void setBodySIM(String bodySIM) {
 		this.bodySIM = bodySIM;
 	}
-	public String getBodyother() {
-		return bodyother;
+	public String getBodyOther() {
+		return bodyOther;
 	}
-	public void setBodyother(String bodyother) {
-		this.bodyother = bodyother;
+	public void setBodyOther(String bodyOther) {
+		this.bodyOther = bodyOther;
 	}
 	public String getDisplayType() {
 		return displayType;
@@ -641,11 +641,11 @@ public class PhoneInfoEntity {
 	public void setCost_Effectiveness(int cost_Effectiveness) {
 		this.cost_Effectiveness = cost_Effectiveness;
 	}
-	public int getApScore() {
-		return apScore;
+	public int getAPScore() {
+		return APScore;
 	}
-	public void setApScore(int apScore) {
-		this.apScore = apScore;
+	public void setAPScore(int aPScore) {
+		APScore = aPScore;
 	}
 	
 }

@@ -5,9 +5,11 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.tuktarr.phonehub.model.PhoneInfoDTO;
 
 @Controller
 public class PhoneController {
@@ -26,6 +28,7 @@ public class PhoneController {
 		Map<String, Object> phoneRankings = new HashMap<String, Object>();
 		phoneRankings.put("performanceRankings", pService.selPerformanceRanking());
 		phoneRankings.put("cost_Effectivenes", pService.selCost_Effectiveness());
+//		http://localhost:8070/phonedetail/js/common/wave.js
 		
 		return phoneRankings;
 	}
@@ -40,7 +43,9 @@ public class PhoneController {
 	}
 	
 	@GetMapping("/phonedetail")
-	public String phoneDetail() {
+	public String selPhoneDetail(PhoneInfoDTO param, Model model) {
+		model.addAttribute("data", pService.selPhoneDetail(param));
+		
 		return "phone/phonedetail";
 	}
 	

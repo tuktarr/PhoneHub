@@ -5,7 +5,7 @@
 <mapper namespace="com.tuktarr.phonehub.phone.PhoneMapper">
 	<select id="selPerformanceRanking" resultType="com.tuktarr.phonehub.model.PhoneInfoEntity">
 		SELECT 
-		phone, pictureURLSmall, apScore 
+		phone, pictureURLSmall, APScore 
 		FROM phoneInfo
 		ORDER BY APScore DESC
 	</select>
@@ -14,12 +14,13 @@
 		SELECT 
 		phone, pictureURLSmall, cost_Effectiveness 
 		FROM phoneInfo
-		where cost_Effectiveness != 0
+		WHERE cost_Effectiveness != 0
 		ORDER BY cost_Effectiveness
 	</select>
 	
 	<select id="selPhoneDetail" resultType="com.tuktarr.phonehub.model.PhoneInfoEntity">
-		select * from phoneInfo
+		SELECT * FROM phoneInfo
+		WHERE pk = ${pk}
 	</select>
 	
 </mapper>
