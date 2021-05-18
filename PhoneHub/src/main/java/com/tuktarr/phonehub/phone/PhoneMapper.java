@@ -11,4 +11,5 @@ public interface PhoneMapper {
 	List<PhoneInfoEntity> selPerformanceRanking();
 	List<PhoneInfoEntity> selCost_Effectiveness();
 	PhoneInfoEntity selPhoneDetail(PhoneInfoEntity param);
+	String selUsebleTip();
 }

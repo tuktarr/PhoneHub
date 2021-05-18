@@ -30,4 +30,8 @@ public class PhoneService {
 		return pMapper.selPhoneDetail(pData);
 	}
 	
+	public String selUsebleTip() {
+		return pMapper.selUsebleTip();
+	}
+	
 }

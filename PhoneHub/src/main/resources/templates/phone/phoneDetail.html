@@ -30,50 +30,33 @@
                     <!-- 기기설명 -->
                     <div class="item_script">
                         <h2 class="item_script_tit">상세내용</h2>
-                        <span th:text=${data.platformOS}>
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat, commodi amet consectetur distinctio maiores sequi natus, quasi ipsa facilis nemo quis, et exercitationem molestiae officia optio earum maxime doloremque tempora.
-                        </span>
-                        <span th:text=${data.displayType}>
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat, commodi amet consectetur distinctio maiores sequi natus, quasi ipsa facilis nemo quis, et exercitationem molestiae officia optio earum maxime doloremque tempora.
-                        </span>
-                        <span th:text=${data.displayOther}>
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat, commodi amet consectetur distinctio maiores sequi natus, quasi ipsa facilis nemo quis, et exercitationem molestiae officia optio earum maxime doloremque tempora.
-                        </span>
-                        <span th:text=${data.displaySize}>
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat, commodi amet consectetur distinctio maiores sequi natus, quasi ipsa facilis nemo quis, et exercitationem molestiae officia optio earum maxime doloremque tempora.
-                        </span>
-                        <span th:text=${data.displayResolution}>
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat, commodi amet consectetur distinctio maiores sequi natus, quasi ipsa facilis nemo quis, et exercitationem molestiae officia optio earum maxime doloremque tempora.
-                        </span>
-                        <span th:text=${data.bodyDimensions}>
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat, commodi amet consectetur distinctio maiores sequi natus, quasi ipsa facilis nemo quis, et exercitationem molestiae officia optio earum maxime doloremque tempora.
-                        </span>
-                        <span th:text=${data.bodyWeight}>
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat, commodi amet consectetur distinctio maiores sequi natus, quasi ipsa facilis nemo quis, et exercitationem molestiae officia optio earum maxime doloremque tempora.
-                        </span>
-                        <span th:text=${data.bodyOther}>
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat, commodi amet consectetur distinctio maiores sequi natus, quasi ipsa facilis nemo quis, et exercitationem molestiae officia optio earum maxime doloremque tempora.
-                        </span>
-                        <span th:text=${data.featuresOther}>
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat, commodi amet consectetur distinctio maiores sequi natus, quasi ipsa facilis nemo quis, et exercitationem molestiae officia optio earum maxime doloremque tempora.
-                        </span>
-                        <span th:text=${data.announced}>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, quas architecto autem eligendi error dolor optio maiores reprehenderit non. Numquam rem, labore assumenda voluptas dignissimos dolorum ipsum eaque? Nulla, soluta?
-                        </span>
-                        <span th:text=${data.status}>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, quas architecto autem eligendi error dolor optio maiores reprehenderit non. Numquam rem, labore assumenda voluptas dignissimos dolorum ipsum eaque? Nulla, soluta?
+                        <span th:inline="text">
+                        	[[${#strings.substringBefore(data.platformOS, ";")}]], 
+                        	[[${#strings.substringBefore(data.displayType, ";")}]], 
+                        	[[${#strings.substringBefore(data.displayOther, ";")}]], 
+                        	[[${#strings.substringBefore(data.displaySize, ";")}]], 
+                        	[[${#strings.substringBefore(data.displayResolution, ";")}]], 
+                        	[[${#strings.substringBefore(data.bodyDimensions, ";")}]], 
+                        	[[${#strings.substringBefore(data.bodyWeight, ";")}]], 
+                        	[[${#strings.substringBefore(data.bodyOther, ";")}]], 
+                        	[[${#strings.substringBefore(data.featuresOther, ";")}]], 
+                        	[[${#strings.substringBefore(data.announced, ";")}]], 
+                        	[[${#strings.substringBefore(data.status, ";")}]]
+                            <!-- Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat, commodi amet consectetur distinctio maiores sequi natus, quasi ipsa facilis nemo quis, et exercitationem molestiae officia optio earum maxime doloremque tempora. -->
                         </span>
                     </div>
                     <!-- 점수 -->
                     <div class="item_score">
-                        <div th:text=${data.APScore}/100 class="score_box very_good">
+                        <div th:text=${data.APScore}/100 class="score_box" 
+                        th:classappend="(${data.APScore}/100 <= 25 ? very_bad :(${data.APScore}/100 <= 50 ? bad : (${data.APScore}/100 <= 75 ? good : very_good)))">
                             100
                         </div>
                         <div class="percent">
                             <span class="percent_tit">phonehub score</span>
                             <div class="percent_bar">
                                 <!-- width값조정 -->
-                                <div th:style="'width: ' + ${data.APScore}/100 + '%'" class="progress very_good">
+                                <div th:style="'width: ' + ${data.APScore}/100 + '%'" class="progress" 
+                                th:classappend="(${data.APScore}/100 <= 25 ? very_bad :(${data.APScore}/100 <= 50 ? bad : (${data.APScore}/100 <= 75 ? good : very_good)))">
                                 </div>
                             </div>
                         </div>
@@ -81,7 +64,7 @@
                     <!-- 유저 팁 -->
                     <div class="user_tip">
                         <i class="fas fa-lightbulb fa-2x"></i>
-                        <span>안녕하세요</span>
+                        <span th:text="${usebleTip}">안녕하세요</span>
                     </div>
                 </div>
             </div>
@@ -175,17 +158,17 @@
                         <span>프로세서</span>
                     </div>
                     <div class="dspec_info">
-                        <div class="dspec_info_box">
-                            <span class="dinfo_tit">CPU 속도</span>
-                            <span class="dinfo_cont">2.9GHz,2.8GHz,2.2GHz</span>
+                        <div th:if="${data.platformChipset != ''}" class="dspec_info_box">
+                            <span class="dinfo_tit">이름</span>
+                            <span th:text="${#strings.substringBefore(data.platformChipset, ';')}" class="dinfo_cont"></span>
                         </div>
-                        <div class="dspec_info_box">
-                            <span class="dinfo_tit">CPU 종류</span>
-                            <span class="dinfo_cont">Octa-Core</span>
+                        <div th:if="${data.platformCPU != ''}" class="dspec_info_box">
+                            <span class="dinfo_tit">종류</span>
+                            <span th:text="${#strings.substringBefore(data.platformCPU, ';')}" class="dinfo_cont"></span>
                         </div>
-                        <div class="dspec_info_box">
-                            <span class="dinfo_tit">CPU 이름</span>
-                            <span class="dinfo_cont">exynos 2100</span>
+                        <div th:if="${data.platformGPU != ''}" class="dspec_info_box">
+                            <span class="dinfo_tit">그래픽</span>
+                            <span th:text="${#strings.substringBefore(data.platformGPU, ';')}" class="dinfo_cont"></span>
                         </div>
                     </div>
                 </div>
@@ -194,25 +177,263 @@
                         <span>디스플레이</span>
                     </div>
                     <div class="dspec_info">
-                        <div class="dspec_info_box">
-                            <span class="dinfo_tit">크기(Main Display)</span>
-                            <span class="dinfo_cont">173.0mm</span>
+                        <div th:if="${data.displaySize != ''}" class="dspec_info_box">
+                            <span class="dinfo_tit">크기</span>
+                            <span th:text="${#strings.substringBefore(data.displaySize, ';')}" class="dinfo_cont">exynos 2100</span>
                         </div>
-                        <div class="dspec_info_box">
-                            <span class="dinfo_tit">해상도(Main)</span>
-                            <span class="dinfo_cont">3200x1440(Quad HD+)</span>
+                        <div th:if="${data.displayResolution != ''}" class="dspec_info_box">
+                            <span class="dinfo_tit">해상도</span>
+                            <span th:text="${#strings.substringBefore(data.displayResolution, ';')}" class="dinfo_cont">exynos 2100</span>
                         </div>
-                        <div class="dspec_info_box">
-                            <span class="dinfo_tit">종류(Main)</span>
-                            <span class="dinfo_cont">Dynamic AMOLED 2X</span>
+                        <div th:if="${data.displayType != ''}" class="dspec_info_box">
+                            <span class="dinfo_tit">종류 및 색상도</span>
+                            <span th:text="${#strings.substringBefore(data.displayType, ';')}" class="dinfo_cont">exynos 2100</span>
                         </div>
-                        <div class="dspec_info_box">
-                            <span class="dinfo_tit">색심도(Main)</span>
-                            <span class="dinfo_cont">16M</span>
+                        <div th:if="${data.displayProtection != ''}" class="dspec_info_box">
+                            <span class="dinfo_tit">보호유리</span>
+                            <span th:text="${#strings.substringBefore(data.displayProtection, ';')}" class="dinfo_cont">exynos 2100</span>
                         </div>
-                        <div class="dspec_info_box">
-                            <span class="dinfo_tit">주사율</span>
-                            <span class="dinfo_cont">exynos 2100</span>
+                    </div>
+                </div>
+                <div class="dspec_box">
+                    <div class="dspec_tit">
+                        <span>카메라</span>
+                    </div>
+                    <div class="dspec_info">
+                        <div th:if="${data.mainCameraSingle != ''}" class="dspec_info_box">
+                            <span class="dinfo_tit">Single</span>
+                            <span th:text="${#strings.substringBefore(data.mainCameraSingle, ';')}" class="dinfo_cont"></span>
+                        </div>
+                        <div th:if="${data.mainCameraDual != ''}" class="dspec_info_box">
+                            <span class="dinfo_tit">Dual</span>
+                            <span th:text="${#strings.substringBefore(data.mainCameraDual, ';')}" class="dinfo_cont"></span>
+                        </div>
+                        <div th:if="${data.mainCameraTriple != ''}" class="dspec_info_box">
+                            <span class="dinfo_tit">Triple</span>
+                            <span th:text="${#strings.substringBefore(data.mainCameraTriple, ';')}" class="dinfo_cont"></span>
+                        </div>
+                        <div th:if="${data.mainCameraQuad != ''}" class="dspec_info_box">
+                            <span class="dinfo_tit">Quad</span>
+                            <span th:text="${#strings.substringBefore(data.mainCameraQuad, ';')}" class="dinfo_cont"></span>
+                        </div>
+                        <div th:if="${data.mainCameraFive != ''}" class="dspec_info_box">
+                            <span class="dinfo_tit">Five</span>
+                            <span th:text="${#strings.substringBefore(data.mainCameraFive, ';')}" class="dinfo_cont"></span>
+                        </div>
+                        <div th:if="${data.mainCameraSix != ''}" class="dspec_info_box">
+                            <span class="dinfo_tit">Five</span>
+                            <span th:text="${#strings.substringBefore(data.mainCameraSix, ';')}" class="dinfo_cont"></span>
+                        </div>
+                        <div th:if="${data.mainCameraVideo != ''}" class="dspec_info_box">
+                            <span class="dinfo_tit">비디오(후면)</span>
+                            <span th:text="${#strings.substringBefore(data.mainCameraVideo, ';')}" class="dinfo_cont"></span>
+                        </div>
+                        <div th:if="${data.selfieCameraSingle != ''}" class="dspec_info_box">
+                            <span class="dinfo_tit">selfieCameraSingle</span>
+                            <span th:text="${#strings.substringBefore(data.selfieCameraSingle, ';')}" class="dinfo_cont"></span>
+                        </div>
+                        <div th:if="${data.selfieCameraDual != ''}" class="dspec_info_box">
+                            <span class="dinfo_tit">selfieCameraDual</span>
+                            <span th:text="${#strings.substringBefore(data.selfieCameraDual, ';')}" class="dinfo_cont"></span>
+                        </div>
+                        <div th:if="${data.selfieCameraTriple != ''}" class="dspec_info_box">
+                            <span class="dinfo_tit">selfieCameraTriple</span>
+                            <span th:text="${#strings.substringBefore(data.selfieCameraTriple, ';')}" class="dinfo_cont"></span>
+                        </div>
+                        <div th:if="${data.selfieCameraQuad != ''}" class="dspec_info_box">
+                            <span class="dinfo_tit">selfieCameraQuad</span>
+                            <span th:text="${#strings.substringBefore(data.selfieCameraQuad, ';')}" class="dinfo_cont"></span>
+                        </div>
+                        <div th:if="${data.selfieCameraVideo != ''}" class="dspec_info_box">
+                            <span class="dinfo_tit">비디오(전면)</span>
+                            <span th:text="${#strings.substringBefore(data.selfieCameraVideo, ';')}" class="dinfo_cont"></span>
+                        </div>
+                        <div th:if="${data.mainCameraFeatures != ''}" class="dspec_info_box">
+                            <span class="dinfo_tit">기타(후면)</span>
+                            <span th:text="${#strings.substringBefore(data.mainCameraFeatures, ';')}" class="dinfo_cont"></span>
+                        </div>
+                        <div th:if="${data.selfieCameraFeatures != ''}" class="dspec_info_box">
+                            <span class="dinfo_tit">기타(전면)</span>
+                            <span th:text="${#strings.substringBefore(data.selfieCameraFeatures, ';')}" class="dinfo_cont"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="dspec_box">
+                    <div class="dspec_tit">
+                        <span>메모리</span>
+                    </div>
+                    <div class="dspec_info">
+                        <div th:if="${data.memoryInternal != ''}" class="dspec_info_box">
+                            <span class="dinfo_tit">RAM and ROM Size(GB)</span>
+                            <span th:text="${#strings.substringBefore(data.memoryInternal, ';')}" class="dinfo_cont"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="dspec_box">
+                    <div class="dspec_tit">
+                        <span>SIM</span>
+                    </div>
+                    <div class="dspec_info">
+                        <div th:if="${data.bodySIM != ''}" class="dspec_info_box">
+                            <span class="dinfo_tit">bodySIM</span>
+                            <span th:text="${#strings.substringBefore(data.bodySIM, ';')}" class="dinfo_cont"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="dspec_box">
+                    <div class="dspec_tit">
+                        <span>네트워크(S/W사용)</span>
+                    </div>
+                    <div class="dspec_info">
+                        <div th:if="${data.networkTechology != ''}" class="dspec_info_box">
+                            <span class="dinfo_tit">기술</span>
+                            <span th:text="${#strings.replace(data.networkTechology, ';', '')}" class="dinfo_cont"></span>
+                        </div>
+                        <div th:if="${data.network2Gbands != ''}" class="dspec_info_box">
+                            <span class="dinfo_tit">2G</span>
+                            <span th:text="${#strings.replace(data.network2Gbands, ';', '')}" class="dinfo_cont"></span>
+                        </div>
+                        <div th:if="${data.network3Gbands != ''}" class="dspec_info_box">
+                            <span class="dinfo_tit">3G</span>
+                            <span th:text="${#strings.replace(data.network3Gbands, ';', '')}" class="dinfo_cont"></span>
+                        </div>
+                        <div th:if="${data.network4Gbands != ''}" class="dspec_info_box">
+                            <span class="dinfo_tit">4G</span>
+                            <span th:text="${#strings.replace(data.network4Gbands, ';', '')}" class="dinfo_cont"></span>
+                        </div>
+                        <div th:if="${data.network5Gbands != ''}" class="dspec_info_box">
+                            <span class="dinfo_tit">5G</span>
+                            <span th:text="${#strings.replace(data.network5Gbands, ';', '')}" class="dinfo_cont"></span>
+                        </div>
+                        <div th:if="${data.networkSpeed != ''}" class="dspec_info_box">
+                            <span class="dinfo_tit">속도</span>
+                            <span th:text="${#strings.replace(data.networkSpeed, ';', '')}" class="dinfo_cont"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="dspec_box">
+                    <div class="dspec_tit">
+                        <span>연결</span>
+                    </div>
+                    <div class="dspec_info">
+                        <div th:if="${data.memoryCardSlot != ''}" class="dspec_info_box">
+                            <span class="dinfo_cont">외장메모리</span>
+                            <span th:text="${#strings.substringBefore(data.memoryCardSlot, ';')}" class="dinfo_cont"></span>
+                        </div>
+                        <div th:if="${data.commsUSB != ''}" class="dspec_info_box">
+                            <span class="dinfo_cont">commsUSB</span>
+                            <span th:text="${#strings.substringBefore(data.commsUSB, ';')}" class="dinfo_cont"></span>
+                        </div>
+                        <div th:if="${data.commsWLAN != ''}" class="dspec_info_box">
+                            <span class="dinfo_cont">WIFI</span>
+                            <span th:text="${#strings.substringBefore(data.commsWLAN, ';')}" class="dinfo_cont"></span>
+                        </div>
+                        <div th:if="${data.commsBluetooth != ''}" class="dspec_info_box">
+                            <span class="dinfo_cont">Bluetooth</span>
+                            <span th:text="${#strings.substringBefore(data.commsBluetooth, ';')}" class="dinfo_cont"></span>
+                        </div>
+                        <div th:if="${data.commsGPS != ''}" class="dspec_info_box">
+                            <span class="dinfo_cont">GPS</span>
+                            <span th:text="${#strings.substringBefore(data.commsGPS, ';')}" class="dinfo_cont"></span>
+                        </div>
+                        <div th:if="${data.commsNFC != ''}" class="dspec_info_box">
+                            <span class="dinfo_cont">NFC</span>
+                            <span th:text="${#strings.substringBefore(data.commsNFC, ';')}" class="dinfo_cont"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="dspec_box">
+                    <div class="dspec_tit">
+                        <span>운영 체제</span>
+                    </div>
+                    <div class="dspec_info">
+                        <div th:if="${data.platformOS != ''}" class="dspec_info_box">
+                            <span th:text="${#strings.substringBefore(data.platformOS, ',')}" class="dinfo_cont"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="dspec_box">
+                    <div class="dspec_tit">
+                        <span>센서</span>
+                    </div>
+                    <div class="dspec_info">
+                        <div th:if="${data.featuresSensors != ''}" class="dspec_info_box">
+                            <span th:text="${#strings.substringBefore(data.featuresSensors, ';')}" class="dinfo_cont"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="dspec_box">
+                    <div class="dspec_tit">
+                        <span>외관 사양</span>
+                    </div>
+                    <div class="dspec_info">
+                        <div th:if="${data.bodyDimensions != ''}" class="dspec_info_box">
+                            <span class="dinfo_tit">크기</span>
+                            <span th:text="${#strings.substringBefore(data.bodyDimensions, ';')}" class="dinfo_cont"></span>
+                        </div>
+                        <div th:if="${data.bodyWeight != ''}" class="dspec_info_box">
+                            <span class="dinfo_tit">무게</span>
+                            <span th:text="${#strings.substringBefore(data.bodyWeight, ';')}" class="dinfo_cont"></span>
+                        </div>
+                        <div th:if="${data.miscColors != ''}" class="dspec_info_box">
+                            <span class="dinfo_tit">색상</span>
+                            <span th:text="${#strings.substringBefore(data.miscColors, ';')}" class="dinfo_cont"></span>
+                        </div>
+                        <div th:if="${data.bodyBuilt != ''}" class="dspec_info_box">
+                            <span class="dinfo_tit">소재</span>
+                            <span th:text="${#strings.substringBefore(data.bodyBuilt, ';')}" class="dinfo_cont"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="dspec_box">
+                    <div class="dspec_tit">
+                        <span>배터리</span>
+                    </div>
+                    <div class="dspec_info">
+                        <div th:if="${data.batteryOther != ''}" class="dspec_info_box">
+                            <span class="dinfo_tit">정보</span>
+                            <span th:text="${#strings.substringBefore(data.batteryOther, ';')}" class="dinfo_cont"></span>
+                        </div>
+                        <div th:if="${data.batteryCharging != ''}" class="dspec_info_box">
+                            <span class="dinfo_tit">충전</span>
+                            <span th:text="${#strings.substringBefore(data.batteryCharging, ';')}" class="dinfo_cont"></span>
+                        </div>
+                        <div th:if="${data.batteryStandBy != ''}" class="dspec_info_box">
+                            <span class="dinfo_tit">대기시간</span>
+                            <span th:text="${#strings.substringBefore(data.batteryStandBy, ';')}" class="dinfo_cont"></span>
+                        </div>
+                        <div th:if="${data.batteryTalkTime != ''}" class="dspec_info_box">
+                            <span class="dinfo_tit">TalkTime</span>
+                            <span th:text="${#strings.substringBefore(data.batteryTalkTime, ';')}" class="dinfo_cont"></span>
+                        </div>
+                        <div th:if="${data.batteryMusicPlay != ''}" class="dspec_info_box">
+                            <span class="dinfo_tit">MusicPlay</span>
+                            <span th:text="${#strings.substringBefore(data.batteryMusicPlay, ';')}" class="dinfo_cont"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="dspec_box">
+                    <div class="dspec_tit">
+                        <span>서비스</span>
+                    </div>
+                    <div class="dspec_info">
+                        <div th:if="${data.featuresOther != ''}" class="dspec_info_box">
+                            <span th:text="${#strings.substringBefore(data.featuresOther, ';')}" class="dinfo_cont"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="dspec_box">
+                    <div class="dspec_tit">
+                        <span>상품 기본정보</span>
+                    </div>
+                    <div class="dspec_info">
+                        <div th:if="${data.brand != ''}" class="dspec_info_box">
+                            <span class="dinfo_tit">제조사</span>
+                            <span th:text="${data.brand}" class="dinfo_cont"></span>
+                        </div>
+                        <div th:if="${data.announced != ''}" class="dspec_info_box">
+                            <span class="dinfo_tit">출시일</span>
+                            <span th:text="${#strings.substringBefore(data.announced, ';')}" class="dinfo_cont"></span>
                         </div>
                     </div>
                 </div>
