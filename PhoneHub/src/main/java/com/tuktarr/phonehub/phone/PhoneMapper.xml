@@ -23,4 +23,8 @@
 		WHERE pk = ${pk}
 	</select>
 	
+	<select id="selUsebleTip" resultType="string">
+		SELECT content FROM usebletip ORDER BY rand() limit 1
+	</select>
+	
 </mapper>
