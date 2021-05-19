@@ -75,7 +75,7 @@
 	transform: translateY(-10px);
 }
 
-.item_box img {
+.item_box a img {
 	display: block;
     width: 100%;
     max-width: 100%;
