@@ -42,6 +42,7 @@ layout:decorator="~{layout/layout_default}">
                 <div class="detail_content" th:text=${data.ctnt}>       
                 </div>
                 <div class="hits_area">
+                	<input th:if="${session.loginUser != null}" id="userPk" type="hidden" th:value="${pk.userPk}">
                     <button th:if="${session.loginUser != null}" th:value="${data.boardPk}" class="hits_btn best">
                         <span id="up" th:text=${data.voted_count}></span>
                     </button>

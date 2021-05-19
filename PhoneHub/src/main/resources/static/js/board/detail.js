@@ -1,7 +1,8 @@
 const bestHitUp = document.querySelector('.best')
 const worstHitUp = document.querySelector('.worst')
 const boardPk = bestHitUp.value
-console.log(bestHitUp.value)
+const userPk = document.getElementById('userPk').value
+console.log(userPk)
 
 function warnEmpty() {
 	alert("댓글을 입력해주세요.")
@@ -52,26 +53,26 @@ function submitComment() {
 
 
 function popularHit() {
-	fetch(`/boardGetPopular?boardPk=${boardPk}`)
+	fetch(`/boardGetPopular?boardPk=${boardPk}&userPk=${userPk}`)
 		.then(res => res.json())
 		.then(myJson => {
 			proc(myJson)
 		})
 		
 	function proc(myJson) {
-		location.reload()
+		history.go(0);
 	}
 }
 
 function blameHit() {
-	fetch(`/boardGetWorst?boardPk=${boardPk}`)
+	fetch(`/boardGetWorst?boardPk=${boardPk}&userPk=${userPk}`)
 	.then(res => res.json())
 	.then(myJson => {
 		proc(myJson)
 	})
 	
 	function proc(myJson) {
-		location.reload()
+		history.go(0);
 	}
 }
 

@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.tuktarr.phonehub.model.BoardDTO;
 import com.tuktarr.phonehub.model.BoardDomain;
 import com.tuktarr.phonehub.model.BoardEntity;
+import com.tuktarr.phonehub.model.UserEntity;
+import com.tuktarr.phonehub.user.UserService;
 import com.tuktarr.phonehub.utils.SecurityUtils;
 
 @Controller
@@ -28,6 +30,9 @@ public class BoardController {
 	
 	@Autowired
 	BoardService bService;
+	
+	@Autowired
+	UserService uService;
 	
 	@GetMapping("/list")
 	public String list() {
@@ -64,6 +69,7 @@ public class BoardController {
 	@GetMapping("/detail")
 	public String detail(BoardEntity p, Model model, HttpSession hs) {
 		model.addAttribute("data", bService.selBoardDetail(p, hs));
+		model.addAttribute("pk", sUtils.getLoginUser(hs));
 		return "board/detail";
 	}
 	
@@ -97,15 +103,15 @@ public class BoardController {
 	
 	@GetMapping("/boardGetPopular")
 	@ResponseBody
-	public int boardPopular(BoardEntity p){
+	public void boardPopular(BoardEntity p){
 		System.out.println(p.getBoardPk());
-		return bService.upVoteCount(p);
+		bService.upVoteCount(p);
 	}
 	
 	@GetMapping("/boardGetWorst")
 	@ResponseBody
-	public int boardWorst(BoardEntity p){
+	public void boardWorst(BoardEntity p){
 		System.out.println(p.getBoardPk());
-		return bService.upBlameCount(p);
+		bService.upBlameCount(p);
 	}
 }
