@@ -48,6 +48,17 @@ public class BoardService {
 			return mapper.selBoard(p);
 		}
 		
+		public BoardDTO selLike(BoardDTO p) {
+			BoardDTO pa = mapper.selLike(p);
+			if(pa == null) {
+				BoardDTO param = new BoardDTO();
+				param.setLikecount(0);
+				param.setHatecount(0);
+				return param;
+			}
+			return pa;
+		}
+		
 		// 페이징
 		public List<BoardDomain> selBoardList(BoardDTO p) {
 			int sIdx = (p.getPage() - 1) * p.getRowCnt();
@@ -86,26 +97,30 @@ public class BoardService {
 			return mapper.upBoard(p);
 		}
 		
-		public void upVoteCount(BoardEntity p) {
+		public int upVoteCount(BoardEntity p) {
 			BoardDTO pa = new BoardDTO();
 			pa.setBoardPk(p.getBoardPk());
 			pa.setUserPk(p.getUserPk());
 			BoardDTO check = mapper.selLike(pa);
 			if(check == null) {
-			mapper.insLike(pa);
+				mapper.insLike(pa);
 			}
 			
 			if(check.getLikecount() == 0) {
 				mapper.upVoteCount(p);
-				mapper.upLike(pa);				
+				mapper.upLike(pa);
+				return 1;
 			}
 			if(check.getLikecount() == 1) {
 				mapper.downVoteCount(p);
 				mapper.downLike(pa);
+				return 2;
 			}
+			
+			return 3;
 		}
 		
-		public void upBlameCount(BoardEntity p) {
+		public int upBlameCount(BoardEntity p) {
 			BoardDTO pa = new BoardDTO();
 			pa.setBoardPk(p.getBoardPk());
 			pa.setUserPk(p.getUserPk());
@@ -115,12 +130,16 @@ public class BoardService {
 			}
 			if(check.getHatecount() == 0) {
 				mapper.upBlameCount(p);
-				mapper.upHate(pa);				
+				mapper.upHate(pa);
+				return 1;
 			}
 			if(check.getHatecount() == 1) {
 				mapper.downBlameCount(p);
 				mapper.downHate(pa);
+				return 2;
 			}
+			
+			return 3;
 		}
 
 }
