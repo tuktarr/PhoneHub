@@ -60,7 +60,7 @@
     padding: 30px 0;
 }
 
-.compare_img img {
+.compare_img a img {
     max-width: 360px;
     max-height: 360px;
 }
