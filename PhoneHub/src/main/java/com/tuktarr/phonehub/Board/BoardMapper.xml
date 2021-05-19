@@ -38,22 +38,22 @@
 	<update id="upBoard">
 		UPDATE board
 		<set>
-		<choose>
-			<when test="hits == 1">
+			<choose>
+				<when test="hits == 1">
 				hits = hits + 1
-			</when>
-			<otherwise>
-				<if test="title != null and title !=''">
+				</when>
+				<otherwise>
+					<if test="title != null and title !=''">
 						title = #{title},
-				</if>
-				<if test="ctnt != null and ctnt !=''">
+					</if>
+					<if test="ctnt != null and ctnt !=''">
 						ctnt = #{ctnt},
-				</if>
-				<if test="isDel != 0">
+					</if>
+					<if test="isDel != 0">
 					isDel = 1,
-				</if>
+					</if>
 				
-				modDt = now()
+					modDt = now()
 				</otherwise>
 			</choose>
 		</set>
@@ -64,14 +64,62 @@
 	</update>
 	
 	<update id="upVoteCount">
-	UPDATE board
-	SET voted_count = voted_count+1 WHERE boardPk = #{boardPk}
+		UPDATE board A INNER JOIN likecontrol B
+		ON A.boardPk = B.boardPk
+		SET A.voted_count = A.voted_count + 1 WHERE A.boardPk = #{boardPk} AND B.userPk = #{userPk}
+	</update>
+	
+	<update id="downVoteCount">
+		UPDATE board A INNER JOIN likecontrol B
+		ON A.boardPk = B.boardPk
+		SET A.voted_count = A.voted_count -1 WHERE A.boardPk = #{boardPk} AND B.userPk = #{userPk}
 	</update>
 	
 	<update id="upBlameCount">
-	UPDATE board
-	SET blamed_count = blamed_count+1 WHERE boardPk = #{boardPk}
+		UPDATE board A INNER JOIN likecontrol B
+		ON A.boardPk = B.boardPk
+		SET A.blamed_count = A.blamed_count + 1 WHERE A.boardPk = #{boardPk}
 	</update>
 	
+	<update id="downBlameCount">
+		UPDATE board A INNER JOIN likecontrol B
+		ON A.boardPk = B.boardPk
+		SET A.blamed_count = A.blamed_count - 1 WHERE A.boardPk = #{boardPk}
+	</update>
 	
+	<insert id="insLike">
+		INSERT INTO likecontrol (boardPk, userPk, likecount, hatecount) 
+		VALUES (#{boardPk},#{userPk},0,0)
+	</insert>
+	
+	<select id="selLike" resultType="com.tuktarr.phonehub.model.BoardDTO">
+		SELECT a.likecount, a.hatecount, a.userPk, b.voted_count, b.blamed_count
+		FROM likecontrol AS a INNER JOIN board as b ON a.boardPk = b.boardPk
+		WHERE b.isDel = 0 AND a.userPk = #{userPk} AND a.boardPk = #{boardPk};
+	</select>
+	
+	<update id="upLike">
+		UPDATE likecontrol
+		SET likecount = likecount + 1
+		where boardPk = #{boardPk} and userPk = #{userPk}
+	</update>
+	
+	<update id="upHate">
+		UPDATE likecontrol
+		SET hatecount = hatecount + 1
+		where boardPk = #{boardPk} and userPk = #{userPk}
+	</update>
+	
+	<update id="downLike">
+		UPDATE likecontrol
+		SET likecount = likecount - 1
+		where boardPk = #{boardPk} and userPk = #{userPk}
+	</update>
+	
+	<update id="downHate">
+		UPDATE likecontrol
+		SET hatecount = hatecount - 1
+		where boardPk = #{boardPk} and userPk = #{userPk}
+	</update>
+
 </mapper>

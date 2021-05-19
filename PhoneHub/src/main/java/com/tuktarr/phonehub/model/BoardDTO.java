@@ -2,11 +2,26 @@ package com.tuktarr.phonehub.model;
 
 public class BoardDTO {
 	private int boardPk;
+	private int userPk;
 	private int page;
 	private int sIdx;
 	private int rowCnt;
 	private int category;
+	private int likecount;
+	private int hatecount;
 	
+	public int getLikecount() {
+		return likecount;
+	}
+	public void setLikecount(int likecount) {
+		this.likecount = likecount;
+	}
+	public int getHatecount() {
+		return hatecount;
+	}
+	public void setHatecount(int hatecount) {
+		this.hatecount = hatecount;
+	}
 	public int getBoardPk() {
 		return boardPk;
 	}
@@ -36,6 +51,12 @@ public class BoardDTO {
 	}
 	public void setCategory(int category) {
 		this.category = category;
+	}
+	public int getUserPk() {
+		return userPk;
+	}
+	public void setUserPk(int userPk) {
+		this.userPk = userPk;
 	}
 	
 	

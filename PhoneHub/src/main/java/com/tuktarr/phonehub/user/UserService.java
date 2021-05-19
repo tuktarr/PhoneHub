@@ -11,6 +11,7 @@ import org.springframework.mail.MailException;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
+import com.tuktarr.phonehub.model.BoardEntity;
 import com.tuktarr.phonehub.model.UserEntity;
 import com.tuktarr.phonehub.utils.SecurityUtils;
 

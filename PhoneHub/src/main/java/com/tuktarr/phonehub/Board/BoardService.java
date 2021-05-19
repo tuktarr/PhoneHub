@@ -86,11 +86,41 @@ public class BoardService {
 			return mapper.upBoard(p);
 		}
 		
-		public int upVoteCount(BoardEntity p) {
-			return mapper.upVoteCount(p);
+		public void upVoteCount(BoardEntity p) {
+			BoardDTO pa = new BoardDTO();
+			pa.setBoardPk(p.getBoardPk());
+			pa.setUserPk(p.getUserPk());
+			BoardDTO check = mapper.selLike(pa);
+			if(check == null) {
+			mapper.insLike(pa);
+			}
+			
+			if(check.getLikecount() == 0) {
+				mapper.upVoteCount(p);
+				mapper.upLike(pa);				
+			}
+			if(check.getLikecount() == 1) {
+				mapper.downVoteCount(p);
+				mapper.downLike(pa);
+			}
 		}
 		
-		public int upBlameCount(BoardEntity p) {
-			return mapper.upBlameCount(p);
+		public void upBlameCount(BoardEntity p) {
+			BoardDTO pa = new BoardDTO();
+			pa.setBoardPk(p.getBoardPk());
+			pa.setUserPk(p.getUserPk());
+			BoardDTO check = mapper.selLike(pa);
+			if(check == null) {
+			mapper.insLike(pa);
+			}
+			if(check.getHatecount() == 0) {
+				mapper.upBlameCount(p);
+				mapper.upHate(pa);				
+			}
+			if(check.getHatecount() == 1) {
+				mapper.downBlameCount(p);
+				mapper.downHate(pa);
+			}
 		}
+
 }

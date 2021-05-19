@@ -16,5 +16,13 @@ public interface BoardMapper {
 	int upBoard(BoardEntity p);
 	int selMaxPageNum(BoardDTO p);
 	int upVoteCount(BoardEntity p);
+	int downVoteCount(BoardEntity p);
 	int upBlameCount(BoardEntity p);
+	int downBlameCount(BoardEntity p);
+	int insLike(BoardDTO p);
+	BoardDTO selLike(BoardDTO p);
+	int upLike(BoardDTO p);
+	int upHate(BoardDTO p);
+	int downLike(BoardDTO p);
+	int downHate(BoardDTO p);
 }

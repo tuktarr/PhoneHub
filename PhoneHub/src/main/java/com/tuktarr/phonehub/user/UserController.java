@@ -48,6 +48,7 @@ public class UserController {
 		Map<String, Object> map = new HashMap<>();
 		map.put("result", service.login(p, hs));
 		System.out.println("아이디 :" + p.getUserEmail());
+		System.out.println("pk:" + p.getUserPk());
 		return map;
 	}
 	
