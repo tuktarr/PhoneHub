@@ -70,6 +70,10 @@ public class BoardController {
 	public String detail(BoardEntity p, Model model, HttpSession hs) {
 		model.addAttribute("data", bService.selBoardDetail(p, hs));
 		model.addAttribute("pk", sUtils.getLoginUser(hs));
+		BoardDTO pa = new BoardDTO();
+		pa.setBoardPk(p.getBoardPk());
+		pa.setUserPk(sUtils.getLoginUser(hs).getUserPk());
+		model.addAttribute("like", bService.selLike(pa));
 		return "board/detail";
 	}
 	
@@ -101,17 +105,17 @@ public class BoardController {
 		
 	}
 	
-	@GetMapping("/boardGetPopular")
 	@ResponseBody
-	public void boardPopular(BoardEntity p){
+	@GetMapping("/boardGetPopular")
+	public int boardPopular(BoardEntity p){
 		System.out.println(p.getBoardPk());
-		bService.upVoteCount(p);
+		return bService.upVoteCount(p);
 	}
 	
-	@GetMapping("/boardGetWorst")
 	@ResponseBody
-	public void boardWorst(BoardEntity p){
+	@GetMapping("/boardGetWorst")
+	public int boardWorst(BoardEntity p){
 		System.out.println(p.getBoardPk());
-		bService.upBlameCount(p);
+		return bService.upBlameCount(p);
 	}
 }

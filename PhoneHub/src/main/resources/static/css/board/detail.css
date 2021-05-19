@@ -160,6 +160,16 @@
     color: #fff;
 }
 
+.likeup::before {
+	background: #6495ED;
+	color: #fff;
+}
+
+.hateup::before {
+	background: #FC766AFF !important;
+	color: #fff;
+}
+
 .worst {
     color: #FC766AFF;
 }

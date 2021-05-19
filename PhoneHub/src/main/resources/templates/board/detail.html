@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-xmlns:th="http://www.thymeleaf.org"
-xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-layout:decorator="~{layout/layout_default}">
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="~{layout/layout_default}">
 
 <th:block layout:fragment="css">
-	<link rel="stylesheet" type="text/css" th:href="@{css/board/detail.css}">
+	<link rel="stylesheet" type="text/css"
+		th:href="@{css/board/detail.css}">
 </th:block>
 
 <th:block layout:fragment="script">
@@ -13,63 +14,69 @@ layout:decorator="~{layout/layout_default}">
 </th:block>
 
 <th:block layout:fragment="content">
-    <div class="detail_wrap">
-        <div class="pagew">
-            <!-- detail head -->
-            <div class="detail_h">
-                <div class="detail_tit">
-                    <span th:text=${data.title}></span>
-                </div>
-                <!-- detail title left -->
-                <div class="detail_tl">
-                    <div class="detail_user">
-                        <span class="user" th:text=${data.writerNm}></span>
-                    </div>
-                    <div class="detail_date">
-                        <i class="far fa-clock"></i>
-                        <span th:text=${data.regDt}></span>
-                    </div>
-                </div>
-                <!-- detail title right -->
-                <div class="detail_tr">
-                    <span th:text="|글번호: ${data.seq}|"></span>
-                    <span th:text="|조회수: ${data.hits}|"></span>
-                    <span th:text="|추천수: ${data.voted_count}|"></span>
-                </div>
-            </div>
-            <!-- detail board -->
-            <div class="detail_board">
-                <div class="detail_content" th:text=${data.ctnt}>       
-                </div>
-                <div class="hits_area">
-                	<input th:if="${session.loginUser != null}" id="userPk" type="hidden" th:value="${pk.userPk}">
-                    <button th:if="${session.loginUser != null}" th:value="${data.boardPk}" class="hits_btn best">
-                        <span id="up" th:text=${data.voted_count}></span>
-                    </button>
-                    <button th:if="${session.loginUser != null}" th:value="${data.boardPk}" class="hits_btn worst">
-                        <span id="down" th:text=${data.blamed_count}></span>
-                    </button>
-                    <button th:if="${session.loginUser == null}" th:value="${data.boardPk}" class="hits_btn best" disabled>
-                        <span id="up" th:text=${data.voted_count}></span>
-                    </button>
-                    <button th:if="${session.loginUser == null}" th:value="${data.boardPk}" class="hits_btn worst" disabled>
-                        <span id="down" th:text=${data.blamed_count}></span>
-                    </button>
-                </div>
-            </div>
-            <!-- detail comment -->
-            <div id="comments">
-                <div id="comment_head">
-                    전체댓글 <span id="commentCount">0</span> 개
-                </div>
-                <div class="comment_submit">
-                    <textarea id="newComment" name="new_comment" rows="5" placeholder="댓글을 입력해주세요."></textarea>
-                    <button type="submit" onclick="submitComment()" class="comment_btn">등록</button>
-                    <button type="submit" class="back_list">글목록</button>
-                </div>
-            </div>
-        </div>
-    </div>
+	<div class="detail_wrap">
+		<div class="pagew">
+			<!-- detail head -->
+			<div class="detail_h">
+				<div class="detail_tit">
+					<span th:text=${data.title}></span>
+				</div>
+				<!-- detail title left -->
+				<div class="detail_tl">
+					<div class="detail_user">
+						<span class="user" th:text=${data.writerNm}></span>
+					</div>
+					<div class="detail_date">
+						<i class="far fa-clock"></i> <span th:text=${data.regDt}></span>
+					</div>
+				</div>
+				<!-- detail title right -->
+				<div class="detail_tr">
+					<span th:text="|글번호: ${data.seq}|"></span> <span
+						th:text="|조회수: ${data.hits}|"></span> <span
+						th:text="|추천수: ${data.voted_count}|"></span>
+				</div>
+			</div>
+			<!-- detail board -->
+			<div class="detail_board">
+				<div class="detail_content" th:text=${data.ctnt}></div>
+				<div class="hits_area">
+					<input th:if="${session.loginUser != null}" id="userPk"
+						type="hidden" th:value="${pk.userPk}">
+					<button class="hits_btn best" th:if="${session.loginUser != null}"
+						th:value="${data.boardPk}"
+						th:classappend="(${like.likecount} == '0' ? '':(${like.likecount} == '1' ? 'likeup'))">
+						<span id="up" th:text=${data.voted_count}></span>
+					</button>
+					<button class="hits_btn worst" th:if="${session.loginUser != null}"
+						th:value="${data.boardPk}"
+						th:classappend="(${like.hatecount} == '0' ? '':(${like.hatecount} == '1' ? 'hateup'))">
+						<span id="down" th:text=${data.blamed_count}></span>
+					</button>
+					<button th:if="${session.loginUser == null}"
+						th:value="${data.boardPk}" class="hits_btn best" disabled>
+						<span id="up" th:text=${data.voted_count}></span>
+					</button>
+					<button th:if="${session.loginUser == null}"
+						th:value="${data.boardPk}" class="hits_btn worst" disabled>
+						<span id="down" th:text=${data.blamed_count}></span>
+					</button>
+				</div>
+			</div>
+			<!-- detail comment -->
+			<div id="comments">
+				<div id="comment_head">
+					전체댓글 <span id="commentCount">0</span> 개
+				</div>
+				<div class="comment_submit">
+					<textarea id="newComment" name="new_comment" rows="5"
+						placeholder="댓글을 입력해주세요."></textarea>
+					<button type="submit" onclick="submitComment()" class="comment_btn">등록</button>
+					<button type="submit" class="back_list">글목록</button>
+				</div>
+			</div>
+		</div>
+	</div>
 </th:block>
 
 </html>

@@ -50,30 +50,51 @@ function submitComment() {
 	}
 }
 
-
-
 function popularHit() {
 	fetch(`/boardGetPopular?boardPk=${boardPk}&userPk=${userPk}`)
-		.then(res => res.json())
-		.then(myJson => {
-			proc(myJson)
-		})
-		
-	function proc(myJson) {
-		history.go(0);
-	}
+			.then(res => res.json())
+			.then(myJson => {
+				proc(myJson)
+			})
+			
+			function proc(myJson) {
+				if(myJson == 1) {
+					alert('추천했습니다')
+					location.reload()
+					return
+				} else if(myJson == 2) {
+					alert('추천취소했습니다')
+					location.reload()
+					return
+				} else {
+					alert('무언가 잘못됐습니다')
+					return
+				}
+			}
+				
 }
 
 function blameHit() {
 	fetch(`/boardGetWorst?boardPk=${boardPk}&userPk=${userPk}`)
-	.then(res => res.json())
-	.then(myJson => {
-		proc(myJson)
-	})
-	
-	function proc(myJson) {
-		history.go(0);
-	}
+			.then(res => res.json())
+			.then(myJson => {
+				proc(myJson)
+			})
+			
+			function proc(myJson) {
+				if(myJson == 1) {
+					alert('추천했습니다')
+					location.reload()
+					return
+				} else if(myJson == 2) {
+					alert('추천취소했습니다')
+					location.reload()
+					return
+				} else {
+					alert('무언가 잘못됐습니다')
+					return
+				}
+			}
 }
 
 bestHitUp.addEventListener('click', popularHit)
