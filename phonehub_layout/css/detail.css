@@ -224,7 +224,7 @@
     border: none;
     border-radius: 15px;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: all 0.5s;
 }
 
 .comment_btn:hover,
