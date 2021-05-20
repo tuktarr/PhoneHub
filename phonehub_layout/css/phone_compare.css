@@ -36,14 +36,14 @@
 }
 
 .compare_search button {
-    height: 50px;
     width: 50px;
+    height: 50px;
     background: #fff;
     color: #89ABE3;
     border: 3px solid #89ABE3;
     border-radius: 10px 10px 10px 0;
-    cursor: pointer;
     transition: 0.25s ease-in-out;
+    cursor: pointer;
 }
 
 .compare_search button:hover {
@@ -102,7 +102,7 @@
 }
 
 .spec_list_tit span {
-	position: relative;
+    position: relative;
     background: #fff;
     font-size: 25px;
     font-weight: bold;
@@ -111,35 +111,35 @@
 }
 
 .spec_list {
-	position: relative;
-	text-align: center;
-	margin-top: 25px;
-	border-right: 1px solid #333;
+    position: relative;
+    text-align: center;
+    margin-top: 25px;
+    border-right: 1px solid #333;
 }
 
 .spec_list:last-child {
-	border: none;
+    border: none;
 }
 
 .spec_list span {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	min-height: 100px;
-	padding: 0 20px;
-	transition: 0.2s ease-in;
-	word-break: break-all;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100px;
+    padding: 0 20px;
+    transition: 0.2s ease-in;
+    word-break: break-all;
 }
 
 
 .spec_list span:nth-child(2n) {
-	background: #f7f7f7;
+    background: #f7f7f7;
 }
 
 .spec_list span:hover {
-	background: #e6f4fa;
+    background: #e6f4fa;
 }
 
 .spec_list span:nth-child(2n):hover {
-	background: #e6f4fe;
+    background: #e6f4fe;
 }

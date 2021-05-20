@@ -343,20 +343,20 @@ input[name=findbtn]:hover {
 }
 
 .warnning {
-	position: relative;
-	margin-top: 50px;
-	padding: 0 40px;
+    position: relative;
+    margin-top: 50px;
+    padding: 0 40px;
 }
 
 .warnning>span {
-	display: block;
-	margin: 10px 0;
-	font-size: 14px;
-	word-wrap: break-word;
+    display: block;
+    margin: 10px 0;
+    font-size: 14px;
+    word-wrap: break-word;
 }
 
 .warnning>span>i {
-	margin-right: 10px;
+    margin-right: 10px;
 }
 
 #findFrm {
