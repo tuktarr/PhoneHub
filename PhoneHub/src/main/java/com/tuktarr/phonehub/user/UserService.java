@@ -12,6 +12,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 import com.tuktarr.phonehub.model.BoardEntity;
+import com.tuktarr.phonehub.model.UserDomain;
 import com.tuktarr.phonehub.model.UserEntity;
 import com.tuktarr.phonehub.utils.SecurityUtils;
 
@@ -156,5 +157,42 @@ public class UserService {
 		}
 
 	}
+	
+	// 회원정보 수정 로직
+	public int profileChange(UserDomain p, HttpSession hs) throws Exception {
+		UserEntity check = mapper.selUser(p); // DB에 저장되어 있는 데이터 가져옴
 
+		if (p.getNickname().equals("")) { // 닉네임이 비어있으면 0 리턴
+			return 0;
+		}
+		if (!BCrypt.checkpw(p.getUserPw(), check.getUserPw())) { // DB에 저장되어있는 비밀번호와 입력한 비밀번호의 정보가 다르면 1 리턴
+			return 1;
+		}
+		if (p.getUserNewPw().equals("")) { // 새 비밀번호 칸이 비어있으면 2 리턴
+			return 2;
+		}
+		if (!p.getUserNewPw().equals(p.getUserPwRe())) { // 새 비밀번호 칸과 새 비밀번호 확인 칸이 다르면 3 리턴
+			return 3;
+		}
+
+		// 비밀번호 암호화
+		String salt = sUtils.getSalt();
+		String hashPw = sUtils.getHashPw(p.getUserNewPw(), salt);
+
+		p.setUserPw(hashPw);
+
+		// 세션에 값을 담기위해 set
+		check.setNickname(p.getNickname());
+		check.setUserPw(p.getUserPw());
+
+		// 세션에 새로 로그인정보를 담아줌
+		hs.setAttribute("loginUser", check);
+
+		mapper.profileChange(p);
+		return 4;
+	}
+
+	public UserEntity selUser(UserEntity p) {
+		return 	mapper.selUser(p);
+	}
 }

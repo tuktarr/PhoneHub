@@ -7,18 +7,24 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.tuktarr.phonehub.model.BoardEntity;
 import com.tuktarr.phonehub.model.UserEntity;
+import com.tuktarr.phonehub.utils.SecurityUtils;
 
 @Controller
 public class UserController {
 
 	@Autowired
 	UserService service;
+	
+	@Autowired
+	SecurityUtils sUtils;
 	
 	@GetMapping("/login")
 	public String login() {
@@ -29,6 +35,14 @@ public class UserController {
 	public String join() {
 		return "sign/join";
 	} //회원가입 화면 맵핑
+	
+	@GetMapping("/mypage")
+	public String myPage(Model model, HttpSession hs) {
+		UserEntity p = new UserEntity();
+		p.setUserPk(sUtils.getLoginUser(hs).getUserPk());
+		model.addAttribute("user", service.selUser(p));
+		return "sign/mypage";
+	}
 	
 	//join ajax처리
 	@ResponseBody
@@ -51,6 +65,14 @@ public class UserController {
 		System.out.println("pk:" + p.getUserPk());
 		return map;
 	}
+	
+//	@ResponseBody
+//	@PostMapping("/mypage")
+//	public Map<String, Object> myPage(@RequestBody UserEntity p, HttpSession hs) throws Exception {
+//		Map<String, Object> map = new HashMap<>();
+//		map.put("loginUser",service.login(p, hs));
+//		return map;
+//	}
 	
 	@GetMapping("/logout")
 	public String logout(HttpSession hs) {

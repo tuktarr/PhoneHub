@@ -15,7 +15,7 @@
 	<select id="selUser"
 		resultType="com.tuktarr.phonehub.model.UserEntity">
 		SELECT * FROM user
-		WHERE userEmail = #{userEmail}
+		WHERE userEmail = #{userEmail} OR userPk = #{userPk}
 	</select>
 
 	<select id="chkEmail" resultType="Integer">
@@ -30,4 +30,10 @@
 		WHERE userEmail = #{userEmail}
 	</update>
 
+	<update id="updateUserRemainder">
+		UPDATE user
+		SET userEmail = #{userEmail}, nickname = #{nickname}, phone = #{phone},
+		birthday = #{birthday}, gender = #{gender}
+		Where userPk = #{userPk}
+	</update>
 </mapper>

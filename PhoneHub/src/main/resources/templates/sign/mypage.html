@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="~{layout/layout_default}">
+
+<th:block layout:fragment="css">
+	<link rel="stylesheet" type="text/css" th:href="@{css/sign/mypage.css}">
+</th:block>
+
+<th:block layout:fragment="script">
+	<script defer type="text/javascript" th:src="@{js/sign/mypage.js}"></script>
+</th:block>
+
+        <!-- content -->
+<th:block layout:fragment="content" th:if="${session.loginUser != null}">
+        <div class="my_wrap">
+            <div class="pagew">
+                <div class="profile_cont">
+                    <div class="profile_img_cont">
+                        <img src="asset/user.png">
+                        <div class="profile_img_control">
+                            <input type="file" name="pro_up_btn" id="proUpBtn">
+                            <label for="proUpBtn">업로드</label>
+                            <input type="button" name="pro_del_btn" id="proDelBtn">
+                            <label for="proDelBtn">삭제</label>
+                        </div>
+                    </div>
+                    <div class="profile_info_cont">
+                        <input type="text" class="profileInput" id="nickname" name="nickname" spellcheck="false" autocomplete="off" th:value="${user.nickname}">
+                        <input type="text" class="profileInput" id="email" name="email" spellcheck="false" autocomplete="off" th:value="${user.userEmail}">
+                        <input type="text" class="profileInput" id="call" name="call" spellcheck="false" autocomplete="off" th:value="${user.phone}">
+                        <input type="text" class="profileInput" id="birth" name="birth" spellcheck="false" autocomplete="off" th:value="${user.birthday}">
+                        <input type="text" class="profileInput" id="sex" name="sex" spellcheck="false" autocomplete="off" th:value="${user.gender}">
+                        <input type="button" name="passUpBtn" id="passUpBtn" value="비밀번호 수정">
+                    </div>
+                </div>
+                <div class="passup_cont">
+                    <div class="passchk_cont">
+                        <input type="password" name="currPass" spellcheck="false" autocomplete="off" placeholder="현재 비밀번호">
+                        <input type="password" name="passUp" spellcheck="false" autocomplete="off" placeholder="새 비밀번호">
+                        <input type="password" name="rePassUp" spellcheck="false" autocomplete="off" placeholder="새 비밀번호 확인">
+                        <input type="button" name="newPassBtn" value="수정">
+                    </div>
+                </div>
+            </div>
+        </div>
+</th:block>
+
+</html>
