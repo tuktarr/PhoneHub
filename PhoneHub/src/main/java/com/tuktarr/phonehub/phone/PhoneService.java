@@ -22,6 +22,10 @@ public class PhoneService {
 		return pMapper.selCost_Effectiveness();
 	}
 	
+	public List<PhoneInfoEntity> searchPhone(PhoneInfoDTO param) {
+		return pMapper.searchPhone(param);
+	}
+	
 	public PhoneInfoEntity selPhoneDetail(PhoneInfoDTO param) {
 		
 		PhoneInfoEntity pData = new PhoneInfoEntity();

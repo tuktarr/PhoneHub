@@ -41,6 +41,20 @@ public class PhoneController {
 		return phoneRankings;
 	}
 	
+	@GetMapping("/phones")
+	public String phone() {
+		return "phone/phone";
+	}
+	
+	@ResponseBody
+	@GetMapping("/searchPhones")
+	public Map<String, Object> phones(PhoneInfoDTO param) {
+		Map<String, Object> data = new HashMap<String, Object>();
+		data.put("data", pService.searchPhone(param));
+		
+		return data;
+	}
+	
 	@GetMapping("/phonedetail")
 	public String selPhoneDetail(PhoneInfoDTO param, Model model) {
 		model.addAttribute("data", pService.selPhoneDetail(param));

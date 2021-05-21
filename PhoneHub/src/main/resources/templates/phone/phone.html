@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="~{layout/layout_default}">
+
+<th:block layout:fragment="css">
+    <link rel="stylesheet" type="text/css" th:href="@{css/phone/phone.css}">
+</th:block>
+
+<th:block layout:fragment="script">
+    <script defer type="text/javascript" th:src="@{js/phone/phone.js}"></script>
+</th:block>
+
+<th:block layout:fragment="content">
+    <!-- content -->
+    <div class="phone_wrap">
+        <div class="phone_container">
+            <!-- 검색 카테고리 -->
+            <div class="phone_cate">
+                <!-- 카테고리박스 / 복붙-->
+                <div class="cate_box">
+                    <span class="cate_name">일반 정보</span>
+                    <!-- 카테고리 셀렉트 박스 / 복붙-->
+                    <select class="cate_selc" onchange="searchBrand(this.value)">
+                        <option value="" selected>제조회사</option>
+                        <option value="samsung">samsung</option>
+                        <option value="apple">apple</option>
+                    </select>
+                    <select id="searchSIM" class="cate_selc" onchange="searchSIM(this.value)">
+                        <option value="" selected>SIM</option>
+                        <option value="dual">Single-SIM</option>
+                        <option value="dual SIM">Dual-SIM</option>
+                    </select>
+                </div>
+            </div>
+            <!-- items -->
+            <div id="searchPhone" class="items">
+                <!-- item_box / 복붙 -->
+                <!-- <div class="item_box">
+                    <a href="#">
+                        <img src="asset/samsung.png">
+                        <div class="item_box_detail">
+                            <span class="item_name">갤럭시 Z 폴드2 5G 자급제</span>
+                            <span class="item_num">SM-F916NZKAKOO</span>
+                        </div>
+                    </a>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</th:block>
+
+</html>
