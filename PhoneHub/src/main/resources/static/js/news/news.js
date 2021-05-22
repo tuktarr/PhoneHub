@@ -109,24 +109,36 @@ if (rightNewsElem) {
     }
 }
 
-
-
 const listContentElem = document.querySelector('#bottom_news')
 function getNewsList(page) {
+    sessionPage = JSON.parse(sessionStorage.getItem('info')).page
 
     if (!page) {
         page = 1
     }
 
-    const rowContent = 7
+    if(window.onpopstate) {
+        console.log('aaa')
+        //https://iamawebdeveloper.tistory.com/42
+    }
 
-    const info = {
+    window.onpopstate = function(e){
+        if(e.state)
+        console.log('aaa')
+    }
+
+    let rowContent = 7
+
+    let info = {
         page,
         rowContent
     }
-    sessionStorage.setItem('pageInfo', JSON.stringify(info))
 
-    fetch(`/newslistdata?page=${page}&rowContent=${rowContent}`)
+    info.page = page
+
+    sessionStorage.setItem('info', JSON.stringify(info));
+    
+    fetch(`/newslistdata?page=${info.page}&rowContent=${info.rowContent}`)
         .then(res => res.json())
         .then(myJson => {
             newsProc(myJson)

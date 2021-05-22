@@ -55,12 +55,19 @@ public class PhoneController {
 		return data;
 	}
 	
-	@GetMapping("/phonedetail")
+	@GetMapping("/phonedetails")
 	public String selPhoneDetail(PhoneInfoDTO param, Model model) {
 		model.addAttribute("data", pService.selPhoneDetail(param));
 		model.addAttribute("usebleTip", pService.selUsebleTip());
 		
 		return "phone/phonedetail";
+	}
+	
+	@GetMapping("/phoneCompares")
+	public String phoneCompare(PhoneInfoDTO param, Model model) {
+		model.addAttribute("data", pService.selPhoneDetail(param));
+		
+		return "/phone/phoneCompare";
 	}
 	
 }

@@ -8,10 +8,16 @@ if (searchPhoneElem) {
 
     let brand = ''
     let SIM = ''
+    let weight = ''
+    let bluetooth = ''
+    let USB = ''
 
     let searchInfo = {
         brand,
-        SIM
+        SIM,
+        weight,
+        bluetooth,
+        USB
     }
 
     function searchBrand(param) {
@@ -20,14 +26,28 @@ if (searchPhoneElem) {
     }
 
     function searchSIM(param) {
-        console.log(param)
         searchInfo.SIM = param
+        refresh(searchInfo)
+    }
+
+    function searchWeight(param) {
+        searchInfo.weight = param
+        refresh(searchInfo)
+    }
+
+    function searchBluetooth(param) {
+        searchInfo.bluetooth = param
+        refresh(searchInfo)
+    }
+
+    function searchUSB(param) {
+        searchInfo.USB = param
         refresh(searchInfo)
     }
 
     function refresh(searchInfo) {
         searchPhoneElem.innerHTML = ''
-        fetch(`/searchPhones?brand=${searchInfo.brand}&bodySIM=${searchInfo.SIM}`)
+        fetch(`/searchPhones?brand=${searchInfo.brand}&bodySIM=${searchInfo.SIM}&bodyWeight=${searchInfo.weight}&commsBluetooth=${searchInfo.bluetooth}&commsUSB=${searchInfo.USB}`)
             .then(res => res.json())
             .then(myJson => {
                 printPhone(myJson)
@@ -40,7 +60,7 @@ if (searchPhoneElem) {
             containDiv.classList.add('item_box')
 
             const a = document.createElement('a')
-            a.setAttribute('href', `phonedetail?pk=${e.pk}`)
+            a.setAttribute('href', `phonedetails?pk=${e.pk}`)
 
             const img = document.createElement('img')
             img.setAttribute('src', e.pictureURLSmall)
