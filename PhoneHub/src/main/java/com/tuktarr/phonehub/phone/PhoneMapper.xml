@@ -40,6 +40,15 @@
 					</otherwise>
 				</choose>
 			</if>
+			<if test="bodyWeight != null and bodyWeight != '' ">
+				AND bodyWeight <![CDATA[<]]> #{bodyWeight}
+			</if>
+			<if test="commsBluetooth != null and commsBluetooth != '' ">
+				AND commsBluetooth LIKE '%${commsBluetooth}%'
+			</if>
+			<if test="commsUSB != null and commsUSB != '' ">
+				AND commsUSB LIKE '%${commsUSB}%'
+			</if>
 		</where>
 	</select>
 
@@ -53,5 +62,5 @@
 		SELECT content FROM
 		usebletip ORDER BY rand() limit 1
 	</select>
-
+	
 </mapper>

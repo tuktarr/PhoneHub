@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="~{layout/layout_default}">
+
+<th:block layout:fragment="css">
+    <link rel="stylesheet" type="text/css" th:href="@{css/phone/phone_compare.css}">
+</th:block>
+
+<th:block layout:fragment="content">
+    <!-- content -->
+    <div class="p_compare_wrap">
+        <div class="pagew">
+            <div class="compare">
+                <!-- compare search wrap -->
+                <div class="compare_search_wrap">
+                    <!-- compare search -->
+                    <div class="compare_search">
+                        <input type="text" name="search" placeholder="원하시는 기종을 검색해주세요." spellcheck="false"
+                            autocomplete="off">
+                        <button>
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                    <div class="compare_search">
+                        <input type="text" name="search" placeholder="원하시는 기종을 검색해주세요." spellcheck="false"
+                            autocomplete="off">
+                        <button>
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                    <!-- -------------------------------- -->
+                    <!-- compare img -->
+                    <div class="compare_img">
+                        <a href="#">
+                            <img src="asset/sample.jpg">
+                        </a>
+                    </div>
+                    <div class="compare_img">
+                        <a href="#">
+                            <img src="asset/samsung2.png">
+                        </a>
+                    </div>
+                    <!-- --------------------------------------- -->
+                </div>
+                <!-- compare spec wrap -->
+                <div class="compare_spec_wrap">
+                    <div class="spec_list_wrap">
+                        <p class="spec_list_tit">
+                            <span>디스플레이</span>
+                        </p>
+                        <div class="spec_list">
+                            <span>6.2 inches</span>
+                            <span>2400 x 1080 pixels, 20:9 ratio, 424ppl</span>
+                            <span>Dynamic AMOLED</span>
+                            <span>86.06%</span>
+                            <span>1300 cd/m2(nlt)</span>
+                            <span>120Hz refresh rate(adaptive), HDR support, Scratch-resistant glass(Corning Gorlla
+                                Glass Victus), Amblent light sensor, Proximity sensor</span>
+                        </div>
+                        <div class="spec_list">
+                            <span>6.7 inches</span>
+                            <span>2400 x 1080 pixels, 20:9 ratio, 393ppl</span>
+                            <span>Dynamic AMOLED</span>
+                            <span>88.63%</span>
+                            <span>1300 cd/m2(nlt)</span>
+                            <span>120Hz refresh rate(adaptive), HDR support, Scratch-resistant glass(Corning Gorlla
+                                Glass Victus), Amblent light sensor, Proximity sensor</span>
+                        </div>
+                    </div>
+                    <!-- test -->
+                    <div class="spec_list_wrap">
+                        <p class="spec_list_tit">
+                            <span>디스플레이</span>
+                        </p>
+                        <div class="spec_list">
+                            <span>안녕하세요</span>
+                            <span>안녕하세요</span>
+                            <span>안녕하세요</span>
+                        </div>
+                        <div class="spec_list">
+                            <span>안녕하세요</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</th:block>
+
+</html>

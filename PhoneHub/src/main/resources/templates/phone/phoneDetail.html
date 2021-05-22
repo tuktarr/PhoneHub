@@ -14,7 +14,7 @@
                 <!-- 휴대폰 사진 -->
                 <div class="item_info_img">
                     <img th:src="${data.pictureURLSmall}" src="asset/samsung.png">
-                    <a href="#">
+                    <a th:href="@{/phoneCompares(pk=${data.pk})}">
                         <span>비교하기</span>
                     </a>
                 </div>
