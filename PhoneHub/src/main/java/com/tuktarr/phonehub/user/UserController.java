@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.tuktarr.phonehub.model.BoardEntity;
+import com.tuktarr.phonehub.model.UserDomain;
 import com.tuktarr.phonehub.model.UserEntity;
 import com.tuktarr.phonehub.utils.SecurityUtils;
 
@@ -61,18 +61,28 @@ public class UserController {
 
 		Map<String, Object> map = new HashMap<>();
 		map.put("result", service.login(p, hs));
+		UserEntity check = service.selUser(p);
 		System.out.println("아이디 :" + p.getUserEmail());
-		System.out.println("pk:" + p.getUserPk());
+		System.out.println("pk:" + check.getUserPk());
 		return map;
 	}
 	
-//	@ResponseBody
-//	@PostMapping("/mypage")
-//	public Map<String, Object> myPage(@RequestBody UserEntity p, HttpSession hs) throws Exception {
-//		Map<String, Object> map = new HashMap<>();
-//		map.put("loginUser",service.login(p, hs));
-//		return map;
-//	}
+	@ResponseBody
+	@PostMapping("/mypassword")
+	public Map<String, Object> myPassword(@RequestBody UserDomain p, HttpSession hs) throws Exception {
+		Map<String, Object> map = new HashMap<>();
+		map.put("password",service.passwordChange(p, hs));
+		return map;
+	}
+	
+	@ResponseBody
+	@PostMapping("/myremainder")
+	public Map<String, Object> myRemainder(@RequestBody UserDomain p, HttpSession hs) throws Exception {
+		Map<String, Object> map = new HashMap<>();
+		p.setUserEmail(sUtils.getLoginUser(hs).getUserEmail());
+		map.put("remainder",service.remainderChange(p, hs));
+		return map;
+	}
 	
 	@GetMapping("/logout")
 	public String logout(HttpSession hs) {

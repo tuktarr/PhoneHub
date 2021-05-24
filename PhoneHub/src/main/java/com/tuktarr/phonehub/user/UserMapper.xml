@@ -20,8 +20,7 @@
 
 	<select id="chkEmail" resultType="Integer">
 		SELECT COUNT(*) FROM user
-		WHERE
-		userEmail = #{userEmail}
+		WHERE userEmail = #{userEmail}
 	</select>
 
 	<update id="updateUserPassword">
@@ -32,8 +31,11 @@
 
 	<update id="updateUserRemainder">
 		UPDATE user
-		SET userEmail = #{userEmail}, nickname = #{nickname}, phone = #{phone},
-		birthday = #{birthday}, gender = #{gender}
-		Where userPk = #{userPk}
+		<if test='newGender == "F" or newGender == "M"'>
+		SET userEmail = #{userNewEmail}, nickname = #{newNickname}, phone = #{newPhone},
+		birthday = #{newBirthday}, gender = #{newGender}
+		Where userEmail = #{userNewEmail}
+		</if>
+		
 	</update>
 </mapper>

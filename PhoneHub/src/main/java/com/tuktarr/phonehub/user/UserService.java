@@ -159,12 +159,9 @@ public class UserService {
 	}
 	
 	// 회원정보 수정 로직
-	public int profileChange(UserDomain p, HttpSession hs) throws Exception {
+	public int passwordChange(UserDomain p, HttpSession hs) throws Exception {
 		UserEntity check = mapper.selUser(p); // DB에 저장되어 있는 데이터 가져옴
 
-		if (p.getNickname().equals("")) { // 닉네임이 비어있으면 0 리턴
-			return 0;
-		}
 		if (!BCrypt.checkpw(p.getUserPw(), check.getUserPw())) { // DB에 저장되어있는 비밀번호와 입력한 비밀번호의 정보가 다르면 1 리턴
 			return 1;
 		}
@@ -188,8 +185,48 @@ public class UserService {
 		// 세션에 새로 로그인정보를 담아줌
 		hs.setAttribute("loginUser", check);
 
-		mapper.profileChange(p);
+		mapper.updateUserPassword(p);
 		return 4;
+	}
+	
+	public int remainderChange(UserDomain p, HttpSession hs) {
+		UserEntity check = mapper.selUser(p);
+		System.out.println(check.getBirthday());
+		System.out.println(p.getNewGender());
+		System.out.println(p.getUserEmail());
+		System.out.println(p.getUserNewEmail());
+		
+		if(p.getNewGender() != "M" && p.getNewGender() != "F") {
+			if(p.getNewGender() == "M" || p.getNewGender() == "F") {
+				mapper.updateUserRemainder(p);
+			}
+			return 0;
+		}
+		
+		if(!p.getNewBirthday().equals(check.getBirthday())) {
+			mapper.updateUserRemainder(p);
+			return 2;
+		}
+		
+		if(!p.getNewPhone().equals(check.getPhone())) {
+			mapper.updateUserRemainder(p);
+			return 3;
+		}		
+		
+		if(!p.getUserNewEmail().equals(check.getUserEmail())) {
+			mapper.updateUserRemainder(p);
+			return 4;
+		}
+		
+		if(!p.getNewNickname().equals(check.getNickname())) {
+			mapper.updateUserRemainder(p);
+			return 5;
+		}	
+		
+		check.setUserEmail(p.getUserNewEmail());
+		hs.setAttribute("loginUser", check);
+		mapper.updateUserRemainder(p);
+		return 6;
 	}
 
 	public UserEntity selUser(UserEntity p) {
