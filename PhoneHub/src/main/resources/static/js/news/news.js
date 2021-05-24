@@ -111,34 +111,19 @@ if (rightNewsElem) {
 
 const listContentElem = document.querySelector('#bottom_news')
 function getNewsList(page) {
-    sessionPage = JSON.parse(sessionStorage.getItem('info')).page
+    let sessionPage = parseInt(sessionStorage.getItem('sessionPage'))
+
+    if (!sessionPage) {
+        sessionPage = 1
+    }
 
     if (!page) {
-        page = 1
-    }
-
-    if(window.onpopstate) {
-        console.log('aaa')
-        //https://iamawebdeveloper.tistory.com/42
-    }
-
-    window.onpopstate = function(e){
-        if(e.state)
-        console.log('aaa')
+        page = sessionPage
     }
 
     let rowContent = 7
 
-    let info = {
-        page,
-        rowContent
-    }
-
-    info.page = page
-
-    sessionStorage.setItem('info', JSON.stringify(info));
-    
-    fetch(`/newslistdata?page=${info.page}&rowContent=${info.rowContent}`)
+    fetch(`/newslistdata?page=${page}&rowContent=${rowContent}`)
         .then(res => res.json())
         .then(myJson => {
             newsProc(myJson)
@@ -204,7 +189,7 @@ function newsProc(myJson) {
 }
 
 function getMaxPageNum() {
-    const rowContent = 7
+    let rowContent = 7
 
     fetch(`/getmaxnewspagenum?rowContent=${rowContent}`)
         .then(res => res.json())
@@ -216,10 +201,17 @@ getMaxPageNum()
 
 const pagingContentElem = document.querySelector('#newsPaging')
 function pageProc(myJson, page) {
-
-    if (!page) {
-        page = 1
+    let sessionPage = parseInt(sessionStorage.getItem('sessionPage'))
+    
+    if (!sessionPage) {
+        sessionPage = 1
     }
+    
+    if (!page) {
+        page = sessionPage
+    }
+    
+    sessionStorage.setItem('sessionPage', page)
 
     pagingContentElem.innerHTML = null
     const blue_barUl = document.createElement('ul')
@@ -232,8 +224,20 @@ function pageProc(myJson, page) {
     pLi.append(prevA)
     blue_barUl.append(pLi)
 
+    pLi.addEventListener('click', function () {
+        getNewsList(1)
+        pageProc(myJson, 1)
+    })
+
+    const ltLi = document.createElement('li')
+    const ltA = document.createElement('a')
+    ltA.classList.add('prev')
+    ltA.innerHTML = '&lt'
+    ltLi.append(ltA)
+    blue_barUl.append(ltLi)
+
     if (page > 1) {
-        pLi.addEventListener('click', function () {
+        ltLi.addEventListener('click', function () {
             getNewsList(page - 1)
             pageProc(myJson, page - 1)
         })
@@ -258,6 +262,20 @@ function pageProc(myJson, page) {
         })
     }
 
+    const gtLi = document.createElement('li')
+    const gtA = document.createElement('a')
+    gtA.classList.add('prev')
+    gtA.innerHTML = '&gt'
+    gtLi.append(gtA)
+    blue_barUl.append(gtLi)
+
+    if (page < myJson) {
+        gtLi.addEventListener('click', function () {
+            getNewsList(page + 1)
+            pageProc(myJson, page + 1)
+        })
+    }
+
     const nLi = document.createElement('li')
     const nextA = document.createElement('a')
     nextA.classList.add('prev')
@@ -265,12 +283,10 @@ function pageProc(myJson, page) {
     nLi.append(nextA)
     blue_barUl.append(nLi)
 
-    if (page < myJson) {
-        nLi.addEventListener('click', function () {
-            getNewsList(page + 1)
-            pageProc(myJson, page + 1)
-        })
-    }
+    nLi.addEventListener('click', function () {
+        getNewsList(myJson)
+        pageProc(myJson, myJson)
+    })
 
     pagingContentElem.append(blue_barUl)
 }
