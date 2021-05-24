@@ -11,5 +11,5 @@ public interface UserMapper {
 	UserEntity selUser(UserEntity p);
 	int chkEmail(UserEntity p);
 	int updateUserPassword(UserEntity p);
-	int profileChange(UserDomain p);
+	int updateUserRemainder(UserDomain p);
 }
