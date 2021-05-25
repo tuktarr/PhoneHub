@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.tuktarr.phonehub.model.PhoneInfoDTO;
+import com.tuktarr.phonehub.model.PhoneInfoEntity;
 
 @Controller
 public class PhoneController {
@@ -64,10 +65,18 @@ public class PhoneController {
 	}
 	
 	@GetMapping("/phoneCompares")
-	public String phoneCompare(PhoneInfoDTO param, Model model) {
-		model.addAttribute("data", pService.selPhoneDetail(param));
+	public String phoneCompare() {
 		
 		return "/phone/phoneCompare";
+	}
+	
+	@ResponseBody
+	@GetMapping("/phoneCompareSearch")
+	public Map<String, Object> aaa(PhoneInfoDTO param) {
+		Map<String, Object> data = new HashMap<String, Object>();
+		data.put("data", pService.selPhoneDetail(param));
+		
+		return data;
 	}
 	
 }
