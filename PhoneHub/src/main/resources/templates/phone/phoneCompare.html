@@ -26,18 +26,18 @@
                         </button>
                     </div>
                     <div id="rightPhoneSearch" class="compare_search">
-                        <input type="text" name="search" placeholder="원하시는 기종을 검색해주세요." spellcheck="false"
-                            autocomplete="off">
-                        <button>
+                        <input id="rightContentSearch" type="text" name="search" placeholder="원하시는 기종을 검색해주세요."
+                            spellcheck="false" autocomplete="off">
+                        <button onclick="Search()">
                             <i class="fa fa-search"></i>
                         </button>
                     </div>
                     <!-- -------------------------------- -->
                     <!-- compare img -->
-                    <div class="compare_img">
-                        <a href="#">
+                    <div id="leftPhoto" class="compare_img">
+                        <!-- <a href="#">
                             <img src="asset/sample.jpg">
-                        </a>
+                        </a> -->
                     </div>
                     <div class="compare_img">
                         <a href="#">
@@ -50,39 +50,126 @@
                 <div class="compare_spec_wrap">
                     <div class="spec_list_wrap">
                         <p class="spec_list_tit">
+                            <span>프로세서</span>
+                        </p>
+                        <div id="leftProcessor" class="spec_list">
+                        </div>
+                        <div class="spec_list">
+                        </div>
+                    </div>
+                    <div class="spec_list_wrap">
+                        <p class="spec_list_tit">
                             <span>디스플레이</span>
                         </p>
-                        <div class="spec_list">
-                            <span>6.2 inches</span>
+                        <div id="leftDisplay" class="spec_list">
+                            <!-- <span>6.2 inches</span>
                             <span>2400 x 1080 pixels, 20:9 ratio, 424ppl</span>
                             <span>Dynamic AMOLED</span>
                             <span>86.06%</span>
                             <span>1300 cd/m2(nlt)</span>
                             <span>120Hz refresh rate(adaptive), HDR support, Scratch-resistant glass(Corning Gorlla
-                                Glass Victus), Amblent light sensor, Proximity sensor</span>
+                                Glass Victus), Amblent light sensor, Proximity sensor</span> -->
                         </div>
                         <div class="spec_list">
-                            <span>6.7 inches</span>
-                            <span>2400 x 1080 pixels, 20:9 ratio, 393ppl</span>
-                            <span>Dynamic AMOLED</span>
-                            <span>88.63%</span>
-                            <span>1300 cd/m2(nlt)</span>
-                            <span>120Hz refresh rate(adaptive), HDR support, Scratch-resistant glass(Corning Gorlla
-                                Glass Victus), Amblent light sensor, Proximity sensor</span>
                         </div>
                     </div>
-                    <!-- test -->
                     <div class="spec_list_wrap">
                         <p class="spec_list_tit">
-                            <span>디스플레이</span>
+                            <span>카메라</span>
                         </p>
-                        <div class="spec_list">
-                            <span>안녕하세요</span>
-                            <span>안녕하세요</span>
-                            <span>안녕하세요</span>
+                        <div id="leftCamera" class="spec_list">
                         </div>
                         <div class="spec_list">
-                            <span>안녕하세요</span>
+                        </div>
+                    </div>
+                    <div class="spec_list_wrap">
+                        <p class="spec_list_tit">
+                            <span>메모리</span>
+                        </p>
+                        <div id="leftMemory" class="spec_list">
+                        </div>
+                        <div class="spec_list">
+                        </div>
+                    </div>
+                    <div class="spec_list_wrap">
+                        <p class="spec_list_tit">
+                            <span>SIM</span>
+                        </p>
+                        <div id="leftSIM" class="spec_list">
+                        </div>
+                        <div class="spec_list">
+                        </div>
+                    </div>
+                    <div class="spec_list_wrap">
+                        <p class="spec_list_tit">
+                            <span>네트워크</span>
+                        </p>
+                        <div id="leftNetwork" class="spec_list">
+                        </div>
+                        <div class="spec_list">
+                        </div>
+                    </div>
+                    <div class="spec_list_wrap">
+                        <p class="spec_list_tit">
+                            <span>연결</span>
+                        </p>
+                        <div id="leftConnect" class="spec_list">
+                        </div>
+                        <div class="spec_list">
+                        </div>
+                    </div>
+                    <div class="spec_list_wrap">
+                        <p class="spec_list_tit">
+                            <span>운영 체제</span>
+                        </p>
+                        <div id="leftOS" class="spec_list">
+                        </div>
+                        <div class="spec_list">
+                        </div>
+                    </div>
+                    <div class="spec_list_wrap">
+                        <p class="spec_list_tit">
+                            <span>센서</span>
+                        </p>
+                        <div id="leftSensors" class="spec_list">
+                        </div>
+                        <div class="spec_list">
+                        </div>
+                    </div>
+                    <div class="spec_list_wrap">
+                        <p class="spec_list_tit">
+                            <span>외관 사양</span>
+                        </p>
+                        <div id="leftStandard" class="spec_list">
+                        </div>
+                        <div class="spec_list">
+                        </div>
+                    </div>
+                    <div class="spec_list_wrap">
+                        <p class="spec_list_tit">
+                            <span>배터리</span>
+                        </p>
+                        <div id="leftBattery" class="spec_list">
+                        </div>
+                        <div class="spec_list">
+                        </div>
+                    </div>
+                    <div class="spec_list_wrap">
+                        <p class="spec_list_tit">
+                            <span>서비스</span>
+                        </p>
+                        <div id="leftService" class="spec_list">
+                        </div>
+                        <div class="spec_list">
+                        </div>
+                    </div>
+                    <div class="spec_list_wrap">
+                        <p class="spec_list_tit">
+                            <span>기본정보</span>
+                        </p>
+                        <div id="leftOtherInfo" class="spec_list">
+                        </div>
+                        <div class="spec_list">
                         </div>
                     </div>
                 </div>

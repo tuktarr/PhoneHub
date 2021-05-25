@@ -22,7 +22,7 @@
 		ORDER BY cost_Effectiveness
 	</select>
 
-	<select id="searchPhone"
+	<select id="selSearchPhone"
 		resultType="com.tuktarr.phonehub.model.PhoneInfoEntity">
 		SELECT pk, phone, pictureURLSmall, MiscModels
 		FROM phoneInfo
@@ -41,7 +41,8 @@
 				</choose>
 			</if>
 			<if test="bodyWeight != null and bodyWeight != '' ">
-				AND bodyWeight <![CDATA[<]]> #{bodyWeight}
+				AND bodyWeight <![CDATA[<]]>
+				#{bodyWeight}
 			</if>
 			<if test="commsBluetooth != null and commsBluetooth != '' ">
 				AND commsBluetooth LIKE '%${commsBluetooth}%'
@@ -62,5 +63,9 @@
 		SELECT content FROM
 		usebletip ORDER BY rand() limit 1
 	</select>
-	
+
+	<select id="selPhoneNameSearch" resultType="_int">
+		SELECT IFNULL((SELECT pk FROM phoneinfo WHERE Phone = #{phone}), 0) AS pk
+	</select>
+
 </mapper>

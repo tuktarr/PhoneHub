@@ -3,6 +3,7 @@ package com.tuktarr.phonehub.model;
 public class PhoneInfoDTO {
 	private int pk;
 	private String brand;
+	private String phone;
 	private String bodyWeight;
 	private String bodySIM;
 	private String commsBluetooth;
@@ -19,6 +20,12 @@ public class PhoneInfoDTO {
 	}
 	public void setBrand(String brand) {
 		this.brand = brand;
+	}
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 	public String getBodyWeight() {
 		return bodyWeight;

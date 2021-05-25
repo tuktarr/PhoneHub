@@ -22,8 +22,8 @@ public class PhoneService {
 		return pMapper.selCost_Effectiveness();
 	}
 	
-	public List<PhoneInfoEntity> searchPhone(PhoneInfoDTO param) {
-		return pMapper.searchPhone(param);
+	public List<PhoneInfoEntity> selSearchPhone(PhoneInfoDTO param) {
+		return pMapper.selSearchPhone(param);
 	}
 	
 	public PhoneInfoEntity selPhoneDetail(PhoneInfoDTO param) {
@@ -35,7 +35,13 @@ public class PhoneService {
 	}
 	
 	public String selUsebleTip() {
+		
 		return pMapper.selUsebleTip();
+	}
+	
+	public int selPhoneNameSearch(PhoneInfoDTO param) {
+		
+		return pMapper.selPhoneNameSearch(param);
 	}
 	
 }

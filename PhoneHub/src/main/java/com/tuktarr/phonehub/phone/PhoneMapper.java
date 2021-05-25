@@ -11,7 +11,8 @@ import com.tuktarr.phonehub.model.PhoneInfoEntity;
 public interface PhoneMapper {
 	List<PhoneInfoEntity> selPerformanceRanking();
 	List<PhoneInfoEntity> selCost_Effectiveness();
-	List<PhoneInfoEntity> searchPhone(PhoneInfoDTO param);
+	List<PhoneInfoEntity> selSearchPhone(PhoneInfoDTO param);
 	PhoneInfoEntity selPhoneDetail(PhoneInfoEntity param);
 	String selUsebleTip();
+	int selPhoneNameSearch(PhoneInfoDTO param);
 }

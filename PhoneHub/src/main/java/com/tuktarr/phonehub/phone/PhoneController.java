@@ -51,7 +51,7 @@ public class PhoneController {
 	@GetMapping("/searchPhones")
 	public Map<String, Object> phones(PhoneInfoDTO param) {
 		Map<String, Object> data = new HashMap<String, Object>();
-		data.put("data", pService.searchPhone(param));
+		data.put("data", pService.selSearchPhone(param));
 		
 		return data;
 	}
@@ -72,11 +72,15 @@ public class PhoneController {
 	
 	@ResponseBody
 	@GetMapping("/phoneCompareSearch")
-	public Map<String, Object> aaa(PhoneInfoDTO param) {
-		Map<String, Object> data = new HashMap<String, Object>();
-		data.put("data", pService.selPhoneDetail(param));
+	public PhoneInfoEntity aaa(PhoneInfoDTO param) {
 		
-		return data;
+		return pService.selPhoneDetail(param);
+	}
+	
+	@ResponseBody
+	@GetMapping("/phonenamesearch")
+	public int selPhoneNameSearch(PhoneInfoDTO param) {
+		return pService.selPhoneNameSearch(param);
 	}
 	
 }
