@@ -19,16 +19,16 @@
                 <div class="compare_search_wrap">
                     <!-- compare search -->
                     <div id="leftPhoneSearch" class="compare_search">
-                        <input type="text" name="search" placeholder="원하시는 기종을 검색해주세요." spellcheck="false"
+                        <input id="leftContentSearch" type="text" name="search" placeholder="원하시는 기종을 검색해주세요." spellcheck="false"
                             autocomplete="off">
-                        <button>
+                        <button onclick="Search('left')">
                             <i class="fa fa-search"></i>
                         </button>
                     </div>
-                    <div id="rightPhoneSearch" class="compare_search">
+                    <div class="compare_search">
                         <input id="rightContentSearch" type="text" name="search" placeholder="원하시는 기종을 검색해주세요."
                             spellcheck="false" autocomplete="off">
-                        <button onclick="Search()">
+                        <button onclick="Search('right')">
                             <i class="fa fa-search"></i>
                         </button>
                     </div>
@@ -39,10 +39,10 @@
                             <img src="asset/sample.jpg">
                         </a> -->
                     </div>
-                    <div class="compare_img">
-                        <a href="#">
+                    <div id="rightPhoto" class="compare_img">
+                        <!-- <a href="#">
                             <img src="asset/samsung2.png">
-                        </a>
+                        </a> -->
                     </div>
                     <!-- --------------------------------------- -->
                 </div>
@@ -54,7 +54,7 @@
                         </p>
                         <div id="leftProcessor" class="spec_list">
                         </div>
-                        <div class="spec_list">
+                        <div id="rightProcessor" class="spec_list">
                         </div>
                     </div>
                     <div class="spec_list_wrap">
@@ -70,7 +70,7 @@
                             <span>120Hz refresh rate(adaptive), HDR support, Scratch-resistant glass(Corning Gorlla
                                 Glass Victus), Amblent light sensor, Proximity sensor</span> -->
                         </div>
-                        <div class="spec_list">
+                        <div id="rightDisplay" class="spec_list">
                         </div>
                     </div>
                     <div class="spec_list_wrap">
@@ -79,7 +79,7 @@
                         </p>
                         <div id="leftCamera" class="spec_list">
                         </div>
-                        <div class="spec_list">
+                        <div id="rightCamera" class="spec_list">
                         </div>
                     </div>
                     <div class="spec_list_wrap">
@@ -88,7 +88,7 @@
                         </p>
                         <div id="leftMemory" class="spec_list">
                         </div>
-                        <div class="spec_list">
+                        <div id="rightMemory" class="spec_list">
                         </div>
                     </div>
                     <div class="spec_list_wrap">
@@ -97,7 +97,7 @@
                         </p>
                         <div id="leftSIM" class="spec_list">
                         </div>
-                        <div class="spec_list">
+                        <div id="rightSIM" class="spec_list">
                         </div>
                     </div>
                     <div class="spec_list_wrap">
@@ -106,7 +106,7 @@
                         </p>
                         <div id="leftNetwork" class="spec_list">
                         </div>
-                        <div class="spec_list">
+                        <div id="rightNetwork" class="spec_list">
                         </div>
                     </div>
                     <div class="spec_list_wrap">
@@ -115,7 +115,7 @@
                         </p>
                         <div id="leftConnect" class="spec_list">
                         </div>
-                        <div class="spec_list">
+                        <div id="rightConnect" class="spec_list">
                         </div>
                     </div>
                     <div class="spec_list_wrap">
@@ -124,7 +124,7 @@
                         </p>
                         <div id="leftOS" class="spec_list">
                         </div>
-                        <div class="spec_list">
+                        <div id="rightOS" class="spec_list">
                         </div>
                     </div>
                     <div class="spec_list_wrap">
@@ -133,7 +133,7 @@
                         </p>
                         <div id="leftSensors" class="spec_list">
                         </div>
-                        <div class="spec_list">
+                        <div id="rightSensors" class="spec_list">
                         </div>
                     </div>
                     <div class="spec_list_wrap">
@@ -142,7 +142,7 @@
                         </p>
                         <div id="leftStandard" class="spec_list">
                         </div>
-                        <div class="spec_list">
+                        <div id="rightStandard" class="spec_list">
                         </div>
                     </div>
                     <div class="spec_list_wrap">
@@ -151,7 +151,7 @@
                         </p>
                         <div id="leftBattery" class="spec_list">
                         </div>
-                        <div class="spec_list">
+                        <div id="rightBattery" class="spec_list">
                         </div>
                     </div>
                     <div class="spec_list_wrap">
@@ -160,7 +160,7 @@
                         </p>
                         <div id="leftService" class="spec_list">
                         </div>
-                        <div class="spec_list">
+                        <div id="rightService" class="spec_list">
                         </div>
                     </div>
                     <div class="spec_list_wrap">
@@ -169,7 +169,7 @@
                         </p>
                         <div id="leftOtherInfo" class="spec_list">
                         </div>
-                        <div class="spec_list">
+                        <div id="rightOtherInfo" class="spec_list">
                         </div>
                     </div>
                 </div>
