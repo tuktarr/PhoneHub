@@ -12,12 +12,72 @@ if (leftPhoneSearchElem) {
         .then(myJson => {
             print(myJson, "left")
         })
+}
 
+{
+    const leftContentSearchElem = document.getElementById('leftContentSearch')
+    const rightContentSearchElem = document.getElementById('rightContentSearch')
+
+    let phones = []
+
+    leftContentSearchElem.addEventListener("keydown", displayInputValue)
+    rightContentSearchElem.addEventListener("keydown", displayInputValue)
+
+    function displayInputValue() {
+        const matchedArray = findMatches(this.value, phones);
+        const leftSuggestionsElem = document.getElementById('leftSuggestions')
+        const rightSuggestionsElem = document.getElementById('rightSuggestions')
+
+        if (this.id === 'leftContentSearch') {
+            leftSuggestionsElem.style.display = 'block'
+        } else {
+            rightSuggestionsElem.style.display = 'block'
+        }
+
+        leftSuggestionsElem.innerHTML = ''
+        rightSuggestionsElem.innerHTML = ''
+        matchedArray.forEach(e => {
+            const ul = document.createElement('ul')
+            const li = document.createElement('li')
+            const span = document.createElement('span')
+            span.innerText = e
+            li.append(span)
+            ul.append(li)
+            if (this.id === 'leftContentSearch') {
+                leftSuggestionsElem.append(ul)
+            } else {
+                rightSuggestionsElem.append(ul)
+            }
+        })
+
+        leftContentSearchElem.addEventListener("blur", function () {
+            const leftSuggestionsElem = document.getElementById('leftSuggestions')
+            leftSuggestionsElem.style.display = 'none'
+        })
+        rightContentSearchElem.addEventListener("blur", function () {
+            const rightSuggestionsElem = document.getElementById('rightSuggestions')
+            rightSuggestionsElem.style.display = 'none'
+        })
+    }
+
+    fetch('/phonenames')
+        .then(res => res.json())
+        .then(myJson => {
+            phones.push(...myJson)
+        })
+
+    function findMatches(wordToMatch, phones) {
+        return phones.filter(phone => {
+            const regex = new RegExp(wordToMatch, 'gi');
+            return phone.match(regex)
+        })
+    }
 }
 
 function Search(way) {
-    const ContentSearch = document.getElementById(way + 'ContentSearch')
-    let searchPhone = ContentSearch.value
+    const contentSearch = document.getElementById(way + 'ContentSearch')
+    let searchPhone = contentSearch.value
+
     fetch(`/phonenamesearch?phone=${searchPhone}`)
         .then(res => res.json())
         .then(myJson => {

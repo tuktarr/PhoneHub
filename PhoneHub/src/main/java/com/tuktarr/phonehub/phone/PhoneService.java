@@ -44,4 +44,9 @@ public class PhoneService {
 		return pMapper.selPhoneNameSearch(param);
 	}
 	
+	public List<String> selPhoneNameList() {
+		
+		return pMapper.selPhoneNameList();
+	}
+	
 }

@@ -78,8 +78,8 @@
 .item_box a img {
 	display: block;
     width: 100%;
-    max-width: 100%;
-    max-height: 305px;
+    max-width: 95%;
+    max-height: 290px;
 }
 
 .item_box_detail {
@@ -89,6 +89,8 @@
 }
 
 .item_name {
+	display: block;
+	margin-bottom: 10px;
 	overflow: hidden;
 	font-style: 25px;
 	font-weight: bold;
@@ -98,8 +100,13 @@
 }
 
 .item_num {
+	position: relative;
 	display: block;
-	padding-top: 2px;
+	width: 100%;
+	position: 0 10px;
+	max-height: 65px;
 	font-size: 15px;
 	color: #707070;
+	overflow: hidden;
+	word-break: break-all;
 }
