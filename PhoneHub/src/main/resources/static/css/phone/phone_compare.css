@@ -51,6 +51,48 @@
     color: #fff;
 }
 
+/*compare auto*/
+.compare_auto {
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: none;
+    width: 300px;
+    padding: 10px 0;
+    z-index: 999;
+    background: #fff;
+    border-left: 3px solid #89ABE3;
+    border-bottom: 3px solid #89ABE3;
+}
+
+.compare_auto ul {
+    position: relative;
+    display: block;
+}
+
+.compare_auto ul li {
+    position: relative;
+    display: block;
+    height: 50px;
+    width: 100%;
+    padding: 10px 0;
+    cursor: pointer;
+}
+
+.compare_auto ul li:nth-of-type(n+9) {
+    display: none;
+}
+
+.compare_auto ul li:hover {
+    background: #f7f7f7;
+}
+
+.compare_auto ul li span {
+    padding: 0 15px;
+    vertical-align: middle;
+}
+
 /*compare img*/
 .compare_img {
     position: relative;

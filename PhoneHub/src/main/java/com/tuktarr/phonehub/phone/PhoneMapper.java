@@ -15,4 +15,5 @@ public interface PhoneMapper {
 	PhoneInfoEntity selPhoneDetail(PhoneInfoEntity param);
 	String selUsebleTip();
 	int selPhoneNameSearch(PhoneInfoDTO param);
+	List<String> selPhoneNameList();
 }

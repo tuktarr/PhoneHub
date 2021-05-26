@@ -67,5 +67,9 @@
 	<select id="selPhoneNameSearch" resultType="_int">
 		SELECT IFNULL((SELECT pk FROM phoneinfo WHERE Phone = #{phone}), 0) AS pk
 	</select>
+	
+	<select id="selPhoneNameList" resultType="string">
+		SELECT phone FROM phoneinfo
+	</select>
 
 </mapper>

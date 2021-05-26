@@ -1,6 +1,7 @@
 package com.tuktarr.phonehub.phone;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -81,6 +82,12 @@ public class PhoneController {
 	@GetMapping("/phonenamesearch")
 	public int selPhoneNameSearch(PhoneInfoDTO param) {
 		return pService.selPhoneNameSearch(param);
+	}
+	
+	@ResponseBody
+	@GetMapping("/phonenames")
+	public List<String> selPhoneNameList() {
+		return pService.selPhoneNameList();
 	}
 	
 }
