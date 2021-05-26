@@ -78,9 +78,11 @@ function ajax() {
 }
 
 function proc(myJson) {
+	console.log("remainder : " + myJson.remainder)
+	
 		switch (myJson.remainder) {
 			
-			case 0: 
+			case 0: case 1: 
 				const M = 'M'
 				const F = 'F'
 				if(sexElem.value != M && sexElem.value != F) {
@@ -94,6 +96,7 @@ function proc(myJson) {
 				if(birthChk.test(birthElem.value)) {
 					alert('생년월일(xxxx-xx-xx) 형식을 맞춰주십시오')
 					birthElem.focus()
+					break
 				}
 				return ok()
 			case 3:
@@ -101,6 +104,7 @@ function proc(myJson) {
 				if(!callChk.test(callElem.value)) {
 					alert('휴대폰 번호 (010-xxxx-xxxx) 형식을 맞춰주십시오')
 					callElem.focus()
+					break
 				}
 				return ok()
 			case 4:
@@ -108,15 +112,19 @@ function proc(myJson) {
 				if(!emailChk.test(emailElem.value)){
 					alert('이메일 형식을 맞춰주십시오')
 					emailElem.focus()
+					break
 				}
 				return ok()
 			case 5:
 				const nickChk = /^([a-zA-Z0-9|가-힣]){1,12}$/g
 				if(!nickChk.test(nicknameElem.value)) {
 					alert('닉네임 (최소 1자 ~ 12자) 형식을 맞춰주십시오.')
-					nicknameElem.focus()		
+					nicknameElem.focus()
+					break
 				}
-				return ok()		
+				return ok()
+			case 6:
+				return ok()
 		}
 		
 		function ok() {

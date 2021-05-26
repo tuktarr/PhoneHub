@@ -80,6 +80,7 @@ public class UserController {
 	public Map<String, Object> myRemainder(@RequestBody UserDomain p, HttpSession hs) throws Exception {
 		Map<String, Object> map = new HashMap<>();
 		p.setUserEmail(sUtils.getLoginUser(hs).getUserEmail());
+		System.out.println("Email:" + sUtils.getLoginUser(hs).getUserEmail());
 		map.put("remainder",service.remainderChange(p, hs));
 		return map;
 	}

@@ -31,11 +31,8 @@
 
 	<update id="updateUserRemainder">
 		UPDATE user
-		<if test='newGender == "F" or newGender == "M"'>
 		SET userEmail = #{userNewEmail}, nickname = #{newNickname}, phone = #{newPhone},
 		birthday = #{newBirthday}, gender = #{newGender}
 		Where userEmail = #{userNewEmail}
-		</if>
-		
 	</update>
 </mapper>
