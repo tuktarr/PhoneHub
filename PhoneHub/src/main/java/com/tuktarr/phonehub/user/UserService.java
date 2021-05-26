@@ -90,6 +90,7 @@ public class UserService {
 
 		// 세션에 담을때 사용하지않을 정보를 담아두면 메모리 낭비가 되기 때문에 NULL처리
 		check.setUserPw(null);
+		
 		hs.setAttribute("loginUser", check);
 
 		return 1;
@@ -192,15 +193,17 @@ public class UserService {
 	public int remainderChange(UserDomain p, HttpSession hs) {
 		UserEntity check = mapper.selUser(p);
 		System.out.println(check.getBirthday());
-		System.out.println(p.getNewGender());
+		System.out.println("newGender : " + p.getNewGender());
 		System.out.println(p.getUserEmail());
 		System.out.println(p.getUserNewEmail());
 		
-		if(p.getNewGender() != "M" && p.getNewGender() != "F") {
-			if(p.getNewGender() == "M" || p.getNewGender() == "F") {
-				mapper.updateUserRemainder(p);
-			}
+		if(!p.getNewGender().equals("M") && !p.getNewGender().equals("F")) {
 			return 0;
+		}
+		
+		if(!p.getNewGender().equals(check.getGender())) {
+			mapper.updateUserRemainder(p);
+			return 1;
 		}
 		
 		if(!p.getNewBirthday().equals(check.getBirthday())) {
