@@ -44,6 +44,54 @@
 				AND bodyWeight <![CDATA[<]]>
 				#{bodyWeight}
 			</if>
+			<if test="memoryCardSlot != null and memoryCardSlot !='' ">
+				<choose>
+					<when test="memoryCardSlot == 'no' ">
+						AND memoryCardSlot LIKE '%${memoryCardSlot}%'
+					</when>
+					<otherwise>
+						AND not memoryCardSlot LIKE '%${memoryCardSlot}%'
+					</otherwise>
+				</choose>
+			</if>
+			<if test="network != null and network != 0 ">
+				<choose>
+					<when test="network == 2 ">
+						AND network2Gbands != ''
+					</when>
+					<when test="network == 3 ">
+						AND network3Gbands != ''
+					</when>
+					<when test="network == 4 ">
+						AND network4Gbands != ''
+					</when>
+					<otherwise>
+						AND network5Gbands != ''
+					</otherwise>
+				</choose>
+			</if>
+			<if test="cameraCount != null and cameraCount != 0 ">
+				<choose>
+					<when test="cameraCount == 1 ">
+						AND mainCameraSingle != ''
+					</when>
+					<when test="cameraCount == 2 ">
+						AND mainCameraDual != ''
+					</when>
+					<when test="cameraCount == 3 ">
+						AND mainCameraTriple != ''
+					</when>
+					<when test="cameraCount == 4 ">
+						AND mainCameraQuad != ''
+					</when>
+					<when test="cameraCount == 5 ">
+						AND mainCameraFive != ''
+					</when>
+					<otherwise>
+						AND mainCameraSix != ''
+					</otherwise>
+				</choose>
+			</if>
 			<if test="commsBluetooth != null and commsBluetooth != '' ">
 				AND commsBluetooth LIKE '%${commsBluetooth}%'
 			</if>

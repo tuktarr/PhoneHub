@@ -39,8 +39,32 @@
                     </select>
                 </div>
                 <div class="cate_box">
+                    <span class="cate_name">사양</span>
+                    <select class="cate_selc" onchange="searchNetwork(this.value)">
+                        <option value="0" selected>network</option>
+                        <option value="2">2G</option>
+                        <option value="3">3G</option>
+                        <option value="4">4G</option>
+                        <option value="5">5G</option>
+                    </select>
+                    <select class="cate_selc" onchange="searchCameraCount(this.value)">
+                        <option value="0" selected>cameraCount</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                    </select>
+                </div>
+                <div class="cate_box">
                     <span class="cate_name">연결</span>
                     <!-- 카테고리 셀렉트 박스 / 복붙-->
+                    <select class="cate_selc" onchange="searchMemoryCardSlot(this.value)">
+                        <option value="" selected>외장메모리</option>
+                        <option value="no;">yes</option>
+                        <option value="no">no</option>
+                    </select>
                     <select class="cate_selc" onchange="searchBluetooth(this.value)">
                         <option value="" selected>Bluetooth</option>
                         <option value="1.0">1.0</option>

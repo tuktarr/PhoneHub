@@ -9,6 +9,9 @@ if (searchPhoneElem) {
     let brand = ''
     let SIM = ''
     let weight = ''
+    let network = 0
+    let cameraCount = 0
+    let memoryCardSlot = ''
     let bluetooth = ''
     let USB = ''
 
@@ -16,6 +19,9 @@ if (searchPhoneElem) {
         brand,
         SIM,
         weight,
+        network,
+        cameraCount,
+        memoryCardSlot,
         bluetooth,
         USB
     }
@@ -35,6 +41,22 @@ if (searchPhoneElem) {
         refresh(searchInfo)
     }
 
+    function searchNetwork(param) {
+        console.log(param)
+        searchInfo.network = param
+        refresh(searchInfo)
+    }
+
+    function searchCameraCount(param) {
+        searchInfo.cameraCount = param
+        refresh(searchInfo)
+    }
+
+    function searchMemoryCardSlot(param) {
+        searchInfo.memoryCardSlot = param
+        refresh(searchInfo)
+    }
+
     function searchBluetooth(param) {
         searchInfo.bluetooth = param
         refresh(searchInfo)
@@ -47,7 +69,7 @@ if (searchPhoneElem) {
 
     function refresh(searchInfo) {
         searchPhoneElem.innerHTML = ''
-        fetch(`/searchPhones?brand=${searchInfo.brand}&bodySIM=${searchInfo.SIM}&bodyWeight=${searchInfo.weight}&commsBluetooth=${searchInfo.bluetooth}&commsUSB=${searchInfo.USB}`)
+        fetch(`/searchPhones?brand=${searchInfo.brand}&bodySIM=${searchInfo.SIM}&bodyWeight=${searchInfo.weight}&network=${searchInfo.network}&cameraCount=${searchInfo.cameraCount}&memoryCardSlot=${searchInfo.memoryCardSlot}&commsBluetooth=${searchInfo.bluetooth}&commsUSB=${searchInfo.USB}`)
             .then(res => res.json())
             .then(myJson => {
                 printPhone(myJson)
