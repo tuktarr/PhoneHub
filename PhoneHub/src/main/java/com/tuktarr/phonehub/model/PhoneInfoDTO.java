@@ -6,6 +6,9 @@ public class PhoneInfoDTO {
 	private String phone;
 	private String bodyWeight;
 	private String bodySIM;
+	private String memoryCardSlot;
+	private int network;
+	private int cameraCount;
 	private String commsBluetooth;
 	private String commsUSB;
 	
@@ -38,6 +41,24 @@ public class PhoneInfoDTO {
 	}
 	public void setBodySIM(String bodySIM) {
 		this.bodySIM = bodySIM;
+	}
+	public String getMemoryCardSlot() {
+		return memoryCardSlot;
+	}
+	public void setMemoryCardSlot(String memoryCardSlot) {
+		this.memoryCardSlot = memoryCardSlot;
+	}
+	public int getNetwork() {
+		return network;
+	}
+	public void setNetwork(int network) {
+		this.network = network;
+	}
+	public int getCameraCount() {
+		return cameraCount;
+	}
+	public void setCameraCount(int cameraCount) {
+		this.cameraCount = cameraCount;
 	}
 	public String getCommsBluetooth() {
 		return commsBluetooth;
