@@ -21,10 +21,10 @@ if (leftPhoneSearchElem) {
     let phones = []
 
     leftContentSearchElem.addEventListener("keydown", displayInputValue)
-    rightContentSearchElem.addEventListener("keydown", displayInputValue)
+    rightContentSearchElem.addEventListener("keyup", displayInputValue)
 
     function displayInputValue() {
-        const matchedArray = findMatches(this.value, phones);
+        const matchedArray = findMatches(this.value, phones)
         const leftSuggestionsElem = document.getElementById('leftSuggestions')
         const rightSuggestionsElem = document.getElementById('rightSuggestions')
 
@@ -36,12 +36,14 @@ if (leftPhoneSearchElem) {
 
         leftSuggestionsElem.innerHTML = ''
         rightSuggestionsElem.innerHTML = ''
+        const ul = document.createElement('ul')
+
         matchedArray.forEach(e => {
-            const ul = document.createElement('ul')
             const li = document.createElement('li')
-            const span = document.createElement('span')
-            span.innerText = e
-            li.append(span)
+            li.value = e
+            const a = document.createElement('span')
+            a.innerText = e
+            li.append(a)
             ul.append(li)
             if (this.id === 'leftContentSearch') {
                 leftSuggestionsElem.append(ul)
