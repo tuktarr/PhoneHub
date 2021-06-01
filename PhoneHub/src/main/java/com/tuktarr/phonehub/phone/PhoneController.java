@@ -73,7 +73,7 @@ public class PhoneController {
 	
 	@ResponseBody
 	@GetMapping("/phoneCompareSearch")
-	public PhoneInfoEntity aaa(PhoneInfoDTO param) {
+	public PhoneInfoEntity selPhoneCompareSearch(PhoneInfoDTO param) {
 		
 		return pService.selPhoneDetail(param);
 	}
