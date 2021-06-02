@@ -20,10 +20,10 @@ if (leftPhoneSearchElem) {
 
     let phones = []
 
-    leftContentSearchElem.addEventListener("keydown", displayInputValue)
-    rightContentSearchElem.addEventListener("keyup", displayInputValue)
+    leftContentSearchElem.addEventListener("keyup", function(){displayInputValue('left')})
+    rightContentSearchElem.addEventListener("keyup", function(){displayInputValue('right')})
 
-    function displayInputValue() {
+    function displayInputValue(way) {
         const matchedArray = findMatches(this.value, phones)
         const leftSuggestionsElem = document.getElementById('leftSuggestions')
         const rightSuggestionsElem = document.getElementById('rightSuggestions')
@@ -34,15 +34,15 @@ if (leftPhoneSearchElem) {
             rightSuggestionsElem.style.display = 'block'
         }
 
-        leftSuggestionsElem.innerHTML = ''
-        rightSuggestionsElem.innerHTML = ''
+        leftSuggestionsElem.childNodes.innerHTML = ''
+        rightSuggestionsElem.parentNode.innerHTML = ''
         const ul = document.createElement('ul')
 
         matchedArray.forEach(e => {
             const li = document.createElement('li')
-            li.value = e
-            const a = document.createElement('span')
+            const a = document.createElement('a')
             a.innerText = e
+            a.setAttribute('href', "javascript:(function(){console.log('"+e+"')})()")
             li.append(a)
             ul.append(li)
             if (this.id === 'leftContentSearch') {
@@ -52,12 +52,10 @@ if (leftPhoneSearchElem) {
             }
         })
 
-        leftContentSearchElem.addEventListener("blur", function () {
-            const leftSuggestionsElem = document.getElementById('leftSuggestions')
+        leftSuggestionsElem.addEventListener("click", function () {
             leftSuggestionsElem.style.display = 'none'
         })
-        rightContentSearchElem.addEventListener("blur", function () {
-            const rightSuggestionsElem = document.getElementById('rightSuggestions')
+        rightSuggestionsElem.addEventListener("click", function () {
             rightSuggestionsElem.style.display = 'none'
         })
     }
