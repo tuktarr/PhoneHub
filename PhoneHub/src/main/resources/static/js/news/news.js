@@ -1,7 +1,9 @@
 const leftNewsElem = document.querySelector('#news_top_left')
 if (leftNewsElem) {
     const now = new Date();
-    const today = now.getFullYear().toString() + ("0" + (now.getMonth() + 1)) + now.getDate().toString()
+    const today = now.getFullYear().toString()
+        + ((now.getMonth() + 1).toString().length === 1 ? ("0" + (now.getMonth() + 1)) : (now.getMonth() + 1).toString())
+        + (now.getDate().toString().length === 1 ? ("0" + now.getDate()) : now.getDate().toString())
 
     fetch(`/selpopularnews?regDt=${today}`)
         .then(res => res.json())
@@ -202,15 +204,15 @@ getMaxPageNum()
 const pagingContentElem = document.querySelector('#newsPaging')
 function pageProc(myJson, page) {
     let sessionPage = parseInt(sessionStorage.getItem('sessionPage'))
-    
+
     if (!sessionPage) {
         sessionPage = 1
     }
-    
+
     if (!page) {
         page = sessionPage
     }
-    
+
     sessionStorage.setItem('sessionPage', page)
 
     pagingContentElem.innerHTML = null
