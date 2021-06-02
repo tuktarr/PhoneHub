@@ -20,43 +20,31 @@ if (leftPhoneSearchElem) {
 
     let phones = []
 
-    leftContentSearchElem.addEventListener("keyup", function(){displayInputValue('left')})
-    rightContentSearchElem.addEventListener("keyup", function(){displayInputValue('right')})
+    leftContentSearchElem.addEventListener("keyup", function () { displayInputValue('left') })
+    rightContentSearchElem.addEventListener("keyup", function () { displayInputValue('right') })
 
     function displayInputValue(way) {
-        const matchedArray = findMatches(this.value, phones)
-        const leftSuggestionsElem = document.getElementById('leftSuggestions')
-        const rightSuggestionsElem = document.getElementById('rightSuggestions')
+        const contentSearchElem = document.getElementById(way + 'ContentSearch')
+        const suggestionsElem = document.getElementById(way + 'Suggestions')
+        const matchedArray = findMatches(contentSearchElem.value, phones)
 
-        if (this.id === 'leftContentSearch') {
-            leftSuggestionsElem.style.display = 'block'
-        } else {
-            rightSuggestionsElem.style.display = 'block'
-        }
+        suggestionsElem.style.display = 'block'
 
-        leftSuggestionsElem.childNodes.innerHTML = ''
-        rightSuggestionsElem.parentNode.innerHTML = ''
+        suggestionsElem.innerHTML = ''
         const ul = document.createElement('ul')
 
         matchedArray.forEach(e => {
             const li = document.createElement('li')
             const a = document.createElement('a')
             a.innerText = e
-            a.setAttribute('href', "javascript:(function(){console.log('"+e+"')})()")
+            a.setAttribute('href', "javascript:(function(){Search('" + way + "', '" + e + "')})()")
             li.append(a)
             ul.append(li)
-            if (this.id === 'leftContentSearch') {
-                leftSuggestionsElem.append(ul)
-            } else {
-                rightSuggestionsElem.append(ul)
-            }
+            suggestionsElem.append(ul)
         })
 
-        leftSuggestionsElem.addEventListener("click", function () {
-            leftSuggestionsElem.style.display = 'none'
-        })
-        rightSuggestionsElem.addEventListener("click", function () {
-            rightSuggestionsElem.style.display = 'none'
+        suggestionsElem.addEventListener("click", function () {
+            suggestionsElem.style.display = 'none'
         })
     }
 
@@ -74,9 +62,13 @@ if (leftPhoneSearchElem) {
     }
 }
 
-function Search(way) {
+function Search(way, phoneName) {
     const contentSearch = document.getElementById(way + 'ContentSearch')
     let searchPhone = contentSearch.value
+
+    if (phoneName) {
+        searchPhone = phoneName
+    }
 
     fetch(`/phonenamesearch?phone=${searchPhone}`)
         .then(res => res.json())
