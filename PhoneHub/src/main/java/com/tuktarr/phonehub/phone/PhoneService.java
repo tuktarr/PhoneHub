@@ -22,7 +22,13 @@ public class PhoneService {
 		return pMapper.selCost_Effectiveness();
 	}
 	
+	public int selMaxPageNum(PhoneInfoDTO param) {
+		return pMapper.selMaxPageNum(param);
+	}
+	
 	public List<PhoneInfoEntity> selSearchPhone(PhoneInfoDTO param) {
+		int sIdx = (param.getPage() - 1) * param.getRowContent();
+		param.setsIdx(sIdx);
 		return pMapper.selSearchPhone(param);
 	}
 	

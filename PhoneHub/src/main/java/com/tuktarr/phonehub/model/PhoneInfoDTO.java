@@ -11,6 +11,9 @@ public class PhoneInfoDTO {
 	private int cameraCount;
 	private String commsBluetooth;
 	private String commsUSB;
+	private int sIdx;
+	private int page;
+	private int rowContent;
 	
 	public int getPk() {
 		return pk;
@@ -71,6 +74,24 @@ public class PhoneInfoDTO {
 	}
 	public void setCommsUSB(String commsUSB) {
 		this.commsUSB = commsUSB;
+	}
+	public int getsIdx() {
+		return sIdx;
+	}
+	public void setsIdx(int sIdx) {
+		this.sIdx = sIdx;
+	}
+	public int getPage() {
+		return page;
+	}
+	public void setPage(int page) {
+		this.page = page;
+	}
+	public int getRowContent() {
+		return rowContent;
+	}
+	public void setRowContent(int rowContent) {
+		this.rowContent = rowContent;
 	}
 	
 }

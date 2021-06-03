@@ -35,6 +35,12 @@ public class PhoneController {
 	}
 	
 	@ResponseBody
+	@GetMapping("/phoneMaxPageNum")
+	public int selMaxPageNum(PhoneInfoDTO param) {
+		return pService.selMaxPageNum(param);
+	}
+	
+	@ResponseBody
 	@GetMapping("/performancerankings")
 	public Map<String, Object> selPerformanceRanking() {
 		Map<String, Object> phoneRankings = new HashMap<String, Object>();

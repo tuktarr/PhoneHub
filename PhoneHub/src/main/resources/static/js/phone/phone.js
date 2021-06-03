@@ -1,10 +1,5 @@
 const searchPhoneElem = document.getElementById('searchPhone')
 if (searchPhoneElem) {
-    fetch('/searchPhones')
-        .then(res => res.json())
-        .then(myJson => {
-            printPhone(myJson)
-        })
 
     let brand = ''
     let SIM = ''
@@ -14,6 +9,8 @@ if (searchPhoneElem) {
     let memoryCardSlot = ''
     let bluetooth = ''
     let USB = ''
+    let page = 1
+    let rowContent = 9
 
     let searchInfo = {
         brand,
@@ -23,7 +20,9 @@ if (searchPhoneElem) {
         cameraCount,
         memoryCardSlot,
         bluetooth,
-        USB
+        USB,
+        page,
+        rowContent
     }
 
     function searchBrand(param) {
@@ -67,14 +66,33 @@ if (searchPhoneElem) {
         refresh(searchInfo)
     }
 
+    
     function refresh(searchInfo) {
         searchPhoneElem.innerHTML = ''
-        fetch(`/searchPhones?brand=${searchInfo.brand}&bodySIM=${searchInfo.SIM}&bodyWeight=${searchInfo.weight}&network=${searchInfo.network}&cameraCount=${searchInfo.cameraCount}&memoryCardSlot=${searchInfo.memoryCardSlot}&commsBluetooth=${searchInfo.bluetooth}&commsUSB=${searchInfo.USB}`)
+        sessionStorage.setItem('pageInfo', JSON.stringify(searchInfo))
+
+        let pageInfoTxt = sessionStorage.getItem('pageInfo')
+        if(pageInfoTxt) {
+            let pageInfo = JSON.parse(pageInfoTxt)
+            searchInfo = pageInfo
+            console.log(searchInfo)
+        }
+
+        fetch(`/searchPhones?brand=${searchInfo.brand}&bodySIM=${searchInfo.SIM}&bodyWeight=${searchInfo.weight}&network=${searchInfo.network}&cameraCount=${searchInfo.cameraCount}&memoryCardSlot=${searchInfo.memoryCardSlot}&commsBluetooth=${searchInfo.bluetooth}&commsUSB=${searchInfo.USB}&page=${searchInfo.page}&rowContent=${searchInfo.rowContent}`)
             .then(res => res.json())
             .then(myJson => {
                 printPhone(myJson)
+                getMaxPageNum()
             })
     }
+
+    refresh(searchInfo)
+
+    function getPhonesList(currentPage) {
+        searchInfo.page = currentPage
+        refresh(searchInfo)
+    }
+
 
     function printPhone(myJson) {
         myJson.data.forEach(e => {
@@ -107,4 +125,136 @@ if (searchPhoneElem) {
             searchPhoneElem.append(containDiv)
         });
     }
+}
+
+function getMaxPageNum() {
+    let rowContent = 9
+
+    let pageInfoTxt = sessionStorage.getItem('pageInfo')
+    let searchInfo = JSON.parse(pageInfoTxt)
+
+    fetch(`/phoneMaxPageNum?brand=${searchInfo.brand}&bodySIM=${searchInfo.SIM}&bodyWeight=${searchInfo.weight}&network=${searchInfo.network}&cameraCount=${searchInfo.cameraCount}&memoryCardSlot=${searchInfo.memoryCardSlot}&commsBluetooth=${searchInfo.bluetooth}&commsUSB=${searchInfo.USB}&rowContent=${rowContent}`)
+        .then(res => res.json())
+        .then(maxPage => {
+            pageProc(maxPage)
+        })
+}
+getMaxPageNum()
+
+const pagingContentElem = document.querySelector('#phonePaging')
+function pageProc(maxPage, page) {
+
+    let pageInfoTxt = sessionStorage.getItem('pageInfo')
+    let searchInfo = JSON.parse(pageInfoTxt)
+
+    let sessionPage = parseInt(searchInfo.page)
+
+    if (!sessionPage) {
+        sessionPage = 1
+    }
+
+    if (!page) {
+        page = sessionPage
+    }
+
+    pagingContentElem.innerHTML = null
+    const blue_barUl = document.createElement('ul')
+    blue_barUl.classList.add('blue_bar')
+
+    const pLi = document.createElement('li')
+    const prevA = document.createElement('a')
+    prevA.classList.add('prev')
+    prevA.innerHTML = '&laquo'
+    pLi.append(prevA)
+    blue_barUl.append(pLi)
+
+    pLi.addEventListener('click', function () {
+        getPhonesList(1)
+        pageProc(maxPage, 1)
+    })
+
+    const ltLi = document.createElement('li')
+    const ltA = document.createElement('a')
+    ltA.classList.add('prev')
+    ltA.innerHTML = '&lt'
+    ltLi.append(ltA)
+    blue_barUl.append(ltLi)
+
+    if (page > 1) {
+        ltLi.addEventListener('click', function () {
+            getPhonesList(page - 1)
+            pageProc(maxPage, page - 1)
+        })
+    }
+
+    param = paging(page, maxPage)
+
+    for (let i = param.startPage; i <= param.lastPage; i++) {
+        const li = document.createElement('li')
+        const a = document.createElement('a')
+        a.innerText = i
+
+        if (i === page) {
+            a.classList.add("active")
+        }
+        li.append(a)
+        blue_barUl.append(li)
+
+        a.addEventListener('click', function () {
+            getPhonesList(i)
+            pageProc(maxPage, i)
+        })
+    }
+
+    const gtLi = document.createElement('li')
+    const gtA = document.createElement('a')
+    gtA.classList.add('prev')
+    gtA.innerHTML = '&gt'
+    gtLi.append(gtA)
+    blue_barUl.append(gtLi)
+
+    if (page < maxPage) {
+        gtLi.addEventListener('click', function () {
+            getPhonesList(page + 1)
+            pageProc(maxPage, page + 1)
+        })
+    }
+
+    const nLi = document.createElement('li')
+    const nextA = document.createElement('a')
+    nextA.classList.add('prev')
+    nextA.innerHTML = '&raquo'
+    nLi.append(nextA)
+    blue_barUl.append(nLi)
+
+    nLi.addEventListener('click', function () {
+        getPhonesList(maxPage)
+        pageProc(maxPage, maxPage)
+    })
+
+    pagingContentElem.append(blue_barUl)
+}
+
+function paging(page, maxPage) {
+    let startPage = 1;
+    let lastPage = 9;
+
+    if(maxPage < 9) {
+        lastPage = maxPage
+    }
+
+    if (page - 4 > 1) {
+        startPage = page - 4
+        lastPage = page + 4
+        if (lastPage > maxPage) {
+            lastPage = maxPage
+        }
+    }
+
+    param = {
+        startPage,
+        lastPage
+    }
+
+    return param
 }

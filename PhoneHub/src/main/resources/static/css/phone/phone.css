@@ -112,3 +112,60 @@
 	overflow: hidden;
 	word-break: break-all;
 }
+
+/*paging*/
+#pagingContent {
+	position: relative;
+	display: block;
+	width: 102%;
+	height: 100px;
+  }
+  
+  .paging_control {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+  }
+
+  .blue_bar {
+	position: relative;
+  }
+  
+  .blue_bar li {
+	display: inline;
+	text-align: center;
+  }
+  
+  .blue_bar li:first-child a {
+	border-radius: 6px 0 0 6px;
+  }
+  
+  .blue_bar li:last-child a {
+	border-radius: 0 6px 6px 0;
+  }
+  
+  .blue_bar a {
+	float: left;
+	display: block;
+	font-size: 15px;
+	padding: 7px 15px;
+	margin-left: -1px;
+	line-height: 1.5;
+	color: #6495ed;
+	background: #fff;
+	cursor: pointer;
+	border: 1px solid #6495ed;
+  }
+  
+  .blue_bar a:hover {
+	background: #eee;
+  }
+  
+  .blue_bar a.active,
+  .blue_bar a:active {
+	cursor: default;
+	border-color: #6495ed;
+	background: #6495ed;
+	color: #fff;
+  }
