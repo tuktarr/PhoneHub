@@ -1,3 +1,30 @@
+// 메인 뉴스 배너
+const mainNewsElem = document.getElementById('mainNews')
+if (mainNewsElem) {
+    const now = new Date();
+    const today = now.getFullYear().toString()
+        + ((now.getMonth() + 1).toString().length === 1 ? ("0" + (now.getMonth() + 1)) : (now.getMonth() + 1).toString())
+        + (now.getDate().toString().length === 1 ? ("0" + now.getDate()) : now.getDate().toString())
+    fetch(`/selpopularnews?regDt=${today}`)
+        .then(res => res.json())
+        .then(newsData => {
+            mainNewsPrint(newsData)
+        })
+
+    function mainNewsPrint(newsData) {
+        newsData.forEach(news => {
+            const li = document.createElement('li')
+            const span = document.createElement('span')
+            const a = document.createElement('a')
+            a.innerText = news.title
+            a.setAttribute('href', news.url)
+            li.append(span)
+            li.append(a)
+            mainNewsElem.append(li)
+        })
+    }
+}
+
 // 휴대폰 성능 순위
 const perfo = document.querySelector('.perfo')
 if (perfo) {

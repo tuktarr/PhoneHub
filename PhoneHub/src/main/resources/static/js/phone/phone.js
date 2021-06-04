@@ -26,42 +26,49 @@ if (searchPhoneElem) {
     }
 
     function searchBrand(param) {
+        searchInfo.page = 1
         searchInfo.brand = param
         refresh(searchInfo)
     }
 
     function searchSIM(param) {
+        searchInfo.page = 1
         searchInfo.SIM = param
         refresh(searchInfo)
     }
 
     function searchWeight(param) {
+        searchInfo.page = 1
         searchInfo.weight = param
         refresh(searchInfo)
     }
 
     function searchNetwork(param) {
-        console.log(param)
+        searchInfo.page = 1
         searchInfo.network = param
         refresh(searchInfo)
     }
 
     function searchCameraCount(param) {
+        searchInfo.page = 1
         searchInfo.cameraCount = param
         refresh(searchInfo)
     }
 
     function searchMemoryCardSlot(param) {
+        searchInfo.page = 1
         searchInfo.memoryCardSlot = param
         refresh(searchInfo)
     }
 
     function searchBluetooth(param) {
+        searchInfo.page = 1
         searchInfo.bluetooth = param
         refresh(searchInfo)
     }
 
     function searchUSB(param) {
+        searchInfo.page = 1
         searchInfo.USB = param
         refresh(searchInfo)
     }
@@ -70,13 +77,6 @@ if (searchPhoneElem) {
     function refresh(searchInfo) {
         searchPhoneElem.innerHTML = ''
         sessionStorage.setItem('pageInfo', JSON.stringify(searchInfo))
-
-        let pageInfoTxt = sessionStorage.getItem('pageInfo')
-        if(pageInfoTxt) {
-            let pageInfo = JSON.parse(pageInfoTxt)
-            searchInfo = pageInfo
-            console.log(searchInfo)
-        }
 
         fetch(`/searchPhones?brand=${searchInfo.brand}&bodySIM=${searchInfo.SIM}&bodyWeight=${searchInfo.weight}&network=${searchInfo.network}&cameraCount=${searchInfo.cameraCount}&memoryCardSlot=${searchInfo.memoryCardSlot}&commsBluetooth=${searchInfo.bluetooth}&commsUSB=${searchInfo.USB}&page=${searchInfo.page}&rowContent=${searchInfo.rowContent}`)
             .then(res => res.json())
