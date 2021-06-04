@@ -88,23 +88,29 @@ function Search(way, phoneName) {
 }
 
 function print(myJson, way) {
-    const PhotoElem = document.getElementById(way + 'Photo')
-    const ProcessorElem = document.getElementById(way + 'Processor')
-    const DisplayElem = document.getElementById(way + 'Display')
-    const CameraElem = document.getElementById(way + 'Camera')
-    const MemoryElem = document.getElementById(way + 'Memory')
+    const contentSearch = document.getElementById(way + 'ContentSearch')
+    const photoElem = document.getElementById(way + 'Photo')
+    const processorElem = document.getElementById(way + 'Processor')
+    const displayElem = document.getElementById(way + 'Display')
+    const cameraElem = document.getElementById(way + 'Camera')
+    const memoryElem = document.getElementById(way + 'Memory')
     const SIMElem = document.getElementById(way + 'SIM')
-    const NetworkElem = document.getElementById(way + 'Network')
-    const ConnectElem = document.getElementById(way + 'Connect')
+    const networkElem = document.getElementById(way + 'Network')
+    const connectElem = document.getElementById(way + 'Connect')
     const OSElem = document.getElementById(way + 'OS')
-    const SensorsElem = document.getElementById(way + 'Sensors')
-    const StandardElem = document.getElementById(way + 'Standard')
-    const BatteryElem = document.getElementById(way + 'Battery')
-    const ServiceElem = document.getElementById(way + 'Service')
-    const OtherInfoElem = document.getElementById(way + 'OtherInfo')
+    const sensorsElem = document.getElementById(way + 'Sensors')
+    const standardElem = document.getElementById(way + 'Standard')
+    const batteryElem = document.getElementById(way + 'Battery')
+    const serviceElem = document.getElementById(way + 'Service')
+    const otherInfoElem = document.getElementById(way + 'OtherInfo')
+
+    function changePName(myJson) {
+        contentSearch.value = ''
+        contentSearch.setAttribute('placeholder', myJson.phone)
+    }
 
     function printPhoto(myJson) {
-        PhotoElem.innerHTML = ''
+        photoElem.innerHTML = ''
 
         const a = document.createElement('a')
         a.setAttribute('href', `/phonedetails?pk=${myJson.pk}`)
@@ -113,11 +119,11 @@ function print(myJson, way) {
         img.setAttribute('src', myJson.pictureURLSmall)
         a.append(img)
 
-        PhotoElem.append(a)
+        photoElem.append(a)
     }
 
     function printProcessor(myJson) {
-        ProcessorElem.innerHTML = ''
+        processorElem.innerHTML = ''
 
         const CPUSpan = document.createElement('span')
         const CoreSpan = document.createElement('span')
@@ -127,13 +133,13 @@ function print(myJson, way) {
         CoreSpan.innerText = myJson.platformCPU.slice(0, -1)
         GPUSpan.innerText = myJson.platformGPU.slice(0, -1)
 
-        ProcessorElem.append(CPUSpan)
-        ProcessorElem.append(CoreSpan)
-        ProcessorElem.append(GPUSpan)
+        processorElem.append(CPUSpan)
+        processorElem.append(CoreSpan)
+        processorElem.append(GPUSpan)
     }
 
     function printDisplay(myJson) {
-        DisplayElem.innerHTML = ''
+        displayElem.innerHTML = ''
 
         const sizeSpan = document.createElement('span')
         const resolutionSpan = document.createElement('span')
@@ -145,14 +151,14 @@ function print(myJson, way) {
         typeSpan.innerText = myJson.displayType.slice(0, -1)
         protectionSpan.innerText = myJson.displayProtection.slice(0, -1)
 
-        DisplayElem.append(sizeSpan)
-        DisplayElem.append(resolutionSpan)
-        DisplayElem.append(typeSpan)
-        DisplayElem.append(protectionSpan)
+        displayElem.append(sizeSpan)
+        displayElem.append(resolutionSpan)
+        displayElem.append(typeSpan)
+        displayElem.append(protectionSpan)
     }
 
     function printCamera(myJson) {
-        CameraElem.innerHTML = ''
+        cameraElem.innerHTML = ''
 
         const backCameraSpan = document.createElement('span')
         const backVideoSpan = document.createElement('span')
@@ -191,21 +197,21 @@ function print(myJson, way) {
         backFeatures.innerText = myJson.mainCameraFeatures.slice(0, -1)
         frontFeatures.innerText = myJson.selfieCameraVideo.slice(0, -1)
 
-        CameraElem.append(backCameraSpan)
-        CameraElem.append(backVideoSpan)
-        CameraElem.append(frontCameraSpan)
-        CameraElem.append(frontVideoSpan)
-        CameraElem.append(backFeatures)
-        CameraElem.append(frontFeatures)
+        cameraElem.append(backCameraSpan)
+        cameraElem.append(backVideoSpan)
+        cameraElem.append(frontCameraSpan)
+        cameraElem.append(frontVideoSpan)
+        cameraElem.append(backFeatures)
+        cameraElem.append(frontFeatures)
     }
 
     function printMemory(myJson) {
-        MemoryElem.innerHTML = ''
+        memoryElem.innerHTML = ''
 
         const span = document.createElement('span')
         span.innerText = myJson.memoryInternal.slice(0, -1)
 
-        MemoryElem.append(span)
+        memoryElem.append(span)
     }
 
     function printSIM(myJson) {
@@ -218,7 +224,7 @@ function print(myJson, way) {
     }
 
     function printNetwork(myJson) {
-        NetworkElem.innerHTML = ''
+        networkElem.innerHTML = ''
 
         const techSpan = document.createElement('span')
         const span2G = document.createElement('span')
@@ -228,23 +234,23 @@ function print(myJson, way) {
         const speedSpan = document.createElement('span')
 
         techSpan.innerText = myJson.networkTechology.slice(0, -1)
-        NetworkElem.append(techSpan)
+        networkElem.append(techSpan)
         span2G.innerText = myJson.network2Gbands.slice(0, -1)
-        NetworkElem.append(span2G)
+        networkElem.append(span2G)
         span3G.innerText = myJson.network3Gbands.slice(0, -1)
-        NetworkElem.append(span3G)
+        networkElem.append(span3G)
         span4G.innerText = myJson.network4Gbands.slice(0, -1)
-        NetworkElem.append(span4G)
+        networkElem.append(span4G)
         if (myJson.network5Gbands) {
             span5G.innerText = myJson.network5Gbands.slice(0, -1)
-            NetworkElem.append(span5G)
+            networkElem.append(span5G)
         }
         speedSpan.innerText = myJson.networkSpeed.slice(0, -1)
-        NetworkElem.append(speedSpan)
+        networkElem.append(speedSpan)
     }
 
     function printConnect(myJson) {
-        ConnectElem.innerHTML = ''
+        connectElem.innerHTML = ''
 
         const memorySpan = document.createElement('span')
         const USBSpan = document.createElement('span')
@@ -260,12 +266,12 @@ function print(myJson, way) {
         GPSSpan.innerText = myJson.commsGPS.slice(0, -1)
         NFCSpan.innerText = myJson.commsNFC.slice(0, -1)
 
-        ConnectElem.append(memorySpan)
-        ConnectElem.append(USBSpan)
-        ConnectElem.append(WLANSpan)
-        ConnectElem.append(bluetoothSpan)
-        ConnectElem.append(GPSSpan)
-        ConnectElem.append(NFCSpan)
+        connectElem.append(memorySpan)
+        connectElem.append(USBSpan)
+        connectElem.append(WLANSpan)
+        connectElem.append(bluetoothSpan)
+        connectElem.append(GPSSpan)
+        connectElem.append(NFCSpan)
     }
 
     function printOS(myJson) {
@@ -278,15 +284,15 @@ function print(myJson, way) {
     }
 
     function printSensors(myJson) {
-        SensorsElem.innerHTML = ''
+        sensorsElem.innerHTML = ''
 
         const span = document.createElement('span')
         span.innerText = myJson.featuresSensors.slice(0, -1)
 
-        SensorsElem.append(span)
+        sensorsElem.append(span)
     }
     function printStandard(myJson) {
-        StandardElem.innerHTML = ''
+        standardElem.innerHTML = ''
 
         const dimensionsSpan = document.createElement('span')
         const weightSpan = document.createElement('span')
@@ -298,13 +304,13 @@ function print(myJson, way) {
         colorSpan.innerText = myJson.miscColors.slice(0, -1)
         builtSpan.innerText = myJson.bodyBuilt.slice(0, -1)
 
-        StandardElem.append(dimensionsSpan)
-        StandardElem.append(weightSpan)
-        StandardElem.append(colorSpan)
-        StandardElem.append(builtSpan)
+        standardElem.append(dimensionsSpan)
+        standardElem.append(weightSpan)
+        standardElem.append(colorSpan)
+        standardElem.append(builtSpan)
     }
     function printBattery(myJson) {
-        BatteryElem.innerHTML = ''
+        batteryElem.innerHTML = ''
 
         const otherSpan = document.createElement('span')
         const chargingSpan = document.createElement('span')
@@ -318,25 +324,25 @@ function print(myJson, way) {
         talkTimeSpan.innerText = myJson.batteryTalkTime.slice(0, -1)
         musicPlaySpan.innerText = myJson.batteryMusicPlay.slice(0, -1)
 
-        BatteryElem.append(otherSpan)
-        BatteryElem.append(chargingSpan)
-        BatteryElem.append(standBySpan)
-        BatteryElem.append(talkTimeSpan)
-        BatteryElem.append(musicPlaySpan)
+        batteryElem.append(otherSpan)
+        batteryElem.append(chargingSpan)
+        batteryElem.append(standBySpan)
+        batteryElem.append(talkTimeSpan)
+        batteryElem.append(musicPlaySpan)
     }
 
 
     function printService(myJson) {
-        ServiceElem.innerHTML = ''
+        serviceElem.innerHTML = ''
 
         const span = document.createElement('span')
         span.innerText = myJson.featuresOther.slice(0, -1)
 
-        ServiceElem.append(span)
+        serviceElem.append(span)
     }
 
     function printOtherInfo(myJson) {
-        OtherInfoElem.innerHTML = ''
+        otherInfoElem.innerHTML = ''
 
         const brandSapn = document.createElement('span')
         const announcedSapn = document.createElement('span')
@@ -344,10 +350,11 @@ function print(myJson, way) {
         brandSapn.innerText = myJson.brand.slice(0, -1)
         announcedSapn.innerText = myJson.announced.slice(0, -1)
 
-        OtherInfoElem.append(brandSapn)
-        OtherInfoElem.append(announcedSapn)
+        otherInfoElem.append(brandSapn)
+        otherInfoElem.append(announcedSapn)
     }
 
+    changePName(myJson)
     printPhoto(myJson)
     printProcessor(myJson)
     printDisplay(myJson)
