@@ -5,21 +5,25 @@
 <mapper namespace="com.tuktarr.phonehub.phone.PhoneMapper">
 	<select id="selPerformanceRanking"
 		resultType="com.tuktarr.phonehub.model.PhoneInfoEntity">
-		SELECT
+		SELECT 
+		pk, 
 		phone, pictureURLSmall, APScore
 		FROM phoneInfo
 		ORDER BY
 		APScore DESC
+		LIMIT 10
 	</select>
 
 	<select id="selCost_Effectiveness"
 		resultType="com.tuktarr.phonehub.model.PhoneInfoEntity">
-		SELECT
+		SELECT 
+		pk, 
 		phone, pictureURLSmall, cost_Effectiveness
 		FROM
 		phoneInfo
 		WHERE cost_Effectiveness != 0
 		ORDER BY cost_Effectiveness
+		LIMIT 10
 	</select>
 	
 	<select id="selMaxPageNum" resultType="_int">

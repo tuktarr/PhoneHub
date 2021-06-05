@@ -22,6 +22,27 @@
     padding: 50px 10px;
 }
 
+.phone_cate button {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    width: 50px;
+    height: 50px;
+    z-index: 9999;
+    border: 1px solid #333;
+    background: #fff;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+.phone_cate button::before {
+    content: '';
+    display: inline-block;
+    font-family: "Font Awesome 5 Free";
+    font-weight: 400;
+    font-size: 30px;
+}
+
 .cate_box {
 	position: relative;
 	display: block;
@@ -78,7 +99,6 @@
 
 .item_box a img {
 	display: block;
-    width: 200px;
     max-width: 200px;
     max-height: 290px;
     margin: 0 auto;
@@ -92,13 +112,13 @@
 
 .item_name {
 	display: block;
-	margin-bottom: 10px;
 	overflow: hidden;
 	font-style: 25px;
 	font-weight: bold;
 	color: #333;
 	word-break: keep-all;
 	text-overflow: ellipsis;
+	margin-bottom: 10px;
 }
 
 .item_num {

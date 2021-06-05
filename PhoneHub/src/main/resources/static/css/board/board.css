@@ -200,6 +200,7 @@ input[name=writeEditBtn]:hover {
     color: #6495ED;
     background: #fff;
     border: 1px solid #6495ED;
+    cursor: pointer;
 }
 
 .blue_bar a:hover {
