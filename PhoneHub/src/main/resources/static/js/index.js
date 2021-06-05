@@ -29,49 +29,55 @@ if (mainNewsElem) {
 }
 
 // 휴대폰 성능 순위
-const perfo = document.querySelector('.perfo')
-if (perfo) {
+const popularOrderElem = document.getElementById('popularOrder')
+if (popularOrderElem) {
     fetch('/phonerankings')
         .then(res => res.json())
-        .then(myJson => {
-            rankBoxPrint(myJson)
+        .then(phones => {
+            rankBoxPrint(phones)
         })
 
-    function rankBoxPrint(myJson) {
-
-        const div = document.createElement('div')
-        div.className = 'cont_img'
-        for (let i = 0; i < 4; i++) {
-            const div2 = document.createElement('div')
-
-            div2.innerHTML = `<img id="teamlogo" src="` + myJson.performanceRankings[i].pictureURLSmall + `">`
-
-            div.append(div2)
+    function rankBoxPrint(phones) {
+        for(let i = 0; i < 4; i++) {
+            const div = document.createElement('div')
+            div.classList.add('stand_img')
+            const a = document.createElement('a')
+            a.setAttribute('href', `/phonedetails?pk=${phones.performanceRankings[i].pk}`)
+            const img = document.createElement('img')
+            img.setAttribute('src', `${phones.performanceRankings[i].pictureURLSmall}`)
+            const span = document.createElement('span')
+            span.innerText = phones.performanceRankings[i].phone
+            a.append(img)
+            a.append(span)
+            div.append(a)
+            popularOrderElem.append(div)
         }
-        perfo.append(div)
     }
 }
 
 // 휴대폰 가성비 순위
-const price = document.querySelector('.price')
-if (price) {
+const costEffectivenessOrderElem = document.getElementById('costEffectivenessOrder')
+if (costEffectivenessOrderElem) {
     fetch('/phonerankings')
         .then(res => res.json())
-        .then(myJson => {
-            rankBoxPrint(myJson)
+        .then(phones => {
+            rankBoxPrint(phones)
         })
 
-    function rankBoxPrint(myJson) {
-
-        const div = document.createElement('div')
-        div.className = 'cont_img'
-        for (let i = 0; i < 4; i++) {
-            const div2 = document.createElement('div')
-
-            div2.innerHTML = `<img id="teamlogo" src="` + myJson.cost_Effectivenes[i].pictureURLSmall + `">`
-
-            div.append(div2)
+    function rankBoxPrint(phones) {
+        for(let i = 0; i < 4; i++) {
+            const div = document.createElement('div')
+            div.classList.add('stand_img')
+            const a = document.createElement('a')
+            a.setAttribute('href', `/phonedetails?pk=${phones.cost_Effectivenes[i].pk}`)
+            const img = document.createElement('img')
+            img.setAttribute('src', `${phones.cost_Effectivenes[i].pictureURLSmall}`)
+            const span = document.createElement('span')
+            span.innerText = phones.cost_Effectivenes[i].phone
+            a.append(img)
+            a.append(span)
+            div.append(a)
+            costEffectivenessOrderElem.append(div)
         }
-        price.append(div)
     }
 }

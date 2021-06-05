@@ -110,6 +110,40 @@ if (searchPhoneElem) {
         })
     }
 
+    const searchResetElem = document.getElementById('searchResetBtn')
+    if (searchResetElem) {
+        searchResetElem.addEventListener('click', searchReset)
+
+        function searchReset() {
+            brand = '',
+            SIM = '',
+            weight = '',
+            network = 0,
+            cameraCount = 0,
+            memoryCardSlot = '',
+            bluetooth = '',
+            USB = '',
+            page = 1,
+            rowContent = 9
+
+            searchInfo = {
+                brand,
+                SIM,
+                weight,
+                network,
+                cameraCount,
+                memoryCardSlot,
+                bluetooth,
+                USB,
+                page,
+                rowContent
+            }
+
+            refresh(searchInfo)
+            optionSelected(searchInfo)
+        }
+    }
+
     function getPhonesList(currentPage) {
         searchInfo.page = currentPage
         refresh(searchInfo)
@@ -137,7 +171,7 @@ if (searchPhoneElem) {
 
             const numSpan = document.createElement('span')
             numSpan.classList.add('item_num')
-            numSpan.innerText = e.miscModels
+            numSpan.innerText = e.miscModels.slice(0, -1)
             insideDiv.append(numSpan)
 
             a.append(img)
