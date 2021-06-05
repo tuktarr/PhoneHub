@@ -206,12 +206,12 @@ input[name=writeEditBtn]:hover {
     display: block;
     font-size: 15px;
     padding: 7px 15px;
-    color: #fff;
     margin-left: -1px;
     line-height: 1.5;
     color: #6495ED;
     background: #fff;
     border: 1px solid #6495ED;
+    cursor: pointer;
 }
 
 .blue_bar a:hover {
