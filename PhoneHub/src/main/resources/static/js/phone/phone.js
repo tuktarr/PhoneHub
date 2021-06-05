@@ -73,7 +73,7 @@ if (searchPhoneElem) {
         refresh(searchInfo)
     }
 
-    
+
     function refresh(searchInfo) {
         searchPhoneElem.innerHTML = ''
         sessionStorage.setItem('pageInfo', JSON.stringify(searchInfo))
@@ -86,7 +86,29 @@ if (searchPhoneElem) {
             })
     }
 
-    refresh(searchInfo)
+    let pageInfoTxt = sessionStorage.getItem('pageInfo')
+    if (pageInfoTxt) {
+        searchInfo = JSON.parse(pageInfoTxt)
+        optionSelected(searchInfo)
+        refresh(searchInfo)
+    } else {
+        refresh(searchInfo)
+    }
+
+    function optionSelected(searchInfo) {
+        const idValue = ['brand', 'SIM', 'weight', 'network', 'cameraCount', 'memoryCardSlot', 'bluetooth', 'USB']
+
+        idValue.forEach(id => {
+            const ele = document.getElementById(id)
+
+            for (i = 0; i < ele.length; i++) {
+                if (ele.options[i].value == searchInfo[id]) {
+                    ele.options[i].selected = true
+                    break;
+                }
+            }
+        })
+    }
 
     function getPhonesList(currentPage) {
         searchInfo.page = currentPage
@@ -128,12 +150,11 @@ if (searchPhoneElem) {
 }
 
 function getMaxPageNum() {
-    let rowContent = 9
 
     let pageInfoTxt = sessionStorage.getItem('pageInfo')
     let searchInfo = JSON.parse(pageInfoTxt)
 
-    fetch(`/phoneMaxPageNum?brand=${searchInfo.brand}&bodySIM=${searchInfo.SIM}&bodyWeight=${searchInfo.weight}&network=${searchInfo.network}&cameraCount=${searchInfo.cameraCount}&memoryCardSlot=${searchInfo.memoryCardSlot}&commsBluetooth=${searchInfo.bluetooth}&commsUSB=${searchInfo.USB}&rowContent=${rowContent}`)
+    fetch(`/phoneMaxPageNum?brand=${searchInfo.brand}&bodySIM=${searchInfo.SIM}&bodyWeight=${searchInfo.weight}&network=${searchInfo.network}&cameraCount=${searchInfo.cameraCount}&memoryCardSlot=${searchInfo.memoryCardSlot}&commsBluetooth=${searchInfo.bluetooth}&commsUSB=${searchInfo.USB}&page=${searchInfo.page}&rowContent=${searchInfo.rowContent}`)
         .then(res => res.json())
         .then(maxPage => {
             pageProc(maxPage)
@@ -239,7 +260,7 @@ function paging(page, maxPage) {
     let startPage = 1;
     let lastPage = 9;
 
-    if(maxPage < 9) {
+    if (maxPage < 9) {
         lastPage = maxPage
     }
 

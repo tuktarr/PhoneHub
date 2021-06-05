@@ -20,18 +20,18 @@
                 <div class="cate_box">
                     <span class="cate_name">일반 정보</span>
                     <!-- 카테고리 셀렉트 박스 / 복붙-->
-                    <select class="cate_selc" onchange="searchBrand(this.value)">
-                        <option value="" selected>제조회사</option>
+                    <select id="brand" class="cate_selc" onchange="searchBrand(this.value)">
+                        <option value="">제조회사</option>
                         <option value="samsung">samsung</option>
                         <option value="apple">apple</option>
                     </select>
-                    <select id="searchSIM" class="cate_selc" onchange="searchSIM(this.value)">
-                        <option value="" selected>SIM</option>
+                    <select id="SIM" class="cate_selc" onchange="searchSIM(this.value)">
+                        <option value="">SIM</option>
                         <option value="dual">Single-SIM</option>
                         <option value="dual SIM">Dual-SIM</option>
                     </select>
-                    <select id="searchSIM" class="cate_selc" onchange="searchWeight(this.value)">
-                        <option value="" selected>무게(이하)</option>
+                    <select id="weight" class="cate_selc" onchange="searchWeight(this.value)">
+                        <option value="">무게(이하)</option>
                         <option value="150">150</option>
                         <option value="200">200</option>
                         <option value="250">250</option>
@@ -40,15 +40,15 @@
                 </div>
                 <div class="cate_box">
                     <span class="cate_name">사양</span>
-                    <select class="cate_selc" onchange="searchNetwork(this.value)">
-                        <option value="0" selected>network</option>
+                    <select id="network" class="cate_selc" onchange="searchNetwork(this.value)">
+                        <option value="0">network</option>
                         <option value="2">2G</option>
                         <option value="3">3G</option>
                         <option value="4">4G</option>
                         <option value="5">5G</option>
                     </select>
-                    <select class="cate_selc" onchange="searchCameraCount(this.value)">
-                        <option value="0" selected>cameraCount</option>
+                    <select id="cameraCount" class="cate_selc" onchange="searchCameraCount(this.value)">
+                        <option value="0">cameraCount</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -60,13 +60,13 @@
                 <div class="cate_box">
                     <span class="cate_name">연결</span>
                     <!-- 카테고리 셀렉트 박스 / 복붙-->
-                    <select class="cate_selc" onchange="searchMemoryCardSlot(this.value)">
-                        <option value="" selected>외장메모리</option>
+                    <select id="memoryCardSlot" class="cate_selc" onchange="searchMemoryCardSlot(this.value)">
+                        <option value="">외장메모리</option>
                         <option value="no;">yes</option>
                         <option value="no">no</option>
                     </select>
-                    <select class="cate_selc" onchange="searchBluetooth(this.value)">
-                        <option value="" selected>Bluetooth</option>
+                    <select id="bluetooth" class="cate_selc" onchange="searchBluetooth(this.value)">
+                        <option value="">Bluetooth</option>
                         <option value="1.0">1.0</option>
                         <option value="2.0">2.0</option>
                         <option value="2.1">2.1</option>
@@ -76,8 +76,8 @@
                         <option value="4.2">4.2</option>
                         <option value="5.0">5.0</option>
                     </select>
-                    <select id="searchSIM" class="cate_selc" onchange="searchUSB(this.value)">
-                        <option value="" selected>USB</option>
+                    <select id="USB" class="cate_selc" onchange="searchUSB(this.value)">
+                        <option value="">USB</option>
                         <option value="2.0">2.0</option>
                         <option value="3.1">3.1</option>
                     </select>

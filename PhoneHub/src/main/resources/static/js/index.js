@@ -16,6 +16,9 @@ if (mainNewsElem) {
             const li = document.createElement('li')
             const span = document.createElement('span')
             const a = document.createElement('a')
+            a.addEventListener('click', function () {
+                fetch(`/updnewshits${news.pk}`)
+            })
             a.innerText = news.title
             a.setAttribute('href', news.url)
             li.append(span)
