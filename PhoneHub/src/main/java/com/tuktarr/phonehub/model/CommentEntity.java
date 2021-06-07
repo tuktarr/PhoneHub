@@ -9,6 +9,21 @@ public class CommentEntity {
 	private String regDt;
 	private String modDt;
 	private int isDel;
+	private int cmtCount;
+	private String nickname;
+	
+	public int getCmtCount() {
+		return cmtCount;
+	}
+	public void setCmtCount(int cmtCount) {
+		this.cmtCount = cmtCount;
+	}
+	public String getNickname() {
+		return nickname;
+	}
+	public void setNickName(String nickName) {
+		this.nickname = nickName;
+	}
 	public int getBoardPk() {
 		return boardPk;
 	}

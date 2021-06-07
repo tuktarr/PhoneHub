@@ -3,7 +3,7 @@ const worstHitUp = document.querySelector('.worst')
 const boardPk = bestHitUp.value
 const userPk = document.getElementById('userPk').value
 console.log(userPk)
-
+	
 function warnEmpty() {
 	alert("댓글을 입력해주세요.")
 }
@@ -15,7 +15,7 @@ function dataToString(date) {
 }
 
 function submitComment() {
-	const commBtn = document.querySelector('.comment_btn')
+	const commentBtn = document.querySelector('.comment_btn')
 	const newcommentEL = document.getElementById('newComment')
 	const newcomment = newcommentEL.value.trim()
 
@@ -26,10 +26,10 @@ function submitComment() {
 		dateEL.innerText = dateString;
 
 		// innerText에 값을 추가해야함
-		// const contentEL = document.createElement('div')
-		// contentEL.classList.add('comment_user')
-		// contentEL.innerText = ;
+//		const contentEL = document.createElement('div')
 		const contentEL = document.createElement('div')
+		contentEL.classList.add('comment_user')
+		contentEL.innerText = 'good';
 		contentEL.classList.add('comment_content')
 		contentEL.innerText = newcomment;
 
@@ -39,8 +39,38 @@ function submitComment() {
 		commentEL.appendChild(contentEL)
 
 		document.getElementById('comments').appendChild(commentEL)
-		newcommentEL.value = "";
+		
+	function ajax() {
 
+		const param = {
+			userPk: userPk,
+			ctnt: newcommentEL.value,
+			boardPk: boardPk
+		}
+
+		fetch('/comment', {
+			method: 'post',
+			headers: {
+				'Content-type': 'application/json',
+			},
+			body: JSON.stringify(param)
+		}).then(res => res.json())
+			.then(myJson => {
+				proc(myJson)
+			})
+	}
+	
+	function proc(myJson) {
+		switch (myJson.result) {
+			case 0:
+				alert('내용을 입력해 주십시오')
+				return
+			case 1:
+				alert('댓글작성완료')
+				return
+		}
+	}
+		commentBtn.addEventListener('click', ajax)
 		// dateEL.addEventListener('click', function() {
 		//     commentEL.remove()
 		// })
@@ -101,3 +131,35 @@ bestHitUp.addEventListener('click', popularHit)
 
 worstHitUp.addEventListener('click', blameHit)
 
+function selCmtList() {
+	fetch(`/comment?boardPk=${boardPk}`)
+		.then(res => res.json())
+		.then(myJson => {
+			CmtProc(myJson)
+		})
+	}
+		
+	function CmtProc(myJson) {
+		myJson.forEach(function(item) {
+			const commentEL = document.createElement('div')
+			const userEL = document.createElement('div')
+			const contentEL = document.createElement('div')
+			const dateEL = document.createElement('div')
+			
+			commentEL.classList.add('comment_row')
+			userEL.classList.add('comment_user')
+			contentEL.classList.add('comment_content')
+			dateEL.classList.add("comment_date")
+			userEL.innerText = item.nickname
+			contentEL.innerText = item.ctnt
+			dateEL.innerText = item.modDt
+			
+			commentEL.appendChild(dateEL)
+			commentEL.appendChild(userEL)
+			commentEL.appendChild(contentEL)
+			
+			document.getElementById('comments').appendChild(commentEL)
+		})
+	}
+
+selCmtList()

@@ -3,5 +3,29 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.tuktarr.phonehub.comment.CommentMapper">
+	<insert id="insCmt">
+		INSERT INTO cmt (groupCmt,ctnt,boardPk,userPk)
+		SELECT
+		IFNULL(MAX(groupCmt), 0) + 1, #{ctnt}, #{boardPk}, #{userPk}
+		FROM cmt
+		WHERE boardPk = #{boardPk}
+	</insert>
 
+	<insert id="insCmtGroup">
+		INSERT INTO cmt (groupCmt,depth,ctnt,boardPk,userPk)
+		VALUES (#{groupCmt}, #{depth}, #{ctnt}, #{boardPk}, #{userPk})
+	</insert>
+
+	<select id="selCmtCount"
+		resultType="com.tuktarr.phonehub.model.CommentEntity">
+		SELECT COUNT(boardPk) AS cmtCount FROM cmt WHERE isDel = 0
+		AND boardPk = #{boardPk}
+	</select>
+
+	<select id="selCmt"
+		resultType="com.tuktarr.phonehub.model.CommentEntity">
+		SELECT A.boardPk, A.depth, A.ctnt, A.groupCmt, A.modDt, B.nickname
+		FROM cmt AS A INNER JOIN user AS B ON A.userPk = B.userPk
+		WHERE boardPk = #{boardPk} AND isDel = 0 ORDER BY groupCmt DESC, depth;
+	</select>
 </mapper>
