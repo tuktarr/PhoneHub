@@ -93,77 +93,77 @@ function boardProc(myJson) {
 
 
 	//table
-	const table = document.createElement('table');
-	table.classList.add('tab_table');
+	const table = document.createElement('table')
+	table.classList.add('tab_table')
 	//colgroup
-	const colgroup = document.createElement('colgroup');
-	const col_1 = document.createElement('col');
-	col_1.classList.add('num');
-	const col_2 = document.createElement('col');
-	col_2.classList.add('title');
-	const col_3 = document.createElement('col');
-	col_3.classList.add('writer');
-	const col_4 = document.createElement('col');
-	col_4.classList.add('hits');
-	const col_5 = document.createElement('col');
-	col_5.classList.add('date');
-	colgroup.append(col_1);
-	colgroup.append(col_2);
-	colgroup.append(col_3);
-	colgroup.append(col_4);
-	colgroup.append(col_5);
-	table.append(colgroup);
+	const colgroup = document.createElement('colgroup')
+	const col_1 = document.createElement('col')
+	col_1.classList.add('num')
+	const col_2 = document.createElement('col')
+	col_2.classList.add('title')
+	const col_3 = document.createElement('col')
+	col_3.classList.add('writer')
+	const col_4 = document.createElement('col')
+	col_4.classList.add('hits')
+	const col_5 = document.createElement('col')
+	col_5.classList.add('date')
+	colgroup.append(col_1)
+	colgroup.append(col_2)
+	colgroup.append(col_3)
+	colgroup.append(col_4)
+	colgroup.append(col_5)
+	table.append(colgroup)
 	// 테이블 tr th
-	const htr = document.createElement('tr');
-	const th_1 = document.createElement('th');
-	const th_2 = document.createElement('th');
-	const th_3 = document.createElement('th');
-	const th_4 = document.createElement('th');
-	const th_5 = document.createElement('th');
-	htr.append(th_1);
-	htr.append(th_2);
-	htr.append(th_3);
-	htr.append(th_4);
-	htr.append(th_5);
-	th_1.innerText = '번호';
-	th_2.innerText = '제목';
-	th_3.innerText = '글쓴이';
-	th_4.innerText = '조회수';
-	th_5.innerText = '날짜';
-	table.append(htr);
+	const htr = document.createElement('tr')
+	const th_1 = document.createElement('th')
+	const th_2 = document.createElement('th')
+	const th_3 = document.createElement('th')
+	const th_4 = document.createElement('th')
+	const th_5 = document.createElement('th')
+	htr.append(th_1)
+	htr.append(th_2)
+	htr.append(th_3)
+	htr.append(th_4)
+	htr.append(th_5)
+	th_1.innerText = '번호'
+	th_2.innerText = '제목'
+	th_3.innerText = '글쓴이'
+	th_4.innerText = '조회수'
+	th_5.innerText = '날짜'
+	table.append(htr)
 	//리스트 반복
 	myJson.forEach(function(item) {
-		const a = document.createElement('a');
-		const tr = document.createElement('tr');
-		tr.classList.add('gall_tr');
-		const td_1 = document.createElement('td');
-		td_1.classList.add('gall_num');
-		const td_2 = document.createElement('td');
-		td_2.classList.add('gall_title');
-		td_2.append(a);
-		const td_3 = document.createElement('td');
-		td_3.classList.add('gall_nick');
-		const td_4 = document.createElement('td');
-		td_4.classList.add('gall_hits');
-		const td_5 = document.createElement('td');
-		td_5.classList.add('gall_date');
-		td_1.innerText = item.seq;
-		a.innerText = item.title;
-		td_3.innerText = item.writerNm;
-		td_4.innerText = item.hits;
-		td_5.innerText = item.regDt;
-		tr.append(td_1);
-		tr.append(td_2);
-		tr.append(td_3);
-		tr.append(td_4);
-		tr.append(td_5);
-		table.append(tr);
+		const a = document.createElement('a')
+		const tr = document.createElement('tr')
+		tr.classList.add('gall_tr')
+		const td_1 = document.createElement('td')
+		td_1.classList.add('gall_num')
+		const td_2 = document.createElement('td')
+		td_2.classList.add('gall_title')
+		td_2.append(a)
+		const td_3 = document.createElement('td')
+		td_3.classList.add('gall_nick')
+		const td_4 = document.createElement('td')
+		td_4.classList.add('gall_hits')
+		const td_5 = document.createElement('td')
+		td_5.classList.add('gall_date')
+		td_1.innerText = item.seq
+		a.innerText = item.title
+		td_3.innerText = item.writerNm
+		td_4.innerText = item.hits
+		td_5.innerText = item.regDt
+		tr.append(td_1)
+		tr.append(td_2)
+		tr.append(td_3)
+		tr.append(td_4)
+		tr.append(td_5)
+		table.append(tr)
 		a.addEventListener('click', function() {
-			goToDetail(item.boardPk);
+			goToDetail(item.boardPk)
 		});
 	});
-	listContentElem.innerHTML = '';
-	listContentElem.append(table);
+	listContentElem.innerHTML = ''
+	listContentElem.append(table)
 }
 getMaxPageNum()
 function getMaxPageNum() {
@@ -207,8 +207,8 @@ function pageProc(myJson) {
 	raquo.classList.add('next')
 	const a1 = document.createElement('a')
 	const a2 = document.createElement('a')
-	a1.innerText = '<';
-	a2.innerText = '>';
+	a1.innerText = '<'
+	a2.innerText = '>'
 	console.log(myJson)
 	laquo.append(a1)
 	raquo.append(a2)

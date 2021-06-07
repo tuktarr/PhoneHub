@@ -50,10 +50,9 @@
 						ctnt = #{ctnt},
 					</if>
 					<if test="isDel != 0">
-					isDel = 1,
+						isDel = 1,
 					</if>
-				
-					modDt = now()
+						modDt = now()
 				</otherwise>
 			</choose>
 		</set>
@@ -95,7 +94,7 @@
 	<select id="selLike" resultType="com.tuktarr.phonehub.model.BoardDTO">
 		SELECT a.likecount, a.hatecount, a.userPk, b.voted_count, b.blamed_count
 		FROM likecontrol AS a INNER JOIN board as b ON a.boardPk = b.boardPk
-		WHERE b.isDel = 0 AND a.userPk = #{userPk} AND a.boardPk = #{boardPk};
+		WHERE b.isDel = 0 AND a.boardPk = #{boardPk};
 	</select>
 	
 	<update id="upLike">

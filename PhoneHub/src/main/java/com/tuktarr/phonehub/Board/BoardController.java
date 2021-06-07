@@ -15,10 +15,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.tuktarr.phonehub.comment.CommentService;
 import com.tuktarr.phonehub.model.BoardDTO;
 import com.tuktarr.phonehub.model.BoardDomain;
 import com.tuktarr.phonehub.model.BoardEntity;
-import com.tuktarr.phonehub.model.UserEntity;
+import com.tuktarr.phonehub.model.CommentEntity;
 import com.tuktarr.phonehub.user.UserService;
 import com.tuktarr.phonehub.utils.SecurityUtils;
 
@@ -33,6 +34,9 @@ public class BoardController {
 	
 	@Autowired
 	UserService uService;
+	
+	@Autowired
+	CommentService cService;
 	
 	@GetMapping("/list")
 	public String list() {
@@ -72,7 +76,9 @@ public class BoardController {
 		model.addAttribute("pk", sUtils.getLoginUser(hs));
 		BoardDTO pa = new BoardDTO();
 		pa.setBoardPk(p.getBoardPk());
-		pa.setUserPk(sUtils.getLoginUser(hs).getUserPk());
+		CommentEntity param = new CommentEntity();
+		param.setBoardPk(p.getBoardPk());
+		pa.setUserPk(sUtils.getLoginUserPk(hs));
 		model.addAttribute("like", bService.selLike(pa));
 		return "board/detail";
 	}
