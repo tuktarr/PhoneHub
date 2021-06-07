@@ -192,6 +192,15 @@ CREATE TABLE board (
 	PRIMARY KEY (boardPk)
 );
 
+// 좋아요 싫어요 쿼리문
+CREATE TABLE likecontrol (
+    boardPk INT(10),
+    userPk INT(10),
+    likecount INT DEFAULT 0,
+    hatecount INT DEFAULT 0,
+    PRIMARY KEY (boardPk, userPk)
+);
+
 // phub 게시판에 관한 댓글에 대한 쿼리문
 CREATE TABLE cmt (
 	cmtPk INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,

@@ -25,7 +25,7 @@ public class NaverNewsCrawling {
 		boolean pageStop = true;
 		int page = 1;
 
-		for (int i = 0; i < 14; i++) {
+		for (int i = 0; i < 14; i++) {		// 날짜 설정 오늘로 부터 몇일 뒤 까지 뉴스를 가져올건지 입력
 			Calendar cal = Calendar.getInstance();
 			String format = "yyyyMMdd";
 			SimpleDateFormat sdf = new SimpleDateFormat(format);
