@@ -239,9 +239,10 @@
 
 .comment_row {
     position: relative;
-    display: inline-block;
+    display: flex;
+    justify-content: space-between;
     width: 100%;
-    padding: 0 10px;
+    padding: 10px 20px;
     border-bottom: 1px solid #333;
     background: #e3e3e3;
     border-radius: 2px;
@@ -261,17 +262,20 @@
 }
 
 .comment_user {
-    width: 15%;
+    flex: 1;
 }
 
 .comment_content {
-    width: 67%;
+    flex: 3;
 }
 
 .comment_date {
-    width: 16%;
-    text-align: right;
-    float: right;
+    flex: 1;
+}
+
+.comment_re {
+    flex: 0.5;
+    cursor: pointer;
 }
 
 .comment_date::before {
