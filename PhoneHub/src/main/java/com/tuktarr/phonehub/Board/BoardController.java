@@ -78,6 +78,7 @@ public class BoardController {
 		pa.setBoardPk(p.getBoardPk());
 		CommentEntity param = new CommentEntity();
 		param.setBoardPk(p.getBoardPk());
+		model.addAttribute("cmt",cService.selCmtCount(param));
 		pa.setUserPk(sUtils.getLoginUserPk(hs));
 		model.addAttribute("like", bService.selLike(pa));
 		return "board/detail";

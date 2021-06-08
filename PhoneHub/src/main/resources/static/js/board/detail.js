@@ -145,7 +145,10 @@ function selCmtList() {
 			const userEL = document.createElement('div')
 			const contentEL = document.createElement('div')
 			const dateEL = document.createElement('div')
-			
+			const ccmtEL = document.createElement('div')
+			const a = document.createElement('a')
+			const a1 = document.createElement('a')
+			ccmtEL.classList.add('comment_re')
 			commentEL.classList.add('comment_row')
 			userEL.classList.add('comment_user')
 			contentEL.classList.add('comment_content')
@@ -153,13 +156,37 @@ function selCmtList() {
 			userEL.innerText = item.nickname
 			contentEL.innerText = item.ctnt
 			dateEL.innerText = item.modDt
-			
-			commentEL.appendChild(dateEL)
+			a.innerText = '답글달기'
+			a1.innerText = '답글취소'
+			ccmtEL.append(a)
 			commentEL.appendChild(userEL)
 			commentEL.appendChild(contentEL)
-			
+			commentEL.appendChild(dateEL)
+			commentEL.appendChild(ccmtEL)
 			document.getElementById('comments').appendChild(commentEL)
+			a.addEventListener('click', ccmt)
+			
+			function ccmt(){
+				const ccmtBox = document.createElement('div')
+				const textareaEL = document.createElement('textarea')
+				const buttonEL = document.createElement('button')
+				
+				ccmtBox.id="commentBox"
+				textareaEL.placeholder="답글을 달아주세요"
+				buttonEL.innerText ='등록'
+				ccmtBox.append(textareaEL)
+				ccmtBox.append(buttonEL)
+				a.remove()
+				ccmtEL.append(a1)
+				commentEL.append(ccmtBox)
+				a1.addEventListener('click',function(){
+					ccmtBox.remove()
+					a1.remove()
+					ccmtEL.append(a)
+				})
+			}
 		})
+		
 	}
 
 selCmtList()

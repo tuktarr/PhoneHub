@@ -133,14 +133,12 @@ function boardProc(myJson) {
 	table.append(htr)
 	//리스트 반복
 	myJson.forEach(function(item) {
-		const a = document.createElement('a')
 		const tr = document.createElement('tr')
 		tr.classList.add('gall_tr')
 		const td_1 = document.createElement('td')
 		td_1.classList.add('gall_num')
 		const td_2 = document.createElement('td')
 		td_2.classList.add('gall_title')
-		td_2.append(a)
 		const td_3 = document.createElement('td')
 		td_3.classList.add('gall_nick')
 		const td_4 = document.createElement('td')
@@ -148,7 +146,7 @@ function boardProc(myJson) {
 		const td_5 = document.createElement('td')
 		td_5.classList.add('gall_date')
 		td_1.innerText = item.seq
-		a.innerText = item.title
+		td_2.innerText = item.title
 		td_3.innerText = item.writerNm
 		td_4.innerText = item.hits
 		td_5.innerText = item.regDt
@@ -158,7 +156,7 @@ function boardProc(myJson) {
 		tr.append(td_4)
 		tr.append(td_5)
 		table.append(tr)
-		a.addEventListener('click', function() {
+		td_2.addEventListener('click', function() {
 			goToDetail(item.boardPk)
 		});
 	});
