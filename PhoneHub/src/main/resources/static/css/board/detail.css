@@ -160,16 +160,6 @@
     color: #fff;
 }
 
-.likeup::before {
-	background: #6495ED;
-	color: #fff;
-}
-
-.hateup::before {
-	background: #FC766AFF !important;
-	color: #fff;
-}
-
 .worst {
     color: #FC766AFF;
 }
@@ -234,7 +224,7 @@
     border: none;
     border-radius: 15px;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: all 0.5s;
 }
 
 .comment_btn:hover,
@@ -247,15 +237,16 @@
 	float: right;
 }
 
-
 .comment_row {
     position: relative;
-    display: inline-block;
+    display: grid;
+	grid-template-columns: 1fr 3fr 1fr 0.5fr;
     width: 100%;
-    padding: 0 10px;
+    padding: 10px 20px;
     border-bottom: 1px solid #333;
-    background: #e3e3e3;
+    background: #f7f7f7;
     border-radius: 2px;
+    
 }
 
 .comment_row:first-child {
@@ -272,24 +263,51 @@
 }
 
 .comment_user {
-    width: 15%;
+    padding-left: 10px;
 }
 
-.comment_content {
-    width: 67%;
+.comment_re {
+    cursor: pointer;
 }
 
-.comment_date {
-    width: 16%;
-    text-align: right;
-    float: right;
+#commentBox {
+    display: grid;
+    height: 75px;
+    grid-column: 1/5;
+    grid-template-columns: 5fr 1fr;
 }
 
-.comment_date::before {
-	content: '\f2ed';
-	font-family: "Font Awesome 5 Free";
-	margin-right: 5px;
-	cursor: pointer;
+#commentBox textarea {
+    padding: 10px 5px;
+    border-radius: 2px;
+    resize: none;
+}
+
+#commentBox button {
+    display: block;
+    height: 50px;
+    width: 100px;
+    margin: auto auto;
+    color: #fcf6f5;
+    font-size: 20px;
+    font-family: 'Noto Sans KR', sans-serif;
+    letter-spacing: 2px;
+    background: #89ABE3;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+.comment_date::after {
+    content: '\f2ed';
+    font-family: "Font Awesome 5 Free";
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.comment_none {
+	display: none !important;
 }
 
 #newComment {

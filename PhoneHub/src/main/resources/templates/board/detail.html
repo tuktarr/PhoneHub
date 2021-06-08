@@ -68,7 +68,7 @@
 			<!-- detail comment -->
 			<div id="comments">
 				<div id="comment_head">
-					전체댓글 <span id="commentCount"></span> 개
+					전체댓글 <span id="commentCount" th:text="|${cmt} 개|"></span>
 				</div>
 				<div class="comment_submit">
 					<textarea id="newComment" name="new_comment" rows="5"
