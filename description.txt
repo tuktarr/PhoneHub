@@ -146,16 +146,17 @@ COMMIT;
 //phub 유저에 대한 쿼리문
 
 CREATE TABLE user(
-	userPk INT UNSIGNED AUTO_INCREMENT,
-	userEmail VARCHAR(100) NOT NULL UNIQUE,
-	userPw VARCHAR(100) NOT NULL,
-	nickname VARCHAR(100) NOT NULL,
-	regDt DATETIME DEFAULT NOW(),
-	birthday DATE NOT NULL,
-	gender VARCHAR(1) CHECK(gender IN('M','F')),
-	phone VARCHAR(13) NOT NULL,
-	role INT(1) CHECK(role IN(1,2)),
-	PRIMARY KEY (userPk)
+    userPk INT UNSIGNED AUTO_INCREMENT,
+    userEmail VARCHAR(100) NOT NULL UNIQUE,
+    userPw VARCHAR(100) NOT NULL,
+    nickname VARCHAR(100) NOT NULL,
+    regDt DATETIME DEFAULT NOW(),
+    birthday DATE NOT NULL,
+    userProfile VARCHAR(100),
+    gender VARCHAR(1) CHECK(gender IN('M','F')),
+    phone VARCHAR(13) NOT NULL,
+    role INT(1) CHECK(role IN(1,2)),
+    PRIMARY KEY (userPk)
 );
 
 // phub 사용팁에 대한 쿼리문
