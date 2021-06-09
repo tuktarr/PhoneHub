@@ -8,38 +8,13 @@ function warnEmpty() {
 	alert("댓글을 입력해주세요.")
 }
 
-function dataToString(date) {
-	const dateString = date.toISOString();
-	const dateToString = dateString.substring(0, 10) + " " + dateString.substring(11, 19);
-	return dateToString
-}
+const commentBtn = document.getElementById('comment_btn')
+commentBtn.addEventListener('click', submitComment)
 
 function submitComment() {
-	const commentBtn = document.querySelector('.comment_btn')
 	const newcommentEL = document.getElementById('newComment')
-	const newcomment = newcommentEL.value.trim()
+	if (newcommentEL.value) {
 
-	if (newcomment) {
-		const dateEL = document.createElement('div')
-		dateEL.classList.add("comment_date")
-		const dateString = dataToString(new Date());
-		dateEL.innerText = dateString;
-
-		// innerText에 값을 추가해야함
-//		const contentEL = document.createElement('div')
-		const contentEL = document.createElement('div')
-		contentEL.classList.add('comment_user')
-		contentEL.innerText = 'good';
-		contentEL.classList.add('comment_content')
-		contentEL.innerText = newcomment;
-
-		const commentEL = document.createElement('div')
-		commentEL.classList.add('comment_row')
-		commentEL.appendChild(dateEL)
-		commentEL.appendChild(contentEL)
-
-		document.getElementById('comments').appendChild(commentEL)
-		
 	function ajax() {
 
 		const param = {
@@ -64,18 +39,18 @@ function submitComment() {
 		switch (myJson.result) {
 			case 0:
 				alert('내용을 입력해 주십시오')
+				location.reload()
 				return
 			case 1:
 				alert('댓글작성완료')
+				location.reload()
 				return
 		}
 	}
-		commentBtn.addEventListener('click', ajax)
-		// dateEL.addEventListener('click', function() {
-		//     commentEL.remove()
-		// })
 
-	} else {
+	ajax()
+	} 
+	else {
 		warnEmpty()
 	}
 }
@@ -144,7 +119,10 @@ function selCmtList() {
 			const commentEL = document.createElement('div')
 			const userEL = document.createElement('div')
 			const contentEL = document.createElement('div')
+			const dateContainer = document.createElement('div')
 			const dateEL = document.createElement('div')
+			const TrashCan = document.createElement('div')
+			
 			const ccmtEL = document.createElement('div')
 			const a = document.createElement('a')
 			const a1 = document.createElement('a')
@@ -152,16 +130,22 @@ function selCmtList() {
 			commentEL.classList.add('comment_row')
 			userEL.classList.add('comment_user')
 			contentEL.classList.add('comment_content')
-			dateEL.classList.add("comment_date")
+			dateContainer.classList.add('comment_date')
+			TrashCan.classList.add('comment_date')
+			dateEL.classList.add('comment_date')
+			TrashCan.id = 'after'
+			TrashCan.innerHTML = '\\f2ed'
 			userEL.innerText = item.nickname
 			contentEL.innerText = item.ctnt
+			dateContainer.append(dateEL)
+			dateContainer.append(TrashCan)
 			dateEL.innerText = item.modDt
 			a.innerText = '답글달기'
 			a1.innerText = '답글취소'
 			ccmtEL.append(a)
 			commentEL.appendChild(userEL)
 			commentEL.appendChild(contentEL)
-			commentEL.appendChild(dateEL)
+			commentEL.appendChild(dateContainer)
 			commentEL.appendChild(ccmtEL)
 			document.getElementById('comments').appendChild(commentEL)
 			a.addEventListener('click', ccmt)
@@ -185,6 +169,11 @@ function selCmtList() {
 					ccmtEL.append(a)
 				})
 			}
+		})
+		
+		const after = document.getElementById('after')
+		after.addEventListener('click',function(){
+				console.log('성공')
 		})
 		
 	}
