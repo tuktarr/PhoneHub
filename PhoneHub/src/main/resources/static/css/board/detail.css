@@ -210,7 +210,7 @@
     padding: 0 10px;
 }
 
-.comment_btn,
+#comment_btn,
 .back_list {
     display: inline-block;
     height: 50px;
@@ -227,7 +227,7 @@
     transition: all 0.5s;
 }
 
-.comment_btn:hover,
+#comment_btn:hover,
 .back_list:hover {
 	background: #89abff;
     box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.2), 0 4px 10px 0 rgba(0, 0, 0, 0.19);
@@ -299,11 +299,12 @@
     transition: all 0.5s;
 }
 
-.comment_date::after {
+#after {
     content: '\f2ed';
     font-family: "Font Awesome 5 Free";
     margin-left: 5px;
     cursor: pointer;
+    height: 25px;
 }
 
 .comment_none {

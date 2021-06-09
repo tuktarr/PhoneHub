@@ -28,4 +28,8 @@
 		FROM cmt AS A INNER JOIN user AS B ON A.userPk = B.userPk
 		WHERE boardPk = #{boardPk} AND isDel = 0 ORDER BY groupCmt DESC, depth;
 	</select>
+	
+	<update id="upCmt">
+		UPDATE cmt SET isDel = 1 WHERE cmtPk = #{cmtPk} AND userPk = #{userPk};
+	</update>
 </mapper>
