@@ -1,6 +1,7 @@
 package com.tuktarr.phonehub.model;
 
 public class CommentEntity {
+	private int cmtPk;
 	private int boardPk;
 	private int depth;
 	private String ctnt;
@@ -12,6 +13,12 @@ public class CommentEntity {
 	private int cmtCount;
 	private String nickname;
 	
+	public int getCmtPk() {
+		return cmtPk;
+	}
+	public void setCmtPk(int cmtPk) {
+		this.cmtPk = cmtPk;
+	}
 	public int getCmtCount() {
 		return cmtCount;
 	}

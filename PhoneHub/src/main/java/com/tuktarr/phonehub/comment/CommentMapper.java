@@ -12,4 +12,5 @@ public interface CommentMapper {
 	int insCmtGroup(CommentEntity p);
 	int selCmtCount(CommentEntity p);
 	List<CommentEntity> selCmt(CommentEntity p);
+	int delCmt(CommentEntity p);
 }
