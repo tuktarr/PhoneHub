@@ -4,17 +4,17 @@ import java.io.File;
 import java.io.IOException;
 import java.util.UUID;
 
-import javax.servlet.ServletContext;
-
-import org.springframework.beans.factory.annotation.Autowired;
+//import javax.servlet.ServletContext;
+//
+//import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
 @Component
 public class FileUtils {
 
-	@Autowired
-	private ServletContext ctx;
+//	@Autowired
+//	private ServletContext ctx;
 
 	public void makeFolders(String path) {
 		File folder = new File(path);
@@ -24,13 +24,18 @@ public class FileUtils {
 	}
 
 	public String getBasePath(String... moreFolder) {
-		String absolutePath = new File("").getAbsolutePath() + "\\";
-		System.out.println(absolutePath);
+		String absolutePath = "";
+		try {
+			absolutePath = new File("./src/main/resources/static").getCanonicalPath();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		String temp = "";
 		for (String s : moreFolder) {
 			temp += s;
 		}
-		String basePath = ctx.getRealPath(temp);
+//		String basePath = ctx.getRealPath(temp);
+		String basePath = absolutePath + temp;
 		return basePath;
 	}
 

@@ -248,7 +248,7 @@ public class UserService {
 			return 0;
 		}
 
-		String folder = "/res/img/user/" + userPk;
+		String folder = "/profile/img/user/" + userPk;
 		String profileImg = fUtils.transferTo(mf, folder);
 		if (profileImg == null) {
 			return 0;
@@ -276,7 +276,7 @@ public class UserService {
 			return 0;
 		}
 
-		String folder = "/res/img/user/" + userPk;
+		String folder = "/profile/img/user/" + userPk;
 
 		UserDomain user = new UserDomain();
 		user.setUserPk(userPk);
