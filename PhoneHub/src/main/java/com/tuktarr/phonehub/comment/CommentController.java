@@ -45,9 +45,15 @@ public class CommentController {
 	// delete ajax처리
 	@PostMapping("/del")
 	@ResponseBody
-	public int delCmt(CommentEntity p, HttpSession hs) {
+	public int delCmt(@RequestBody CommentEntity p, HttpSession hs) {
 		System.out.println("cmtPk :" + p.getCmtPk());
 		System.out.println("userPk :" + p.getUserPk());
 			return cService.delCmt(p,hs);				
+	}
+	
+	@PostMapping("/ccmt")
+	@ResponseBody
+	public int insCmtGroup(@RequestBody CommentEntity p) {
+		return cService.insCmtGroup(p);
 	}
 }

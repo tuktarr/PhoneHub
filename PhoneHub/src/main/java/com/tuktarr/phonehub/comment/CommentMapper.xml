@@ -12,8 +12,10 @@
 	</insert>
 
 	<insert id="insCmtGroup">
-		INSERT INTO cmt (groupCmt,depth,ctnt,boardPk,userPk)
-		VALUES (#{groupCmt}, #{depth}, #{ctnt}, #{boardPk}, #{userPk})
+		INSERT INTO cmt (depth,groupCmt,ctnt,boardPk,userPk)
+		SELECT IFNULL(MAX(depth), 0) + 1, #{groupCmt}, #{ctnt}, #{boardPk}, #{userPk}
+		FROM cmt
+		WHERE groupCmt = #{groupCmt}
 	</insert>
 
 	<select id="selCmtCount"

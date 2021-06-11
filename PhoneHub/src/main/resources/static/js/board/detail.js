@@ -110,14 +110,14 @@ function selCmtList() {
 	fetch(`/comment?boardPk=${boardPk}`)
 		.then(res => res.json())
 		.then(myJson => {
-			console.log(myJson)
-			CmtProc(myJson)
+			CmtProc(myJson) //댓글리스트
 		})
 	}
 		
 	function CmtProc(myJson) {
 		myJson.forEach(function(item) {
 			const commentEL = document.createElement('div')
+			const ccommentEL = document.createElement('div')
 			const userEL = document.createElement('div')
 			const contentEL = document.createElement('div')
 			const dateEL = document.createElement('div')
@@ -125,7 +125,13 @@ function selCmtList() {
 			const TrashCan = document.createElement('div')
 			const a = document.createElement('a')
 			const a1 = document.createElement('a')
-
+			const icontainer = document.createElement('div')
+			const i = document.createElement('i')
+			i.classList.add('fas')
+			i.classList.add('fa-level-up-alt')
+			i.classList.add('fa-rotate-90')
+			icontainer.append(i)
+			icontainer.classList.add('icontainer')
 			commentEL.classList.add('comment_row')
 			userEL.classList.add('comment_user')
 			contentEL.classList.add('comment_content')
@@ -137,14 +143,24 @@ function selCmtList() {
 			dateEL.innerText = item.modDt
 			a.innerText = '답글달기'
 			a1.innerText = '답글취소'
-			ccmtEL.append(a)
-			commentEL.appendChild(userEL)
-			commentEL.appendChild(contentEL)
-			commentEL.appendChild(dateEL)
-			commentEL.appendChild(TrashCan)
-			commentEL.appendChild(ccmtEL)
-			document.getElementById('comments').appendChild(commentEL)
-			a.addEventListener('click', ccmt)
+			ccommentEL.classList.add('ccomment_row')
+			if(item.depth == 0){
+				ccmtEL.append(a)
+				commentEL.appendChild(userEL)
+				commentEL.appendChild(contentEL)
+				dateEL.appendChild(TrashCan)
+				commentEL.appendChild(dateEL)
+				commentEL.appendChild(ccmtEL)
+				document.getElementById('comments').appendChild(commentEL)
+				a.addEventListener('click', ccmt)
+			} else {
+				ccommentEL.appendChild(icontainer)
+				ccommentEL.appendChild(userEL)
+				ccommentEL.appendChild(contentEL)
+				dateEL.appendChild(TrashCan)
+				ccommentEL.appendChild(dateEL)
+				document.getElementById('comments').appendChild(ccommentEL)
+			}
 			
 			function ccmt(){
 				const ccmtBox = document.createElement('div')
@@ -153,7 +169,9 @@ function selCmtList() {
 				
 				ccmtBox.id="commentBox"
 				textareaEL.placeholder="답글을 달아주세요"
+				textareaEL.id = 'commentctnt'
 				buttonEL.innerText ='등록'
+				buttonEL.id = 'commentReg'
 				ccmtBox.append(textareaEL)
 				ccmtBox.append(buttonEL)
 				a.remove()
@@ -164,6 +182,42 @@ function selCmtList() {
 					a1.remove()
 					ccmtEL.append(a)
 				})
+				const commentctntEL = document.getElementById('commentctnt')
+				const commentRegEL = document.getElementById('commentReg')
+				commentRegEL.addEventListener('click', function(){
+					console.log(item.userPk)
+					console.log(item.boardPk)
+					console.log(item.groupCmt)
+					console.log(commentctntEL.value)
+					const param = {
+						userPk: item.userPk,
+						boardPk: item.boardPk,
+						ctnt: commentctntEL.value,
+						groupCmt: item.groupCmt
+					}
+					
+					fetch('/ccmt', {
+					method: 'post',
+					headers: {
+						'Content-type': 'application/json',
+					},
+					body: JSON.stringify(param)
+					}).then(res => res.json())
+					.then(myJson => {
+						proc(myJson)
+					})
+					
+					function proc(myJson) {
+						if(myJson == 1) {
+							if(confirm("등록하시겠습니까?") == true) {
+								location.reload()
+							}
+						} else if(myJson == 0) {
+							alert('내용을 입력해주세요.')
+							return
+						}
+					}
+				})
 			}
 			
 			TrashCan.addEventListener('click', function ajax(){
@@ -172,7 +226,7 @@ function selCmtList() {
 					cmtPk: item.cmtPk
 					}
 					 
-				fetch(`/del?cmtPk=${item.cmtPk}&userPk=${item.userPk}`, {
+				fetch('/del', {
 					method: 'post',
 					headers: {
 						'Content-type': 'application/json',

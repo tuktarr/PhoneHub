@@ -34,6 +34,14 @@ public class CommentService {
 		}
 	}
 	
+	public int insCmtGroup(CommentEntity p) {
+		if(!p.getCtnt().equals("")) {
+			mapper.insCmtGroup(p);
+			return 1;
+		}		
+		return 0;
+	}
+	
 	public List<CommentEntity> selCmt(CommentEntity p) {
 		return mapper.selCmt(p);
 	}
