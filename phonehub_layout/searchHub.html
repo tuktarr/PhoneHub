@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
+
 <head lang="ko">
-	<meta charset="utf-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>search</title>
     <!-- css -->
@@ -22,10 +23,189 @@
     <script defer type="text/javascript" src="js/wave.js"></script>
     <script defer type="text/javascript" src="js/main_header.js"></script>
     <script type="text/javascript" src="js/script.js"></script>
+    <!-- new css -->
+    <link rel="stylesheet" type="text/css" href="css/searchHub.css">
 </head>
+
 <body>
-	<div class="wrap">
-		
-	</div>
+    <div class="wrap">
+        <!-- header -->
+        <div class="header">
+            <a href="index.html" class="logo" title="phonehub">
+                <img src="asset/logo.png">
+            </a>
+            <ul class="h_list modify">
+                <li><a href="news.html">뉴스</a></li>
+                <li><a href="phone.html">휴대폰</a></li>
+                <li><a href="rank.html">랭킹</a></li>
+                <li><a href="list.html">게시판</a></li>
+            </ul>
+            <div class="h_search">
+                <div class="search_box">
+                    <div class="search_icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="search_bar">
+                        <input type="text" name="search" id="hSearch" placeholder="검색">
+                    </div>
+                </div>
+            </div>
+            <div class="login_cont">
+                <a href="login.html" class="sign_in">로그인</a>
+                <a href="join.html" class="sign_up">회원가입</a>
+            </div>
+        </div>
+        <!-- content -->
+        <div class="search_wrap">
+            <div class="pagew">
+                <div class="search_content">
+                    <div class="search_page_h">
+                        <h1>"<p>삼성</p>"에 대한 검색 결과</h1>
+                        <ul>
+                            <li>
+                                <a href="#searchPhone">
+                                    <i class="fas fa-mobile-alt"></i>
+                                    <span>휴대폰</span>
+                                    <span>(120)</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#searchNews">
+                                    <i class="fas fa-newspaper"></i>
+                                    <span>뉴스</span>
+                                    <span>(240)</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="searchBoard">
+                                    <i class="far fa-clipboard"></i>
+                                    <span>게시판</span>
+                                    <span>(360)</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="search_result">
+                        <div id="searchPhone" class="result_section">
+                            <div class="result_sec_h">
+                                <h3>휴대폰 검색결과</h3>
+                            </div>
+                            <div class="section_phone">
+                                <!-- 카드복사 -->
+                                <div class="phone_card">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <a href="#" class="phone_card_thumb">
+                                        <img src="asset/samsung.png">
+                                        <div class="caption">
+                                            <p>samsung galaxy 11</p>
+                                            <div class="caption_score">
+                                                <div class="score_box very_good">
+                                                    <p>100</p>
+                                                </div>
+                                                <div class="percent_bar">
+                                                    <!-- width값조정 -->
+                                                    <div class="progress very_good">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="searchNews" class="result_section">
+                            <div class="result_sec_h">
+                                <h3>뉴스 검색결과</h3>
+                            </div>
+                            <div class="section_news">
+                                <!-- 카드복사 -->
+                                <div class="news_card">
+                                    <a href="#" class="news_card_thumb">
+                                        <img src="asset/thumb.jpg">
+                                        <div class="caption caption_news">
+                                            <span class="caption_news_tit">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                                                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                                                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                                                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
+                                            <div class="info_writer">
+                                                <span class="timestamp">2021-06-11 17:10:03</span>
+                                                <span class="writer">네이버</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="searchBoard" class="result_section">
+                            <div class="result_sec_h">
+                                <h3>게시판 검색결과</h3>
+                            </div>
+                            <div class="section_board">
+                                <!--  영역복사 -->
+                                <div class="board_range">
+                                    <span class="sec_board_tit">
+                                        <a href="#">
+                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                                            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                                            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                        </a>
+                                    </span>
+                                    <span class="sec_board_content">
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                                        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                    </span>
+                                    <div class="gall_info">
+                                        <a href="#" class="gall_name">
+                                            공지사항
+                                        </a>
+                                        <span class="gall_info_time">2021-06-11 17:10:03</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- wave -->
+        <div class="wave_cont">
+            <div class="wave" id="wave1" style="--i:1;"></div>
+            <div class="wave" id="wave2" style="--i:2;"></div>
+            <div class="wave" id="wave3" style="--i:3;"></div>
+            <div class="wave" id="wave4" style="--i:4;"></div>
+        </div>
+        <!-- footer -->
+        <div class="footer">
+            <div class="pagew">
+                <div class="f_logo">
+                    <img src="asset/logo.png">
+                </div>
+                <div class="f_info">
+                    <p>대표자 : 홍길동</p>
+                    <p>이메일 : aaa@gmail.com</p>
+                    <p>주소 : 대구 중구 중앙대로 366 반월센트럴타워</p>
+                    <p>대표번호 : 010-1234-5678</p>
+                    <div class="f_icon">
+                        <a href="https://github.com/tuktarr">
+                            <i class="fab fa-github fa-2x git_icon"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
+
 </html>
