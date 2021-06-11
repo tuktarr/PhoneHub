@@ -152,7 +152,7 @@ CREATE TABLE user(
     nickname VARCHAR(100) NOT NULL,
     regDt DATETIME DEFAULT NOW(),
     birthday DATE NOT NULL,
-    userProfile VARCHAR(100),
+    userProfile VARCHAR(100) default null,
     gender VARCHAR(1) CHECK(gender IN('M','F')),
     phone VARCHAR(13) NOT NULL,
     role INT(1) CHECK(role IN(1,2)),

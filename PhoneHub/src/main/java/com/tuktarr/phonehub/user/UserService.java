@@ -1,5 +1,7 @@
 package com.tuktarr.phonehub.user;
 
+import java.io.File;
+
 import javax.mail.Message.RecipientType;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
@@ -10,10 +12,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailException;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
-import com.tuktarr.phonehub.model.BoardEntity;
 import com.tuktarr.phonehub.model.UserDomain;
 import com.tuktarr.phonehub.model.UserEntity;
+import com.tuktarr.phonehub.utils.FileUtils;
 import com.tuktarr.phonehub.utils.SecurityUtils;
 
 @Service
@@ -24,14 +27,17 @@ public class UserService {
 
 	@Autowired
 	private SecurityUtils sUtils;
-	
+
 	@Autowired
 	private JavaMailSender emailSender;
-	
+
+	@Autowired
+	private FileUtils fUtils;
+
 	public int join(UserEntity p) {
 		UserEntity check = mapper.selUser(p);
 
-		if(p.getUserEmail().equals("")) { // 아이디 (이메일)칸이 비어 있으면 0을 리턴
+		if (p.getUserEmail().equals("")) { // 아이디 (이메일)칸이 비어 있으면 0을 리턴
 			return 0;
 		}
 
@@ -39,42 +45,42 @@ public class UserService {
 		String salt = sUtils.getSalt();
 		String hashPw = sUtils.getHashPw(p.getUserPw(), salt);
 
-		if(check != null) { // 이미 있는 아이디(이메일)이면 1을 리턴
+		if (check != null) { // 이미 있는 아이디(이메일)이면 1을 리턴
 			return 1;
 		}
 
-		if(p.getUserPw().equals("")) { // 비밀번호 칸이 비어 있으면 2를 리턴
+		if (p.getUserPw().equals("")) { // 비밀번호 칸이 비어 있으면 2를 리턴
 			return 2;
 		}
 
-		if(p.getUserPwRe().equals("")) { // 비밀번호 확인 칸이 비어 있으면 3을 리턴
+		if (p.getUserPwRe().equals("")) { // 비밀번호 확인 칸이 비어 있으면 3을 리턴
 			return 3;
 		}
 
-		if(p.getNickname().equals("")) { // 닉네임칸이 비어 있으면 4를 리턴
+		if (p.getNickname().equals("")) { // 닉네임칸이 비어 있으면 4를 리턴
 			return 4;
 		}
 
-		if(!p.getUserPw().equals(p.getUserPwRe())) { // 비밀번호와 비밀번호 확인 칸의 값이 다르면 5를 리턴
+		if (!p.getUserPw().equals(p.getUserPwRe())) { // 비밀번호와 비밀번호 확인 칸의 값이 다르면 5를 리턴
 			System.out.println("비번 : " + p.getUserPw());
 			System.out.println("비번확인 : " + p.getUserPwRe());
 			return 5;
 		}
-		
-		if(p.getBirthday().equals("")) { //생일 칸이 비어 있으면 6을 리턴
+
+		if (p.getBirthday().equals("")) { // 생일 칸이 비어 있으면 6을 리턴
 			return 6;
 		}
-		
-		if(p.getPhone().equals("")) { //전화번호 칸이 비어 있으면 7을 리턴
+
+		if (p.getPhone().equals("")) { // 전화번호 칸이 비어 있으면 7을 리턴
 			return 7;
 		}
 		p.setUserPw(hashPw);
-		
+
 		mapper.insUser(p); // if문에서 하나도 안걸리면 정보를 입력
 
 		return 8; // 회원가입이 성공하면 8을 리턴
 	}
-	
+
 	public int login(UserEntity p, HttpSession hs) throws Exception {
 		UserEntity check = mapper.selUser(p); // DB에 저장되어 있는 데이터 가져옴
 
@@ -90,12 +96,12 @@ public class UserService {
 
 		// 세션에 담을때 사용하지않을 정보를 담아두면 메모리 낭비가 되기 때문에 NULL처리
 		check.setUserPw(null);
-		
+
 		hs.setAttribute("loginUser", check);
 
 		return 1;
 	}
-	
+
 	public MimeMessage createMessage(UserEntity p) throws Exception {
 
 		MimeMessage message = emailSender.createMimeMessage();
@@ -116,7 +122,7 @@ public class UserService {
 		return message;
 
 	}
-	
+
 	// findpw 로직
 	public int findPw(UserEntity p) throws Exception {
 		UserEntity check = mapper.selUser(p); // DB에 저장되어 있는 데이터 가져옴
@@ -124,7 +130,7 @@ public class UserService {
 		if (check == null) {
 			return 1;
 		} else {
-			
+
 			String pw = "";
 			for (int i = 0; i < 12; i++) {
 				pw += (char) ((Math.random() * 26) + 97);
@@ -147,7 +153,7 @@ public class UserService {
 			return 2;
 		}
 	}
-	
+
 	public void sendSimpleMessage(UserEntity p) throws Exception {
 		MimeMessage message = createMessage(p);
 		try {// 예외처리
@@ -158,7 +164,7 @@ public class UserService {
 		}
 
 	}
-	
+
 	// 회원정보 수정 로직
 	public int passwordChange(UserDomain p, HttpSession hs) throws Exception {
 		UserEntity check = mapper.selUser(p); // DB에 저장되어 있는 데이터 가져옴
@@ -189,43 +195,43 @@ public class UserService {
 		mapper.updateUserPassword(p);
 		return 4;
 	}
-	
+
 	public int remainderChange(UserDomain p, HttpSession hs) {
 		UserEntity check = mapper.selUser(p);
 		System.out.println(check.getBirthday());
 		System.out.println("newGender : " + p.getNewGender());
 		System.out.println(p.getUserEmail());
 		System.out.println(p.getUserNewEmail());
-		
-		if(!p.getNewGender().equals("M") && !p.getNewGender().equals("F")) {
+
+		if (!p.getNewGender().equals("M") && !p.getNewGender().equals("F")) {
 			return 0;
 		}
-		
-		if(!p.getNewGender().equals(check.getGender())) {
+
+		if (!p.getNewGender().equals(check.getGender())) {
 			mapper.updateUserRemainder(p);
 			return 1;
 		}
-		
-		if(!p.getNewBirthday().equals(check.getBirthday())) {
+
+		if (!p.getNewBirthday().equals(check.getBirthday())) {
 			mapper.updateUserRemainder(p);
 			return 2;
 		}
-		
-		if(!p.getNewPhone().equals(check.getPhone())) {
+
+		if (!p.getNewPhone().equals(check.getPhone())) {
 			mapper.updateUserRemainder(p);
 			return 3;
-		}		
-		
-		if(!p.getUserNewEmail().equals(check.getUserEmail())) {
+		}
+
+		if (!p.getUserNewEmail().equals(check.getUserEmail())) {
 			mapper.updateUserRemainder(p);
 			return 4;
 		}
-		
-		if(!p.getNewNickname().equals(check.getNickname())) {
+
+		if (!p.getNewNickname().equals(check.getNickname())) {
 			mapper.updateUserRemainder(p);
 			return 5;
-		}	
-		
+		}
+
 		check.setUserEmail(p.getUserNewEmail());
 		hs.setAttribute("loginUser", check);
 		mapper.updateUserRemainder(p);
@@ -233,6 +239,56 @@ public class UserService {
 	}
 
 	public UserEntity selUser(UserEntity p) {
-		return 	mapper.selUser(p);
+		return mapper.selUser(p);
+	}
+
+	public int uploadProfile(MultipartFile mf, HttpSession hs) {
+		int userPk = sUtils.getLoginUserPk(hs);
+		if (userPk == 0 || mf == null) {
+			return 0;
+		}
+
+		String folder = "/res/img/user/" + userPk;
+		String profileImg = fUtils.transferTo(mf, folder);
+		if (profileImg == null) {
+			return 0;
+		}
+
+		UserDomain user = new UserDomain();
+		user.setUserPk(userPk);
+
+		UserEntity userInfo = mapper.selUser(user);
+		if (userInfo.getUserProfile() != null) {
+			String basePath = fUtils.getBasePath(folder);
+			File file = new File(basePath, userInfo.getUserProfile());
+			if (file.exists()) {
+				file.delete();
+			}
+		}
+
+		user.setUserProfile(profileImg);
+		return mapper.updProfile(user);
+	}
+
+	public int profileDel(HttpSession hs) {
+		int userPk = sUtils.getLoginUserPk(hs);
+		if (userPk == 0) {
+			return 0;
+		}
+
+		String folder = "/res/img/user/" + userPk;
+
+		UserDomain user = new UserDomain();
+		user.setUserPk(userPk);
+
+		UserEntity userInfo = mapper.selUser(user);
+		String basePath = fUtils.getBasePath(folder);
+		File file = new File(basePath, userInfo.getUserProfile());
+		if (file.exists()) {
+			file.delete();
+		}
+
+		user.setUserProfile(null);
+		return mapper.updProfile(user);
 	}
 }

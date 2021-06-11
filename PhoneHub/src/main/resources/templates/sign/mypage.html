@@ -18,11 +18,11 @@
             <div class="pagew">
                 <div class="profile_cont">
                     <div class="profile_img_cont">
-                        <img src="asset/user.png">
+                        <img src="asset/user.png" th:src="${user.userProfile == null ? 'asset/user.png' : 'res/img/user/' + user.userPk + '/' + user.userProfile}">
                         <div class="profile_img_control">
-                            <input type="file" name="pro_up_btn" id="proUpBtn">
+                            <input type="file" name="pro_up_btn" id="proUpBtn" accept="image/*" onchange="profileUpload()">
                             <label for="proUpBtn">업로드</label>
-                            <input type="button" name="pro_del_btn" id="proDelBtn">
+                            <input type="button" name="pro_del_btn" id="proDelBtn" onclick="profileDelete()">
                             <label for="proDelBtn">삭제</label>
                         </div>
                     </div>

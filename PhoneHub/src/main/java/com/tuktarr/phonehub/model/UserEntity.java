@@ -9,6 +9,7 @@ public class UserEntity {
 	private String regDt;
 	private String gender;
 	private String birthday;
+	private String userProfile;
 	private String phone;
 	private int role;
 
@@ -65,6 +66,12 @@ public class UserEntity {
 	}
 	public void setBirthday(String birthday) {
 		this.birthday = birthday;
+	}
+	public String getUserProfile() {
+		return userProfile;
+	}
+	public void setUserProfile(String userProfile) {
+		this.userProfile = userProfile;
 	}
 	public String getPhone() {
 		return phone;

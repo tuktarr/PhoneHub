@@ -133,6 +133,43 @@ function proc(myJson) {
 		}
 }
 
+const proUpBtnElem = document.getElementById('proUpBtn')
+function profileUpload(){
+	if(proUpBtnElem.files.length === 0) {
+		alert('이미지를 선택해 주세요')
+		return
+	}
+
+	let formData = new FormData();
+	formData.append('profileImg', proUpBtnElem.files[0])
+
+	fetch('profile', {
+		method: 'post',
+		body: formData
+	})
+	.then(res => res.json())
+	.then(profile => {
+		if(profile === 1) {
+			location.reload()
+		} else {
+			alert('이미지 업로드 실패하였습니다.')
+		}
+	})
+}
+
+function profileDelete() {
+	fetch('profileDel')
+	.then(res => res.json())
+	.then(profile => {
+		if(profile === 1) {
+			location.reload()
+		} else {
+			alert('이미지 삭제 실패하였습니다.')
+		}
+	})
+}
+
+
 for (var i=0; i< upInfo.length; i++) {	
 	upInfo[i].addEventListener('click', ajax)
 }
