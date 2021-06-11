@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.tuktarr.phonehub.model.UserDomain;
 import com.tuktarr.phonehub.model.UserEntity;
@@ -102,6 +103,18 @@ public class UserController {
 		Map<String, Object> map = new HashMap<>();
 		map.put("result", service.findPw(p));
 		return map;
+	}
+	
+	@ResponseBody
+	@PostMapping("/profile")
+	public int profile(MultipartFile profileImg, HttpSession hs) {
+		return service.uploadProfile(profileImg, hs);
+	}
+	
+	@ResponseBody
+	@GetMapping("/profileDel")
+	public int profileDel(HttpSession hs) {
+		return service.profileDel(hs);
 	}
 	
 }

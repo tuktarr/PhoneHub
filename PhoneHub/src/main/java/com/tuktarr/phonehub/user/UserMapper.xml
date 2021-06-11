@@ -35,4 +35,10 @@
 		birthday = #{newBirthday}, gender = #{newGender}
 		Where userEmail = #{userNewEmail}
 	</update>
+	
+	<update id="updProfile">
+		UPDATE user
+		SET userProfile = #{userProfile}
+		WHERE userPk = #{userPk}
+	</update>
 </mapper>
