@@ -18,7 +18,7 @@
             <div class="pagew">
                 <div class="profile_cont">
                     <div class="profile_img_cont">
-                        <img src="asset/user.png" th:src="${user.userProfile == null ? 'asset/user.png' : 'res/img/user/' + user.userPk + '/' + user.userProfile}">
+                        <img src="asset/user.png" th:src="${user.userProfile == null ? 'asset/user.png' : 'profile/img/user/' + user.userPk + '/' + user.userProfile}">
                         <div class="profile_img_control">
                             <input type="file" name="pro_up_btn" id="proUpBtn" accept="image/*" onchange="profileUpload()">
                             <label for="proUpBtn">업로드</label>
