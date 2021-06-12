@@ -293,6 +293,7 @@
 }
 
 .info_writer .writer {
+    margin-left: 5px;
 	color: #707de6;
 }
 
@@ -306,6 +307,10 @@
 	flex-direction: column;
 	padding: 30px 0;
 	border-bottom: 1px solid #ccc;
+}
+
+.board_range:last-child {
+    border: none;
 }
 
 .section_board_content {
