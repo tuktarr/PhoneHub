@@ -18,26 +18,26 @@
                             <a href="#searchPhone">
                                 <i class="fas fa-mobile-alt"></i>
                                 <span>휴대폰</span>
-                                <span>(120)</span>
+                                <span th:inline="text">([[${data.phoneInfo.size}]])</span>
                             </a>
                         </li>
                         <li>
-                            <a href="#searchNews">
+                            <a href=" #searchNews">
                                 <i class="fas fa-newspaper"></i>
                                 <span>뉴스</span>
-                                <span>(240)</span>
+                                <span th:inline="text">([[${data.news.size}]])</span>
                             </a>
                         </li>
                         <li>
-                            <a href="searchBoard">
+                            <a href=" searchBoard">
                                 <i class="far fa-clipboard"></i>
                                 <span>게시판</span>
-                                <span>(360)</span>
+                                <span th:inline="text">([[${data.post.size}]])</span>
                             </a>
                         </li>
                     </ul>
                 </div>
-                <div class="search_result">
+                <div class=" search_result">
                     <div th:if="${data.phoneInfo.size != 0}" id="searchPhone" class="result_section">
                         <div class="result_sec_h">
                             <h3>휴대폰 검색결과</h3>
@@ -49,17 +49,19 @@
                                 <span></span>
                                 <span></span>
                                 <span></span>
-                                <a href="#" class="phone_card_thumb">
+                                <a th:href="@{/phonedetails(pk=${phone.pk})}" class="phone_card_thumb">
                                     <img th:src="${phone.pictureURLSmall}" src="asset/samsung.png">
                                     <div class="caption">
                                         <p th:text="${phone.phone}">samsung galaxy 11</p>
                                         <div class="caption_score">
-                                            <div class="score_box very_good">
+                                            <div class="score_box"
+                                                th:classappend="(${phone.APScore}/100 <= 25 ? very_bad :(${phone.APScore}/100 <= 50 ? bad : (${phone.APScore}/100 <= 75 ? good : very_good)))">
                                                 <p th:text=${phone.APScore}/100>100</p>
                                             </div>
                                             <div class="percent_bar">
                                                 <!-- width값조정 -->
-                                                <div class="progress very_good">
+                                                <div th:style="'width: ' + ${phone.APScore}/100 + '%'" class="progress"
+                                                    th:classappend="(${phone.APScore}/100 <= 25 ? very_bad :(${phone.APScore}/100 <= 50 ? bad : (${phone.APScore}/100 <= 75 ? good : very_good)))">
                                                 </div>
                                             </div>
                                         </div>
@@ -74,22 +76,28 @@
                         </div>
                         <div class="section_news">
                             <!-- 카드복사 -->
-                            <div class="news_card">
-                                <a href="#" class="news_card_thumb">
-                                    <img src="asset/thumb.jpg">
+                            <div th:each="news : ${data.news}" class="news_card">
+                                <a th:href="@{${news.url}}" class="news_card_thumb">
+                                    <img th:src="${news.img}" src="asset/thumb.jpg">
                                     <div class="caption caption_news">
-                                        <span class="caption_news_tit">Lorem ipsum dolor sit amet, consectetur
+                                        <span th:text="${news.title}" class="caption_news_tit">Lorem ipsum dolor sit
+                                            amet, consectetur
                                             adipisicing elit, sed do eiusmod
-                                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+                                            tempor incididunt ut labore et dolore magna aliqua.
+                                            Ut enim ad minim veniam,
+                                            quis nostrud exercitation ullamco laboris nisi ut
+                                            aliquip ex ea commodo
+                                            consequat. Duis aute irure dolor in reprehenderit in
+                                            voluptate velit esse
+                                            cillum dolore eu fugiat nulla pariatur. Excepteur
+                                            sint occaecat cupidatat
                                             non
-                                            proident, sunt in culpa qui officia deserunt mollit anim id est
+                                            proident, sunt in culpa qui officia deserunt mollit
+                                            anim id est
                                             laborum.</span>
                                         <div class="info_writer">
-                                            <span class="timestamp">2021-06-11 17:10:03</span>
-                                            <span class="writer">네이버</span>
+                                            <span th:text="${news.regDt}" class="timestamp">2021-06-11 17:10:03</span>
+                                            <span th:text="${news.writer}" class="writer">네이버</span>
                                         </div>
                                     </div>
                                 </a>
@@ -102,30 +110,42 @@
                         </div>
                         <div class="section_board">
                             <!--  영역복사 -->
-                            <div class="board_range">
+                            <div th:each="post : ${data.post}" class="board_range">
                                 <span class="sec_board_tit">
-                                    <a href="#">
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                                        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                    <a th:href="@{/detail(boardPk=${post.boardPk})}" th:text="${post.title}">
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing
+                                        elit, sed do eiusmod
+                                        tempor incididunt ut labore et dolore magna aliqua. Ut
+                                        enim ad minim veniam,
+                                        quis nostrud exercitation ullamco laboris nisi ut
+                                        aliquip ex ea commodo
+                                        consequat. Duis aute irure dolor in reprehenderit in
+                                        voluptate velit esse
+                                        cillum dolore eu fugiat nulla pariatur. Excepteur sint
+                                        occaecat cupidatat non
+                                        proident, sunt in culpa qui officia deserunt mollit anim
+                                        id est laborum.
                                     </a>
                                 </span>
-                                <span class="sec_board_content">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                <span th:text="${post.ctnt}" class="sec_board_content">
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                                    sed do eiusmod
+                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim
+                                    ad minim veniam,
+                                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+                                    ea commodo
+                                    consequat. Duis aute irure dolor in reprehenderit in
+                                    voluptate velit esse
+                                    cillum dolore eu fugiat nulla pariatur. Excepteur sint
+                                    occaecat cupidatat non
+                                    proident, sunt in culpa qui officia deserunt mollit anim id
+                                    est laborum.
                                 </span>
                                 <div class="gall_info">
-                                    <a href="#" class="gall_name">
+                                    <a href="/list" class="gall_name">
                                         공지사항
                                     </a>
-                                    <span class="gall_info_time">2021-06-11 17:10:03</span>
+                                    <span th:text="${post.modDt}" class="gall_info_time">2021-06-11 17:10:03</span>
                                 </div>
                             </div>
                         </div>
