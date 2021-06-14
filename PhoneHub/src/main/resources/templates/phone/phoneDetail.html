@@ -47,7 +47,7 @@
                     </div>
                     <!-- 점수 -->
                     <div class="item_score">
-                        <div th:text=${data.APScore}/100 class="score_box"
+                        <div th:text="${#numbers.formatInteger(data.APScore/100, 1)}" class="score_box"
                             th:classappend="(${data.APScore}/100 <= 25 ? very_bad :(${data.APScore}/100 <= 50 ? bad : (${data.APScore}/100 <= 75 ? good : very_good)))">
                             100
                         </div>

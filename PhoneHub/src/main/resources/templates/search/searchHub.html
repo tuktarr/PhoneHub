@@ -56,7 +56,7 @@
                                         <div class="caption_score">
                                             <div class="score_box"
                                                 th:classappend="(${phone.APScore}/100 <= 25 ? very_bad :(${phone.APScore}/100 <= 50 ? bad : (${phone.APScore}/100 <= 75 ? good : very_good)))">
-                                                <p th:text=${phone.APScore}/100>100</p>
+                                                <p th:text="${#numbers.formatInteger(phone.APScore/100, 1)}">100</p>
                                             </div>
                                             <div class="percent_bar">
                                                 <!-- width값조정 -->
@@ -67,6 +67,12 @@
                                         </div>
                                     </div>
                                 </a>
+                            </div>
+                        </div>
+                        <!-- paging -->
+                        <div id="pagingContent">
+                            <div id="phonePaging" class="paging_control">
+
                             </div>
                         </div>
                     </div>
@@ -101,6 +107,12 @@
                                         </div>
                                     </div>
                                 </a>
+                            </div>
+                        </div>
+                        <!-- paging -->
+                        <div id="pagingContent">
+                            <div id="phonePaging" class="paging_control">
+
                             </div>
                         </div>
                     </div>
@@ -147,6 +159,24 @@
                                     </a>
                                     <span th:text="${post.modDt}" class="gall_info_time">2021-06-11 17:10:03</span>
                                 </div>
+                            </div>
+                        </div>
+                        <!-- paging -->
+                        <div id="pagingContent">
+                            <div id="phonePaging" class="paging_control">
+                                <ul class="blue_bar">
+                                    <li><a href="#" class="prev">&laquo</a></li>
+                                    <li><a href="#" class="active">1</a></li>
+                                    <li><a href="#">2</a></li>
+                                    <li><a href="#">3</a></li>
+                                    <li><a href="#">4</a></li>
+                                    <li><a href="#">5</a></li>
+                                    <li><a href="#">6</a></li>
+                                    <li><a href="#">7</a></li>
+                                    <li><a href="#">8</a></li>
+                                    <li><a href="#">9</a></li>
+                                    <li><a href="#" class="next">&raquo;</a></li>
+                                </ul>
                             </div>
                         </div>
                     </div>
