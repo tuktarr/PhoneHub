@@ -31,7 +31,7 @@ public class BoardService {
 			if(p.getCtnt().equals("")) {
 				return 1;
 			}
-			
+		
 			mapper.insBoard(p);
 			return 2; 
 		}
