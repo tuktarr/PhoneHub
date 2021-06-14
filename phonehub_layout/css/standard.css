@@ -28,7 +28,7 @@ img {
 html {
     user-select: none;
     overflow-x: hidden;
-    scroll-behavior: "smooth";
+    scroll-behavior: smooth;
 }
 
 body {
