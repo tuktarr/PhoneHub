@@ -45,6 +45,10 @@ function submitComment() {
 				alert('댓글작성완료')
 				location.reload()
 				return
+			case 2:
+				alert('로그인이 필요합니다.')
+				location.reload()
+				return
 		}
 	}
 
@@ -115,7 +119,7 @@ function selCmtList() {
 	}
 		
 	function CmtProc(myJson) {
-		myJson.forEach(function(item) {
+		myJson.forEach(function(item,index,arr) {
 			const commentEL = document.createElement('div')
 			const ccommentEL = document.createElement('div')
 			const userEL = document.createElement('div')
@@ -127,6 +131,28 @@ function selCmtList() {
 			const a1 = document.createElement('a')
 			const icontainer = document.createElement('div')
 			const i = document.createElement('i')
+			var arrCheckVal = new Array()
+			var uniqueArr=[]
+			for(var z=0; z<arr.length-1; z++){
+				if(arr[z].groupCmt == arr[z+1].groupCmt){
+					arrCheckVal.push(arr[z].groupCmt)
+				}			
+			}
+			arrCheckVal.forEach((element) => {
+				if(!uniqueArr.includes(element)) {
+					uniqueArr.push(element)
+				}
+			})
+
+			for(var x=0; x<uniqueArr.length; x++){
+					if(item.groupCmt == uniqueArr[x]){
+						commentEL.classList.add('manyComment')									
+					}
+				}
+			if(index == 0) {
+				commentEL.classList.add('first')
+				ccommentEL.classList.add('first')
+			}
 			i.classList.add('fas')
 			i.classList.add('fa-level-up-alt')
 			i.classList.add('fa-rotate-90')
@@ -253,3 +279,22 @@ function selCmtList() {
 	}
 
 selCmtList()
+
+const pkvalue = document.querySelector('#pkvalue')
+const btnDelElem = document.getElementById("comment_delete")
+
+if (btnDelElem) {
+	btnDelElem.addEventListener('click', function() {
+		if (confirm('삭제하시겠습니까 ?')) {
+			ajax()
+		}
+	})
+
+	function ajax() {
+		fetch(`/del/${boardPk}`, {
+			method: 'delete',
+		}).then(function() {
+			location.href = '/list'
+		})
+	}
+}

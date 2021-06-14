@@ -234,7 +234,6 @@ function pageProc(myJson) {
 	} else{
 		//myjson이 없을시에 처리
 	}
-
 }
 
 function removeAct() {

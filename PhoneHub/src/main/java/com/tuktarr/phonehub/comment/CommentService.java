@@ -28,9 +28,13 @@ public class CommentService {
 		if(p.getCtnt().equals("")) {
 			return 0;
 		} else {
-			p.setDepth(0);
-			mapper.insCmt(p);			
-			return 1;
+			if(p.getUserPk() > 0) {
+				p.setDepth(0);
+				mapper.insCmt(p);							
+				return 1;
+			}
+			
+			return 2;
 		}
 	}
 	
