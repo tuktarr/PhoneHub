@@ -280,7 +280,6 @@ function selCmtList() {
 
 selCmtList()
 
-const pkvalue = document.querySelector('#pkvalue')
 const btnDelElem = document.getElementById("comment_delete")
 
 if (btnDelElem) {

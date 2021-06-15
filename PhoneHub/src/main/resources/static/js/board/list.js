@@ -1,7 +1,6 @@
 
 const listContentElem = document.querySelector('.tab_content')
 const rowCnt = 10;
-const pagingContentElem = document.querySelector('#pagingContent')
 
 const categoryElem = document.getElementById("tab_menus")
 
@@ -63,7 +62,7 @@ function getBoardList(page) {
 			.then(res => res.json())
 			.then(myJson => {
 				boardProc(myJson)
-				console.log(myJson)
+				console.log("1번" + myJson)
 			})
 	} else if (category(x, y, z) === 2) {
 		console.log("board2")
@@ -71,7 +70,7 @@ function getBoardList(page) {
 			.then(res => res.json())
 			.then(myJson => {
 				boardProc(myJson)
-				console.log(myJson)
+				console.log("2번" + myJson)
 			})
 	} else if (category(x, y, z) === 3) {
 		console.log("board3")
@@ -79,7 +78,7 @@ function getBoardList(page) {
 			.then(res => res.json())
 			.then(myJson => {
 				boardProc(myJson)
-				console.log(myJson)
+				console.log("3번" + myJson)
 			})
 	}
 }
@@ -190,50 +189,54 @@ function getMaxPageNum() {
 	}
 }
 
-function pageProc(myJson) {
+/*function pageProc(myJson) {
 
 	// rowCnt(10) 만큼 리스트
-	if(myJson >= 1){
-	const pagingContentElem = document.querySelector('#pagingContent')
-	const paging = document.createElement('div')
-	const bluebar = document.createElement('ul')
-	paging.classList.add('paging_control')
-	bluebar.classList.add('blue_bar')
-	const laquo = document.createElement('li')
-	const raquo = document.createElement('li')
-	laquo.classList.add('prev')
-	raquo.classList.add('next')
-	const a1 = document.createElement('a')
-	const a2 = document.createElement('a')
-	a1.innerText = '<'
-	a2.innerText = '>'
-	console.log(myJson)
-	laquo.append(a1)
-	raquo.append(a2)
-	bluebar.append(laquo)
-	for (let i = 1; i <= myJson; i++) {
-		const li = document.createElement('li')
-		const a = document.createElement('a')		
-		a.innerText = i
-		li.append(a)
-		bluebar.append(li)
-		if(i === 1) {
-			a.classList.add('active')
-		}
-		a.addEventListener('click', function() {
-			removeAct()
-			a.classList.add('active')
-			getBoardList(i)
-		})
-	}
+		if(myJson >= 1){
+			const pagingContentElem = document.querySelector('#pagingContent')
+			const paging = document.createElement('div')
+			const bluebar = document.createElement('ul')
+			paging.classList.add('paging_control')
+			bluebar.classList.add('blue_bar')
+			const laquo = document.createElement('li')
+			const raquo = document.createElement('li')
+			laquo.classList.add('prev')
+			raquo.classList.add('next')
+			const a1 = document.createElement('a')
+			const a2 = document.createElement('a')
+			a1.innerText = '<'
+			a2.innerText = '>'
+			laquo.append(a1)
+			raquo.append(a2)
+			bluebar.append(laquo)
+			for (let i = 1; i <= myJson; i++) {
+				const li = document.createElement('li')
+				const a = document.createElement('a')		
+				a.innerText = i
+				li.append(a)
+				if(i > 9) {
+					pagemode(i,myJson)
+				}
+				bluebar.append(li)
+			if(i === 1) {
+				a.classList.add('active')
+			}
+			a.addEventListener('click', function() {
+				removeAct()
+				a.classList.add('active')
+				getBoardList(i)
+				})
+			}
 
-	bluebar.append(raquo)
-	paging.append(bluebar)
-	pagingContentElem.innerHTML = '';
-	pagingContentElem.append(paging)
-	} else{
-		//myjson이 없을시에 처리
-	}
+			bluebar.append(raquo)
+			paging.append(bluebar)
+			pagingContentElem.innerHTML = '';
+			pagingContentElem.append(paging)
+		} else if(myJson > 9){
+		
+		} else {
+		
+		}
 }
 
 function removeAct() {
@@ -241,6 +244,123 @@ function removeAct() {
 	if(activeElem) {
 		activeElem.classList.remove('active')
 	}
+}*/
+
+/*const pagingContentElem = document.querySelector('#pagingContent')
+const paging = document.createElement('div')
+const bluebar = document.createElement('ul')
+paging.classList.add('paging_control')
+bluebar.classList.add('blue_bar')*/
+
+const pagingContentElem = document.querySelector('#pagingContent')
+const pageDiv = document.createElement('div')
+pageDiv.classList.add('paging_control')
+function pageProc(maxPage, page) {
+
+    if (!page) {
+        page = 1
+    }
+	pageDiv.innerHTML = null
+    pagingContentElem.innerHTML = null
+    const bluebar = document.createElement('ul')
+    bluebar.classList.add('blue_bar')
+
+	const laquoLi = document.createElement('li')
+    const laquoA = document.createElement('a')
+    laquoA.classList.add('prev')
+    laquoA.innerHTML = '&laquo'
+    laquoLi.append(laquoA)
+    bluebar.append(laquoLi)
+
+    laquoLi.addEventListener('click', function () {
+        getBoardList(1)
+        pageProc(maxPage, 1)
+    })
+
+    const ltLi = document.createElement('li')
+    const ltA = document.createElement('a')
+    ltA.classList.add('prev')
+    ltA.innerHTML = '&lt'
+    ltLi.append(ltA)
+    bluebar.append(ltLi)
+
+    if (page > 1) {
+        ltLi.addEventListener('click', function () {
+            getBoardList(page - 1)
+            pageProc(maxPage, page - 1)
+        })
+    }
+
+    param = paging(page, maxPage)
+
+    for (let i = param.startPage; i <= param.lastPage; i++) {
+        const li = document.createElement('li')
+        const a = document.createElement('a')
+        a.innerText = i
+
+        if (i === page) {
+            a.classList.add("active")
+        }
+        li.append(a)
+        bluebar.append(li)
+
+        a.addEventListener('click', function () {
+            getBoardList(i)
+            pageProc(maxPage, i)
+        })
+    }
+
+    const gtLi = document.createElement('li')
+    const gtA = document.createElement('a')
+    gtA.classList.add('prev')
+    gtA.innerHTML = '&gt'
+    gtLi.append(gtA)
+    bluebar.append(gtLi)
+
+    if (page < maxPage) {
+        gtLi.addEventListener('click', function () {
+            getBoardList(page + 1)
+            pageProc(maxPage, page + 1)
+        })
+    }
+
+    const raquoLi = document.createElement('li')
+    const raquoA = document.createElement('a')
+    raquoA.classList.add('prev')
+    raquoA.innerHTML = '&raquo'
+    raquoLi.append(raquoA)
+    bluebar.append(raquoLi)
+
+    raquoLi.addEventListener('click', function () {
+        getBoardList(maxPage)
+        pageProc(maxPage, maxPage)
+    })
+	pageDiv.append(bluebar)
+    pagingContentElem.append(pageDiv)
+}
+
+function paging(page, maxPage) {
+    let startPage = 1;
+    let lastPage = 9;
+
+    if (maxPage < 9) {
+        lastPage = maxPage
+    }
+
+    if (page - 4 > 1) {
+        startPage = page - 4
+        lastPage = page + 4
+        if (lastPage > maxPage) {
+            lastPage = maxPage
+        }
+    }
+
+    param = {
+        startPage,
+        lastPage
+    }
+
+    return param
 }
 
 for (var i = 0; i < myTabs.length; i++) {
