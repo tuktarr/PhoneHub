@@ -3,6 +3,7 @@
   display: block;
   width: 100%;
   height: auto;
+  min-height: 100vh;
 }
 
 .search_content {
@@ -257,7 +258,7 @@
 }
 
 .section_news {
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
 }
 
 .news_card {
@@ -270,7 +271,7 @@
 }
 
 .news_card_thumb img {
-  height: 300px;
+  height: 150px;
   object-fit: cover;
   margin: 0 auto;
 }

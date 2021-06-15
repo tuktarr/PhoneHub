@@ -6,7 +6,7 @@
 	<select id="selPhoneInfo" resultType="com.tuktarr.phonehub.model.PhoneInfoEntity">
 		SELECT pk, pictureURLSmall, phone, APScore 
 		FROM phoneInfo 
-		WHERE phone LIKE '%${searchKeyword}%' ORDER BY APScore DESC
+		WHERE phone LIKE '%${searchKeyword}%'
 		LIMIT #{sIdx}, #{rowContent}
 	</select>
 	
