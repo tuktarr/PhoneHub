@@ -16,6 +16,7 @@
     position: relative;
     width: 100%;
     overflow: hidden;
+    cursor: pointer;
 }
 
 .tab_menus>li {
