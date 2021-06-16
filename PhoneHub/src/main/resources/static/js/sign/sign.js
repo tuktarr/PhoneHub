@@ -7,10 +7,11 @@ const nicknamebarElem = document.querySelector('.nicknamebar')
 const passwordbarElem = document.querySelector('.passwordbar')
 const repasswordbarElem = document.querySelector('.repasswordbar')
 const callbarElem = document.querySelector('.callbar')
-const birthdaybarElem = document.querySelector('.birthdaybar')
+const birthdaybarElem = document.querySelector('.birthbar')
 var error = document.createElement('span')
 const input_buttonElem = document.querySelector('.input_button')
-
+const male = document.getElementById('male')
+const female = document.getElementById('female')
 
 //이메일 인증이 완료되기 전까지는 밑에 칸들을 입력할 수 없도록 막음
 const password = joinElem.password
@@ -29,6 +30,10 @@ function closeElement() {
 	repassword.disabled = true //repassword칸 비활성화
 	nickname.disabled = true //nickname칸 비활성화
 	call.disabled = true //call칸 비활성화
+	year.disabled = true //년도칸 비활성화
+	month.disabled = true //월칸 비활성화
+	day.disabled = true //일칸 비활성화
+	gender.disabled = true //성별칸 비활성화 
 }
 
 function setModal() {
@@ -262,9 +267,23 @@ function chkSign() {
 			error.className = 'errorRepassword'
 			error.innerText = '비밀번호와 일치하지 않습니다.'
 			repasswordbarElem.append(error)
-			repassword.focus()
+			nickname.disabled = true
+			call.disabled = true
+			year.disabled = true
+			month.disabled = true
+			day.disabled = true
+			male.disabled = true
+			female.disabled = true
 		} else {
 			error.remove()
+			nickname.disabled = false
+			call.disabled = false
+			year.disabled = false
+			month.disabled = false
+			day.disabled = false
+			gender.disabled = false
+			male.disabled = false
+			female.disabled = false
 		}
 	})
 
@@ -283,6 +302,7 @@ function chkSign() {
 			error.className = 'errorYear'
 			error.innerText = '년도형식이 일치하지 않습니다.'
 			birthdaybarElem.append(error)
+			year.focus()
 		} else {
 			error.remove()
 		}
@@ -291,8 +311,8 @@ function chkSign() {
 		if (!monthChk.test(month.value)) {
 			error.className = 'errorMonth'
 			error.innerText = '월형식이 일치하지 않습니다.'
-			callbarElem.append(error)
 			birthdaybarElem.append(error)
+			month.focus()
 		} else {
 			error.remove()
 		}
@@ -301,8 +321,8 @@ function chkSign() {
 		if (!dayChk.test(day.value)) {
 			error.className = 'errorDay'
 			error.innerText = '일형식이 일치하지 않습니다.'
-			callbarElem.append(error)
 			birthdaybarElem.append(error)
+			day.focus()
 		} else {
 			error.remove()
 		}

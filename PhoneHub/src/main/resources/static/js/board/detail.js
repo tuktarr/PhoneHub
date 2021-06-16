@@ -297,3 +297,11 @@ if (btnDelElem) {
 		})
 	}
 }
+
+const btnListElem = document.getElementById("backList")
+
+if (btnListElem) {
+	btnListElem.addEventListener('click', function() {
+		location.href = '/list'
+	})
+}

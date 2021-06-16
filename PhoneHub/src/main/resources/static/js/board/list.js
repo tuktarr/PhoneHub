@@ -54,42 +54,33 @@ function getBoardList(page) {
 
 	if (!page) {
 		page = 1
-		console.log(category(x,y,z) + 'getBoardList')
 	}
 	if (category(x, y, z) === 1) {
-		console.log("board1")
 		fetch(`/boardListData?page=${page}&rowCnt=${rowCnt}&category=${1}`)
 			.then(res => res.json())
 			.then(myJson => {
 				boardProc(myJson)
-				console.log("1번" + myJson)
 			})
 	} else if (category(x, y, z) === 2) {
-		console.log("board2")
 		fetch(`/boardListData?page=${page}&rowCnt=${rowCnt}&category=${2}`)
 			.then(res => res.json())
 			.then(myJson => {
 				boardProc(myJson)
-				console.log("2번" + myJson)
 			})
 	} else if (category(x, y, z) === 3) {
-		console.log("board3")
 		fetch(`/boardListData?page=${page}&rowCnt=${rowCnt}&category=${3}`)
 			.then(res => res.json())
 			.then(myJson => {
 				boardProc(myJson)
-				console.log("3번" + myJson)
 			})
 	}
 }
 
 function boardProc(myJson) {
-	console.log('myJson.length =' + myJson.length)
 	if (myJson.length === 0) {
 		listContentElem.innerHTML = '<div class="empty">글이 없습니다.</div>'
 		return
 	}
-
 
 	//table
 	const table = document.createElement('table')
@@ -189,79 +180,22 @@ function getMaxPageNum() {
 	}
 }
 
-/*function pageProc(myJson) {
-
-	// rowCnt(10) 만큼 리스트
-		if(myJson >= 1){
-			const pagingContentElem = document.querySelector('#pagingContent')
-			const paging = document.createElement('div')
-			const bluebar = document.createElement('ul')
-			paging.classList.add('paging_control')
-			bluebar.classList.add('blue_bar')
-			const laquo = document.createElement('li')
-			const raquo = document.createElement('li')
-			laquo.classList.add('prev')
-			raquo.classList.add('next')
-			const a1 = document.createElement('a')
-			const a2 = document.createElement('a')
-			a1.innerText = '<'
-			a2.innerText = '>'
-			laquo.append(a1)
-			raquo.append(a2)
-			bluebar.append(laquo)
-			for (let i = 1; i <= myJson; i++) {
-				const li = document.createElement('li')
-				const a = document.createElement('a')		
-				a.innerText = i
-				li.append(a)
-				if(i > 9) {
-					pagemode(i,myJson)
-				}
-				bluebar.append(li)
-			if(i === 1) {
-				a.classList.add('active')
-			}
-			a.addEventListener('click', function() {
-				removeAct()
-				a.classList.add('active')
-				getBoardList(i)
-				})
-			}
-
-			bluebar.append(raquo)
-			paging.append(bluebar)
-			pagingContentElem.innerHTML = '';
-			pagingContentElem.append(paging)
-		} else if(myJson > 9){
-		
-		} else {
-		
-		}
-}
-
-function removeAct() {
-	const activeElem = pagingContentElem.querySelector('.active')
-	if(activeElem) {
-		activeElem.classList.remove('active')
-	}
-}*/
-
-/*const pagingContentElem = document.querySelector('#pagingContent')
-const paging = document.createElement('div')
-const bluebar = document.createElement('ul')
-paging.classList.add('paging_control')
-bluebar.classList.add('blue_bar')*/
-
 const pagingContentElem = document.querySelector('#pagingContent')
 const pageDiv = document.createElement('div')
 pageDiv.classList.add('paging_control')
 function pageProc(maxPage, page) {
+    let sessionPage = parseInt(sessionStorage.getItem('boardPage'))
+
+    if (!sessionPage) {
+        sessionPage = 1
+    }
 
     if (!page) {
-        page = 1
+        page = sessionPage
     }
+
+    sessionStorage.setItem('boardPage', page)
 	pageDiv.innerHTML = null
-    pagingContentElem.innerHTML = null
     const bluebar = document.createElement('ul')
     bluebar.classList.add('blue_bar')
 

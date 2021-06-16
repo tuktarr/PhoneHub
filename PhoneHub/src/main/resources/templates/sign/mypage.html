@@ -26,9 +26,9 @@
                             <label for="proDelBtn">삭제</label>
                         </div>
                     </div>
+                    <input type="hidden" id="email" name="email" spellcheck="false" autocomplete="off" th:value="${user.userEmail}">
                     <div class="profile_info_cont">
                         <input type="text" class="profileInput" id="nickname" name="nickname" spellcheck="false" autocomplete="off" th:value="${user.nickname}">
-                        <input type="text" class="profileInput" id="email" name="email" spellcheck="false" autocomplete="off" th:value="${user.userEmail}">
                         <input type="text" class="profileInput" id="call" name="call" spellcheck="false" autocomplete="off" th:value="${user.phone}">
                         <input type="text" class="profileInput" id="birth" name="birth" spellcheck="false" autocomplete="off" th:value="${user.birthday}">
                         <input type="text" class="profileInput" id="sex" name="sex" spellcheck="false" autocomplete="off" th:value="${user.gender}">

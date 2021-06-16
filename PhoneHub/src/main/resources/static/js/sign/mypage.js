@@ -10,34 +10,6 @@ for (var i = 0; i < profile.length; i++) {
 	upInfo.innerText = '수정'
 }
 const upInfo = document.getElementsByClassName('up_info')
-/*for (var i=0; i< upInfo.length; i++) {
-	if(i == 0){
-		upInfo[i].addEventListener('click', function(){
-		alert('성별 수정 완료')		
-	})	
-	}
-	if(i == 1){
-		upInfo[i].addEventListener('click', function(){
-		alert('생일 수정 완료')		
-	})		
-	}
-	if(i == 2){
-		upInfo[i].addEventListener('click', function(){
-		alert('번호 수정 완료')		
-	})	
-	}
-	if(i == 3){
-		upInfo[i].addEventListener('click', function(){
-		alert('이메일 수정 완료')		
-	})	
-	}
-	if(i == 4){
-		upInfo[i].addEventListener('click', function(){
-		alert('닉네임 수정 완료')		
-	})	
-	}
-
-}*/
 
 const passUpBtn = document.querySelector('#passUpBtn')
 const passupCont = document.querySelector('.passup_cont')
@@ -56,12 +28,11 @@ if (profileElem) {
 	function ajax() {
 
 		var param = {
-			userNewEmail: emailElem.value,
 			newPhone: callElem.value,
 			newBirthday: birthElem.value,
 			newGender: sexElem.value,
-			newNickname: nicknameElem.value
-
+			newNickname: nicknameElem.value,
+			userEmail: emailElem.value
 		}
 		console.log(param)
 		fetch('/myremainder', {
@@ -108,14 +79,6 @@ if (profileElem) {
 				}
 				return ok()
 			case 4:
-				const emailChk = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])+\.[a-zA-Z]{2,3}$/i
-				if (!emailChk.test(emailElem.value)) {
-					alert('이메일 형식을 맞춰주십시오')
-					emailElem.focus()
-					break
-				}
-				return ok()
-			case 5:
 				const nickChk = /^([a-zA-Z0-9|가-힣]){1,12}$/g
 				if (!nickChk.test(nicknameElem.value)) {
 					alert('닉네임 (최소 1자 ~ 12자) 형식을 맞춰주십시오.')
@@ -123,7 +86,7 @@ if (profileElem) {
 					break
 				}
 				return ok()
-			case 6:
+			case 5:
 				return ok()
 		}
 

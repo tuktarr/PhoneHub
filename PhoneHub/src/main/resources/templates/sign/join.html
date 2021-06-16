@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorator="~{layout/layout_default}">
+	layout:decorator="~{layout/layout_sign}">
 
 <th:block layout:fragment="css">
 	<link rel="stylesheet" type="text/css" th:href="@{css/sign/sign.css}">
@@ -14,16 +14,6 @@
 </th:block>
 
 <th:block layout:fragment="content">
-    <!-- email -->
-    <div class="email_modal">
-        <div class="email_box">
-            <span>이메일 인증</span>
-            <div class="txt_field cert">
-                <input type="text" id="emailchk" placeholder="인증번호를 입력해주세요." required>
-            </div>
-            <input type="button" value="인증" id="emailchkbtn" class="email_close">
-        </div>
-    </div>
 	<div class="sign_wrap">
 		<div class="join_form">
 			<form id="joinFrm">
