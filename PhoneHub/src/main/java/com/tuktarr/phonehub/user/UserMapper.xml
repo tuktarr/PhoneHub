@@ -31,9 +31,9 @@
 
 	<update id="updateUserRemainder">
 		UPDATE user
-		SET userEmail = #{userNewEmail}, nickname = #{newNickname}, phone = #{newPhone},
+		SET nickname = #{newNickname}, phone = #{newPhone},
 		birthday = #{newBirthday}, gender = #{newGender}
-		Where userEmail = #{userNewEmail}
+		Where userEmail = #{userEmail}
 	</update>
 	
 	<update id="updProfile">

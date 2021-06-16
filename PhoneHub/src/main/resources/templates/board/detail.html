@@ -74,7 +74,7 @@
 					<textarea id="newComment" name="new_comment" rows="5"
 						placeholder="댓글을 입력해주세요."></textarea>
 					<button id="comment_btn">등록</button>
-					<button class="back_list">글목록</button>
+					<button id="backList" class="back_list">글목록</button>
 					 <button th:if="${session.loginUser != null}" th:classappend="(${data.userPk} == ${pk.userPk} ? '':'none')" id="comment_delete">글삭제</button>
 				</div>
 			</div>

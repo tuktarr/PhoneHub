@@ -230,12 +230,18 @@
 
 #comment_delete {
 	background: #FC766AFF;
+	margin-right: 10px;
 }
 
 #comment_btn:hover,
 .back_list:hover {
 	background: #89abff;
     box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.2), 0 4px 10px 0 rgba(0, 0, 0, 0.19);
+}
+
+#comment_delete:hover {
+	background: rgba(252, 118, 106, 0.9);
+	box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.2), 0 4px 10px 0 rgba(0, 0, 0, 0.19);
 }
 
 #comment_delete,

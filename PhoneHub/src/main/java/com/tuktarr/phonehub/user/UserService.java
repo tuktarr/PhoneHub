@@ -201,7 +201,6 @@ public class UserService {
 		System.out.println(check.getBirthday());
 		System.out.println("newGender : " + p.getNewGender());
 		System.out.println(p.getUserEmail());
-		System.out.println(p.getUserNewEmail());
 
 		if (!p.getNewGender().equals("M") && !p.getNewGender().equals("F")) {
 			return 0;
@@ -222,20 +221,14 @@ public class UserService {
 			return 3;
 		}
 
-		if (!p.getUserNewEmail().equals(check.getUserEmail())) {
+		if (!p.getNewNickname().equals(check.getNickname())) {
 			mapper.updateUserRemainder(p);
 			return 4;
 		}
 
-		if (!p.getNewNickname().equals(check.getNickname())) {
-			mapper.updateUserRemainder(p);
-			return 5;
-		}
-
-		check.setUserEmail(p.getUserNewEmail());
 		hs.setAttribute("loginUser", check);
 		mapper.updateUserRemainder(p);
-		return 6;
+		return 5;
 	}
 
 	public UserEntity selUser(UserEntity p) {
