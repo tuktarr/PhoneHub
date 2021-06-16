@@ -26,23 +26,21 @@
                             <a href="#searchPhone">
                                 <i class="fas fa-mobile-alt"></i>
                                 <span>휴대폰</span>
-                                <span id="numberPhoneSearches" phone>
-                                    <!--(120)-->
-                                </span>
+                                <span th:inline="text">([[${phoneSearchCount}]])</span>
                             </a>
                         </li>
                         <li>
                             <a href="#searchNews">
                                 <i class="fas fa-newspaper"></i>
                                 <span>뉴스</span>
-                                <span id="numberNewsSearches"></span>
+                                <span th:inline="text">([[${newsSearchCount}]])</span>
                             </a>
                         </li>
                         <li>
                             <a href="#searchBoard">
                                 <i class="far fa-clipboard"></i>
                                 <span>게시판</span>
-                                <span id="numberBoardSearches"></span>
+                                <span th:inline="text">([[${boardSearchCount}]])</span>
                             </a>
                         </li>
                     </ul>
@@ -77,20 +75,8 @@
                         </div>
                         <!-- paging -->
                         <div id="pagingContent">
-                            <div class="paging_control">
-                                <ul class="blue_bar">
-                                    <li><a href="#" class="prev">&laquo</a></li>
-                                    <li><a href="#" class="active">1</a></li>
-                                    <li><a href="#">2</a></li>
-                                    <li><a href="#">3</a></li>
-                                    <li><a href="#">4</a></li>
-                                    <li><a href="#">5</a></li>
-                                    <li><a href="#">6</a></li>
-                                    <li><a href="#">7</a></li>
-                                    <li><a href="#">8</a></li>
-                                    <li><a href="#">9</a></li>
-                                    <li><a href="#" class="next">&raquo;</a></li>
-                                </ul>
+                            <div id="phonePaging" class="paging_control">
+
                             </div>
                         </div>
                     </div>
@@ -125,20 +111,8 @@
                         </div>
                         <!-- paging -->
                         <div id="pagingContent">
-                            <div class="paging_control">
-                                <ul class="blue_bar">
-                                    <li><a href="#" class="prev">&laquo</a></li>
-                                    <li><a href="#" class="active">1</a></li>
-                                    <li><a href="#">2</a></li>
-                                    <li><a href="#">3</a></li>
-                                    <li><a href="#">4</a></li>
-                                    <li><a href="#">5</a></li>
-                                    <li><a href="#">6</a></li>
-                                    <li><a href="#">7</a></li>
-                                    <li><a href="#">8</a></li>
-                                    <li><a href="#">9</a></li>
-                                    <li><a href="#" class="next">&raquo;</a></li>
-                                </ul>
+                            <div id="newsPaging" class="paging_control">
+
                             </div>
                         </div>
                     </div>
@@ -178,20 +152,7 @@
                         </div>
                         <!-- paging -->
                         <div id="pagingContent">
-                            <div class="paging_control">
-                                <ul class="blue_bar">
-                                    <li><a href="#" class="prev">&laquo</a></li>
-                                    <li><a href="#" class="active">1</a></li>
-                                    <li><a href="#">2</a></li>
-                                    <li><a href="#">3</a></li>
-                                    <li><a href="#">4</a></li>
-                                    <li><a href="#">5</a></li>
-                                    <li><a href="#">6</a></li>
-                                    <li><a href="#">7</a></li>
-                                    <li><a href="#">8</a></li>
-                                    <li><a href="#">9</a></li>
-                                    <li><a href="#" class="next">&raquo;</a></li>
-                                </ul>
+                            <div id="boardPaging" class="paging_control">
                             </div>
                         </div>
                     </div>

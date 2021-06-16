@@ -11,7 +11,13 @@ import com.tuktarr.phonehub.model.PhoneInfoEntity;
 
 @Mapper
 public interface GlobalSearchMapper {
-	List<PhoneInfoEntity> selPhoneInfo(GlobalSearchDTO param);
-	List<NewsEntity> selNews(GlobalSearchDTO param);
-	List<BoardEntity> selBoard(GlobalSearchDTO param);
+	public List<PhoneInfoEntity> selPhoneInfo(GlobalSearchDTO param);
+	public List<NewsEntity> selNews(GlobalSearchDTO param);
+	public List<BoardEntity> selBoard(GlobalSearchDTO param);
+	public int phoneSearchCount(GlobalSearchDTO param);
+	public int newsSearchCount(GlobalSearchDTO param);
+	public int boardSearchCount(GlobalSearchDTO param);
+	public int selPhoneMaxPageNum(GlobalSearchDTO param);
+	public int selNewsMaxPageNum(GlobalSearchDTO param);
+	public int selBoardMaxPageNum(GlobalSearchDTO param);
 }

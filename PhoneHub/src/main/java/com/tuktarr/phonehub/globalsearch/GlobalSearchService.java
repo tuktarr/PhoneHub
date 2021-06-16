@@ -16,16 +16,55 @@ public class GlobalSearchService {
 	@Autowired
 	private GlobalSearchMapper gSMapper;
 	
-	List<PhoneInfoEntity> selPhoneInfo(GlobalSearchDTO param){
+	public List<PhoneInfoEntity> selPhoneInfo(GlobalSearchDTO param){
+		param.setRowContent(8);
+		int sIdx = (param.getPage() - 1) * param.getRowContent();
+		param.setsIdx(sIdx);
 		return gSMapper.selPhoneInfo(param);
 	}
 	
-	List<NewsEntity> selNews(GlobalSearchDTO param){
+	public List<NewsEntity> selNews(GlobalSearchDTO param){
+		param.setRowContent(8);
+		int sIdx = (param.getPage() - 1) * param.getRowContent();
+		param.setsIdx(sIdx);
 		return gSMapper.selNews(param);
 	}
 	
-	List<BoardEntity> selBoard(GlobalSearchDTO param){
+	public List<BoardEntity> selBoard(GlobalSearchDTO param){
+		param.setRowContent(5);
+		int sIdx = (param.getPage() - 1) * param.getRowContent();
+		param.setsIdx(sIdx);
 		return gSMapper.selBoard(param);
+	}
+	
+	public int phoneSearchCount(GlobalSearchDTO param) {
+		param.setRowContent(8);
+		return gSMapper.phoneSearchCount(param);
+	}
+	
+	public int newsSearchCount(GlobalSearchDTO param) {
+		param.setRowContent(8);
+		return gSMapper.newsSearchCount(param);
+	}
+	
+	public int boardSearchCount(GlobalSearchDTO param) {
+		param.setRowContent(5);
+		return gSMapper.boardSearchCount(param);
+	}
+	
+	public int selPhoneMaxPageNum(GlobalSearchDTO param) {
+		param.setRowContent(8);
+		return gSMapper.selPhoneMaxPageNum(param);
+	}
+	
+	public int selNewsMaxPageNum(GlobalSearchDTO param) {
+		param.setRowContent(8);
+		return gSMapper.selNewsMaxPageNum(param);
+	}
+	
+	public int selBoardMaxPageNum(GlobalSearchDTO param) {
+		param.setRowContent(5);
+		return gSMapper.selBoardMaxPageNum(param);
 	}
 	
 }
