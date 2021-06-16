@@ -23,4 +23,43 @@
 		WHERE title LIKE '%${searchKeyword}%' ORDER BY boardPk DESC
 		LIMIT #{sIdx}, #{rowContent}
 	</select>
+	
+	<select id="phoneSearchCount" resultType="_int">
+		SELECT CEIL(COUNT(pk))
+		FROM phoneInfo
+		WHERE phone LIKE '%${searchKeyword}%'
+	</select>
+	
+	<select id="newsSearchCount" resultType="_int">
+		SELECT CEIL(COUNT(pk))
+		FROM news
+		WHERE title LIKE '%${searchKeyword}%'
+	</select>
+	
+	<select id="boardSearchCount" resultType="_int">
+		SELECT CEIL(COUNT(boardPk))
+		FROM board
+		WHERE title LIKE '%${searchKeyword}%'
+	</select>
+	
+	<select id="selPhoneMaxPageNum" resultType="_int">
+		SELECT CEIL(COUNT(pk) /
+		#{rowContent})
+		FROM phoneInfo
+		WHERE phone LIKE '%${searchKeyword}%'
+	</select>
+	
+	<select id="selNewsMaxPageNum" resultType="_int">
+		SELECT CEIL(COUNT(pk) /
+		#{rowContent})
+		FROM news
+		WHERE title LIKE '%${searchKeyword}%'
+	</select>
+	
+	<select id="selBoardMaxPageNum" resultType="_int">
+		SELECT CEIL(COUNT(boardPk) /
+		#{rowContent})
+		FROM board
+		WHERE title LIKE '%${searchKeyword}%'
+	</select>
 </mapper>
