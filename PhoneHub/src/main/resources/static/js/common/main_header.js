@@ -244,7 +244,7 @@ hSearchElem.addEventListener('keypress', (e) => {
 						const gallA = document.createElement('a')
 						gallA.setAttribute('href', `list`)
 						gallA.classList.add('gall_name')
-						gallA.innerText = board.category
+						gallA.innerText = category(board.category)
 						gallInfoDiv.append(gallA)
 
 						const timeSpan = document.createElement('span')
@@ -255,6 +255,17 @@ hSearchElem.addEventListener('keypress', (e) => {
 
 						boardSearchResultsElem.append(boardRangeDiv)
 					})
+
+					function category(number) {
+						if(number === 1) {
+							return '자유게시판'
+						} else if(number === 2) {
+							return '중고장터'
+						} else {
+							return '공지사항'
+						}
+					}
+
 				} else {
 					boardSearchResultsElem.innerText = '결과가 없습니다.'
 				}
