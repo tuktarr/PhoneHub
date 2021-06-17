@@ -16,7 +16,7 @@ import com.tuktarr.phonehub.model.NewsEntity;
 @Component
 public class NaverNewsCrawling {
 
-	public static List<NewsEntity> naverNewsCrawling(String title) throws IOException {
+	public List<NewsEntity> naverNewsCrawling(String title) throws IOException {
 
 		List<NewsEntity> data = new ArrayList<NewsEntity>();
 		List<String> days = new ArrayList<String>();
