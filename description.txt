@@ -160,12 +160,12 @@ CREATE TABLE user(
 );
 
 // phub 사용팁에 대한 쿼리문
-create table usebletip (
+create table usabletip(
 	pk int primary key auto_increment,
 	content varchar(150)
 );
 
-INSERT INTO usebletip(content) VALUES 
+INSERT INTO usabletip(content) VALUES 
 ('충전 단자에 먼지가 들어가고 쌓이다 보면 기기의 수명이 급격히 단축됩니다'),
 ('과충전 완전충전은 금물, 항상 적정 용량 유지하기'),
 ('화면 밝기를 줄이고 쓰지 않는 기능 및 앱은 정리하자'),

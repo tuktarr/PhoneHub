@@ -66,7 +66,7 @@ public class PhoneController {
 	@GetMapping("/phonedetails")
 	public String selPhoneDetail(PhoneInfoDTO param, Model model) {
 		model.addAttribute("data", pService.selPhoneDetail(param));
-		model.addAttribute("usebleTip", pService.selUsebleTip());
+		model.addAttribute("usebleTip", pService.selUsableTip());
 		
 		return "phone/phonedetail";
 	}

@@ -191,7 +191,7 @@
 		WHERE pk = ${pk}
 	</select>
 
-	<select id="selUsebleTip" resultType="string">
+	<select id="selUsableTip" resultType="string">
 		SELECT content FROM
 		usebletip ORDER BY rand() limit 1
 	</select>
