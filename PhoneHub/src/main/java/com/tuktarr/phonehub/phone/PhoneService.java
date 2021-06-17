@@ -40,9 +40,9 @@ public class PhoneService {
 		return pMapper.selPhoneDetail(pData);
 	}
 	
-	public String selUsebleTip() {
+	public String selUsableTip() {
 		
-		return pMapper.selUsebleTip();
+		return pMapper.selUsableTip();
 	}
 	
 	public int selPhoneNameSearch(PhoneInfoDTO param) {

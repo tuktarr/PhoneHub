@@ -27,6 +27,7 @@ public class FileUtils {
 		String absolutePath = "";
 		try {
 			absolutePath = new File("./src/main/resources/static").getCanonicalPath();
+			System.out.println(absolutePath);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

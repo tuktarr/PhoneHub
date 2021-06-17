@@ -14,7 +14,7 @@ public interface PhoneMapper {
 	int selMaxPageNum(PhoneInfoDTO param);
 	List<PhoneInfoEntity> selSearchPhone(PhoneInfoDTO param);
 	PhoneInfoEntity selPhoneDetail(PhoneInfoEntity param);
-	String selUsebleTip();
+	String selUsableTip();
 	int selPhoneNameSearch(PhoneInfoDTO param);
 	List<String> selPhoneNameList();
 }
