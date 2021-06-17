@@ -51,3 +51,10 @@ if (loginBtnElem) {
 
 	loginBtnElem.addEventListener('click', ajax)
 }
+
+const loginPassElem = document.getElementById('loginPass')
+loginPassElem.addEventListener('keypress', (e) => {
+	if (e.key === 'Enter') {
+		ajax()
+	}
+})
