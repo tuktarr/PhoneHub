@@ -25,4 +25,5 @@ public interface BoardMapper {
 	int upHate(BoardDTO p);
 	int downLike(BoardDTO p);
 	int downHate(BoardDTO p);
+	int insDislike(BoardDTO p);
 }

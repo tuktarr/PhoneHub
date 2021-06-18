@@ -12,7 +12,7 @@
 	
 	<select id="selMaxPageNum" resultType="int">
 		SELECT CEIL(COUNT(boardPk) / #{rowCnt}) 
-		FROM board Where category = #{category}
+		FROM board Where category = #{category} and isDel = 0
 	</select>
 	
 	<select id="selBoardList" resultType="com.tuktarr.phonehub.model.BoardDomain">
@@ -71,7 +71,7 @@
 	<update id="downVoteCount">
 		UPDATE board A INNER JOIN likecontrol B
 		ON A.boardPk = B.boardPk
-		SET A.voted_count = A.voted_count -1 WHERE A.boardPk = #{boardPk} AND B.userPk = #{userPk}
+		SET A.voted_count = A.voted_count - 1 WHERE A.boardPk = #{boardPk} AND B.userPk = #{userPk}
 	</update>
 	
 	<update id="upBlameCount">
@@ -94,7 +94,7 @@
 	<select id="selLike" resultType="com.tuktarr.phonehub.model.BoardDTO">
 		SELECT a.likecount, a.hatecount, a.userPk, b.voted_count, b.blamed_count
 		FROM likecontrol AS a INNER JOIN board as b ON a.boardPk = b.boardPk
-		WHERE b.isDel = 0 AND a.boardPk = #{boardPk};
+		WHERE a.boardPk = #{boardPk} and a.userPk = #{userPk}
 	</select>
 	
 	<update id="upLike">
