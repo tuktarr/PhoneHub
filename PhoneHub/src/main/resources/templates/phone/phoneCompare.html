@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="~{layout/layout_default}">
+
+<th:block layout:fragment="css">
+    <link rel="stylesheet" type="text/css" th:href="@{css/phone/phone_compare.css}">
+</th:block>
+
+<th:block layout:fragment="script">
+    <script defer type="text/javascript" th:src="@{js/phone/phoneCompare.js}"></script>
+</th:block>
+
+<th:block layout:fragment="content">
+    <!-- content -->
+    <div class="p_compare_wrap">
+        <div class="pagew">
+            <div class="compare">
+                <!-- compare search wrap -->
+                <div class="compare_search_wrap">
+                    <!-- compare search -->
+                    <div id="leftPhoneSearch" class="compare_search">
+                        <input id="leftContentSearch" type="text" name="search" placeholder="원하시는 기종을 검색해주세요."
+                            spellcheck="false" autocomplete="off">
+                        <button onclick="Search('left')">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        <!-- compare auto -->
+                        <div id="leftSuggestions" class="compare_auto">
+                            <!-- <ul>
+                                <li>
+                                    <span>samsung galaxy s20 5g ultra</span>
+                                </li>
+                            </ul> -->
+                        </div>
+                    </div>
+                    <div class="compare_search">
+                        <input id="rightContentSearch" type="text" name="search" placeholder="원하시는 기종을 검색해주세요."
+                            spellcheck="false" autocomplete="off">
+                        <button onclick="Search('right')">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        <!-- compare auto -->
+                        <div id="rightSuggestions" class="compare_auto">
+                        </div>
+                    </div>
+                    <!-- -------------------------------- -->
+                    <!-- compare img -->
+                    <div id="leftPhoto" class="compare_img">
+                        <!-- <a href="#">
+                            <img src="asset/sample.jpg">
+                        </a> -->
+                    </div>
+                    <div id="rightPhoto" class="compare_img">
+                        <!-- <a href="#">
+                            <img src="asset/samsung2.png">
+                        </a> -->
+                    </div>
+                    <!-- --------------------------------------- -->
+                </div>
+                <!-- compare spec wrap -->
+                <div class="compare_spec_wrap">
+                    <div class="spec_list_wrap">
+                        <p class="spec_list_tit">
+                            <span>프로세서</span>
+                        </p>
+                        <div id="leftProcessor" class="spec_list">
+                        </div>
+                        <div id="rightProcessor" class="spec_list">
+                        </div>
+                    </div>
+                    <div class="spec_list_wrap">
+                        <p class="spec_list_tit">
+                            <span>디스플레이</span>
+                        </p>
+                        <div id="leftDisplay" class="spec_list">
+                            <!-- <span>6.2 inches</span>
+                            <span>2400 x 1080 pixels, 20:9 ratio, 424ppl</span>
+                            <span>Dynamic AMOLED</span>
+                            <span>86.06%</span>
+                            <span>1300 cd/m2(nlt)</span>
+                            <span>120Hz refresh rate(adaptive), HDR support, Scratch-resistant glass(Corning Gorlla
+                                Glass Victus), Amblent light sensor, Proximity sensor</span> -->
+                        </div>
+                        <div id="rightDisplay" class="spec_list">
+                        </div>
+                    </div>
+                    <div class="spec_list_wrap">
+                        <p class="spec_list_tit">
+                            <span>카메라</span>
+                        </p>
+                        <div id="leftCamera" class="spec_list">
+                        </div>
+                        <div id="rightCamera" class="spec_list">
+                        </div>
+                    </div>
+                    <div class="spec_list_wrap">
+                        <p class="spec_list_tit">
+                            <span>메모리</span>
+                        </p>
+                        <div id="leftMemory" class="spec_list">
+                        </div>
+                        <div id="rightMemory" class="spec_list">
+                        </div>
+                    </div>
+                    <div class="spec_list_wrap">
+                        <p class="spec_list_tit">
+                            <span>SIM</span>
+                        </p>
+                        <div id="leftSIM" class="spec_list">
+                        </div>
+                        <div id="rightSIM" class="spec_list">
+                        </div>
+                    </div>
+                    <div class="spec_list_wrap">
+                        <p class="spec_list_tit">
+                            <span>네트워크</span>
+                        </p>
+                        <div id="leftNetwork" class="spec_list">
+                        </div>
+                        <div id="rightNetwork" class="spec_list">
+                        </div>
+                    </div>
+                    <div class="spec_list_wrap">
+                        <p class="spec_list_tit">
+                            <span>연결</span>
+                        </p>
+                        <div id="leftConnect" class="spec_list">
+                        </div>
+                        <div id="rightConnect" class="spec_list">
+                        </div>
+                    </div>
+                    <div class="spec_list_wrap">
+                        <p class="spec_list_tit">
+                            <span>운영 체제</span>
+                        </p>
+                        <div id="leftOS" class="spec_list">
+                        </div>
+                        <div id="rightOS" class="spec_list">
+                        </div>
+                    </div>
+                    <div class="spec_list_wrap">
+                        <p class="spec_list_tit">
+                            <span>센서</span>
+                        </p>
+                        <div id="leftSensors" class="spec_list">
+                        </div>
+                        <div id="rightSensors" class="spec_list">
+                        </div>
+                    </div>
+                    <div class="spec_list_wrap">
+                        <p class="spec_list_tit">
+                            <span>외관 사양</span>
+                        </p>
+                        <div id="leftStandard" class="spec_list">
+                        </div>
+                        <div id="rightStandard" class="spec_list">
+                        </div>
+                    </div>
+                    <div class="spec_list_wrap">
+                        <p class="spec_list_tit">
+                            <span>배터리</span>
+                        </p>
+                        <div id="leftBattery" class="spec_list">
+                        </div>
+                        <div id="rightBattery" class="spec_list">
+                        </div>
+                    </div>
+                    <div class="spec_list_wrap">
+                        <p class="spec_list_tit">
+                            <span>서비스</span>
+                        </p>
+                        <div id="leftService" class="spec_list">
+                        </div>
+                        <div id="rightService" class="spec_list">
+                        </div>
+                    </div>
+                    <div class="spec_list_wrap">
+                        <p class="spec_list_tit">
+                            <span>기본정보</span>
+                        </p>
+                        <div id="leftOtherInfo" class="spec_list">
+                        </div>
+                        <div id="rightOtherInfo" class="spec_list">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</th:block>
+
+</html>

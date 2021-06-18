@@ -3,5 +3,122 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.tuktarr.phonehub.Board.BoardMapper">
+	<insert id="insBoard">
+			INSERT INTO board
+			(seq, category, title, ctnt, userPk, img)
+			SELECT IFNULL(MAX(seq), 0) + 1, #{category}, #{title}, #{ctnt}, #{userPk}, #{img}
+			FROM board Where category = #{category}
+	</insert>
 	
+	<select id="selMaxPageNum" resultType="int">
+		SELECT CEIL(COUNT(boardPk) / #{rowCnt}) 
+		FROM board Where category = #{category}
+	</select>
+	
+	<select id="selBoardList" resultType="com.tuktarr.phonehub.model.BoardDomain">
+		SELECT A.boardPk, A.seq,
+		A.title, A.hits, DATE_FORMAT(A.regDt, '%Y-%m-%d') AS regDt, A.isDel,
+		A.userPk, A.category, B.nickname AS writerNm
+		FROM board A
+		INNER JOIN user B
+		ON A.userPk = B.userPk
+		WHERE A.isDel = 0 and A.category = #{category}
+		ORDER BY A.boardPk DESC
+		LIMIT #{sIdx}, #{rowCnt};
+	</select>
+	
+	<select id="selBoard" resultType="com.tuktarr.phonehub.model.BoardDomain">
+		SELECT A.boardPk, A.seq, A.title, A.ctnt, A.hits, A.userPk, A.category, DATE_FORMAT(A.regDt, '%Y-%m-%d %h:%m:%s') AS regDt,
+		B.nickname AS writerNm, A.voted_count, A.blamed_count FROM board A
+		INNER JOIN user B
+		ON A.userPk = B.userPk
+		WHERE A.boardPk = #{boardPk}
+	</select>
+	
+	<update id="upBoard">
+		UPDATE board
+		<set>
+			<choose>
+				<when test="hits == 1">
+				hits = hits + 1
+				</when>
+				<otherwise>
+					<if test="title != null and title !=''">
+						title = #{title},
+					</if>
+					<if test="ctnt != null and ctnt !=''">
+						ctnt = #{ctnt},
+					</if>
+					<if test="isDel != 0">
+						isDel = 1,
+					</if>
+						modDt = now()
+				</otherwise>
+			</choose>
+		</set>
+		WHERE boardPk = #{boardPk}
+		<if test="userPk != 0">
+			AND userPk = #{userPk}
+		</if>
+	</update>
+	
+	<update id="upVoteCount">
+		UPDATE board A INNER JOIN likecontrol B
+		ON A.boardPk = B.boardPk
+		SET A.voted_count = A.voted_count + 1 WHERE A.boardPk = #{boardPk} AND B.userPk = #{userPk}
+	</update>
+	
+	<update id="downVoteCount">
+		UPDATE board A INNER JOIN likecontrol B
+		ON A.boardPk = B.boardPk
+		SET A.voted_count = A.voted_count -1 WHERE A.boardPk = #{boardPk} AND B.userPk = #{userPk}
+	</update>
+	
+	<update id="upBlameCount">
+		UPDATE board A INNER JOIN likecontrol B
+		ON A.boardPk = B.boardPk
+		SET A.blamed_count = A.blamed_count + 1 WHERE A.boardPk = #{boardPk}
+	</update>
+	
+	<update id="downBlameCount">
+		UPDATE board A INNER JOIN likecontrol B
+		ON A.boardPk = B.boardPk
+		SET A.blamed_count = A.blamed_count - 1 WHERE A.boardPk = #{boardPk}
+	</update>
+	
+	<insert id="insLike">
+		INSERT INTO likecontrol (boardPk, userPk, likecount, hatecount) 
+		VALUES (#{boardPk},#{userPk},0,0)
+	</insert>
+	
+	<select id="selLike" resultType="com.tuktarr.phonehub.model.BoardDTO">
+		SELECT a.likecount, a.hatecount, a.userPk, b.voted_count, b.blamed_count
+		FROM likecontrol AS a INNER JOIN board as b ON a.boardPk = b.boardPk
+		WHERE b.isDel = 0 AND a.boardPk = #{boardPk};
+	</select>
+	
+	<update id="upLike">
+		UPDATE likecontrol
+		SET likecount = likecount + 1
+		where boardPk = #{boardPk} and userPk = #{userPk}
+	</update>
+	
+	<update id="upHate">
+		UPDATE likecontrol
+		SET hatecount = hatecount + 1
+		where boardPk = #{boardPk} and userPk = #{userPk}
+	</update>
+	
+	<update id="downLike">
+		UPDATE likecontrol
+		SET likecount = likecount - 1
+		where boardPk = #{boardPk} and userPk = #{userPk}
+	</update>
+	
+	<update id="downHate">
+		UPDATE likecontrol
+		SET hatecount = hatecount - 1
+		where boardPk = #{boardPk} and userPk = #{userPk}
+	</update>
+
 </mapper>

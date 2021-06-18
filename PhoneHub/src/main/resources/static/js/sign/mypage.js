@@ -13,7 +13,7 @@ const upInfo = document.getElementsByClassName('up_info')
 
 const passUpBtn = document.querySelector('#passUpBtn')
 const passupCont = document.querySelector('.passup_cont')
-passUpBtn.onclick = function() {
+passUpBtn.onclick = function () {
 	passupCont.classList.toggle('pop')
 }
 
@@ -149,7 +149,7 @@ if (profileElem) {
 		}
 		updPasswordBtn.addEventListener('click', ajax)
 	}
-
+  
 	const proUpBtnElem = document.getElementById('proUpBtn')
 	function profileUpload() {
 		if (proUpBtnElem.files.length === 0) {
@@ -167,7 +167,7 @@ if (profileElem) {
 			.then(res => res.json())
 			.then(profile => {
 				if (profile === 1) {
-					setTimeout(function() {
+					setTimeout(function () {
 						location.reload();
 					}, 2000)
 				} else {

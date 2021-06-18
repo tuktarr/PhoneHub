@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="~{layout/layout_default}">
+
+<th:block layout:fragment="css">
+	<link rel="stylesheet" type="text/css" th:href="@{css/sign/sign.css}">
+</th:block>
+
+<th:block layout:fragment="script">
+	<script defer type="text/javascript" th:src="@{js/sign/findpw.js}"></script>
+</th:block>
+<th:block layout:fragment="content">
+	<!-- login -->
+	<div class="sign_wrap">
+		<div class="find_form">
+			<div class="warnning">
+				<span><i class="fas fa-angle-right"></i>이메일 전송 버튼 클릭 시
+					임시비밀번호가 발송됩니다.</span> <span><i class="fas fa-angle-right"></i>버튼을
+					누른뒤에는 자동으로 로그인창으로 이동됩니다.</span> <span><i class="fas fa-angle-right"></i>로그인을
+					하신 후에는 마이페이지에서 비밀번호를 바꿔주세요.</span>
+			</div>
+			<form id="findFrm" method="post">
+				<div class="txt_field">
+					<input type="text" name="sendEmail" required> <label>이메일</label>
+				</div>
+				<input type="button" id="findbtn" name="findbtn" value="이메일 전송">
+				<div class="back_login">
+					<a href="login.html">로그인으로 돌아가기</a>
+				</div>
+			</form>
+		</div>
+	</div>
+</th:block>
+</html>

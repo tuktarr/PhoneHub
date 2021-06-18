@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>login</title>
     <!-- css -->
-    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/standard.css">
     <!-- 메인헤더에 있는 css를 재활용합니다 -->
     <link rel="stylesheet" type="text/css" href="css/main_header.css">
     <link rel="stylesheet" type="text/css" href="css/header.css">
@@ -15,6 +15,8 @@
     <!-- fontawesome (아이콘을 사용하기 위해 꼭 필요합니다) -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
     <!-- js -->
+    <script defer type="text/javascript" src="js/wave.js"></script>
+    <script defer type="text/javascript" src="js/main_header.js"></script>
     <script type="text/javascript" src="js/script.js"></script>
 </head>
 
@@ -26,38 +28,51 @@
                 <img src="asset/logo.png">
             </a>
             <ul class="h_list modify">
-                <li><a href="#">뉴스</a></li>
-                <li><a href="#">휴대폰</a></li>
-                <li><a href="#">랭킹</a></li>
-                <li><a href="#">게시판</a></li>
+                <li><a href="news.html">뉴스</a></li>
+                <li><a href="phone.html">휴대폰</a></li>
+                <li><a href="rank.html">랭킹</a></li>
+                <li><a href="list.html">게시판</a></li>
             </ul>
             <div class="h_search">
-                <i class="fas fa-search fa-2x search_icon"></i>
-                <input type="text" name="search_bar" class="search_bar" placeholder="모델명을 입력해주세요.">
+                <div class="search_box">
+                    <div class="search_icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="search_bar">
+                        <input type="text" name="search" id="hSearch" placeholder="검색">
+                    </div>
+                </div>
             </div>
             <div class="login_cont">
                 <a href="login.html" class="sign_in">로그인</a>
                 <a href="join.html" class="sign_up">회원가입</a>
             </div>
         </div>
-        <!-- login -->
+        <!-- content -->
         <div class="sign_wrap">
             <div class="login_form">
                 <span>login</span>
                 <form id="loginFrm" method="post">
                     <div class="txt_field">
-                        <input type="text" name="id" required>
+                        <input type="text" name="id" required spellcheck="false" autocomplete="off">
                         <label>아이디 (e-mail)</label>
                     </div>
                     <div class="txt_field">
-                        <input type="password" name="pw" required>
+                        <input type="password" name="pw"  spellcheck="false" autocomplete="off" required>
                         <label>비밀번호</label>
                     </div>
                     <input type="submit" name="signIn" value="로그인">
-                    <div class="fg_pw"><a href="pwfind.html">비밀번호를 잊어버리셨나요?</a></div>
+                    <div class="fg_pw"><a href="findpw.html">비밀번호를 잊어버리셨나요?</a></div>
                     <div class="join_link">회원이 아니신가요?<a href="join.html">회원가입</a></div>
                 </form>
             </div>
+        </div>
+        <!-- wave -->
+        <div class="wave_cont">
+            <div class="wave" id="wave1" style="--i:1;"></div>
+            <div class="wave" id="wave2" style="--i:2;"></div>
+            <div class="wave" id="wave3" style="--i:3;"></div>
+            <div class="wave" id="wave4" style="--i:4;"></div>
         </div>
         <!-- footer -->
         <div class="footer">

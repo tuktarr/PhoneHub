@@ -3,5 +3,205 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.tuktarr.phonehub.phone.PhoneMapper">
+	<select id="selPerformanceRanking"
+		resultType="com.tuktarr.phonehub.model.PhoneInfoEntity">
+		SELECT 
+		pk, 
+		phone, pictureURLSmall, APScore
+		FROM phoneInfo
+		ORDER BY
+		APScore DESC
+		LIMIT 10
+	</select>
+
+	<select id="selCost_Effectiveness"
+		resultType="com.tuktarr.phonehub.model.PhoneInfoEntity">
+		SELECT 
+		pk, 
+		phone, pictureURLSmall, cost_Effectiveness
+		FROM
+		phoneInfo
+		WHERE cost_Effectiveness != 0
+		ORDER BY cost_Effectiveness
+		LIMIT 10
+	</select>
 	
+	<select id="selMaxPageNum" resultType="_int">
+		SELECT CEIL(COUNT(pk) /
+		#{rowContent})
+		FROM phoneInfo
+		<where>
+			<if test="brand != null and brand !='' ">
+				AND brand = #{brand}
+			</if>
+			<if test="bodySIM != null and bodySIM !='' ">
+				<choose>
+					<when test="bodySIM == 'dual SIM' ">
+						AND bodySIM LIKE '%${bodySIM}%'
+					</when>
+					<otherwise>
+						AND not bodySIM LIKE '%${bodySIM}%'
+					</otherwise>
+				</choose>
+			</if>
+			<if test="bodyWeight != null and bodyWeight != '' ">
+				AND bodyWeight <![CDATA[<]]>
+				#{bodyWeight}
+			</if>
+			<if test="memoryCardSlot != null and memoryCardSlot !='' ">
+				<choose>
+					<when test="memoryCardSlot == 'no' ">
+						AND memoryCardSlot LIKE '%${memoryCardSlot}%'
+					</when>
+					<otherwise>
+						AND not memoryCardSlot LIKE '%${memoryCardSlot}%'
+					</otherwise>
+				</choose>
+			</if>
+			<if test="network != null and network != 0 ">
+				<choose>
+					<when test="network == 2 ">
+						AND network2Gbands != ''
+					</when>
+					<when test="network == 3 ">
+						AND network3Gbands != ''
+					</when>
+					<when test="network == 4 ">
+						AND network4Gbands != ''
+					</when>
+					<otherwise>
+						AND network5Gbands != ''
+					</otherwise>
+				</choose>
+			</if>
+			<if test="cameraCount != null and cameraCount != 0 ">
+				<choose>
+					<when test="cameraCount == 1 ">
+						AND mainCameraSingle != ''
+					</when>
+					<when test="cameraCount == 2 ">
+						AND mainCameraDual != ''
+					</when>
+					<when test="cameraCount == 3 ">
+						AND mainCameraTriple != ''
+					</when>
+					<when test="cameraCount == 4 ">
+						AND mainCameraQuad != ''
+					</when>
+					<when test="cameraCount == 5 ">
+						AND mainCameraFive != ''
+					</when>
+					<otherwise>
+						AND mainCameraSix != ''
+					</otherwise>
+				</choose>
+			</if>
+			<if test="commsBluetooth != null and commsBluetooth != '' ">
+				AND commsBluetooth LIKE '%${commsBluetooth}%'
+			</if>
+			<if test="commsUSB != null and commsUSB != '' ">
+				AND commsUSB LIKE '%${commsUSB}%'
+			</if>
+		</where>
+	</select>
+
+	<select id="selSearchPhone"
+		resultType="com.tuktarr.phonehub.model.PhoneInfoEntity">
+		SELECT pk, phone, pictureURLSmall, MiscModels
+		FROM phoneInfo
+		<where>
+			<if test="brand != null and brand !='' ">
+				AND brand = #{brand}
+			</if>
+			<if test="bodySIM != null and bodySIM !='' ">
+				<choose>
+					<when test="bodySIM == 'dual SIM' ">
+						AND bodySIM LIKE '%${bodySIM}%'
+					</when>
+					<otherwise>
+						AND not bodySIM LIKE '%${bodySIM}%'
+					</otherwise>
+				</choose>
+			</if>
+			<if test="bodyWeight != null and bodyWeight != '' ">
+				AND bodyWeight <![CDATA[<]]>
+				#{bodyWeight}
+			</if>
+			<if test="memoryCardSlot != null and memoryCardSlot !='' ">
+				<choose>
+					<when test="memoryCardSlot == 'no' ">
+						AND memoryCardSlot LIKE '%${memoryCardSlot}%'
+					</when>
+					<otherwise>
+						AND not memoryCardSlot LIKE '%${memoryCardSlot}%'
+					</otherwise>
+				</choose>
+			</if>
+			<if test="network != null and network != 0 ">
+				<choose>
+					<when test="network == 2 ">
+						AND network2Gbands != ''
+					</when>
+					<when test="network == 3 ">
+						AND network3Gbands != ''
+					</when>
+					<when test="network == 4 ">
+						AND network4Gbands != ''
+					</when>
+					<otherwise>
+						AND network5Gbands != ''
+					</otherwise>
+				</choose>
+			</if>
+			<if test="cameraCount != null and cameraCount != 0 ">
+				<choose>
+					<when test="cameraCount == 1 ">
+						AND mainCameraSingle != ''
+					</when>
+					<when test="cameraCount == 2 ">
+						AND mainCameraDual != ''
+					</when>
+					<when test="cameraCount == 3 ">
+						AND mainCameraTriple != ''
+					</when>
+					<when test="cameraCount == 4 ">
+						AND mainCameraQuad != ''
+					</when>
+					<when test="cameraCount == 5 ">
+						AND mainCameraFive != ''
+					</when>
+					<otherwise>
+						AND mainCameraSix != ''
+					</otherwise>
+				</choose>
+			</if>
+			<if test="commsBluetooth != null and commsBluetooth != '' ">
+				AND commsBluetooth LIKE '%${commsBluetooth}%'
+			</if>
+			<if test="commsUSB != null and commsUSB != '' ">
+				AND commsUSB LIKE '%${commsUSB}%'
+			</if>
+		</where>
+		LIMIT #{sIdx}, #{rowContent}
+	</select>
+
+	<select id="selPhoneDetail"
+		resultType="com.tuktarr.phonehub.model.PhoneInfoEntity">
+		SELECT * FROM phoneInfo
+		WHERE pk = ${pk}
+	</select>
+
+	<select id="selUsableTip" resultType="string">
+		SELECT content FROM
+		usebletip ORDER BY rand() limit 1
+	</select>
+
+	<select id="selPhoneNameSearch" resultType="_int">
+		SELECT IFNULL((SELECT pk FROM phoneinfo WHERE Phone = #{phone}), 0) AS pk
+	</select>
+	
+	<select id="selPhoneNameList" resultType="string">
+		SELECT phone FROM phoneinfo
+	</select>
+
 </mapper>

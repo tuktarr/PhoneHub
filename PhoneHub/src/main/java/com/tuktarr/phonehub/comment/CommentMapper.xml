@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tuktarr.phonehub.comment.CommentMapper">
+	<insert id="insCmt">
+		<if test= 'userPk gt 0' >
+		INSERT INTO cmt (groupCmt,ctnt,boardPk,userPk)
+		SELECT
+		IFNULL(MAX(groupCmt), 0) + 1, #{ctnt}, #{boardPk}, #{userPk}
+		FROM cmt
+		WHERE boardPk = #{boardPk}
+		</if>
+	</insert>
+
+	<insert id="insCmtGroup">
+		INSERT INTO cmt (depth,groupCmt,ctnt,boardPk,userPk)
+		SELECT IFNULL(MAX(depth), 0) + 1, #{groupCmt}, #{ctnt}, #{boardPk}, #{userPk}
+		FROM cmt
+		WHERE groupCmt = #{groupCmt}
+	</insert>
+
+	<select id="selCmtCount"
+		resultType="_int">
+		SELECT COUNT(boardPk) AS cmtCount FROM cmt WHERE isDel = 0
+		AND boardPk = #{boardPk}
+	</select>
+
+	<select id="selCmt"
+		resultType="com.tuktarr.phonehub.model.CommentEntity">
+		SELECT A.cmtPk, A.boardPk, A.depth, A.ctnt, A.groupCmt, DATE_FORMAT(modDt,'%Y-%m-%d %H:%i') AS modDt, A.userPk, B.nickname
+		FROM cmt AS A INNER JOIN user AS B ON A.userPk = B.userPk
+		WHERE boardPk = #{boardPk} AND isDel = 0 ORDER BY groupCmt DESC, depth;
+	</select>
+	
+	<update id="delCmt">
+		UPDATE cmt SET isDel = 1 WHERE cmtPk = #{cmtPk} AND userPk = #{userPk};
+	</update>
+</mapper>

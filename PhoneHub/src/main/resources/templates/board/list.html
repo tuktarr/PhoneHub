@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorator="~{layout/layout_default}">
+
+<th:block layout:fragment="css">
+	<link rel="stylesheet" type="text/css" th:href="@{css/board/board.css}">
+</th:block>
+
+<th:block layout:fragment="script">
+	<script defer type="text/javascript" th:src="@{js/board/list.js}"></script>
+</th:block>
+
+<th:block layout:fragment="content">
+        <div class="board_wrap">
+            <!-- tab-menu -->
+            <div class="tab_container">
+                <div class="pagew">
+                    <ul id="tab_menus" class="tab_menus">
+                        <li class="board1 active">자유게시판</li>
+                        <li class="board2">중고장터</li>
+                        <li class="board3">공지사항</li>
+                    </ul>
+                    <!-- tab_content -->
+                    <div class="tab_content active" id="tab">
+                    </div>
+                    <a href="/write" th:if="${session.loginUser != null}">
+                        <input type="button" name="writebtn" value="글쓰기">
+                    </a>
+                </div>
+            </div>
+            <!-- paging -->
+            <div id="pagingContent">
+            </div>
+        </div>
+</th:block>
+
+</html>

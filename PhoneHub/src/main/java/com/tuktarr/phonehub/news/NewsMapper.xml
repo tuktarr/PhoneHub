@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tuktarr.phonehub.news.NewsMapper">
+	<insert id="insNews">
+		INSERT INTO news
+		(title, content, writer, img,
+		url, regDt)
+		VALUES
+		(#{title}, #{content}, #{writer},
+		#{img}, #{url},
+		#{regDt})
+	</insert>
+
+	<select id="selLastTitle" resultType="String">
+		SELECT title FROM news
+		ORDER BY pk DESC LIMIT 1;
+	</select>
+
+	<select id="selMaxPageNum" resultType="_int">
+		SELECT CEIL(COUNT(pk) /
+		#{rowContent})
+		FROM news;
+	</select>
+
+	<select id="selNewsList"
+		resultType="com.tuktarr.phonehub.model.NewsEntity">
+		SELECT pk, title, content, writer, img,
+		url, DATE_FORMAT(regDt,'%Y-%m-%d') AS regDt
+		FROM news ORDER BY pk DESC
+		LIMIT #{sIdx}, #{rowContent}
+	</select>
+	
+	<select id="selPopularNews" resultType="com.tuktarr.phonehub.model.NewsEntity">
+		SELECT pk, title, content, writer, img,
+		url, DATE_FORMAT(regDt,'%Y-%m-%d') AS regDt
+		FROM news 
+		<if test="regDt != null and regDt !='' ">
+			 WHERE regDt = #{regDt}
+		</if>
+		ORDER BY hits desc
+		<choose>
+			<when test="regDt != null and regDt !=''">
+				LIMIT 4
+			</when>
+			<otherwise>
+				LIMIT 6
+			</otherwise>
+		</choose>
+	</select>
+
+	<update id="updNewsHits">
+		UPDATE news
+		SET hits = hits + 1
+		WHERE pk = #{pk}
+	</update>
+</mapper>

@@ -1,0 +1,360 @@
+.detail_wrap {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+}
+
+.detail_h {
+    position: relative;
+    display: block;
+    margin: 70px 0 15px;
+    padding-bottom: 15px;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+
+.detail_tit {
+    position: relative;
+    display: block;
+    font-size: 27px;
+    margin: 10px 0;
+    padding: 0 30px;
+}
+
+/*title left*/
+.detail_tl {
+    position: relative;
+    display: inline-flex;
+    margin-top: 10px;
+    padding: 0 15px;
+}
+
+.detail_user {
+    position: relative;
+    font-size: 13px;
+}
+
+.user {
+    position: relative;
+}
+
+.user::before {
+    content: '';
+    display: inline-block;
+    width: 17px;
+    height: 17px;
+    vertical-align: -4px;
+    background: #ccc;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+.detail_date {
+    position: relative;
+    margin-left: 15px;
+}
+
+.detail_date::before {
+    content: '';
+    display: inline-block;
+    margin-right: 10px;
+    vertical-align: -3px;
+    height: 15px;
+    width: 1px;
+    background: #ccc;
+}
+
+/*title right*/
+.detail_tr {
+    position: relative;
+    display: inline-block;
+    font-size: 13px;
+    padding: 0 15px;
+    margin-top: 10px;
+    float: right;
+}
+
+.detail_tr>span {
+    padding: 0 5px;
+}
+
+.detail_tr>span::after {
+    content: '';
+    display: inline-block;
+    margin-left: 15px;
+    vertical-align: -3px;
+    height: 15px;
+    width: 1px;
+    background: #ccc;
+}
+
+.detail_tr>span:last-child::after {
+    content: none;
+}
+
+/*detail board*/
+.detail_board {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: auto;
+    min-height: 100vh;
+}
+
+.detail_content {
+    position: relative;
+    display: block;
+    width: 100%;
+    padding: 0 50px;
+    margin-top: 20px;
+}
+
+.hits_area {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 300px;
+    bottom: 0;
+    border-top: 1px solid #333;
+}
+
+.hits_btn {
+    border: none;
+    font-size: 0;
+    background-image: none;
+    background: transparent;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    padding: 6px 12px;
+}
+
+.best {
+    color: #6495ED;
+}
+
+.best::before {
+    content: '\f164';
+    display: inline-block;
+    background: #fff;
+    border: 2px solid #6495ED;
+    width: 100px;
+    height: 100px;
+    line-height: 90px;
+    border-radius: 50%;
+    font-size: 30px;
+    font-family: "Font Awesome 5 Free";
+    font-weight: 400;
+    cursor: pointer;
+    transition: color 0.5s ease;
+}
+
+.best:hover::before {
+    background: #6495ED;
+    color: #fff;
+}
+
+.worst {
+    color: #FC766AFF;
+}
+
+.worst::before {
+    content: '\f165';
+    display: inline-block;
+    background: #fff;
+    border: 2px solid #FC766AFF;
+    width: 100px;
+    height: 100px;
+    line-height: 100px;
+    border-radius: 50%;
+    font-size: 30px;
+    font-family: "Font Awesome 5 Free";
+    font-weight: 400;
+    cursor: pointer;
+    transition: color 0.5s ease;
+}
+
+.worst:hover::before {
+    background: #FC766AFF;
+    color: #fff;
+}
+
+.hits_btn>span {
+    display: block;
+    margin-top: 10px;
+    font-size: 22px;
+}
+
+/*detail comment*/
+#comments {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: auto;
+    min-height: 100%;
+    margin-bottom: 100px;
+}
+
+#comment_head,
+.comment_submit {
+    position: relative;
+    display: block;
+    width: 100%;
+    margin: 15px 0;
+    padding: 0 10px;
+}
+
+#comment_btn,
+#comment_delete,
+.back_list {
+    display: inline-block;
+    height: 50px;
+    width: 100px;
+    color: #fcf6f5;
+    font-size: 20px;
+    font-family: 'Noto Sans KR', sans-serif;
+    text-transform: capitalize;
+    letter-spacing: 2px;
+    background: #89ABE3;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+#comment_delete {
+	background: #FC766AFF;
+	margin-right: 10px;
+}
+
+#comment_btn:hover,
+.back_list:hover {
+	background: #89abff;
+    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.2), 0 4px 10px 0 rgba(0, 0, 0, 0.19);
+}
+
+#comment_delete:hover {
+	background: rgba(252, 118, 106, 0.9);
+	box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.2), 0 4px 10px 0 rgba(0, 0, 0, 0.19);
+}
+
+#comment_delete,
+.back_list {
+	float: right;
+}
+
+.comment_row {
+    position: relative;
+    display: grid;
+	grid-template-columns: 1fr 3fr 1fr 0.5fr;
+    width: 100%;
+    padding: 10px 20px;
+    background: #f7f7f7;
+    border-radius: 2px;
+    border-top: 1px solid #333;
+}
+
+.first {
+	border-top:none;	
+}
+
+.comment_row:last-child {
+    border-bottom: none;
+}
+
+.comment_row>div {
+    margin: 10px 0;
+    display: inline-block;
+}
+
+.comment_user {
+    padding-left: 10px;
+}
+
+.comment_date, .comment_trash {
+	display: inline-block;
+}
+
+.comment_re {
+    cursor: pointer;
+}
+
+.comment_trash::after {
+    content: '\f2ed';
+    font-family: "Font Awesome 5 Free";
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+#commentBox {
+    display: grid;
+    height: 75px;
+    grid-column: 1/5;
+    grid-template-columns: 5fr 1fr;
+}
+
+#commentBox textarea {
+    padding: 10px 5px;
+    border-radius: 2px;
+    resize: none;
+}
+
+#commentBox button {
+    display: block;
+    height: 50px;
+    width: 100px;
+    margin: auto auto;
+    color: #fcf6f5;
+    font-size: 20px;
+    font-family: 'Noto Sans KR', sans-serif;
+    letter-spacing: 2px;
+    background: #89ABE3;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+#newComment {
+    position: relative;
+    display: block;
+    width: 100%;
+    resize: none;
+    padding: 10px 5px;
+    margin-bottom: 10px;
+    border-radius: 2px;
+}
+
+.ccomment_row {
+	position: relative;
+    display: grid;
+	grid-template-columns: 0.15fr 0.5fr 2fr 1fr;
+    width: 100%;
+    padding: 10px 20px;
+    background: #f7f7f7;
+    border-radius: 2px;
+
+}
+
+.ccomment_row>div {
+    margin: 10px 0;
+    display: inline-block;
+}
+
+.icontainer {
+	padding-left: 15px;
+}
+
+.manyComment {
+	border-bottom: none;
+}
+
+.none {
+	display: none;
+}

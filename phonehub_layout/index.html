@@ -6,14 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>main</title>
     <!-- css -->
+    <link rel="stylesheet" type="text/css" href="css/standard.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" type="text/css" href="css/main_header.css">
     <link rel="stylesheet" type="text/css" href="css/header.css">
     <link rel="stylesheet" type="text/css" href="css/footer.css">
+    <!-- favicon -->
+    <link rel="icon" href="asset/favicon.ico">
     <!-- fontawesome (아이콘을 사용하기 위해 꼭 필요합니다) -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- swiper -->
+    <link rel="stylesheet" href="js/swiper/swiper.min.css">
+    <script src="js/swiper/swiper.min.js"></script>
     <!-- js -->
+    <script defer type="text/javascript" src="js/wave.js"></script>
+    <script defer type="text/javascript" src="js/main_header.js"></script>
     <script type="text/javascript" src="js/script.js"></script>
+    <script defer type="text/javascript" src="js/slide.js"></script>
 </head>
 
 <body>
@@ -26,60 +37,140 @@
         <div class="m_header">
             <div class="f_top">
                 <div class="h_search">
-                    <i class="fas fa-search fa-2x search_icon"></i>
-                    <input type="text" name="search_bar" class="search_bar" placeholder="모델명을 입력해주세요.">
+                    <div class="search_box">
+                        <div class="search_icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <div class="search_bar">
+                            <input type="text" name="search" id="hSearch" placeholder="검색">
+                        </div>
+                    </div>
                 </div>
                 <a href="#" class="main_logo" title="phonehub">
                     <img src="asset/logo.png">
                 </a>
                 <div class="login_cont">
-                    <a href="#" class="sign_in">로그인</a>
-                    <a href="#" class="sign_up">회원가입</a>
+                    <a href="login.html" class="sign_in">로그인</a>
+                    <a href="join.html" class="sign_up">회원가입</a>
                 </div>
             </div>
             <div class="f_bot">
                 <ul class="h_list">
-                    <li><a href="#">뉴스</a></li>
-                    <li><a href="#">휴대폰</a></li>
-                    <li><a href="#">랭킹</a></li>
-                    <li><a href="#">게시판</a></li>
+                    <li><a href="news.html">뉴스</a></li>
+                    <li><a href="phone.html">휴대폰</a></li>
+                    <li><a href="rank.html">랭킹</a></li>
+                    <li><a href="list.html">게시판</a></li>
                 </ul>
             </div>
         </div>
         <!-- slide -->
-        <div class="slide">
-        </div>
-        <!-- content -->
-        <div class="content">
-            <div class="pagew">
-                <!-- 판매량 -->
-                <div class="sales">
-                    <p>
-                        <span>판매량순</span>
-                    </p>
-                    <div class="cont_img">
-                        <img src="asset/phonesample.png">
+        <div class="main_slide">
+            <!-- slide btn -->
+            <div class="sw_prev"><i class="fas fa-chevron-left fa-3x"></i></div>
+            <div class="sw_next"><i class="fas fa-chevron-right fa-3x"></i></div>
+            <!-- pagination -->
+            <div class="sw_pg"></div>
+            <div class="swiper-container sw_main">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img src="asset/sw1.jpg">
                     </div>
-                </div>
-                <!-- 성능 -->
-                <div class="perfo">
-                    <p>
-                        <span>성능순</span>
-                    </p>
-                    <div class="cont_img">
-                        <img src="asset/phonesample.png">
+                    <div class="swiper-slide">
+                        <img src="asset/sw2.jpg">
                     </div>
-                </div>
-                <!-- 가성비 -->
-                <div class="price">
-                    <p>
-                        <span>가성비순</span>
-                    </p>
-                    <div class="cont_img">
-                        <img src="asset/phonesample.png">
+                    <div class="swiper-slide">
+                        <img src="asset/sw3.jpg">
                     </div>
                 </div>
             </div>
+        </div>
+        <!-- content -->
+        <div class="content">
+            <!-- quick section -->
+            <div class="quick_sec">
+                <div class="q_tit">
+                    <span class="q_main_tit">phone hub</span>
+                    <span class="q_sub_tit">service</span>
+                </div>
+                <div class="q_btn">
+                    <a href="rank.html" class="q_rank">
+                        <p>랭킹</p>
+                    </a>
+                    <a href="phone.html" class="q_phone">
+                        <p>휴대폰</p>
+                    </a>
+                    <a href="phoneCompare.html" class="q_compare">
+                        <p>휴대폰 비교</p>
+                    </a>
+                </div>
+                <div class="q_board">
+                    <ul>
+                        <li>
+                            <span></span>
+                            <a href="#">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</a>
+                        </li>
+                        <li>
+                            <span></span>
+                            <a href="#">안녕하세요</a>
+                        </li>
+                        <li>
+                            <span></span>
+                            <a href="#">안녕하세요</a>
+                        </li>
+                        <li>
+                            <span></span>
+                            <a href="#">안녕하세요</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="pagew">
+                <div class="main_stand">
+                    <!-- 복사할부분 -->
+                    <div class="m_stand_grid">
+                        <p>
+                            <span>인기순</span>
+                        </p>
+                        <!-- 이미지4개까지만해주세요 -->
+                        <div class="stand_img">
+                            <a href="#">
+                                <img src="asset/sample.jpg">
+                                <span>APPLE iPhone 11</span>
+                            </a>
+                        </div>
+                        <div class="stand_img">
+                            <a href="#">
+                                <img src="asset/samsung.png">
+                                <span>samsung galaxy 11</span>
+                            </a>
+                        </div>
+                        <div class="stand_img">
+                            <a href="#">
+                                <img src="asset/samsung2.png">
+                                <span>samsung galaxy Note 10</span>
+                            </a>
+                        </div>
+                        <div class="stand_img">
+                            <a href="#">
+                                <img src="asset/sample.jpg">
+                                <span>APPLE iPhone 11 Pro</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- wave -->
+        <div class="wave_cont">
+            <div class="wave" id="wave1" style="--i:1;"></div>
+            <div class="wave" id="wave2" style="--i:2;"></div>
+            <div class="wave" id="wave3" style="--i:3;"></div>
+            <div class="wave" id="wave4" style="--i:4;"></div>
         </div>
         <!-- footer -->
         <div class="footer">

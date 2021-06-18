@@ -1,0 +1,321 @@
+.board_wrap {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: auto;
+    min-height: 100vh;
+}
+
+.tab_container {
+    position: relative;
+    display: block;
+    margin: 100px 0;
+}
+
+.tab_menus {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.tab_menus>li {
+    height: 40px;
+    line-height: 40px;
+    float: left;
+    padding: 0 15px;
+    font-size: 19px;
+}
+
+.tab_menus>li.active {
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
+    background: #89ABE3;
+    color: #fcf6f5;
+    cursor: default;
+}
+
+/*tab_content*/
+.tab_content {
+    display: block;
+}
+
+.tab_table {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    border-spacing: 0;
+    table-layout: fixed;
+    font-size: 14px;
+}
+
+/*colgroup*/
+.num {
+    width: 10%;
+}
+
+.title {
+    width: auto;
+}
+
+.writer {
+    width: 10%;
+}
+
+.hits,
+.date {
+    width: 8%;
+}
+
+.tab_table tr th {
+    height: 40px;
+    border-top: 2px solid #333;
+    border-bottom: 1px solid #333;
+}
+
+.gall_tr {
+    width: 100%;
+    height: 50px;
+}
+
+.gall_tr td {
+    height: 50px;
+    border-bottom: 1px solid #333;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.gall_num {
+    position: relative;
+}
+
+.gall_num::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 30px;
+    width: 1px;
+    background: #ccc;
+}
+
+.gall_title {
+    padding: 0 10px;
+    text-align: left;
+    cursor:pointer;
+}
+
+.gall_nick {
+    position: relative;
+}
+
+.gall_nick::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 30px;
+    width: 1px;
+    background: #ccc;
+}
+
+input[name=writebtn],
+input[name=writeEditBtn],
+input[name=cancelBtn] {
+    display: block;
+    height: 50px;
+    width: 100px;
+    color: #fcf6f5;
+    font-size: 20px;
+    font-family: 'Noto Sans KR', sans-serif;
+    text-transform: capitalize;
+    letter-spacing: 2px;
+    background: #89ABE3;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.5s;
+    margin-top: 15px;
+    margin-left: 15px;
+    float: right;
+}
+
+input[name=cancelBtn] {
+	background: #FC766AFF;
+}
+
+input[name=cancelBtn]:hover {
+	background: #FC766Ae3;
+	box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.2), 0 4px 10px 0 rgba(0, 0, 0, 0.19);
+}
+
+input[name=writebtn]:hover,
+input[name=writeEditBtn]:hover {
+    background: #89abff;
+    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.2), 0 4px 10px 0 rgba(0, 0, 0, 0.19);
+}
+
+/*paging*/
+#pagingContent {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100px;
+}
+
+.paging_control {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.blue_bar {
+    position: relative;
+}
+
+.blue_bar li {
+    display: inline;
+    text-align: center;
+}
+
+.blue_bar li:first-child a {
+    border-radius: 6px 0 0 6px;
+}
+
+.blue_bar li:last-child a {
+    border-radius: 0 6px 6px 0;
+}
+
+.blue_bar a {
+    float: left;
+    display: block;
+    font-size: 15px;
+    padding: 7px 15px;
+    color: #fff;
+    margin-left: -1px;
+    line-height: 1.5;
+    color: #6495ED;
+    background: #fff;
+    border: 1px solid #6495ED;
+    cursor: pointer;
+}
+
+.blue_bar a:hover {
+    background: #eee;
+}
+
+.blue_bar a.active,
+.blue_bar a:active {
+    cursor: default;
+    border-color: #6495ED;
+    background: #6495ED;
+    color: #fff;
+}
+
+/*write.html*/
+.write_wrap {
+	position: relative;
+	display: block;
+	width: 100%;
+	height: 100%;
+	min-height: 900px;
+}
+
+.write_form {
+	position: relative;
+	display: block;
+	width: 100%;
+	height: 100%;
+	margin: 50px 0;
+}
+
+.select_cate {
+    position: relative;
+    display: block;
+    top: 20px;
+    width: 25%;
+    height: 50px;
+    padding-left: 20px;
+    float: right;
+}
+
+.select_cate select{
+    width: 100%;
+    height: 100%;
+    padding: 0 10px;
+    border-radius: 2px;
+}
+
+.edit_title {
+	position: relative;
+	display: inline-block;
+	width: 75%;
+	height: 50px;
+    margin-top: 20px;
+}
+
+.input_title {
+	display: block;
+	width: 100%;
+	height: 100%;
+	padding: 10px 10px;
+	border: 1px solid #333;
+	border-radius: 2px;
+	font-size: 15px;
+}
+
+.edit_content {
+	position: relative;
+	display: block;
+	width: 100%;
+	height: 500px;
+	max-height: 500px;
+	margin-top: 20px;
+}
+
+.input_content {
+	display: block;
+	width: 100%;
+	height: 100%;
+	resize: none;
+	padding: 20px;
+	font-size: 15px;
+	overflow-y: auto;
+}
+
+.input_content:hover {
+	border: 1px solid #333;
+}
+
+.input_content:focus {
+	border: 1px solid #333;
+}
+
+.edit_upload {
+	position: relative;
+	display: block;
+	width: 100%;
+	height: 70px;
+	border: 1px solid #3e3e3e;
+	margin-top: 20px;
+	padding: 20px;
+}
+
+input[name=upload] {
+	cursor: pointer;
+}
+
+.empty {
+	font-size: 50px;
+	display: flex;
+	align-items: center;
+	height: 600px;
+	justify-content: center;
+	border-top:2px solid #333;
+	border-bottom:2px solid #333;
+}

@@ -1,55 +1,129 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-xmlns:th="http://www.thymeleaf.org"
-xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-layout:decorator="~{layout/layout_main}">
-    <title>PhoneHub</title>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="~{layout/layout_main}">
+<title>PhoneHub</title>
 
 <th:block layout:fragment="css">
+    <link rel="stylesheet" type="text/css" th:href="@{js/swiper/swiper.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{css/common/main.css}">
 </th:block>
 
 <th:block layout:fragment="script">
+    <script defer type="text/javascript" th:src="@{js/swiper/swiper.min.js}"></script>
+    <script defer type="text/javascript" th:src="@{js/index.js}"></script>
+    <script defer type="text/javascript" th:src="@{js/common/script.js}"></script>
+    <script defer type="text/javascript" th:src="@{js/common/slide.js}"></script>
+    <script defer type="text/javascript"
+        th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js}"></script>
 </th:block>
 
 <th:block layout:fragment="content">
-        <!-- gotop -->
-        <div class="gotop">
-            <i class="far fa-arrow-alt-circle-up fa-3x gotop_icon"></i>
-        </div>
-        <!-- slide -->
-        <div class="slide">
-        </div>
-        <!-- content -->
-        <div class="content">
-            <div class="pagew">
-                <!-- 판매량 -->
-                <div class="sales">
-                    <p>
-                        <span>판매량순</span>
-                    </p>
-                    <div class="cont_img">
-                        <img src="asset/phonesample.png">
-                    </div>
+    <!-- gotop -->
+    <div class="gotop">
+        <i class="far fa-arrow-alt-circle-up fa-3x gotop_icon"></i>
+    </div>
+    <!-- slide -->
+    <div class="main_slide">
+        <!-- slide btn -->
+        <div class="sw_prev"><i class="fas fa-chevron-left fa-3x"></i></div>
+        <div class="sw_next"><i class="fas fa-chevron-right fa-3x"></i></div>
+        <!-- pagination -->
+        <div class="sw_pg"></div>
+        <div class="swiper-container sw_main">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="asset/sw1.jpg">
                 </div>
-                <!-- 성능 -->
-                <div class="perfo">
-                    <p>
-                        <span>성능순</span>
-                    </p>
-                    <div class="cont_img">
-                        <img src="asset/phonesample.png">
-                    </div>
+                <div class="swiper-slide">
+                    <img src="asset/sw2.jpg">
                 </div>
-                <!-- 가성비 -->
-                <div class="price">
-                    <p>
-                        <span>가성비순</span>
-                    </p>
-                    <div class="cont_img">
-                        <img src="asset/phonesample.png">
-                    </div>
+                <div class="swiper-slide">
+                    <img src="asset/sw3.jpg">
                 </div>
             </div>
         </div>
+    </div>
+    <!-- content -->
+    <div class="content">
+        <!-- quick section -->
+        <div class="quick_sec">
+            <div class="q_tit">
+                <span class="q_main_tit">phone hub</span>
+                <span class="q_sub_tit">service</span>
+            </div>
+            <div class="q_btn">
+                <a href="/rank" class="q_rank">
+                    <p>랭킹</p>
+                </a>
+                <a href="/phones" class="q_phone">
+                    <p>휴대폰</p>
+                </a>
+                <a href="/phoneCompares?pk=1" class="q_compare">
+                    <p>휴대폰 비교</p>
+                </a>
+            </div>
+            <div class="q_board">
+                <ul id="mainNews">
+                    <!-- <li>
+                        <span></span>
+                        <a href="#">넷마블 자회사 잼시티, 10월께 뉴욕증시 노크</a>
+                    </li>
+                    <li>
+                        <span></span>
+                        <a href="#">삼성전자, 갤럭시 S21 등 호조에 영업이익 큰 폭 증가</a>
+                    </li>
+                    <li>
+                        <span></span>
+                        <a href="#">판사 "왜 인앱결제만 강요?"…팀 쿡 "투자 수익 필요"</a>
+                    </li>
+                    <li>
+                        <span></span>
+                        <a href="#">"카카오T에서 기차표 선물 하세요"</a>
+                    </li> -->
+                </ul>
+            </div>
+        </div>
+        <div class="pagew">
+            <div class="main_stand">
+                <!-- 복사할부분 -->
+                <div id="popularOrder" class="m_stand_grid">
+                    <p>
+                        <span>인기순</span>
+                    </p>
+                    <!-- 이미지4개까지만해주세요 -->
+                    <!-- <div class="stand_img">
+                        <a href="#">
+                            <img src="asset/sample.jpg">
+                            <span>APPLE iPhone 11</span>
+                        </a>
+                    </div>
+                    <div class="stand_img">
+                        <a href="#">
+                            <img src="asset/samsung.png">
+                            <span>samsung galaxy 11</span>
+                        </a>
+                    </div>
+                    <div class="stand_img">
+                        <a href="#">
+                            <img src="asset/samsung2.png">
+                            <span>samsung galaxy Note 10</span>
+                        </a>
+                    </div>
+                    <div class="stand_img">
+                        <a href="#">
+                            <img src="asset/sample.jpg">
+                            <span>APPLE iPhone 11 Pro</span>
+                        </a>
+                    </div> -->
+                </div>
+                <div id="costEffectivenessOrder" class="m_stand_grid">
+                    <p>
+                        <span>가성비</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
 </th:block>
+
 </html>

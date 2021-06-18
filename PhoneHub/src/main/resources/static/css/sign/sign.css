@@ -1,10 +1,45 @@
+/*modal*/
+.email_modal {
+    display: none;
+}
+
+.open {
+    position: fixed;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 99999999;
+}
+
+.email_box {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%, -40%);
+    padding: 30px;
+    height: 300px;
+    width: 600px;
+    background: #fff;
+    border: 2px solid #c0c0c0;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+/*sign wrap*/
 .sign_wrap {
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 90vh;
-    min-height: 1000px;
+    height: auto;
+    min-height: 100vh;
     width: 100%;
 }
 
@@ -94,7 +129,9 @@
 
 input[name=signIn],
 input[name=signUp],
-input[name=emailSend] {
+input[name=emailSend],
+.email_close,
+input[name=findbtn] {
     display: block;
     height: 50px;
     width: 100%;
@@ -140,7 +177,7 @@ input[name=signUp]:hover {
     position: relative;
     display: block;
     width: 650px;
-    height: 750px;
+    height: 680px;
     padding: 15px 40px;
     background: #fff;
     box-shadow: 0px 3px 10px -2px rgba(0, 0, 0, 0.2);
@@ -148,7 +185,7 @@ input[name=signUp]:hover {
 }
 
 #joinFrm {
-	position: relative;
+    position: relative;
 }
 
 .row>span {
@@ -163,7 +200,8 @@ input[name=signUp]:hover {
 }
 
 .input_group input[type="text"],
-.input_group input[type="radio"]+label {
+.input_group input[type="radio"]+label,
+.input_group input[type="password"] {
     position: relative;
     display: block;
     width: 100%;
@@ -176,17 +214,17 @@ input[name=signUp]:hover {
 }
 
 .input_group input[name="email"] {
-	width: 70%;
+    width: 70%;
 }
 
 .input_button input[name="emailSend"] {
-	position: absolute;
-	right: 0;
-	top: 0;
-	width: 25%;
-	border-radius: 3px;
-	height: 47px;
-	font-size: 16px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 25%;
+    border-radius: 3px;
+    height: 47px;
+    font-size: 16px;
 }
 
 .input_group input:focus {
@@ -232,11 +270,11 @@ input[name=signUp]:hover {
     padding-right: 10px;
     width: 50%;
     float: left;
-    margin-bottom:50px;
+    margin-bottom: 50px;
 }
 
 .half:last-child {
-	padding-right: 0;
+    padding-right: 0;
 }
 
 .half>span {
@@ -267,11 +305,12 @@ input[name=signUp]:hover {
     text-align: center;
     float: left;
     border-radius: 0;
-    padding: 10.5px;
+    padding: 15.5px;
+    cursor: pointer;
 }
 
-.input_group input[type="radio"] + label[for="male"] {
-	border-right-width: 0px;
+.input_group input[type="radio"]+label[for="male"] {
+    border-right-width: 0px;
 }
 
 .input_group input[type="radio"]:checked+label[for="male"] {
@@ -288,4 +327,74 @@ input[name=signUp]:hover {
     border-top-right-radius: 3px;
     border-bottom-right-radius: 3px;
     color: #fcf6f5;
+}
+
+.errorCallbar,
+.errorRepassword,
+.errorPassword,
+.errorNickname,
+.errorYear,
+.errorMonth,
+.errorDay {
+    color: #ff1a1a;
+}
+
+/*find pw*/
+.find_form {
+    position: relative;
+    display: block;
+    width: 500px;
+    height: 500px;
+    padding: 0 20px;
+    background: #fff;
+    box-shadow: 0px 3px 10px -2px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+}
+
+.warnning {
+	position: relative;
+	margin-top: 50px;
+	padding: 0 40px;
+}
+
+.warnning>span {
+	display: block;
+	margin: 10px 0;
+	font-size: 14px;
+	word-wrap: break-word;
+}
+
+.warnning>span>i {
+	margin-right: 10px;
+}
+
+#findFrm {
+    position: relative;
+    display: block;
+    margin-top: 50px;
+    padding: 10px 40px;
+}
+
+.back_login {
+    position: relative;
+    display: block;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 300;
+    margin-top: 20px;
+}
+
+.back_login a {
+    position: relative;
+    display: inline-block;
+    color: #6495ED;
+    letter-spacing: 1px;
+    margin: 0 5px;
+}
+
+.back_login a:hover {
+    text-decoration: underline;
+}
+.errorDay {
+    color: #ff1a1a;
 }

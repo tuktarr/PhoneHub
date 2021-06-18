@@ -1,27 +1,28 @@
 package com.tuktarr.phonehub.user;
 
+import java.io.File;
+
+import javax.mail.Message.RecipientType;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+import javax.servlet.http.HttpSession;
+
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.MailException;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.tuktarr.phonehub.model.UserDomain;
 import com.tuktarr.phonehub.model.UserEntity;
-<<<<<<< Updated upstream
-
-@Service
-public class UserService {
-//
-//	@Autowired
-//	private UserMapper umapper;
-	
-//	public int join(UserEntity p) throws Exception {
-//		UserEntity check = umapper.selUser(p);
-//	}
-=======
 import com.tuktarr.phonehub.utils.FileUtils;
 import com.tuktarr.phonehub.utils.PatternUtils;
 import com.tuktarr.phonehub.utils.SecurityUtils;
 
 @Service
 public class UserService {
+
 
 	@Autowired
 	private UserMapper mapper;
@@ -294,5 +295,4 @@ public class UserService {
 		user.setUserProfile(null);
 		return mapper.updProfile(user);
 	}
->>>>>>> Stashed changes
 }

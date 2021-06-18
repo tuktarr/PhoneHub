@@ -34,7 +34,7 @@
 
 	function chkEmail() {
 	    const emailVal = joinFrm.email.value
-	    const emailChk = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i
+	    const emailChk = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])+\.[a-zA-Z]{2,3}$/i
 
 	    if (emailVal === '') {
 	        alert('이메일을 입력 해 주세요.')
@@ -59,7 +59,7 @@
 	    const callVal = joinFrm.call.value
 	    const callChk = /^010-\d{4}-\d{4}$/g
 	    const yearVal = joinFrm.yyyy.value
-	    const yearChk = /^(19|20)\d{2}&/g
+	    const yearChk = /^(19|20)\d{2}/g
 	    const monthVal = joinFrm.mm.value
 	    const monthChk = /^(0[1-9]|1[012])$/g
 	    const dayVal = joinFrm.dd.value
@@ -98,4 +98,4 @@
 
 	function closeModal() {
 	    modalDiv.classList.remove('open')
-	}
+	}	
