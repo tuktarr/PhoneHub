@@ -163,19 +163,19 @@ function getMaxPageNum() {
 		fetch(`/boardGetMaxPageNum?rowCnt=${rowCnt}&category=${1}`)
 			.then(res => res.json())
 			.then(myJson => {
-				pageProc(myJson)
+				pageProc1(myJson)
 			})
 	}else if (category(x, y, z) === 2) {
 		fetch(`/boardGetMaxPageNum?rowCnt=${rowCnt}&category=${2}`)
 			.then(res => res.json())
 			.then(myJson => {
-				pageProc(myJson)
+				pageProc2(myJson)
 			})
 	}else if (category(x, y, z) === 3) {
 		fetch(`/boardGetMaxPageNum?rowCnt=${rowCnt}&category=${3}`)
 			.then(res => res.json())
 			.then(myJson => {
-				pageProc(myJson)
+				pageProc3(myJson)
 			})
 	}
 }
@@ -183,8 +183,8 @@ function getMaxPageNum() {
 const pagingContentElem = document.querySelector('#pagingContent')
 const pageDiv = document.createElement('div')
 pageDiv.classList.add('paging_control')
-function pageProc(maxPage, page) {
-    let sessionPage = parseInt(sessionStorage.getItem('boardPage'))
+function pageProc1(maxPage, page) {
+    let sessionPage = parseInt(sessionStorage.getItem('board1Page'))
 
     if (!sessionPage) {
         sessionPage = 1
@@ -194,7 +194,7 @@ function pageProc(maxPage, page) {
         page = sessionPage
     }
 
-    sessionStorage.setItem('boardPage', page)
+    sessionStorage.setItem('board1Page', page)
 	pageDiv.innerHTML = null
     const bluebar = document.createElement('ul')
     bluebar.classList.add('blue_bar')
@@ -208,7 +208,7 @@ function pageProc(maxPage, page) {
 
     laquoLi.addEventListener('click', function () {
         getBoardList(1)
-        pageProc(maxPage, 1)
+        pageProc1(maxPage, 1)
     })
 
     const ltLi = document.createElement('li')
@@ -221,7 +221,7 @@ function pageProc(maxPage, page) {
     if (page > 1) {
         ltLi.addEventListener('click', function () {
             getBoardList(page - 1)
-            pageProc(maxPage, page - 1)
+            pageProc1(maxPage, page - 1)
         })
     }
 
@@ -240,7 +240,7 @@ function pageProc(maxPage, page) {
 
         a.addEventListener('click', function () {
             getBoardList(i)
-            pageProc(maxPage, i)
+            pageProc1(maxPage, i)
         })
     }
 
@@ -254,7 +254,7 @@ function pageProc(maxPage, page) {
     if (page < maxPage) {
         gtLi.addEventListener('click', function () {
             getBoardList(page + 1)
-            pageProc(maxPage, page + 1)
+            pageProc1(maxPage, page + 1)
         })
     }
 
@@ -267,7 +267,187 @@ function pageProc(maxPage, page) {
 
     raquoLi.addEventListener('click', function () {
         getBoardList(maxPage)
-        pageProc(maxPage, maxPage)
+        pageProc1(maxPage, maxPage)
+    })
+	pageDiv.append(bluebar)
+    pagingContentElem.append(pageDiv)
+}
+
+function pageProc2(maxPage, page) {
+    let sessionPage = parseInt(sessionStorage.getItem('board2Page'))
+
+    if (!sessionPage) {
+        sessionPage = 1
+    }
+
+    if (!page) {
+        page = sessionPage
+    }
+
+    sessionStorage.setItem('board2Page', page)
+	pageDiv.innerHTML = null
+    const bluebar = document.createElement('ul')
+    bluebar.classList.add('blue_bar')
+
+	const laquoLi = document.createElement('li')
+    const laquoA = document.createElement('a')
+    laquoA.classList.add('prev')
+    laquoA.innerHTML = '&laquo'
+    laquoLi.append(laquoA)
+    bluebar.append(laquoLi)
+
+    laquoLi.addEventListener('click', function () {
+        getBoardList(1)
+        pageProc2(maxPage, 1)
+    })
+
+    const ltLi = document.createElement('li')
+    const ltA = document.createElement('a')
+    ltA.classList.add('prev')
+    ltA.innerHTML = '&lt'
+    ltLi.append(ltA)
+    bluebar.append(ltLi)
+
+    if (page > 1) {
+        ltLi.addEventListener('click', function () {
+            getBoardList(page - 1)
+            pageProc2(maxPage, page - 1)
+        })
+    }
+
+    param = paging(page, maxPage)
+
+    for (let i = param.startPage; i <= param.lastPage; i++) {
+        const li = document.createElement('li')
+        const a = document.createElement('a')
+        a.innerText = i
+
+        if (i === page) {
+            a.classList.add("active")
+        }
+        li.append(a)
+        bluebar.append(li)
+
+        a.addEventListener('click', function () {
+            getBoardList(i)
+            pageProc2(maxPage, i)
+        })
+    }
+
+    const gtLi = document.createElement('li')
+    const gtA = document.createElement('a')
+    gtA.classList.add('prev')
+    gtA.innerHTML = '&gt'
+    gtLi.append(gtA)
+    bluebar.append(gtLi)
+
+    if (page < maxPage) {
+        gtLi.addEventListener('click', function () {
+            getBoardList(page + 1)
+            pageProc2(maxPage, page + 1)
+        })
+    }
+
+    const raquoLi = document.createElement('li')
+    const raquoA = document.createElement('a')
+    raquoA.classList.add('prev')
+    raquoA.innerHTML = '&raquo'
+    raquoLi.append(raquoA)
+    bluebar.append(raquoLi)
+
+    raquoLi.addEventListener('click', function () {
+        getBoardList(maxPage)
+        pageProc2(maxPage, maxPage)
+    })
+	pageDiv.append(bluebar)
+    pagingContentElem.append(pageDiv)
+}
+
+function pageProc3(maxPage, page) {
+    let sessionPage = parseInt(sessionStorage.getItem('board3Page'))
+
+    if (!sessionPage) {
+        sessionPage = 1
+    }
+
+    if (!page) {
+        page = sessionPage
+    }
+
+    sessionStorage.setItem('board3Page', page)
+	pageDiv.innerHTML = null
+    const bluebar = document.createElement('ul')
+    bluebar.classList.add('blue_bar')
+
+	const laquoLi = document.createElement('li')
+    const laquoA = document.createElement('a')
+    laquoA.classList.add('prev')
+    laquoA.innerHTML = '&laquo'
+    laquoLi.append(laquoA)
+    bluebar.append(laquoLi)
+
+    laquoLi.addEventListener('click', function () {
+        getBoardList(1)
+        pageProc3(maxPage, 1)
+    })
+
+    const ltLi = document.createElement('li')
+    const ltA = document.createElement('a')
+    ltA.classList.add('prev')
+    ltA.innerHTML = '&lt'
+    ltLi.append(ltA)
+    bluebar.append(ltLi)
+
+    if (page > 1) {
+        ltLi.addEventListener('click', function () {
+            getBoardList(page - 1)
+            pageProc3(maxPage, page - 1)
+        })
+    }
+
+    param = paging(page, maxPage)
+
+    for (let i = param.startPage; i <= param.lastPage; i++) {
+        const li = document.createElement('li')
+        const a = document.createElement('a')
+        a.innerText = i
+
+        if (i === page) {
+            a.classList.add("active")
+        }
+        li.append(a)
+        bluebar.append(li)
+
+        a.addEventListener('click', function () {
+            getBoardList(i)
+            pageProc3(maxPage, i)
+        })
+    }
+
+    const gtLi = document.createElement('li')
+    const gtA = document.createElement('a')
+    gtA.classList.add('prev')
+    gtA.innerHTML = '&gt'
+    gtLi.append(gtA)
+    bluebar.append(gtLi)
+
+    if (page < maxPage) {
+        gtLi.addEventListener('click', function () {
+            getBoardList(page + 1)
+            pageProc3(maxPage, page + 1)
+        })
+    }
+
+    const raquoLi = document.createElement('li')
+    const raquoA = document.createElement('a')
+    raquoA.classList.add('prev')
+    raquoA.innerHTML = '&raquo'
+    raquoLi.append(raquoA)
+    bluebar.append(raquoLi)
+
+    raquoLi.addEventListener('click', function () {
+        getBoardList(maxPage)
+        pageProc3(maxPage, maxPage)
     })
 	pageDiv.append(bluebar)
     pagingContentElem.append(pageDiv)

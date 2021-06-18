@@ -99,11 +99,20 @@ public class BoardService {
 		
 		public int upVoteCount(BoardEntity p) {
 			BoardDTO pa = new BoardDTO();
+			System.out.println("user:" + p.getUserPk());
+			System.out.println("board:" + p.getBoardPk());
 			pa.setBoardPk(p.getBoardPk());
 			pa.setUserPk(p.getUserPk());
 			BoardDTO check = mapper.selLike(pa);
+
 			if(check == null) {
 				mapper.insLike(pa);
+				BoardDTO check2 = mapper.selLike(pa);
+				if(check2.getLikecount() == 0) {
+					mapper.upVoteCount(p);
+					mapper.upLike(pa);
+					return 1;
+				}
 			}
 			
 			if(check.getLikecount() == 0) {
@@ -125,8 +134,15 @@ public class BoardService {
 			pa.setBoardPk(p.getBoardPk());
 			pa.setUserPk(p.getUserPk());
 			BoardDTO check = mapper.selLike(pa);
+
 			if(check == null) {
-			mapper.insLike(pa);
+				mapper.insLike(pa);
+				BoardDTO check2 = mapper.selLike(pa);
+				if(check2.getHatecount() == 0) {
+					mapper.upBlameCount(p);
+					mapper.upHate(pa);
+					return 1;
+				}
 			}
 			if(check.getHatecount() == 0) {
 				mapper.upBlameCount(p);

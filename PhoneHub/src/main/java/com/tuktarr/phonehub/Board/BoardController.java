@@ -113,15 +113,15 @@ public class BoardController {
 	}
 	
 	@ResponseBody
-	@GetMapping("/boardGetPopular")
-	public int boardPopular(BoardEntity p){
+	@PostMapping("/boardGetPopular")
+	public int boardPopular(@RequestBody BoardEntity p){
 		System.out.println(p.getBoardPk());
 		return bService.upVoteCount(p);
 	}
 	
 	@ResponseBody
-	@GetMapping("/boardGetWorst")
-	public int boardWorst(BoardEntity p){
+	@PostMapping("/boardGetWorst")
+	public int boardWorst(@RequestBody BoardEntity p){
 		System.out.println(p.getBoardPk());
 		return bService.upBlameCount(p);
 	}
