@@ -41,9 +41,9 @@ if (profileElem) {
 				'Content-Type': 'application/json',
 			},
 			body: JSON.stringify(param)
-		}).then(function (res) {
+		}).then(function(res) {
 			return res.json()
-		}).then(function (myJson) {
+		}).then(function(myJson) {
 			proc(myJson)
 		})
 	}
@@ -96,6 +96,60 @@ if (profileElem) {
 		}
 	}
 
+	const passchkContElem = document.getElementById('passchkCont')
+	const password = document.getElementById('password')
+	const passwordChk = document.getElementById('passwordChk')
+	const newPassword = document.getElementById('newPassword')
+	const updPasswordBtn = document.getElementById('updPassword')
+	if (passchkContElem) {
+		function ajax() {
+			var param = {
+				userEmail: emailElem.value,
+				userPw: password.value,
+				userPwRe: passwordChk.value,
+				userNewPw: newPassword.value
+			}
+
+			fetch('/mypassword', {
+				method: 'post',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify(param)
+			}).then(function(res) {
+				return res.json()
+			}).then(function(myJson) {
+				proc(myJson)
+			})
+		}
+
+		function proc(myJson) {
+			console.log(myJson.password)
+			switch (myJson.password) {
+				case 1:
+					alert('원래 비밀번호와 다릅니다.')
+					return
+				case 2:
+					alert('새 비밀번호 칸이 비어있습니다.')
+					return
+				case 3:
+					alert('기존의 비밀번호와 같을 수는 없습니다.')	
+					return
+				case 4:
+					alert('새 비밀번호와 새 비밀번호 확인이 다릅니다.')
+					return
+				case 5:
+					alert('비밀번호 최소 8자리에 숫자, 문자, 특수문자 각각 1개 이상 포함시켜주세요')
+					return
+				case 6:
+					alert('수정되었습니다.')
+					location.href = '/logout'
+					return
+			}
+		}
+		updPasswordBtn.addEventListener('click', ajax)
+	}
+  
 	const proUpBtnElem = document.getElementById('proUpBtn')
 	function profileUpload() {
 		if (proUpBtnElem.files.length === 0) {

@@ -17,14 +17,19 @@ import org.springframework.web.multipart.MultipartFile;
 import com.tuktarr.phonehub.model.UserDomain;
 import com.tuktarr.phonehub.model.UserEntity;
 import com.tuktarr.phonehub.utils.FileUtils;
+import com.tuktarr.phonehub.utils.PatternUtils;
 import com.tuktarr.phonehub.utils.SecurityUtils;
 
 @Service
 public class UserService {
 
+
 	@Autowired
 	private UserMapper mapper;
 
+	@Autowired
+	private PatternUtils pUtils;
+	
 	@Autowired
 	private SecurityUtils sUtils;
 
@@ -172,28 +177,34 @@ public class UserService {
 		if (!BCrypt.checkpw(p.getUserPw(), check.getUserPw())) { // DB에 저장되어있는 비밀번호와 입력한 비밀번호의 정보가 다르면 1 리턴
 			return 1;
 		}
-		if (p.getUserNewPw().equals("")) { // 새 비밀번호 칸이 비어있으면 2 리턴
+		
+		if(p.getUserNewPw().equals("")) { //칸이 비어있다면 2리턴
 			return 2;
 		}
-		if (!p.getUserNewPw().equals(p.getUserPwRe())) { // 새 비밀번호 칸과 새 비밀번호 확인 칸이 다르면 3 리턴
+		if(p.getUserNewPw().equals(check.getUserPw())) { //기존의 비밀번호와 새 비밀번호가 같으면 3리턴
 			return 3;
 		}
-
-		// 비밀번호 암호화
-		String salt = sUtils.getSalt();
-		String hashPw = sUtils.getHashPw(p.getUserNewPw(), salt);
-
-		p.setUserPw(hashPw);
-
-		// 세션에 값을 담기위해 set
-		check.setNickname(p.getNickname());
-		check.setUserPw(p.getUserPw());
-
-		// 세션에 새로 로그인정보를 담아줌
-		hs.setAttribute("loginUser", check);
-
-		mapper.updateUserPassword(p);
-		return 4;
+		if (!p.getUserNewPw().equals(p.getUserPwRe())) { // 새 비밀번호 칸과 새 비밀번호 확인 칸이 다르면 4리턴
+			return 4;
+		}
+		if(!pUtils.PatternPassword(p)) { //비밀번호 양식이 안맞으면 5리턴
+			return 5;
+		}
+			// 비밀번호 암호화
+			String salt = sUtils.getSalt();
+			String hashPw = sUtils.getHashPw(p.getUserNewPw(), salt);
+			
+			p.setUserPw(hashPw);
+			
+			// 세션에 값을 담기위해 set
+			check.setNickname(p.getNickname());
+			check.setUserPw(p.getUserPw());
+			
+			// 세션에 새로 로그인정보를 담아줌
+			hs.setAttribute("loginUser", check);
+			
+			mapper.updateUserPassword(p);
+			return 6;
 	}
 
 	public int remainderChange(UserDomain p, HttpSession hs) {

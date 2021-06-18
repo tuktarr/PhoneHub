@@ -9,7 +9,6 @@ if (writeEditBtn) {
 		const userPkElem = formElem.userPk
 		const boardPkElem = formElem.boardPk
 		const imgElem = formElem.upload
-		const categoryElem = formElem.category
 
 		const param = {
 			title: titleElem.value,
