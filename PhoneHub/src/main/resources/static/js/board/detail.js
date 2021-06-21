@@ -78,11 +78,9 @@ function popularHit() {
 
 	function proc(myJson) {
 		if (myJson == 1) {
-			alert('추천했습니다')
 			location.reload()
 			return
 		} else if (myJson == 2) {
-			alert('추천취소했습니다')
 			location.reload()
 			return
 		} else {
@@ -111,11 +109,9 @@ function blameHit() {
 
 	function proc(myJson) {
 		if (myJson == 1) {
-			alert('추천했습니다')
 			location.reload()
 			return
 		} else if (myJson == 2) {
-			alert('추천취소했습니다')
 			location.reload()
 			return
 		} else {

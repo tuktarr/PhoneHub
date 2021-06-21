@@ -24,6 +24,8 @@
 				<!-- detail title left -->
 				<div class="detail_tl">
 					<div class="detail_user">
+						<img th:if="${data.userProfile != null}" class="user_img" th:src="|profile/img/user/${data.userPk}/${data.userProfile}|">
+						<img th:if="${data.userProfile == null}" class="user_img" th:src="@{asset/user.png}">
 						<span class="user" th:text=${data.writerNm}></span>
 					</div>
 					<div class="detail_date">

@@ -140,7 +140,11 @@ function boardProc(myJson) {
 		td_1.innerText = item.seq
 		td_2.innerText = item.title
 		td_3.innerText = item.writerNm		
-		img.src = "profile/img/user/" + item.userPk + "/" + item.userProfile
+		if(item.userProfile == null) {
+			img.src = "asset/user.png"
+		} else {
+			img.src = "profile/img/user/" + item.userPk + "/" + item.userProfile
+		}	
 		td_4.innerText = item.hits
 		td_5.innerText = item.regDt
 		td_3.prepend(img)
