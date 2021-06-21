@@ -9,7 +9,7 @@ public class BoardDTO {
 	private int category;
 	private int likecount;
 	private int hatecount;
-	
+
 	public int getLikecount() {
 		return likecount;
 	}

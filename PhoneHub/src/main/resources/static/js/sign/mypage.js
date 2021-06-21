@@ -64,7 +64,7 @@ if (profileElem) {
 				return ok()
 			case 2:
 				const birthChk = /^(19[0-9][0-9]|20\d{2})-(0[0-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/
-				if (birthChk.test(birthElem.value)) {
+				if (!birthChk.test(birthElem.value)) {
 					alert('생년월일(xxxx-xx-xx) 형식을 맞춰주십시오')
 					birthElem.focus()
 					break

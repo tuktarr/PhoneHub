@@ -18,7 +18,7 @@
 	<select id="selBoardList" resultType="com.tuktarr.phonehub.model.BoardDomain">
 		SELECT A.boardPk, A.seq,
 		A.title, A.hits, DATE_FORMAT(A.regDt, '%Y-%m-%d') AS regDt, A.isDel,
-		A.userPk, A.category, B.nickname AS writerNm
+		A.userPk, A.category, B.nickname AS writerNm, B.userProfile
 		FROM board A
 		INNER JOIN user B
 		ON A.userPk = B.userPk
@@ -29,7 +29,7 @@
 	
 	<select id="selBoard" resultType="com.tuktarr.phonehub.model.BoardDomain">
 		SELECT A.boardPk, A.seq, A.title, A.ctnt, A.hits, A.userPk, A.category, DATE_FORMAT(A.regDt, '%Y-%m-%d %h:%m:%s') AS regDt,
-		B.nickname AS writerNm, A.voted_count, A.blamed_count FROM board A
+		B.nickname AS writerNm, B.userProfile, A.voted_count, A.blamed_count FROM board A
 		INNER JOIN user B
 		ON A.userPk = B.userPk
 		WHERE A.boardPk = #{boardPk}
