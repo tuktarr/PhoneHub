@@ -131,15 +131,19 @@ function boardProc(myJson) {
 		td_2.classList.add('gall_title')
 		const td_3 = document.createElement('td')
 		td_3.classList.add('gall_nick')
+		const img = document.createElement('img')
+		img.classList.add('gall_img')
 		const td_4 = document.createElement('td')
 		td_4.classList.add('gall_hits')
 		const td_5 = document.createElement('td')
 		td_5.classList.add('gall_date')
 		td_1.innerText = item.seq
 		td_2.innerText = item.title
-		td_3.innerText = item.writerNm
+		td_3.innerText = item.writerNm		
+		img.src = "profile/img/user/" + item.userPk + "/" + item.userProfile
 		td_4.innerText = item.hits
 		td_5.innerText = item.regDt
+		td_3.prepend(img)
 		tr.append(td_1)
 		tr.append(td_2)
 		tr.append(td_3)

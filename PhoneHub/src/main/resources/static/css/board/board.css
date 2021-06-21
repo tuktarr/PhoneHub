@@ -122,6 +122,12 @@
     width: 1px;
     background: #ccc;
 }
+.gall_img {
+	height : 30px;
+	width: 30px;
+	border-radius: 50px;
+	margin-right: 3px;
+}
 
 input[name=writebtn],
 input[name=writeEditBtn],
