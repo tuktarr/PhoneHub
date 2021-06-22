@@ -28,28 +28,29 @@
     position: relative;
     display: inline-flex;
     margin-top: 10px;
+    margin-left: 10px;
     padding: 0 15px;
 }
 
 .detail_user {
     position: relative;
-    font-size: 13px;
+    font-size: 15px;
 }
 
 .user {
     position: relative;
 }
 
-.user::before {
+.user_img {
     content: '';
     display: inline-block;
-    width: 17px;
-    height: 17px;
+    width: 25px;
+    height: 25px;
     vertical-align: -4px;
-    background: #ccc;
     border-radius: 50%;
     margin-right: 5px;
 }
+
 
 .detail_date {
     position: relative;
@@ -73,7 +74,6 @@
     font-size: 13px;
     padding: 0 15px;
     margin-top: 10px;
-    float: right;
 }
 
 .detail_tr>span {
